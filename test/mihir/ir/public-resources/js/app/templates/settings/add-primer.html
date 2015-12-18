@@ -1,0 +1,62 @@
+<div class="modal-body">
+	<div id="errors"></div> 
+	<div id="uploaderror"></div> 
+	<div id="addPrimer" class="form-horizontal">
+		<div class="control-group">
+			<label class="control-label" for="primerName">
+				{{t 'settings.label.name'}}
+				<span class="text-error requires-asterisk">*</span>
+			</label>
+			<div class="controls">
+				<input name="primerName" type="text" id="primerName"
+					required="required" />
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="primerFileUpload">
+				{{t 'settings.label.selectFile'}}
+				<span class="text-error requires-asterisk">*</span>
+			</label>
+			<div class="controls">
+				<form id="primerFileUpload"
+					action="/ir/secure/api/settings/uploadPrimerFile"
+					method="POST" enctype="multipart/form-data" style="margin: 0">
+					<div class="row-fluid">
+						<div>
+							<div class="fileupload fileupload-new" data-provides="fileupload">
+								<div class="input-append">
+									<div class="uneditable-input span3 adjust-width">
+										<i class="icon-file fileupload-exists"></i> <span
+											class="fileupload-preview"></span>
+									</div>
+									<span class="btn btn-file"> <span class="fileupload-new">{{t
+											'upload.selectFile'}}</span> <span class="fileupload-exists">{{t
+											'upload.change'}}</span> <input type="file" name="file"
+										id="file-data-input">
+									</span>
+								</div>
+								<div style="color: #B1B1AC">({{t 'settings.label.supportedFormat'}} .fasta {{t 'settings.label.only'}})</div>
+								<div id="progressBar" class="progress hide" style="width: 340px">
+									<div class="bar" style="width: 0%;"></div>
+								</div>
+								<div>
+									<span class="upload-message"></span>
+								</div>
+								<div id="validationProgressMessage" class="hide">{{t
+									'specimenFile.upload.validating'}}</div>
+								<div id="validationTimeout" class="hide">{{t
+									'specimenFile.upload.validation.timeout'}}</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<!-- <div class="control-group">
+			<label class="control-label" for="primerDescription">{{t 'settings.label.desription'}}</label>
+			<div class="controls">
+				<input name="description" type="text" id="primerDescription" />
+			</div>
+		</div> -->
+	</div>
+</div>

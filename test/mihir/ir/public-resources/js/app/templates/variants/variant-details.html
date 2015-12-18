@@ -1,0 +1,34 @@
+<div id="analyses-variants-details-grid" class="row-fluid"></div>
+
+{{#each annotations.annotations}} 
+    {{#if values.length}}
+        {{#if values.0.annotationsMap}}
+            <h5>Annotation Source: {{sub ../../../keyTemplate key}}
+            {{#if key.specimenName}}
+                ({{key.specimenName}})
+            {{/if}}
+            </h5>
+            <table class='table map-values'>
+                <thead>
+                    <tr>
+                    {{#each this._keys}}
+                        <th>{{sub ../../../../keyTemplate this}}</th>
+                    {{/each}}
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each values}}
+                    <tr>
+                        {{#each _values}}
+                        <td>{{sub ../../../../../valueTemplate this}}</td>
+                        {{/each}}
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        {{/if}}
+    {{/if}}
+{{/each}}
+
+
+

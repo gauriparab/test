@@ -1,0 +1,23 @@
+<div id="selectRegionFile" class="row-fluid regionFile">
+    <div class="span4 text-right">
+        <label for="regions">{{t 'targetRegionsFile.custom.label'}}:</label>
+    </div>
+    <div class="span8">
+        <span id="regionsDiv" class="input custom-region-container">
+            <!-- templates/workflow-target-region.html -->
+        </span>
+
+        <div>
+            <a id="uploadCustomRegion" href="javascript:void(0)" data-toggle="modal"
+               title="Upload Custom File" class="btn btn-small uploadBtn"><i class="icon icon-upload"></i> {{t 'upload.label'}}</a>
+            &nbsp;
+            <a id="importFromAmpliseq" href="javascript:void(0)" data-toggle="modal"
+               title="Import from AmpliSeq" class="btn btn-small"><i class="icon-download-alt"></i> {{t 'import.ampliseq.label'}}</a>
+        </div>
+
+    </div>
+    
+    <div id="uploadRegionFile">
+        <!-- templates/upload-target-region-file.html -->
+    </div>
+</div>

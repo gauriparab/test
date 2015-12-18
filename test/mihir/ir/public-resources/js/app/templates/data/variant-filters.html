@@ -1,0 +1,59 @@
+<div class="filter-section" id="filterSection">
+	<div class="filter-header">
+		<h4 style="margin:0">
+			{{t 'data.filter.options'}} <span id="sidebarClose" class="pull-right"> <a
+				href="javascript:void(0)"><i class="icon-minus-sign"></i></a>
+			</span>
+		</h4>
+	</div>
+	<div id="filter-table" class="filter-body">
+		<div>
+			<div>
+				<h5>
+					<span>{{t 'data.report.tab.varient'}}</span>
+				</h5>
+			</div>
+			<div id="variants-group-filters">
+				<!-- variants/variants-group-filters.html -->
+			</div>
+		</div>
+		<hr class="filter" />
+
+		<div>
+			<div>
+				<h5>{{t 'subtab.library.label'}}</h5>
+			</div>
+			<div id="libraries-container">
+			<ul>
+			{{#each libraries}}
+				<li>{{this}}</li>
+			{{/each}}
+			</ul>
+			</div>
+
+			
+		</div>
+		<hr class="filter" />
+		
+		<div id="chromosomes-container" style="clear: both">
+				<!-- variants/variants-chromosomes-filtering.html -->
+		</div>
+		<hr class="filter" />
+		
+		<div>
+			<div>
+				<h5>
+					<span>{{t 'filterChains.details.filterChains'}}</span>
+				</h5>
+			</div>
+			<div id="filter-chains-container"></div>
+		</div>
+	</div>
+</div>
+<div class="summary-section pull-right" style="display: none;">
+	<div class="summary-header">
+		<a href="javascript:void(0)" id="sidebarOpen"><i
+			class="icon-plus-sign"></i></a>
+	</div>
+	<div style="height: 400px"></div>
+</div>

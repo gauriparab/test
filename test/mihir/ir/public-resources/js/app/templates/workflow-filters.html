@@ -1,0 +1,32 @@
+<div class="row-fluid">
+    <p class="context-help">{{t 'workflow.filter.chains.help'}}</p>
+ </div>
+<div class="row-fluid">
+    <div class="span5">
+        <div class="settings-selector-box">
+            <h5>{{t 'workflow.filter.chains.label'}}</h5>
+            <div id="filter-selection" class="btn-group selectBox">
+                <!-- templates/workflow-filters-select.html -->
+            </div>
+            <br/>
+             <p class="workflow-presets-redirect">
+                 {{t 'annotation.set.label.unable.find'}} {{t 'annotation.set.label.configure.in'}} <a id="presets_redirect" href="{{surl 'workflows-presets.html'}}">{{t 'workflow.presets.title'}}</a>.
+             </p>
+        </div>
+        {{#if false}}
+        <div class="settings-new-box" id="filter-chain-controls">
+            <p>{{t 'annotation.set.label.unable.find'}}</p>
+            <p>
+                <a id="edit-filter-chain" href="#" data-toggle="tooltip" data-container="body" data-original-title="Edit"><i class="icon-edit"></i> |</a>
+                <a id="clone-filter-chain" href="#" data-toggle="tooltip" data-container="body" data-original-title="Clone"><i class="icon-file"></i><i class="icon-arrow-right"></i><i class="icon-file"></i> |</a>
+                <a id="create-new-filter-chain" href="#" data-toggle="tooltip" data-container="body" data-original-title="New"><i class="icon-file"></i></a>
+            </p>
+        </div>
+        {{/if}}
+        <br>
+    </div>
+    <div id="filters-list" class="span7">
+        <!--  workflow-filters-list -->
+    </div>
+</div>
+<div class="modal hide fade modal-overflow" id="filterChain-dialog" tabindex="-1" role="dialog"></div>

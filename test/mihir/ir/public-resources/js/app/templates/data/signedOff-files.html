@@ -1,0 +1,35 @@
+<div>
+    <div>
+    <form id="downloadForm" action="/ir/secure/api/signoff/downloadZip" method="get">
+        {{#ifCond qcState '===' 'Failed'}}
+        <span>{{t 'data.signoff.qcFailedMsg'}}</span>
+    {{/ifCond}}
+        <table class="table table-condensed role-table">
+        <thead>
+            <tr>
+                <th><input type="checkbox" id="checkAllFiles" name="checkAllFiles"/></th>
+                <th>{{t 'data.signoff.filename'}}</th>
+                <th>{{t 'data.signoff.fileDescription'}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each model}}
+            <tr>
+                <td>
+                    <input type="checkbox" id={{fileName}} name={{fileName}} value="{{fileName}}"/>
+                </td>
+                <td>
+                    {{fileName}}
+                </td>
+                <td>
+                    {{t fileDescription}}
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+        </table>
+        <input type="hidden" id="resultId" name="resultId"></input>
+        <input type="hidden" id="filesList" name="filesList"></input>
+    </form>
+    </div>
+</div>

@@ -1,0 +1,81 @@
+<div class="row-fluid">
+    <div class="span12">
+	   <table style="width: 100%">
+	      <tr>
+	          <td valign="top" class="summary-item" style="padding-left:0px" width="165">{{t 'data.results.plannedName'}}:</td>
+	           <td>
+	            {{#if model.planRunName}}
+	                     {{model.planRunName}}
+	                  {{/if}}
+	                </td>
+	      </tr>
+	      <tr>
+	          <td valign="top" class="summary-item" style="padding-left:0px" width="165">{{t 'data.results.instrumentName'}}:</td>
+	           <td>
+	            {{#if model.instumentName}}
+	                     {{model.instumentName}}
+	                  {{/if}}
+	                </td>
+	      </tr>
+	      <tr>
+	          <td valign="top" class="summary-item" style="padding-left:0px" width="165">{{t 'data.results.otStartDate'}}:</td>
+	          <td>
+	             {{#if model.oneTouchStartDate}}
+	                     {{model.oneTouchStartDate}}
+	                  {{/if}}
+	                </td>
+	      </tr>
+	      <tr>
+	          <td valign="top" class="summary-item" style="padding-left:0px" width="165">{{t 'data.results.otCompletionDate'}}:</td>
+	          <td>
+	            {{#if model.oneTouchEndDate}}
+	                    {{model.oneTouchEndDate}}
+	                  {{/if}}
+	                </td>
+	      </tr>		     
+	      <tr>
+	          <td valign="top" class="summary-item"  style="padding-left:0px" width="165">{{t 'data.results.otOperator'}}:</td>
+	          <td>
+	                {{#if model.oneTouchOperator}}
+	                        {{model.oneTouchOperator}}
+	                    {{/if}}
+	                 </td>
+	      </tr>
+	      <tr>
+	          <td valign="top" colspan="2" style="padding-left:0px"><strong>{{t 'data.results.templatePrep'}}</strong></td>
+	      </tr>
+	      <tr>
+	          <td valign="top" class="summary-item"  style="padding-left:0px" width="165">{{t 'planned.runs.barcode'}}:</td>
+	          <td>
+	           {{#if model.barcode}}
+	                     {{model.barcode}}
+	                  {{/if}}
+	                 </td>
+	      </tr>
+	      <tr>
+	          <td valign="top" class="summary-item"  style="padding-left:0px" width="165">{{t 'data.results.partNumber'}}:</td>
+	          <td>
+	           {{#if model.partNumber}}
+	                     {{model.partNumber}}
+	                  {{/if}}
+	                 </td>
+	      </tr>
+	      <tr>
+	          <td valign="top" class="summary-item"  style="padding-left:0px" width="165">{{t 'data.results.expDate'}}:</td>
+	          <td>
+	             {{#if model.expirationDate}}
+	                     {{model.expirationDate}}
+	                  {{/if}}
+	                 </td>
+	      </tr>
+	      <tr>
+	          <td valign="top" class="summary-item"  style="padding-left:0px" width="165">{{t 'data.results.lot'}}:</td>
+	       <td>    
+	           {{#if model.lotNumber}}
+	                     {{model.lotNumber}}
+	                  {{/if}}
+	             </td>
+	      </tr>
+	  </table>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+<form class="form-horizontal">
+
+    <div id="apiTokenServerErrors"></div>
+
+    <div class="control-group">
+        <label class="control-label" for="apiToken">{{t 'security.manage.api.token.label'}}</label>
+        <div class="controls">
+            <input class="input-xlarge" type="text" id="apiToken" name="apiToken" value="{{token}}" readonly="readonly" />
+        </div>
+    </div>
+
+    <div class="control-group">
+        <div class="controls">
+            <button id="btn-manageApiTokenModal-generate" type="button" class="btn btn-primary">{{t 'dialog.manageApiToken.btn.generate'}}</button>
+        </div>
+    </div>
+</form>

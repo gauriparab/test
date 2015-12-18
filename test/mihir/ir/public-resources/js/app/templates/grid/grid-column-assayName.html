@@ -1,0 +1,10 @@
+ <div>
+	 <b><a style="word-break: break-word;" data-action='view_details' href='javascript:void(0)'>{{assayDisplayedName}}</a></b>
+	 <div class="entity-links">
+	 	{{#ifCond state '===' 'Draft'}}
+			<span><a href="javascript:void(0)" data-action="edit">{{t 'actions.EDIT'}}</a></span> |
+		 	<span><a href="javascript:void(0)" data-action="delete">{{t 'actions.DELETE'}}</a></span> |
+		{{/ifCond}}
+		<span><a href="javascript:void(0)" data-action="audit_trail">{{t 'actions.AUDIT'}}</a></span>
+	 </div>
+</div>

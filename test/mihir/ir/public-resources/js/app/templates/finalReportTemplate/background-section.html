@@ -1,0 +1,8 @@
+{{sub sub.header}}
+<div class="report-body" id="report-template-body-{{model._type}}">
+	<p>{{t 'final.report.template.background.info'}}</p>
+	<div class="report-template-body-content">
+		<textarea rows="8" cols="120" class="field span12" id="backgroundSummary" data-property="summary" 
+			{{#if _readonly}}readonly="readonly" {{/if}}>{{model.summary}}</textarea>
+	</div>
+</div>

@@ -1,0 +1,25 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="pull-left">
+            <span class="vpad14 info-label" >{{t 'grid.label.specimenId'}}: </span><a href="#" id="btnShowSpecimen">{{specimenName}}</a>
+        </div>
+        <div class="pull-right btn-toolbar">
+            <a href="/ir/secure/run-result.html" class="btn">< {{t 'button.back.label'}}</a>
+            <button id="btnResultRefresh" class="btn btn-primary">
+					{{t 'monitor.refresh'}}
+			</button>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span12" id="viewresults-grid"></div>
+    </div>
+    <div class="modal hide fade" id="reanalysisDialog" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>
+    <div class="modal hide fade" id="viewSpecimen" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>
+    <div class="modal hide fade" id="addNotes" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>
+    <div class="modal hide fade" id="planARunDetailsModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>
+    <div class="modal hide fade" id="viewNotes" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>
+    <div class="modal hide fade" id="viewAssayDetails" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>
+    <div class="modal hide fade" id="auditTrailModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>
+    <div class="modal hide fade" id="auditTrailDetailsModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>
+    <div class="modal hide fade" id="restoreView" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>
+</div>

@@ -1,0 +1,8 @@
+<div id="filter" class="btn-group selectBox">
+    <select id="selected-filter" name="selectedFilter" class="icons">
+        <option value="">{{t 'assay.lable.no.filter'}}</option>
+        {{#each filterChains}}
+        <option value="{{id}}">{{name}}</option>
+        {{/each}}
+    </select>
+</div>

@@ -1,0 +1,37 @@
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="pull-left">
+			<h1>
+				<img src="{{img 'dash-workflows.png'}}" width="40" />{{t 'assay.title'}}
+			</h1>
+		</div>
+		<div class="pull-right">
+			<form class="form-search pull-right"> 
+			<a href="create-assay.html" class="btn btn-primary">{{t 'createassay.label'}}</a>
+			</form>
+		</div>
+	</div>
+
+	<div class="row-fluid ">
+		<div class="span12">
+			<div class="actionSearch">
+			<button style="margin-bottom: 10px" class="btn btn-default" id="assayExport" data-toggle="tooltip" data-placement="bottom" title="Export" disabled="disabled">
+			     <img src="/ir/resources//img/Export.png">
+			</button>
+			<!--<select id="type-filters" class="pull-left show-tick show-menu-arrow"
+				title="Filter Application" data-width="135px"></select>-->
+			<span class="vpad14">{{t 'assay.selected'}}<span id="manageAssayCount">0</span></span>
+			<form id="query-form" class="form-search form-inline pull-right"
+				style="display: inline-block">
+				<!--<input type="text" class="input-xlarge" id="searchCondition" placeholder="Search by Assay Name" maxlength="256">
+				<button type="submit" class="btn">{{t 'assay.search'}}</button>
+				<button type="reset" class="btn">{{t 'assay.reset'}}</button>-->
+			</form>
+			</div>
+		</div>
+	</div>
+
+	<div class="row-fluid">
+		<div class="span12" id="viewassay-grid"></div>
+	</div>
+</div>

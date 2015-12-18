@@ -1,0 +1,24 @@
+{{#each signOffDetails}}
+	<div class="span12">
+		<div class="report-header">{{t 'data.report.signOffDetails'}}</div>
+		<div class="report-body">
+			<table>
+				<tr>
+					<td class="summary-item" style="padding-left: 0px"
+					width="165">{{t 'data.report.signOffComments'}}:</td>
+					<td class="summary-item" style="padding-left: 0px"
+					width="165">{{signoffComments}}</td>
+				</tr>
+				<tr>
+					<td class="summary-item" style="padding-left: 0px"
+					width="165">{{t 'data.report.signOffMeaning'}}:</td>
+					<td class="summary-item" style="padding-left: 0px"
+					width="165">{{meaningoftheSignature}}</td>
+				</tr>
+				<tr>
+					<td class="summary-item" style="padding-left: 0px" colspan="2">{{t 'data.report.esignMsgOne'}} {{fieldEngineerName}} {{t 'data.report.esignMsgThree'}} {{ipAddress}} {{t 'data.report.esignMsgTwo'}} {{signoffOn}}</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+{{/each}}

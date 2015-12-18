@@ -1,0 +1,11 @@
+{{#if genes}}
+		{{#each genes}}
+			{{#if id}}
+			 <fieldset style="display:inline-block; margin:0px 10px 0px 0px;">
+			 	<label class="checkbox">
+	      			<input id="{{id}}" name="{{geneName}}" value="{{geneName}}" type="checkbox" checked {{#unless reportingStatus}}disabled{{/unless}} > {{geneName}}
+	    		</label>
+			 </fieldset>
+			{{/if}}
+		{{/each}}
+{{/if}}

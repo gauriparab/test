@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+    <head th:substituteby="layout.html :: headerFragment">
+    </head>
+    <body>
+    <div class="wrapper">
+        <div class="header" th:substituteby="layout.html :: bodyHeaderFragment"></div>
+
+        <div class="sub-nav" th:substituteby="layout.html :: bodySubNavFragment"></div>
+
+        <div class="main">
+        	<div th:if="${!canCreateBaseline}"
+				 sec:authorize="${hasAnyRole('ROLE_ANALYZE')}"
+				 class="alert alert-block">
+				<span th:utext="#{space.warning.baseline}">May not create a CNV Baseline</span>
+			</div>
+            <div class="main-content clearfix">
+                <div class="container-fluid">
+                    <div class="row-fluid">
+                        <div class="span8">
+                            <div class="pull-left">
+                                <h1><img src="../../../public-resources/img/dash-workflows.png" th:src="@{/resources/img/dash-workflows.png}" width="40"/> Workflow Presets</h1>
+                            </div>
+                            <div class="pull-left" style="margin: 5px 0 0 25px;">
+                                <div id="preset-select" class="btn-group selectBox">
+                                    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                                        <span class="selectTitle"></span>
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li id="annotationSet" th:attr="data-summary-title=#{workflow.presets.annotationSets.summaryTitle}"><a href="#annotationSet" th:utext="#{workflow.presets.annotationSets.label}">Annotation Sets </a></li>
+                                        <li id="filterChain" th:attr="data-summary-title=#{workflow.presets.filterChains.summaryTitle}" data-summary-template="FilterChainDetailTemplate"><a href="#filterChain" th:utext="#{workflow.presets.filterChains.label}">Filter Chains</a></li>
+                                        <li id="baseline" th:attr="data-summary-title=#{workflow.presets.baseline.summaryTitle}"><a href="#baseline" th:utext="#{workflow.presets.baseline.label}">Copy Number Baselines</a></li>
+                                        <li id="finalReportTemplate" th:attr="data-summary-title=#{workflow.presets.finalReportTemplate.summaryTitle}"><a href="#finalReportTemplate" th:utext="#{workflow.presets.finalReportTemplate.label}">Final Report Templates</a></li>
+                                        <li sec:authorize="${hasAnyRole('ROLE_ANALYZE')}" id="targetRegionFile" th:attr="data-summary-title=#{workflow.presets.targetRegionFile.summaryTitle}"><a href="#targetRegionFile" th:utext="#{workflow.presets.targetRegionFile.label}">Target Region Files</a></li>
+                                        <li sec:authorize="${hasAnyRole('ROLE_ANALYZE')}" id="hotspotRegionFile" th:attr="data-summary-title=#{workflow.presets.hotspotRegionFile.summaryTitle}"><a href="#hotspotRegionFile" th:utext="#{workflow.presets.hotspotRegionFile.label}">Hotspot Region Files</a></li>
+                                        <li th:if="${false}" id="BED_FILE"><a href="#">BED Files</a></li>
+                                        <li th:if="${false}" id="VARIANTS"><a href="#">My Variants</a></li>
+                                    </ul>
+                                </div>
+                                
+                            </div>
+                            <div class="pull-left" style="margin: 5px 0 0 5px;">
+                                <select id="version-filter-pane" class="pull-left show-tick show-menu-arrow" title="Filter Version" data-width="145px">
+                                    <option value="">Filter Version</option>
+                                    <!-- templates/common/filter.html -->
+                                </select>
+                            </div>
+                            <a class="btn pull-right" href="#" id="refreshData" style="margin-top: 5px;"><i class="icon icon-refresh"></i> Refresh</a>
+                        </div>
+                        <div class="pull-right">
+                            <div th:if="${false}" class="btn-group" style="margin-right:25px;">
+                                <a class="btn dropdown-toggle" data-toggle="dropdown">
+                                     Options <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu pull-right">
+                                    <li><a href="#">Export XLS</a></li>
+                                    <li><a href="#">Export CSV</a></li>
+                                </ul>
+                            </div>
+                            <div id="createPreset" class="btn-group pull-right" sec:authorize="${hasRole('ROLE_ANALYZE')}">
+                                <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+                                    Create Preset <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a id="annotation-set-dialog-btn" href="#">Annotation Set</a></li>
+                                    <li><a id="filter-chain-dialog-btn" href="#">Filter Chain</a></li>
+                                    <li th:if="${canCreateBaseline}"><a id="cnv-baseline-btn" href="#" th:href="@{create-cnv-baseline.html}">Copy Number Baseline</a></li>
+                                    <li><a id="final-report-template-dialog-btn" href="#">Final Report Template</a></li>
+                                    <li th:if="${false}" ><a href="#">BED File</a></li>
+                                    <li th:if="${false}" ><a href="#">My Variant</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div th:if="${false}" class="pull-left" style="margin: 5px 0 0 25px;">
+                            <form class="form-search">
+                                <div class="input-append">
+                                    <input type="text" class="input-medium search-query" />
+                                    <button type="submit" class="btn">Search</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row-fluid">
+                        <div class="span8" id="viewpresets-grid"></div>
+                        <div class="span4">
+
+                            <div class="summary-section" id="summary-section">
+                                <div class="header">
+                                    <h4><span class="detailsTitle"></span>
+                                        <div id="details-options-menu" class="pull-right"></div>
+                                    </h4>
+                                    <hr class="summary" />
+                                </div>
+                                <div id="summary-section-content" class="body">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- div for create preset modal -->
+                <div class="modal hide fade modal-overflow" id="preset-dialog" tabindex="-1" role="dialog"></div>
+            </div>
+        </div>
+
+        <footer class="footer" th:substituteby="layout.html::bodyFooter"></footer>
+    </div>
+
+    <script th:substituteby="layout.html::irHeaderModals"></script>
+
+    <!-- kendo templates -->
+    <script id="AnnotationSetColumnTemplate" type="text/x-kendo-template">
+    <div th:if="${true}">#=data.name#</div>
+    </script>
+
+    <script type="text/javascript" th:inline="javascript">
+        /*<![CDATA[*/
+        requireInit(["workflows/presets"], function(Presets) {
+            Presets.initialize({
+                savedPresetName: /*[[${savedPresetName}]]*/ null
+            });
+        });
+        /*]]>*/
+    </script>
+
+</body>
+</html>

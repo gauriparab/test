@@ -1,0 +1,31 @@
+{{#if annotationSetsSize}} 
+<div id="filter-selection" class="btn-group selectBox">
+					<div id="filter" class="btn-group selectBox">
+					    <select id="annotation" class="icons">
+					        {{#each annotationSets}}
+					        <option value="{{id}}">{{name}}</option>
+					        {{/each}}
+					    </select>
+					</div>
+				</div>
+{{/if}}
+
+
+<!-- <div id="annotationSelect" class="btn-group selectBox">
+    <input id="annotation" type="hidden" name="annotation" value=""/>
+    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+        <div class="annotation-option pull-left"></div>
+        &nbsp;<div class="caret"></div>
+    </a>
+    <ul class="dropdown-menu">
+        {{#each annotationSets}}
+        <li id="{{id}}">
+            <a>{{name}}</a>
+        </li>
+        {{/each}}
+    </ul>
+</div>
+{{else}}
+    <span>No annotation found</span>
+    
+ -->

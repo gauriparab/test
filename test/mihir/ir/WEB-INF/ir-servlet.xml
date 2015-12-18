@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans:beans xmlns:beans="http://www.springframework.org/schema/beans" xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:util="http://www.springframework.org/schema/util" xmlns:sec="http://www.springframework.org/schema/security" xsi:schemaLocation="
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd http://www.springframework.org/schema/mvc
+    http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd http://www.springframework.org/schema/security
+    http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+    <!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+
+    <!-- Annotation config -->
+    <context:annotation-config/>
+
+ 	<beans:bean id="rdxPropertyConfigurer"
+	     class="org.jasypt.spring31.properties.EncryptablePropertyPlaceholderConfigurer">
+	   <beans:constructor-arg ref="configurationEncryptor" />
+	   <beans:property name="locations">
+	     <beans:list>
+	        <beans:value>file:${IONREPORTERMANAGERROOT}/database/conf/${APP_MODE}_rdx.properties</beans:value>
+	     </beans:list>
+	   </beans:property>
+	 </beans:bean>
+
+    <context:component-scan base-package="com.lifetech.ionreporter.mgc, com.lifetech.dx.ionreporter.mgc">
+        <context:include-filter expression="org.springframework.stereotype.Controller" type="annotation"/>
+        <context:include-filter expression="org.springframework.stereotype.Component" type="annotation"/>
+    </context:component-scan>
+
+    <mvc:annotation-driven ignoreDefaultModelOnRedirect="true">
+        <mvc:argument-resolvers>
+            <beans:bean class="org.springframework.data.web.PageableArgumentResolver" />
+            <beans:bean class="com.lifetech.ionreporter.mgc.ui.web.argumentresolver.Base64ArgumentResolver" />
+        </mvc:argument-resolvers>
+        <mvc:message-converters>
+            <beans:ref bean="jsonMessageConverter" />
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+	<beans:bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
+	
+    <!-- load interceptors -->
+    <beans:import resource="classpath:/META-INF/spring/beans/interceptor-beans.xml"/>
+
+    <!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/public-resources/
+        directory -->
+    <mvc:resources mapping="/resources/**" location="/public-resources/" cache-period="86400"/>
+    <mvc:resources mapping="/resources-#{applicationProps['application.version']}/**" location="/public-resources/" cache-period="86400"/>
+
+	<mvc:resources mapping="/analysis/**" location="file:${analysis.home}" cache-period="86400"/>
+    <mvc:resources mapping="/help/**" location="/WEB-INF/templates/help/" cache-period="86400"/>	
+    <!-- resources for the analyses vis plugins, no cache period means "o rely on last-modified timestamps" -->
+    <mvc:resources mapping="/plugins/**" location="/plugins/" />
+
+    <!-- Begin Setup Thymeleaf -->
+    <beans:bean id="templateResolver"
+		class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
+        <beans:property name="prefix" value="/WEB-INF/templates/" />
+        <!--  beans:property name="suffix" value=".html" / -->
+        <beans:property name="templateMode" value="HTML5" />
+        <beans:property name="characterEncoding" value="UTF-8" />
+        <beans:property name="cacheable" value="false" />
+    </beans:bean>
+    <beans:bean id="templateEngine" class="org.thymeleaf.spring3.SpringTemplateEngine">
+        <beans:property name="templateResolver" ref="templateResolver" />
+        <beans:property name="templateEngineMessageSource" ref="ui_messageSource"></beans:property>
+        <beans:property name="additionalDialects">
+            <beans:set>
+                <beans:bean class="org.thymeleaf.extras.springsecurity3.dialect.SpringSecurityDialect"/>
+                <beans:bean class="com.lifetech.ionreporter.mgc.ui.web.dialect.JacksonDialect" />
+                <beans:bean class="com.lifetech.ionreporter.mgc.ui.web.dialect.IrDialect" />
+                <beans:bean class="nz.net.ultraq.thymeleaf.LayoutDialect" />
+            </beans:set>
+        </beans:property>
+    </beans:bean>
+    <beans:bean class="org.thymeleaf.spring3.view.ThymeleafViewResolver">
+        <beans:property name="templateEngine" ref="templateEngine" />
+        <beans:property name="order" value="1" />
+        <beans:property name="characterEncoding" value="UTF-8" />
+        <beans:property name="viewNames" value="*" />
+        <beans:property name="excludedViewNames">
+            <beans:array>
+                <beans:value>*.hbs</beans:value>
+            </beans:array>
+        </beans:property>
+    </beans:bean>
+    <!-- End Setup Setup Thymeleaf -->
+
+    <!-- Server Side Handlebars Template Mechanism for Java - we can't use thymeleaf for JS Templating. -->
+    <beans:bean class="com.github.jknack.handlebars.springmvc.HandlebarsViewResolver">
+        <beans:property name="prefix" value="/WEB-INF/hb-templates/" />
+        <beans:property name="suffix" value="" />
+        <beans:property name="cache" value="true" />
+    </beans:bean>
+
+    <!-- Setup locale related interceptors and resolvers -->
+    <mvc:interceptors>
+        <beans:bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" p:paramName="locale"/>
+    </mvc:interceptors>
+
+    <beans:bean id="localeResolver" class="com.lifetech.ionreporter.mgc.ui.web.i18n.InstallationTypeLocaleResolver" p:cookieName="locale"/>
+
+    <!-- Exception Resolving Mechanism
+
+		HandlerExceptionResolverComposite strategy:
+
+		1. First StandardHandlerExceptionResolver is invoked.
+		    - builds a ServletError:
+		        * assigns an md5 hash to the error so that we can link log messages to the view or possibly notification emails down the road.
+		        * assigns a http response status code based on DefaultHandlerExceptionResolver
+		        * ...otherwise assigns a default http response status code to be included in the view (500).
+		        * assigns a localized message (and makes a default available via constant).
+		        * assigns a type based on the fully qualified exception name
+		    - performs standard exception logging - we could add a notification email here!
+		    - does *not* actually resolve a view - this will be done by AnnotationMethodHandlerExceptionResolver / Response Status or SimpleMappingExceptionResolver (hopefully in that order).
+
+		2. Annotated Method Exception Resolver is invoked.
+
+		    - will likely be used by REST Endpoints
+
+		3. Response Status Exception Resolver is invoked.
+
+		    - will likely be used by REST Endpoints
+
+		4. Rest Handler Exception Resolver
+
+		    - checks content-type for "json", sends error response with JSON if found and ends resolver chain.
+
+		5. Simple Mapping Exception Resolver
+
+		    - does *not* handle any exceptions if the request content-type is json.
+		    - maps IR Defined exceptions to views
+            - typically redirect if the exception is being explicitly handled in a new view (ie sending user to login with a message for example).
+		    - defaults to /error.html
+    -->
+    <beans:bean id="compositeExceptionResolver"  class="org.springframework.web.servlet.handler.HandlerExceptionResolverComposite">
+        <beans:property name="exceptionResolvers">
+            <beans:list>
+                <beans:bean class="com.lifetech.ionreporter.mgc.ui.web.exceptionresolver.StandardHandlerExceptionResolver" />
+                <beans:bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerExceptionResolver" />
+                <beans:bean class="org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver" />
+                <beans:bean class="com.lifetech.ionreporter.mgc.ui.web.exceptionresolver.RestHandlerExceptionResolver" />
+                <beans:bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+                    <beans:property name="exceptionMappings">
+                        <beans:props>
+                            <beans:prop key="com.lifetech.ionreporter.mgc.services.exceptions.EulaNotAcceptedException">redirect:/login.html</beans:prop>
+                            <beans:prop key="com.lifetech.ionreporter.mgc.services.exceptions.MigrationInProgressException">redirect:/login.html</beans:prop>
+                            <beans:prop key="com.lifetech.ionreporter.mgc.services.exceptions.OrganizationDisabledException">redirect:/login.html</beans:prop>
+                            <beans:prop key="com.lifetech.ionreporter.mgc.services.exceptions.UserDisabledException">redirect:/login.html</beans:prop>
+                            <beans:prop key="com.lifetech.ionreporter.mgc.services.exceptions.UserLockedException">redirect:/login.html</beans:prop>
+                            <beans:prop key="com.lifetech.ionreporter.mgc.services.exceptions.InvalidCredentialsException">forward:/login.html</beans:prop>
+                            <beans:prop key="com.lifetech.ionreporter.mgc.services.exceptions.PasswordExpiredException">redirect:/login.html</beans:prop>
+                            <beans:prop key="com.lifetech.ionreporter.mgc.services.exceptions.ErrorCodeException">forward:/errorcode.html</beans:prop>
+                            <beans:prop key="com.lifetech.ionreporter.mgc.services.exceptions.ExpiredPasswordResetTokenException">redirect:/user/activate/expired.html</beans:prop>
+                        </beans:props>
+                    </beans:property>
+                    <beans:property name="defaultErrorView" value="forward:/error.html" />
+                </beans:bean>
+            </beans:list>
+        </beans:property>
+        <beans:property name="order" value="0" />
+    </beans:bean>
+
+    <!-- Can be used to secure Controllers !!Warning - likely a bad idea to secure controllers The Dispatcher Servlet loads this
+        Spring MVC as a separate application context than that of the web.xml:ContextLoadListener. For more information, see
+        http://static.springsource.org/spring-security/site/faq.html#faq-method-security-in-web-context
+	<sec:global-method-security
+        pre-post-annotations="enabled"></sec:global-method-security>
+	-->
+
+    <beans:bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
+    </beans:bean>
+    
+    <beans:bean id="propertyLoader" class="com.lifetech.dx.ionreporter.util.UIPropertyLoader">
+	<beans:property name="properties" ref="properties" > </beans:property>
+	</beans:bean>
+		
+    <beans:bean id="properties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<beans:property name="locations">
+			<beans:list>
+				<beans:value>classpath*:properties/samplemessages.properties</beans:value>
+			</beans:list>
+		</beans:property>
+	</beans:bean>
+    
+    <!-- <beans:bean id="sampleValidator" class="com.lifetech.ionreporter.mgc.ui.web.controller.rest.SampleValidator" /> -->
+
+</beans:beans>
+

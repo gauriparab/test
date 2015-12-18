@@ -1,0 +1,16 @@
+<div id="{{id}}" class="alert alert-{{style}} banner-view {{stickyBannerStyle}}">
+    <button type="button" class="close" data-dismiss="alert">x</button>
+    {{#if titleKey}}
+    {{t titleKey}}
+    {{/if}}
+    {{#if title}}
+    {{safe title}}
+    {{/if}}
+    {{#if messages}}
+    <ul>
+        {{#each messages}}
+            <li>{{this}}</li>
+         {{/each}}
+    </ul>
+    {{/if}}
+</div>

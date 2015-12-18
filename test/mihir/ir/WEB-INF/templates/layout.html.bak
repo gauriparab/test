@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org">
+<head th:fragment="headerFragment">
+	<title th:text="#{html.head.title}">Ion Reporter | Life Technologies</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" charset="utf-8"/>
+	<link rel="shortcut icon" type="image/x-icon" href="../../public-resources/img/lifetech_favicon_0.gif" th:href="@{/resources/img/lifetech_favicon_0.gif}"/>    
+    <link rel="icon" type="image/x-icon" href="../../public-resources/img/lifetech_favicon_0.gif" th:href="@{/resources/img/lifetech_favicon_0.gif}"/>
+    
+	<!-- Common Kendo UI Web CSS -->
+	<link href="../../public-resources/kendoui.web.2013.1.319.commercial/styles/kendo.common.min.css" rel="stylesheet" th:href="@{/resources/kendoui.web.2013.1.319.commercial/styles/kendo.common.min.css}"/>
+	<!-- Default Kendo UI Web theme CSS -->
+	<link href="../../public-resources/kendoui.web.2013.1.319.commercial/styles/kendo.default.min.css" rel="stylesheet" th:href="@{/resources/kendoui.web.2013.1.319.commercial/styles/kendo.default.min.css}"/>
+	<link href="../../public-resources/css/kendo.ir.css" rel="stylesheet" th:href="@{/resources/css/kendo.ir.css}"/>
+
+	<link rel="stylesheet" type="text/css" href="../../public-resources/css/bootstrap.min.css" th:href="@{/resources/css/bootstrap.min.css}" />
+	<link rel="stylesheet" type="text/css" href="../../public-resources/css/bootstrap-fileupload.min.css" th:href="@{/resources/css/bootstrap-fileupload.min.css}" />
+    <link rel="stylesheet" type="text/css" href="../../public-resources/css/bootstrap-select.min.css" th:href="@{/resources/css/bootstrap-select.min.css}" />
+    <link rel="stylesheet" type="text/css" href="" th:href="@{/resources/css/bootstrap-modal.css}" />
+
+	<!-- <link href="../../public-resources/css/ir.css" rel="stylesheet" th:href="@{/resources/css/ir.css}"/>
+	<link href="../../public-resources/css/app.css" rel="stylesheet" th:href="@{/resources/css/app.css}" />
+	 -->
+	 
+	<link href="../../public-resources/css/app.css" rel="stylesheet" th:href="@{'/resources/css/'+${session.applicationType}+'/ir.css'}" />
+	<link href="../../public-resources/css/app.css" rel="stylesheet" th:href="@{'/resources/css/'+${session.applicationType}+'/app.css'}" />
+	
+	
+	<script src="../../../public-resources/js/lib/require-2.1.6.min.js" th:src="@{/resources/js/lib/require-2.1.6.min.js}"></script>
+	<script src="../../../public-resources/js/_lib.js" th:src="@{/resources/js/_lib.js} + '?v=' + ${beans.versionProps['build.commit.abbrev']}" th:if="${beans.applicationProps['application.optimizejs']}"></script>
+	<script src="../../../public-resources/js/_app.js" th:src="@{/resources/js/_app.js} + '?v=' + ${beans.versionProps['build.commit.abbrev']}" th:if="${beans.applicationProps['application.optimizejs']}"></script>
+
+
+    <script th:substituteby="global-module.html"></script>
+
+    <script type="text/javascript" json:stringify="javascript">
+        /*<![CDATA[*/
+        function requireInit(modules, moduleFunction) {
+            require(['global'], function(global) {
+                require([ global.resources + 'js/main.js'], function(main) {
+                    require(['ir'], function() {
+                        require(modules, moduleFunction);
+                    });
+                });
+            });
+        }
+        /*]]>*/
+    </script>
+
+    <script th:if="${beans.applicationProps['test.mode'] == 'true'}">
+        /*<![CDATA[*/
+        if (document.location.search.length && document.location.search.indexOf("ajaxerror=") >= 0) {
+            setTimeout(function() {
+                $.ajax({
+                    url: document.location.search.substring(document.location.search.indexOf("ajaxerror=") + 10),
+                    type: "GET",
+                    beforeSend: function(xhr){xhr.setRequestHeader('Content-Type', 'application/json');}
+                });
+            }, 4000);
+        }
+        /*]]>*/
+    </script>
+
+    <script src="../../../js/google-analytics.js" th:src="@{/js/google-analytics.js}"></script>
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<div id="layout.bodyHeaderFragment" class="header" th:fragment="bodyHeaderFragment">
+			<div id="layout.bodyHeaderTopFragment" class="container-fluid" th:fragment="bodyHeaderTopFragment">
+				<div class="logo pull-left"><a href="home.html" th:href="@{/secure/home.html}"><img src="../../public-resources/img/reporterDxlogo.png" th:src="@{/resources/img/reporterDxlogo.png}" /></a></div>
+				<ul class="nav nav-pills pull-right">
+                    <li class="disabled" th:with="user=${@securityContextUtil.authenticatedUser}">
+                        <a href="#" class="user-details" title="Your roles" th:attr="data-content=${#frags.process('fragments/roles.html')}" sec:authorize="${isAuthenticated()}">Hi, <span th:text="${user.firstName}"></span> <span th:text="${user.lastName}"></span></a>
+                    </li>
+					<!-- <li class="disabled"><a href='#' sec:authorize="${isFullyAuthenticated()}" ir:diskUsage=""></a></li>
+					<li><a href="index.html" th:href="@{/help/index.html}" target="_blank">Help</a></li> -->
+					<li>
+						<a href="#" id="profile" th:href="@{/secure/profile.html}">My Profile</a>
+					</li>
+					<li><a href="#" id="logout" sec:authorize="${isAuthenticated()}" th:href="@{/logout.html}">Sign Out</a></li>
+				</ul>
+			</div>
+			<ul class="nav nav-tabs">
+                <li th:each="tab : ${tabs}" th:id="'nav-item-' + ${tab.identifier.toLowerCase()}" th:if="${#authorization.expression(tab.authorization)}" th:classappend="${tab.isActive()}? 'active'"><a th:id="${tab.identifier.toLowerCase()} + '-tab-id'" th:href="@{${tab.path}}" th:text="${tab.name}"></a></li>
+			</ul>
+		</div>
+
+		<div class="sub-nav" th:fragment="bodySubNavFragment">
+			<div class="container-fluid">
+                <ul class="nav pull-left">
+                    <li th:each="tab : ${activeTab.children}" th:id="'nav-item-' + ${tab.identifier.toLowerCase()}" th:if="${#authorization.expression(tab.authorization) and __${tab.condition}__}" th:classappend="${tab.isActive()}? 'active'"><a th:id="${tab.identifier.toLowerCase()} + '-tab-id'" th:href="@{${tab.path}}" th:text="${tab.name}"></a></li>
+                </ul>
+			</div>
+		</div>
+	
+		<div class="main" >
+			<div class="main-content clearfix" th:fragment="bodyMain">
+				
+			</div>
+		</div>
+        
+        <footer th:fragment="bodyFooter">
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <div class="pull-left">
+                    	<img src="../../public-resources/img/iontorrent-logo-footer.png" th:src="@{/resources/img/iontorrent-logo-footer.png}" alt="" class="iontorrent-logo-footer" style="padding-right:10px;" />
+                    </div>
+                    <div class="copyright">
+                        <p>For Diagnostic Use.</p>
+                        <p>&copy; Thermo Fisher Scientific Inc. All Rights Reserved.</p>
+                    </div>          
+                </div>
+            </div>
+        </footer>        
+	</div>
+
+
+    <script type="text/javascript" th:fragment="irHeaderModals">
+        /*<![CDATA[*/
+        requireInit(['jquery', 'views/client/irUploadersView', 'views/changePasswordView', 'views/manageApiTokenView'],
+            function($, IRUploadersView, ChangePasswordView, ManageApiTokenView) {
+                // IR Uploader dialog
+                window.openIRUploaderDialog = function() {
+                    IRUploadersView.openDialog();
+                };
+
+                // Change password dialog
+                window.openChangePasswordDialog = function() {
+                    ChangePasswordView.openDialog();
+                };
+
+                // Manage API token dialog
+                window.openManageApiTokenDialog = function() {
+                    ManageApiTokenView.openDialog();
+                };
+
+                // User details popover
+                $("a.user-details").popover({
+                    html: true,
+                    trigger: 'hover',
+                    placement: 'bottom'
+                });
+            }
+        );
+        /*]]>*/
+    </script>
+</body>
+</html>

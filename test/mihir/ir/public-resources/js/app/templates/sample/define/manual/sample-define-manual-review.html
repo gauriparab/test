@@ -1,0 +1,37 @@
+<div class="row-fluid sample-review">
+    <div class="span8">
+        <h1>{{t 'sample.define.manual.sample.ready.to.import'}}</h1>
+        <p class="context-help">{{t 'sample.define.manual.review.selected.samples'}}</p>
+        <br/>        
+        {{#each samples}}
+        <div id="sample-{{@index}}" class="sample row-fluid batch-item-result">
+            <div id="{{cid}}" class="control-group">
+                <div class="span4">
+                    <a class="breakword" href="javascript:void(0)" data-toggle="popover" data-content="{{filesTipText}}" title="Files">{{name}}</a>
+                </div>
+                <div class="help-inline span4"></div>
+            </div>
+        </div>
+        {{/each}}
+
+        <br/>
+        <button id="import-sample-btn" type="button" class="btn btn-primary">Save</button>
+        <br/><br/>
+    </div>
+    <div class="span4">
+        <div class="summary-section">
+            <h4>{{t 'sample.define.manual.summary.title'}}</h4>
+            <hr class="summary">
+            <table cellpadding="4">
+                <tbody>
+                    <tr>
+                        <td><strong>{{t 'sample.define.manual.samples.title'}}:</strong></td>
+                        <td id="relationshipsSummaryValue">
+                            {{samples.length}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

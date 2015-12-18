@@ -1,0 +1,14 @@
+<a id="selectedVariants" href="javascript:void(0)" class="btn dropdown-toggle disabled" data-toggle="dropdown">
+    {{t 'variant.label.selectedVariant'}}
+    <span class="caret"></span>
+</a>
+
+<ul class="dropdown-menu pull-right">
+    {{#each actions}}
+    <li><a href="javascript:void(0)" id='selected-variants-{{toLower this}}'>{{t ../msgKeyPrefix this}}</a></li>
+    {{else}}
+    <li>
+         <a href="javascript:void(0)">{{t 'no.available.actions'}}</a>
+    </li>
+    {{/each}}
+</ul>

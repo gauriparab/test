@@ -1,0 +1,32 @@
+<h1>{{t 'settings.services.jobsServer'}}</h1>
+<table class="table table-bordered">
+	<thead style="background: #F3F3F5;">
+		<tr>
+			<td style="width:20%;"><b>{{t 'settings.label.hostname'}}</b></td>
+			<td style="width:20%;"><b>{{t 'settings.label.ip'}}</b></td>
+			<td style="width:20%;"><b>{{t 'settings.label.status'}}</b></td>
+			<td style="width:20%;"><b>{{t 'settings.label.jobCount'}}</b></td>
+			<td style="width:20%;"><b>{{t 'settings.label.uptime'}}</b></td>
+		</tr>
+	</thead>
+	<tbody>
+		{{#data}}
+		<tr>
+			<td style="width:20%;">{{hostName}}</td>
+			<td style="width:20%;">{{ip}}</td>
+			<td style="width:20%;">{{status}}</td>
+			<td style="width:20%;">{{jobCount}}</td>
+			<td style="width:20%;">{{upTime}}</td>
+		</tr>
+		{{/data}}
+		{{#errors}}
+		<tr>
+			<td style="width:20%;">{{this}}</td>
+			<td style="width:20%;"></td>
+			<td style="width:20%;"></td>
+			<td style="width:20%;"></td>
+			<td style="width:20%;"></td>
+		</tr>
+		{{/errors}}
+	</tbody>
+</table>

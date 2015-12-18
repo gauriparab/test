@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:substituteby="layout.html :: headerFragment"></head>
+<body>
+<div class="wrapper">
+	<div class="header" th:substituteby="layout.html :: bodyHeaderFragment"></div>
+
+    <div class="sub-nav" th:substituteby="layout.html :: bodySubNavFragment"></div>
+
+    <div class="main">
+		<div class="main-content clearfix">
+            <!-- templates/sample/assay-overview-page.html -->
+		</div>
+	</div>
+
+    <footer class="footer" th:substituteby="layout.html::bodyFooter"></footer>
+</div>
+<script th:substituteby="layout.html::irHeaderModals"></script>
+
+<script type="text/javascript" th:inline="javascript">
+/*<![CDATA[*/
+	requireInit(['views/assay/assayOverviewPageView','models/configuration'], function(View,Configuration) {
+		var auditConfig = _.object(_.map(Configuration.get('auditConfig'), function(item) {
+   			return [item.objectName, item]
+		}));
+        var view = new View({
+            el: '.main-content',
+            auditConfig:auditConfig,
+            savedWorkflowName: /*[[${savedWorkflowName}]]*/ null,
+            saved: /*[[${saved}]]*/ null,
+            canCreateWorkflow: /*[[${#authorization.expression("hasRole('ROLE_ANALYZE')")}]]*/ false,
+            canPerformBatchActions: /*[[${#authorization.expression('hasAnyRole("ROLE_ANALYZE", "ROLE_ORGADMIN")')}]]*/ false,
+            canAddAssay:/*[[${#authorization.expression("hasPermission('ROLE_ORGADMIN', 'Add Assay Permission')")}]]*/ false
+        });
+        view.render();
+    });
+/*]]>*/
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+{{#if otDto}}
+<table style="width: 100%">
+    <tr>
+        <td colspan="2">
+	    <h5><img src="{{img 'OT.png'}}" width="30" /> {{otDto.name}}</h5>
+	</td>
+    </tr>
+    <tr>
+        <td valign="top" class="summary-item" style="padding-left:0px" width="130">{{t 'monitor.run.startTime'}}:</td>
+        <td>{{#if otDto.startTime}}<strong>{{formatDate otDto.startTime.time}}</strong>{{/if}}</td>
+    </tr>
+    <tr>
+        <td valign="top" class="summary-item" style="padding-left:0px" width="130">{{t 'monitor.run.startUser'}}:</td>
+        <td><strong>{{otDto.user}}</strong></td>
+    </tr>
+    <tr>
+        <td valign="top" class="summary-item" style="padding-left:0px" width="130">{{t 'monitor.run.completionTime'}}:</td>
+        <td>{{#if otDto.completionTime}}<strong>{{formatDate otDto.completionTime.time}}</strong>{{/if}}</td>
+    </tr>
+    <tr>
+        <td valign="top" class="summary-item" style="padding-left:0px" width="130">{{t 'monitor.run.runStatus'}}:</td>
+        <td><strong>{{otDto.status}}</strong></td>
+    </tr>
+    <tr>
+        <td colspan="2" style="height:15px;"></td>
+    </tr>
+    <tr>
+        <td colspan="2">
+  	    <div class="progress progress-striped active">
+		<div class="bar" style="width: {{otDto.percentCompleted}}%;"></div>
+	    </div>
+	</td>
+    </tr>
+    <tr>
+        <td colspan="2">
+        {{#if otDto.instrumentAlarms}}
+		    <ul class="unstyled alert alert-error" style="margin-bottom: 0px; border-radius: 0px;">
+		    {{#each otDto.instrumentAlarms}}
+		        <li><img src="{{img 'alert.png'}}" /> {{this}}</li>
+		    {{/each}}
+		    </ul>
+	    {{/if}}
+	</td>
+    </tr>
+</table>
+{{else}}
+<table style="width: 100%; height: 100%;">
+    <tr>
+        <td valign="top"></td>
+    </tr>
+</table>
+{{/if}}

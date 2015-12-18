@@ -1,0 +1,16 @@
+<div class="span4">
+    <div class="selected-files-display">
+        <div id="selectedFilesNumber" class="selected-files-number">{{files.length}}</div>
+        <div class="selected-files-text hide">{{t 'sample.define.manual.drop.files.title'}}</div>
+    </div>
+</div>
+<div class="span8">
+    <p><strong>{{t 'sample.define.manual.included.files'}}:</strong></p>
+    <div id="selectedFilesListing" class="selected-file-listing">
+        <ul>
+            {{#each files}}
+            <li>{{sub ../subs.specimenFile name}}<i class="icon-remove pull-right" data-file="{{id}}"></i></li>
+            {{/each}}
+        </ul>
+    </div>
+</div>

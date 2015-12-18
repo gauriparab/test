@@ -1,0 +1,7 @@
+{{#ifCond qCStatus '===' 'Passed'}}
+    <span class="text-success">{{t 'data.results.passed'}}</span>
+{{else}}
+    {{#ifCond qCStatus '===' 'Failed'}}
+         <span class="text-error">{{t 'data.results.failed'}}</span>
+    {{/ifCond}}  
+{{/ifCond}}

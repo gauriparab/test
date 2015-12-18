@@ -1,0 +1,66 @@
+<div class="container-fluid">
+	<div class="row-fluid">
+	<div class="pull-left">
+			<h1>
+				{{t 'user.profile.link.label'}}
+			</h1>
+	</div>
+	</div>
+	<div class="row-fluid ">
+		<div class="span12">
+		<table cellpadding="10" width="100%">
+			<tbody>
+				<tr>
+					<td><strong>{{t 'user.profile.page.userName.label'}}:</strong></td>
+					<td>{{user.userName}}</td>
+				</tr>
+				<tr>
+					<td><strong>{{t 'user.profile.page.password.label'}}:</strong></td>
+					<td>**********<a href="#" id="changePassword">{{t 'user.profile.page.changePassword.link.label'}}</a></td>
+				</tr>			
+				<tr>
+					<td colspan="2" class="greyHeading"> {{t 'user.profile.page.accountInfomation.label'}}</td>
+				</tr>
+				<tr>
+					<td><strong>{{t 'user.profile.page.firstName.label'}}:</strong></td>
+					<td>{{user.firstName}}</td>
+				</tr>
+				<tr>
+					<td><strong>{{t 'user.profile.page.lastName.label'}}:</strong></td>
+					<td>{{user.lastName}}</td>
+				</tr>
+				<tr>
+					<td><strong>{{t 'user.profile.page.email.label'}}:</strong></td>
+					<td>{{user.email}} <a href="#" id="changeEmail">{{t 'user.profile.page.changeEmail.link.label'}}</a></td>
+				</tr>
+				<tr>
+					<td><strong>{{t 'user.profile.page.status.label'}}:</strong></td>
+					<td>{{user.state}}</td>
+				</tr>
+				<tr>
+					<td><strong>{{t 'user.profile.page.role.label'}}:</strong></td>
+					<td>{{user.roleDto.roleName}}</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="greyHeading">{{t 'user.profile.page.dates.label'}}</td>
+				</tr>
+				<tr>
+					<td><strong>{{t 'user.profile.page.createdOn.label'}}:</strong></td>
+					<td>{{user.createdOnString}}</td>
+				</tr>
+				<tr>
+					<td><strong>{{t 'user.profile.page.lastLogin.label'}}:</strong></td>
+					<td>{{user.lastLoginDateString}}</td>
+				</tr>
+				
+			</tbody>
+		</table>
+	</div>
+	</div>
+	
+	<div class="pull-left">
+            <a href="javascript:history.back()" class="btn">< {{t 'button.back.label'}}</a>
+    </div>
+	 <div class="modal hide fade" id="manageUserModal" tabindex="-1" role="dialog" aria-labelledby="createUserModalLabel" aria-hidden="true">
+     </div>
+</div>

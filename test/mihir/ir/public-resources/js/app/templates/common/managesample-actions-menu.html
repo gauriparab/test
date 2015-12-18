@@ -1,0 +1,21 @@
+<div class="dropdown btn-group">
+    {{#if primaryAction}}
+    <!-- <button id="primary-action" type="button" data-action="{{toLower primaryAction}}" class="btn btn-secondary" style="margin-right:10px;">{{t primaryActionMsgKeyPrefix primaryAction}}</button> -->
+    {{/if}}
+    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+        <img src="/ir/resources/img/{{default icon 'gear-inactive.png'}}"/> {{t 'actions.dropdown.label'}}
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu dropdown-menu-with-headers pull-right" role="menu">
+        {{#each actions}}
+        <li>
+            <a class="enabled" href="{{../urlRoot}}{{#if urlRoot}}/{{/if}}{{toLower this}}"
+               data-action="{{toLower this}}">{{t ../msgKeyPrefix this}}</a>
+        </li>
+        {{else}}
+        <li>
+            <a class="disabled" href="javascript:void(0)">{{t 'no.available.actions'}}</a>
+        </li>
+        {{/each}}
+    </ul>
+</div>

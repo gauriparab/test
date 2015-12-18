@@ -1,0 +1,51 @@
+<div>
+    <table cellpadding="5">
+        <tbody>
+        <tr>
+            <td colspan="2">
+                <span id="lockedDetail" class="details-icons">
+                    {{sub sub.locked}}
+                </span>
+                <span id="defaultDetail" class="details-icons">
+                    {{sub sub.provided}}
+                </span>
+            </td>
+        </tr>
+        {{#if name}}
+        <tr>
+            <td class="nameCol" colspan="2">
+                <span id="nameDetail" class="breakall"><strong>{{name}}</strong></span><br/>
+                <span id="descriptionDetail" class="descriptionCol">{{description}}</span>
+            </td>
+        </tr>
+        {{/if}}
+        {{#if applicationVersion}}
+        <tr>
+            <td><strong>{{t "version.label"}}:</strong></td>
+            <td id="versionDetail">{{applicationVersion.name}}</td>
+        </tr>
+        {{/if}}
+        {{#if creator}}
+        <tr>
+            <td><strong>{{t 'grid.column.createdBy'}}:</strong></td>
+            <td id="createdByDetail" class="descriptionCol">{{creator}}</td>
+        </tr>
+        {{/if}}
+        {{#if createdOn}}
+        <tr>
+            <td><strong>{{t 'grid.column.CreatedBy'}}:</strong></td>
+            <td id="createdOnDetail" class="descriptionCol">{{createdOn}}</td>
+        </tr>
+        {{/if}}
+        {{#if filters}}
+        <tr>
+            <td colspan="2"><strong>{{t 'filterChains.details.filterChains'}}:</strong></td>
+        </tr>
+        {{/if}}
+        </tbody>
+    </table>
+    {{#if filters}}
+    <!--  filters list -->
+    {{sub sub.filtersList}}
+    {{/if}}
+</div>

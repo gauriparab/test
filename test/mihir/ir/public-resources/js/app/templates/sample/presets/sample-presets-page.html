@@ -1,0 +1,73 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span8">
+            <div class="pull-left">
+                <h1><img src="{{img 'dash-samples.png'}}" width="40" /> {{t 'sample.presets.sample.preset.title'}}</h1>
+            </div>
+            <div class="pull-left hide" style="margin: 5px 0 0 25px;">
+                <select class="selectpicker pull-left" style="display: none;">
+                    <option value="BOOLEAN" selected="">{{t 'sample.presets.attribute.datatype.boolean'}}</option>
+                    <option value="TEXT">{{t 'sample.presets.attribute.datatype.text'}}</option>
+                    <option value="INTEGER">{{t 'sample.presets.attribute.datatype.integer'}}</option>
+                    <option value="FLOAT">{{t 'sample.presets.attribute.datatype.float'}}</option>
+                    <option value="CONTROLLED_VOCABULARY">{{t 'sample.presets.attribute.datatype.controlled.vocabulary'}}</option>
+                </select>
+                <div class="btn-group bootstrap-select  pull-left">
+                	<button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+                		<div class="filter-option pull-left">Boolean</div>&nbsp;
+                		<div class="caret"></div>
+                	</button>
+                	<div class="dropdown-menu open">
+                		<ul class="dropdown-menu inner" role="menu">
+                			<li rel="0" class="selected">
+                				<a tabindex="0" class="" style="">
+                					<span class="text">{{t 'sample.presets.attribute.datatype.boolean'}}</span>
+                					<i class="icon-ok check-mark"></i>
+                				</a>
+                			</li>
+                			<li rel="1">
+                				<a tabindex="0" class="" style="">
+                					<span class="text">{{t 'sample.presets.attribute.datatype.text'}}</span>
+                					<i class="icon-ok check-mark"></i>
+                				</a>
+                			</li>
+                			<li rel="2">
+                				<a tabindex="0" class="" style="">
+                					<span class="text">{{t 'sample.presets.attribute.datatype.integer'}}</span>
+                					<i class="icon-ok check-mark"></i>
+                				</a>
+                			</li>
+                			<li rel="3">
+                				<a tabindex="0" class="" style="">
+                					<span class="text">{{t 'sample.presets.attribute.datatype.float'}}</span>
+                					<i class="icon-ok check-mark"></i>
+                				</a>
+                			</li>
+                			<li rel="4">
+                				<a tabindex="0" class="" style="">
+                					<span class="text">{{t 'sample.presets.attribute.datatype.controlled.vocabulary'}}</span>
+                					<i class="icon-ok check-mark"></i>
+                				</a>
+                			</li>
+                		</ul>
+                	</div>
+                </div>
+            </div>
+            <div class="pull-right hide" style="margin: 5px 0 0 25px;">
+                <form class="form-search">
+                    <div class="input-append">
+                        <input type="text" class="input-medium search-query">
+                        <button type="submit" class="btn">{{t 'sample.presets.search.button.title'}}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="span4">
+            <div id="attributes-create" class="pull-right"></div>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span8" id="attributes-grid"></div>
+        <div class="span4" id="attributes-detail"></div>
+    </div>
+</div>

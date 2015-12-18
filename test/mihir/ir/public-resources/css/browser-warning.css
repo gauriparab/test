@@ -1,0 +1,45 @@
+body.browser-warning-visible {
+  padding-top: 80px;
+}
+#browser-warning {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  color: black;
+  text-align: left;
+  font-size: 14px;
+}
+#browser-warning .close {
+  /* Position it using absolute positioning. The default Bootstrap CSS for this doesn't work properly in IE 7. */
+
+  position: absolute;
+  top: 6px;
+  right: 15px;
+}
+#browser-warning em {
+  font-style: normal;
+  font-size: 20px;
+}
+#browser-warning a:hover {
+  text-decoration: none;
+}
+#browser-warning .browser-warning-contents {
+  width: 960px;
+  margin: 0 auto;
+}
+#browser-warning .browser-warning-text-content {
+  padding-top: 0.2em;
+  width: 600px;
+  padding-left: 55px;
+  float: left;
+}
+#browser-warning .browser-warning-icons {
+  float: left;
+  width: 280px;
+}
+#browser-warning .browser-warning-icons img {
+  float: left;
+  display: block;
+  margin-left: 10px;
+}

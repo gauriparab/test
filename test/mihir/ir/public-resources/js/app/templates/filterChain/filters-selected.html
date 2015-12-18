@@ -1,0 +1,34 @@
+<div class="row-fluid"><p><strong>{{t 'filterChains.selected.filters'}}</strong></p></div>
+
+<table id="selected-sources-table" class="table">
+    <thead><tr><th>{{t 'filterChains.selected.name'}}</th><th>{{t 'filterChains.selected.value'}}</th><th></th><th></th></tr></thead>
+    <tbody>
+
+    {{#each filters}}
+    <tr>
+        <td class="input-cell">
+            <div class="layout-setting setting-type">{{name}}</div>
+            <div class="progress progress-striped active" style="display:none">
+                <div class="bar"></div>
+            </div>
+        </td>
+        <td class="workflow-setting">{{displayValue}}</td>
+        {{! A Logical Filter Group contains multiple filters that could have unannotated variants included.}}
+        <td data-align="right" class="filter">
+            {{#ifCond handleMissing '&&' includeMissing}}
+            <i class="icon-plus has-title-tooltip" data-toggle="tooltip" data-html="true" data-placement="left"
+               title="{{#ifCond type '===' '.filter.LogicalFilterGroup'}} {{t 'filter.logical.include.missing'}} {{else}} {{t 'filter.other.include.missing'}} {{/ifCond}}"></i>
+            {{/ifCond}}
+        </td>
+        <td class="input-cell">
+            <div class="layout-setting setting-value">
+                <a data-cid="{{cid}}" href="#" class="filter-chain-filter-btn-trash">
+                    <i class="icon-trash"></i>
+                </a>
+            </div>
+        </td>
+    </tr>
+    {{/each}}
+
+    </tbody>
+</table>

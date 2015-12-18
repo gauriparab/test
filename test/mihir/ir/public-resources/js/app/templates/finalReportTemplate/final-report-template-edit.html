@@ -1,0 +1,32 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+    <h3 class="title"><span class="modalAction">{{t "actions." action}}</span> {{t 'workflow.label.final.report.template'}}</h3>
+</div>
+<div class="modal-body" style="overflow: auto; max-height: 344px;">
+    <div id="errors"></div>
+    <div class="row-fluid">
+        <div class="span4 control-group">
+            <label class="control-label" for="final-report-template-name">{{t 'final.report.template.edit.name'}}</label>
+            <input id="final-report-template-name" name="name" class="final-report-template-input workflow-preset-input span12 requiredInput" type="text"
+                   title="{{t 'final.report.template.edit.name'}}" required="required" placeholder="Required" value="{{name}}" maxlength="255">
+        </div>
+        <div class="span8 control-group">
+            <label class="control-label" for="final-report-template-desc">{{t 'final.report.template.edit.description'}}</label>
+            <input id="final-report-template-desc" name="description" class="final-report-template-input workflow-preset-desc span12"
+                   type="text" title="{{t 'final.report.template.edit.description'}}" placeholder="Optional" value="{{description}}" maxlength="255">
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span12">
+
+        <h4>{{t 'final.report.template.detail.sections'}}</h4>
+        {{#each sections}}
+            <div id="section-{{this._type}}"></div>
+        {{/each}}
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button id="workflow-preset-btn-cancel" type="button" class="btn btn-secondary" data-dismiss="modal">{{t 'dialog.cancel'}}</button>
+    <button id="workflow-preset-btn-save" type="button" class="btn btn-primary">{{t primaryButtonKey}}</button>
+</div>

@@ -1,0 +1,34 @@
+<div class="report-header">{{t 'final.report.variant.header'}}</div>
+<div class="report-body">
+    <div class="normal-images">
+        <div class="row-fluid">
+            {{#each variantDetailsSection.reportedVariants}}
+            <h2 class="variant-details-header {{t 'finalReport.variantClassification.cssClass.' classification}}">
+                <div id="{{id}}" class="variant-classifier"></div>
+                Gene: {{sub ../variantGenesTemplate gene .. "geneDisplayCount"}} &mdash;
+                {{#if exon}}
+                Exon {{firstValue exon.values 'asDisplayableString'}} &mdash;
+                {{/if}}
+                {{sub ../variantValueTemplate locus}} &mdash;
+                {{#if transcript}}
+                    {{#if transcript.values.length}}
+                        {{#if transcript.values.0.asDisplayableString}}
+                            {{firstValue transcript.values 'asDisplayableString'}} &mdash;
+                        {{/if}}
+                    {{/if}}
+                {{/if}}
+                {{#if classification}}
+                Classification: {{t 'analysis.variant.classification.' classification}}
+                {{/if}}
+            </h2>
+            <div class="variant-details">
+                <div class="protein-details">
+                    {{sub ../variantSampleTable this .. 'variantValueTemplate' 'status'}}
+                    {{sub ../variantAnnotationsTable this .. 'variantValueTemplate' 'status'}}
+                    {{sub ../variantNotesTable this .. 'status'}}
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</div>

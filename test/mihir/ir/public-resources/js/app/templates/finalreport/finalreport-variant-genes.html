@@ -1,0 +1,22 @@
+{{! Only show first [geneDisplayCount] values }}
+<!-- count({{geneDisplayCount}}) -->
+
+{{#if values.0.first}}
+    {{values.0.first.asDisplayableString}} - {{values.0.second.asDisplayableString}}
+{{else}}
+    {{join values key="asDisplayableString" maxLength=geneDisplayCount}}
+
+    {{! If greater than [geneDisplayCount] values then show an ellipse with a popover which displays all values }}
+    {{#ifCond values.length '>' geneDisplayCount}}
+        ,
+        <a href='javascript:void(0)' data-toggle='popover' data-title='{{title}}' data-content='
+            <ul>
+            {{#each values}}
+                <li>
+                    {{asDisplayableString}}
+                </li>
+            {{/each}}
+            </ul>
+        '> ...({{values.length}})</a>
+    {{/ifCond}}
+{{/if}}

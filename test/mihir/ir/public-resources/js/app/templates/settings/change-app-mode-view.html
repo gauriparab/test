@@ -1,0 +1,21 @@
+<div>
+	{{#ifCond server_mode '===' 'AssayDev'}}
+	<div class="controls">
+		<input type="radio" name="app-type" value="AssayDev" checked >
+		<span class="radioText">{{t 'settings.label.mode.assayDev'}}</span>
+	</div>
+	<div class="controls">
+		<input type="radio" name="app-type" value="dx">
+		<span class="radioText">{{t 'settings.label.mode.dx'}}</span>
+	</div>
+	{{else}}
+	<div class="controls">
+		<input type="radio" name="app-type" value="ruo">
+		<span class="radioText">{{t 'settings.label.mode.assayDev'}}</span>
+	</div>
+	<div class="controls">
+		<input type="radio" name="app-type" value="dx" checked>
+		<span class="radioText">{{t 'settings.label.mode.dx'}}</span>
+	</div>
+	{{/ifCond}}
+</div>

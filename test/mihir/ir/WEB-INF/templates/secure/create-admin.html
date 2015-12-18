@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:substituteby="layout.html :: headerFragment"></head>
+<body>
+<div class="wrapper">
+	<div class="header" th:substituteby="layout.html :: bodyHeaderFragment"></div>
+
+    <div class="sub-nav" th:substituteby="layout.html :: bodySubNavFragment"></div>
+
+    <div class="main">
+		<div class="main-content clearfix">
+		<div class="modal hide fade" id="createAdminModal" tabindex="-1" role="dialog" aria-labelledby="createUserModalLabel" aria-hidden="true">
+            <!-- templates/admin/create-admin-page.html -->
+        </div>
+		</div>
+	</div>
+
+    <footer class="footer" th:substituteby="layout.html::bodyFooter"></footer>
+</div>
+<script th:substituteby="layout.html::irHeaderModals"></script>
+
+<script type="text/javascript" th:inline="javascript">
+/*<![CDATA[*/
+	requireInit(['views/admin/createAdminPageView'], function(View) {
+        var view = new View({
+            el: '#createAdminModal'
+        });
+        view.render();
+    });
+/*]]>*/
+</script>
+</body>
+</html>

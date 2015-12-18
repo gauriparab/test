@@ -1,0 +1,28 @@
+<div class="span12">
+	<div class="report-header">{{t 'data.tab.instrumentinfo'}}</div>
+	<div class="report-body">
+		<table style="width: 100%">
+			{{#if ot}}
+			<tr>
+				<td valign="top" class="summary-item" style="padding-left: 0px"
+					width="250">{{t 'st401.instrument.name'}}:</td>
+				<td>{{otInstrumentName}}</td>
+			</tr>
+			<tr>
+				<td valign="top" class="summary-item" style="padding-left: 0px">{{t 'st401.instrument.serial'}}:</td>
+				<td>{{otInstrumentserialNumber}}</td>
+			</tr>
+			{{/if}}
+			{{#if pgm}}
+			<tr>
+				<td valign="top" class="summary-item" style="padding-left: 0px" width="250">{{t 'sq301.instrument.name'}}:</td>
+				<td>{{pgmInstrumentName}}</td>
+			</tr>
+			<tr>
+				<td valign="top" class="summary-item" style="padding-left: 0px">{{t 'sq301.instrument.serial'}}:</td>
+				<td>{{pgmInstrumentserialNumber}}</td>
+			</tr>	
+			{{/if}}		
+		</table>
+	</div>
+</div>

@@ -1,0 +1,6 @@
+<select id="regions" class="input-xlarge">
+	<option></option>
+    {{#each regions}}
+    <option value="{{this.id}}">{{this.name}} {{#if this.ampliseqId}}(AmpliSeq ID: {{this.ampliseqId}}){{/if}}</option>
+    {{/each}}
+</select>

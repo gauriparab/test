@@ -1,0 +1,18 @@
+<div class="row-fluid">
+	<div class="span4">
+		<div class="row-fluid">
+			<ul class="nav nav-list parameters-sidebar">
+				{{#each controls}}
+				<li>						
+					<a href="javascript:void(0)" data-toggle="tab">
+					<input name="{{name}}" type="checkbox" style="margin:0;" {{#if isChecked}} checked="checked" {{/if}} {{#unless editable}} disabled="disabled"{{/unless}}/>			
+					<span>{{name}}</span></a>
+				</li>
+				{{/each}}
+			</ul>
+		</div>
+	</div>
+	<div class="span8" id="controlDetails">
+		
+	</div>
+</div>

@@ -1,0 +1,30 @@
+<div>
+	{{#unless isDefault}}
+		{{#ifCond status '===' 'Active'}}
+			{{#ifCond state '===' 'Locked'}}
+				<b><a href='javascript:void(0)' data-action='obsolete'>{{t 'actions.OBSOLETE'}}</a></b> |
+				<b><a href='javascript:void(0)' data-action='log'>{{t 'actions.LOG'}}</a></b> |
+				<b><a href='javascript:void(0)' data-action='export'>{{t 'actions.EXPORT'}}</a></b>
+			{{/ifCond}}
+			{{#ifCond state '===' 'Obsolete'}}
+				<b><a href='javascript:void(0)' data-action='log'>{{t 'actions.LOG'}}</a></b>
+			{{/ifCond}}
+			{{#ifCond state '===' 'Draft'}}
+				<b><a href='javascript:void(0)' data-action='delete'>{{t 'actions.DELETE'}}</a></b> |
+				<b><a href='javascript:void(0)' data-action='lock'>{{t 'actions.LOCK'}}</a></b> |
+				<b><a href='javascript:void(0)' data-action='log'>{{t 'actions.LOG'}}</a></b>
+			{{/ifCond}}
+		{{/ifCond}}
+		{{#ifCond status '===' 'Pending'}}
+			{{#ifCond state '===' 'Draft'}}
+				<b><a href='javascript:void(0)' data-action='delete'>{{t 'actions.DELETE'}}</a></b>
+			{{/ifCond}}
+		{{/ifCond}}
+		{{#ifCond status '===' 'Failed'}}
+			{{#ifCond state '===' 'Draft'}}
+				<b><a href='javascript:void(0)' data-action='delete'>{{t 'actions.DELETE'}}</a></b> |
+				<b><a href='javascript:void(0)' data-action='log'>{{t 'actions.LOG'}}</a></b>
+			{{/ifCond}}
+		{{/ifCond}}
+	{{/unless}}
+</div>

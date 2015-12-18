@@ -1,0 +1,80 @@
+<div class="modal-header">
+	<button type="button" class="close"
+		data-dismiss="modal">x</button>
+	<h4>{{t 'settings.references.panels.addPanel'}}</h4>
+</div>
+<div class="modal-body">
+	<div id="errors"></div>
+	<div id="addPanelForm" class="form-horizontal">
+		<div class="control-group">
+			<label class="control-label" for="panelName">
+				{{t 'settings.label.name'}}
+				<span class="text-error requires-asterisk">*</span>
+			</label>
+			<div class="controls">
+				<input name="panelName" type="text" id="panelName" required="required" />
+			</div>
+		</div>
+		<div class="control-group" id="referenceDiv">
+			<label class="control-label" for="panelName">
+				{{t 'settings.label.references'}}
+				<span class="text-error requires-asterisk">*</span>
+			</label>
+			<div class="controls">
+				<select id="reference">
+					{{#each values}}
+						<option value="{{id}}">{{name}}</option>
+					{{/each}}
+				</select>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="panelFileUpload">
+				{{t 'settings.label.selectFile'}}
+				<span class="text-error requires-asterisk">*</span>
+			</label>
+			<div class="controls">
+				<form id="panelFileUpload"
+					action="/ir/secure/api/v40/targetregions/upload/file" method="POST"
+					enctype="multipart/form-data" style="margin: 0">
+					<div class="row-fluid">
+						<div>
+							<div class="fileupload fileupload-new" data-provides="fileupload">
+								<div class="input-append">
+									<div class="uneditable-input span3 adjust-width">
+										<i class="icon-file fileupload-exists"></i>
+										<span class="fileupload-preview"></span>
+									</div>
+									<span class="btn btn-file">
+										<span class="fileupload-new">{{t 'upload.selectFile'}}</span>
+										<span class="fileupload-exists">{{t 'upload.change'}}</span>
+										<input type="file" name="fileData" id="file-data-input">
+									</span>
+								</div>
+								<div style="color: #B1B1AC">({{t 'settings.label.supportedFormat'}} .bed {{t 'settings.label.only'}})</div>
+								<div id="progressBar" class="progress hide" style="width: 350px">
+									<div class="bar" style="width: 0%;"></div>
+								</div>
+								<div>
+									<span class="upload-message"></span>
+								</div>
+								<div id="validationProgressMessage" class="hide">{{t 'specimenFile.upload.validating'}}</div>
+								<div id="validationTimeout" class="hide">{{t 'specimenFile.upload.validation.timeout'}}</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			 </div>
+		</div>
+		<!-- <div class="control-group">
+			<label class="control-label" for="description">{{t 'settings.label.desription'}}</label>
+			<div class="controls">
+				<input name="description" type="text" id="description" />
+			</div>
+		</div> -->
+	</div>
+</div>
+<div class="modal-footer">
+	<a href="#" data-dismiss="modal" aria-hidden="true" class="btn btn-secondary">{{t 'dialog.cancel'}}</a>
+	<button id="upload" type="button" class="btn btn-primary">{{t 'dialog.save'}}</button>
+</div>

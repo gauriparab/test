@@ -1,0 +1,27 @@
+ 
+<h1>{{t 'cnvbaseline.confirm.header'}}</h1>
+<p class="context-help">{{t 'cnvbaseline.confirm.subheader'}}</p>
+<br/>
+
+<div id="errors"></div>
+<form class="form-horizontal">
+  <div class="control-group">
+    <label class="control-label inputWorkflow" for="cnvbaseline-name">Name:</label>
+    <div class="controls">
+      <input type="text" id="cnvbaseline-name" name="name" value="{{name}}"
+             placeholder="Required" maxlength="255" class="input-xxlarge" />
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label inputWorkflow" for="cnvbaseline-desc">Description:</label>
+    <div class="controls" >
+      <textarea id="cnvbaseline-desc" name="description" rows="2"
+                placeholder="Optional" class="input-xxlarge">{{description}}</textarea>
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls" >
+      <a class="btn btn-primary" id="save-cnvbaseline" href="javascript:void(0)">{{t 'cnvbaseline.confirm.save.button'}}</a>
+    </div>
+  </div>
+</form>

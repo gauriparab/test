@@ -1,0 +1,46 @@
+<div class="modal-header">
+    <button id="closeDialog" type="button" class="close" data-dismiss="modal">x</button>
+    <h4 id="addServerModalTitle">{{t 'sample.add.server.dialog.add.new.account'}}</h4>
+</div>
+<div class="modal-body">
+    <div id="validationErrors"></div>
+    <form id="addServerForm" class="form-horizontal">
+        <div class="control-group">
+            <label class="control-label" for="name">{{t 'sample.add.server.dialog.'}}</label>
+
+            <div class="controls">
+                <input name="name" type="text" id="name" required="required" value="{{model.name}}" maxlength="255"/>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="url">{{t 'sample.add.server.dialog.address'}}</label>
+
+            <div class="controls">
+                <input name="url" type="text" id="url" required="required" value="{{model.url}}"/>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="userName">{{t 'sample.add.server.dialog.username'}}</label>
+
+            <div class="controls">
+                <input name="credentials.username" type="text" id="username" value="{{model.credentials.username}}"/>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="password">{{t 'sample.add.server.dialog.password'}}</label>
+
+            <div class="controls">
+                <input name="credentials.password" type="password" id="password"
+                       value="{{model.credentials.password}}"/>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button id="cancelAddServer" type="button" class="btn btn-secondary">{{t 'sample.add.server.dialog.cancel'}}</button>
+    <button id="addServerButton" type="button" class="btn btn-primary">{{t 'sample.add.server.dialog.save'}}</button>
+</div>
+        

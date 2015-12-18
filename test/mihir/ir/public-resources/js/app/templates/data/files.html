@@ -1,0 +1,27 @@
+<div>
+    <h4>
+         {{t 'data.report.instrumentSummary'}}   
+    </h4>
+    <div>
+        <table class="table table-condensed role-table">
+        <thead>
+            <tr>
+                <th>{{t 'data.report.fileType'}}</th>
+                <th>{{t 'data.report.path'}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each files}}
+            <tr>
+                <td>
+                    {{fileType}}
+                </td>
+                <td>
+                    <a href="{{filePath.filePath}}" target="_blank">{{filePath.fileName}}</a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+        </table>
+    </div>
+</div>

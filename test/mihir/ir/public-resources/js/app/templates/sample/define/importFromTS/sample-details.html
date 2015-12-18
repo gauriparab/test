@@ -1,0 +1,31 @@
+<table cellpadding="5">
+    {{#if name}}
+    <tr>
+        <td colspan="2" class="breakall" id="samplename"><strong>{{name}}</strong></td>
+    </tr>
+    {{/if}}
+    {{#if id}}
+    <tr>
+        <td valign="top"><strong>{{t "ts.samples.details.id"}}:</strong></td>
+        <td>{{id}}</td>
+    </tr>
+    {{/if}}
+    {{#if gender}}
+    <tr>
+        <td valign="top"><strong>{{t "ts.samples.details.gender"}}:</strong></td>
+        <td>{{#if gender}}{{gender}}{{else}}Unknown{{/if}}</td>
+    </tr>
+    {{/if}}
+    {{#if createdBy}}
+    <tr>
+        <td valign="top"><strong>{{t "ts.samples.details.createdBy"}}:</strong></td>
+        <td>{{createdBy}}</td>
+    </tr>
+    {{/if}}
+    {{#if createdOn}}
+    <tr>
+        <td valign="top"><strong>{{t "ts.samples.details.createdOn"}}:</strong></td>
+        <td>{{createdOn}}</td>
+    </tr>
+    {{/if}}
+</table>

@@ -1,0 +1,12 @@
+<h4>{{t 'analysis.auditLog.analysis.baseline.header'}}</h4>
+<div style="word-wrap:break-word">
+<ul>
+    <li><span>{{t 'analysis.auditlog.analysis.baseline.type.label'}}: {{#if type}}{{t "CNVBaselineType." type}}{{/if}}</span></li>
+    {{#ifCond type '!==' 'WHOLEGENOME_LOWCOVERAGE'}}
+        <li>{{t 'analysis.auditlog.analysis.baseline.targetRegion.label'}}: {{#if targetRegion}}{{targetRegion.name}}{{/if}}</li>
+    {{/ifCond}}
+    {{#ifCond description '!==' ''}}
+        <li>{{t 'analysis.auditlog.analysis.baseline.description.label'}}: {{description}}</li>
+    {{/ifCond}}
+</ul>
+</div>

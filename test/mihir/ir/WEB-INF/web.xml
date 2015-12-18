@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+      version="3.0"> 
+
+    <!-- Servlet descriptors -->
+    <display-name>ir</display-name>
+    <description>ir</description>
+
+    <!-- Set character encoding -->
+    <filter>
+        <filter-name>characterEncodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>forceEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+
+    <filter>
+        <filter-name>csrfProtectionFilter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>characterEncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>csrfProtectionFilter</filter-name>
+        <url-pattern>/secure/*</url-pattern>
+        <url-pattern>/j_spring_security_check</url-pattern>
+    </filter-mapping>
+    
+    <!-- Set Spring Security for JAAS -->
+    <filter>
+        <filter-name>localizationFilter</filter-name>
+        <filter-class>org.springframework.web.filter.RequestContextFilter</filter-class>
+    </filter>
+
+    <filter>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>localizationFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+      <filter-name>springSecurityFilterChain</filter-name>
+      <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!-- log4j root key -->
+    <context-param>
+        <param-name>webAppRootKey</param-name>
+        <param-value>ir</param-value>
+    </context-param>
+
+    <!-- Spring log4j listener -->
+    <listener>
+        <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+    </listener>
+
+    <!-- Spring context configuration -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:META-INF/spring/beans/application-beans.xml</param-value>
+    </context-param>
+
+    <!-- Spring context listener -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <!-- Session events listener -->
+    <listener>
+        <listener-class>com.lifetech.ionreporter.mgc.ui.web.listener.SessionListener</listener-class>
+    </listener>
+
+    <!-- irmgc servlet -->
+    <servlet>
+        <servlet-name>ir</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+        <multipart-config>
+            <max-file-size>-1</max-file-size>
+            <max-request-size>-1</max-request-size>
+            <file-size-threshold>10485760</file-size-threshold>
+        </multipart-config>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ir</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <jsp-config>
+        <!-- Tag libs -->
+        <taglib>
+            <taglib-uri>/spring</taglib-uri>
+            <taglib-location>/WEB-INF/taglib/spring.tld</taglib-location>
+        </taglib>
+    </jsp-config>
+
+    <!--
+    <session-config>
+        <session-timeout>see com.lifetech.ionreporter.mgc.ui.web.listener.SessionListener</session-timeout>
+    </session-config>
+    -->
+
+	<!-- Disables Servlet Container welcome file handling. Needed for compatibility with Servlet 3.0 and Tomcat 7.0 -->
+	<welcome-file-list>
+		<welcome-file></welcome-file>
+	</welcome-file-list>	
+
+    <!-- Error pages --> 
+    <error-page>
+        <location>/error.html</location>
+    </error-page>
+    
+	<!-- Begin Service Layer Web Service Deployment -->
+	<servlet>
+		<servlet-name>Web Services</servlet-name>
+		<servlet-class>com.sun.jersey.spi.spring.container.servlet.SpringServlet</servlet-class>
+		<init-param>
+			<param-name>com.sun.jersey.config.property.resourceConfigClass</param-name>
+			<param-value>com.sun.jersey.api.core.PackagesResourceConfig</param-value>
+		</init-param>
+		<init-param>
+			<param-name>com.sun.jersey.config.property.packages</param-name>
+			<param-value>com.lifetech.ionreporter.services.webservices,com.lifetech.ionreporter.ir.services.webservices </param-value>
+		</init-param>
+		<init-param>
+			<param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Web Services</servlet-name>
+		<url-pattern>/rest/*</url-pattern>
+	</servlet-mapping>
+	<!-- End Service Layer Web Service Deployment -->
+</web-app>

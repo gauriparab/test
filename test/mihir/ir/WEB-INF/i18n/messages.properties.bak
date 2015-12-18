@@ -1,0 +1,1710 @@
+#Note that this file is to be formatted with JSON in mind for use by the UI I18N Javascript library
+#This means that you cannot do something like the following or an error will occur when parsing:
+#this.is.an.example=Testing
+#this.is.an.example.failure=This fails as this.is.an.example was already defined as a String.
+
+html.head.title = Ion Reporter | Life Technologies
+welcome.message = Welcome to Ion Reporter
+
+space.warning.analysis=You cannot launch an analysis because you have run out of space in your organization! Please contact your organizational administrator.
+space.warning.baseline=You do not have enough space to create a baseline! Please contact your organizational administrator.
+
+footer.warning=This is for research use only. It is not intended for any animal or human therapeutic or diagnostic use.
+footer.copyright=&copy; 2014 Life Technologies Corporation. All Rights Reserved.
+
+no.record.selected=Select a row to view further details and actions.
+no.available.actions=No Available Actions
+not.yet.implemented=This functionality has not been implemented yet.
+
+search.button.label=Search
+reset.button.label=Clear
+planRun.button.label=Plan a Run
+addSample.button.label=Add New
+filter.button.label=Filter
+currency.symbol=$
+filter.samples=Filter Samples
+filter.analyses=Filter Analyses
+filter.application=Filter Application
+filter.workflow=Filter Workflow
+filter.technology= Filter Target
+filter.group=Filter Group
+filter.users=Filter Role
+filter.label.canonical.range=Range
+filter.version=Filter Version
+
+date.time.format=MMM dd yyyy hh:mm tt
+
+# Actions
+
+actions.CLONE=Create
+actions.CREATE=Create
+actions.EDIT=Edit
+actions.COPY=Copy
+actions.DELETE=Delete
+actions.LOCK=Lock
+actions.ABORT=Abort
+actions.DOWNLOAD=Download
+actions.PRINT=Print
+actions.CLOSE=Close
+actions.EXECUTE=Execute
+actions.REVIEW=Review
+
+actions.dropdown.label=Actions
+reports.dropdown.label=Reports
+
+button.save=Save
+button.apply=Apply
+
+#Index and Login Text
+button.sign.in=Sign In
+button.request.account=Register new account
+
+request.account.captcha.error=Captcha validation failed
+request.account.success=Your request has been submitted. You will receive email notification shortly
+request.account.organizationName.invalid=Organization name can only contain alphanumeric, dash, dot or space.
+request.account.organizationAddress.invalid=Please enter a valid organization address.
+request.account.firstName.invalid=Please enter a valid first name.
+request.account.lastName.invalid=Please enter a valid last name.
+request.account.email.invalid=Please enter a valid email.
+
+request.account.alert.info=Use this form to create a new organization with yourself as its administrator and first member. To join an existing organization, contact the organization’s administrator for an account. An organization is more specific than an institute name. It defines a group of users who work together and share samples, data, analyses, and results.
+request.account.popover.orgname=<p><b>When creating a new organization</b>:<ul><li>If there are separate and independent labs at your institution, <b>be as specific as possible in choosing an organization name</b>:<ul><li>Institution A Lab 1</li><li>Institution A Dept B</li></ul></li><li>The organization Institution A is appropriate if all of its users do in fact share samples, data, analyses, and results.</li></ul>
+
+supported.browsers.intro=Best viewing experience with:
+supported.browsers.chrome=Chrome
+supported.browsers.firefox=Firefox 8.0+
+supported.browsers.ie=IE 9.0+
+supported.browsers.safari=Safari 4.0+
+learn.more=Learn more
+torrent.suite.section.title=Torrent Suite&trade; Software Integration
+torrent.suite.section.body=Automate your data analysis needs and leverage the power of Ion Reporter&trade; \
+  Software directly from within Torrent Suite&trade; Software. Just select create an Ion Reporter&trade; \
+  workflow as you plan your sequencing runs and the software automates the rest from primary analysis, to data \
+  transfer, and secondary analysis in Ion Reporter&trade; Software.
+sample.analysis.section.title=Sample &amp; Analysis Management
+sample.analysis.section.body=Direct integration with Torrent Suite&trade; means there is no need to enter \
+  information twice - all data is automatically transferred after sequencing. Ion Reporter&trade; provides \
+  simple tools to manage, track, and highlight any sample or analysis, making it easy to stay organized and \
+  allows you to access your data from any computer. Leveraging secure, redundant storage, Ion Reporter&trade; \
+  ensures your data is available when you need it.
+data.security.section.title=Data Security
+data.security.section.body=Ion Reporter&trade; Software makes use of the latest security protocols, including \
+  256-bit encryption and transfer over SSL, ensuring that your data is secure whether in motion or at rest. \
+  Ion Reporter&trade; Software is built upon the industry leading cloud provider, Amazon AWS, which serves \
+  many academic, commercial, and government agencies. Our systems have been reviewed and tested by independent \
+  security professionals.
+annotate.variants.section.title=Annotate your Variants
+annotate.variants.section.body=Ion Reporter&trade; streamlines the annotation of your variant VCF files by \
+  leverage a wealth of publicly available content. Upload your VCF and annotate your variants with \
+  information from sources such as dbSNP, 1000 genomes, OMIM, COSMIC, and more. You can even upload your \
+  own custom annotations and leverage them within Ion Reporter&trade; Software.
+ingenuity.section.title=Ingenuity&reg; Variant Analysis&trade; Workflows
+ingenuity.section.body=The Ingenuity&reg; Variant Analysis&trade; workflow enables biological analysis \
+  and interpretation to rapidly identify the most compelling variants for follow-up in human sequencing \
+  studies with an interactive filter cascade that uses a single source of accurate, curated content &mdash; \
+  the Ingenuity&reg; Knowledge Base.
+16s.section.title=16S Metagenomics Workflow - beta
+16s.section.body=Ion Reporter&trade; Software enables the identification of microbes present in complex polybacterial \
+  samples at genus/species level by using both curated GreenGenes and curated MicroSeq&reg; ID 16S reference \
+  databases. Along with identifying microorganism genus/species ID, Ion Reporter&trade; Metagenomics Workflow also \
+  provides primer information, classification information, percent ID, and mapping information. It is easy to \
+  interpret population diversity at any level in the taxonomy with the interactive display.
+
+# Change Password Messages
+profile.changePassword.existingPassword.blank=Provide your existing password
+profile.changePassword.newPassword.blank=Provide a new password
+profile.changePassword.newPassword.length=Passwords must be at least 6 characters long
+profile.changePassword.newPassword.notMatching=New password must match confirmation field
+profile.changePassword.newPassword.nospaces=The new password cannot contain spaces
+profile.changePassword.retypedNewPassword.blank=Provide a confirmation password
+profile.changePassword.success=Your password was successfully changed. Next time you log in, use your new password.
+
+#Assay Messages
+assay.panel.label=Panel
+assay.panel.default.help=Select a reference
+assay.panel.dna.single.help=All analyses are performed against hg19.
+assay.panel.dna.rna.fusions.help=Select an RNA Fusion Panel, and to focus your DNA analysis, select applicable target and/or hotspot file(s) and a Variant Type Detection.
+
+assay.validation.application.missing.application=you must select an application type
+assay.validation.application.missing.group=you must select a grouping type
+assay.validation.reference.missing.reference=Reference must be Set or Selected
+
+assay.page.min=Min
+
+confirm.lock.assay.title=Lock Assay
+assay.lock.confirm=Are you sure you want to lock Assay?
+
+assay.qcsequnce.label=QC
+assay.sequencing.label=Sequencing
+assay.template.label=Templating Kit
+assay.detail.label=Details
+assay.qcsequence.runqc=Run QC
+assay.qcsequence.sampleqc=Sample QC
+assay.qcsequence.controlqc=Control QC
+assay.qcsequence.resetAll=Reset All
+assay.summary.libraryKitType=Library Kit Type
+assay.summary.templatingKit=Templating Kit
+assay.summary.control=Control
+assay.summary.sequencingKit=Sequencing Kit
+assay.summary.sequencingChip=Sequencing Chip
+assay.summary.flows=Flows
+assay.summary.keysignal=Key Signal
+assay.summary.percentloading=Percent Loading
+assay.summary.meanaqreadlength=Mean AQ20 Read Length (bp)
+assay.summary.meanreadlength=Mean Read Length
+assay.summary.percentreads=Percent Reads
+assay.summary.basecallacc=Base Call Accuracy
+assay.summary.variantDetection=Variant Detection
+assay.summary.variantFinding=Variant Finding 
+assay.summary.variantFindingParameters = Parameters
+assay.summary.filterChain=Filter Chain
+assay.summary.copynumber=Copy Number
+assay.summary.templatePrep=Template Prep
+assay.summary.qc=QC
+assay.summary.annotation=Annotation Sets
+assay.summary.baseline=Copy Number (Baseline)
+assay.summary.presets= Presets
+assay.summary.reportTemplate=Report Template
+
+assay.presets.baseline=Baseline
+assay.variantDetection.skip=Skip Variant Detection
+assay.variantDetection.mode=Mode
+assay.variantDetection.genotyping=Genotyping
+assay.variantDetection.discovery=Discovery
+assay.variantDetection.level=Level
+assay.variantDetection.lowstringency=Low Stringency
+assay.variantDetection.highstringency=High Stringency
+assay.variantDetection.type=Type
+assay.variantDetection.somatic=Somatic
+assay.variantDetection.germline=Germline
+assay.variantDetection.hotspots=Hotspots
+assay.variantDetection.parameters=Parameters
+assay.variantDetection.hotspot=HOTSPOT
+assay.variantDetection.alleleFrequency=Allele Frequency
+assay.variantDetection.coverageEachStrand=Coverage Each Strand
+assay.variantDetection.coverage=Coverage
+
+#Assay Details 
+assay.details.view=View Assay Details
+assay.details.createdOn=Created On
+assay.details.createdBy=Created By
+assay.details.reanalysis=Reanalysis
+assay.details.finalReport=Final report
+assay.details.genomeRef=Genome Reference
+assay.details.forwardLibraryKey=Forward Library Key
+assay.details.forward3Adaptor=Forward 3" Adaptor
+assay.details.sequencing=Sequencing
+assay.details.flow=Flow
+assay.details.minAllelFrq=Hotspot Min Allele Freq
+assay.details.minCoverageEachStr=Hotspot Min Coverage Each Strand
+assay.details.minCoverage=Hotspot Min Coverage
+assay.details.minVariantScore=Hotspot Min Variant Score
+assay.details.strandBias=Hotspot Strand Bias
+assay.details.presets=Presets
+assay.details.copyNumBaseline=Copy Number(Baseline)
+assay.details.plugins=Plugins
+assay.details.closeBtn=Close
+assay.details.printBtn=Print
+assay.details.exportBtn=Export
+
+#Monitor
+monitor.instrument.view=Instrument View
+monitor.refresh=Refresh
+monitor.run.view=Runs in Progress
+monitor.run.startTime=Start Time
+monitor.run.startUser=Start User
+monitor.run.completionTime=Completion Time
+monitor.run.runStatus=Run Status
+monitor.run.analysisStatus=Analysis Status
+monitor.run.runQC=Run QC
+monitor.run.sampleQC=Sample QC
+monitor.run.internalControlQC=Internal Control QC
+
+monitor.filterRuns.viewAll=View All
+monitor.paginateRuns.items=Items Per Page
+monitor.carousel.prev=Prev
+monitor.carousel.next=Next
+
+#Instrument View
+monitor.instrument.state=State
+monitor.instrument.status=Status
+monitor.instrument.water.clean=Last Water Clean
+monitor.instrument.chlorite.clean=Last Chlorite Clean
+monitor.instrument.serial=Serial
+monitor.instrument.pqStatus=PQ Status
+monitor.instrument.nextPQDate=Next PQ Due
+monitor.instrument.last.clean=Last Clean
+
+#Workflow Messages
+DNA=DNA
+RNA=Fusions
+DNA_RNA=DNA and Fusions
+TYPING=Typing
+ANEUPLOIDY=Aneuploidy
+METAGENOMICS=Metagenomics
+ANNOTATE_VARIANTS=Annotate Variants
+
+WorkflowApplicationType.DNA=DNA
+WorkflowApplicationType.RNA=Fusions
+WorkflowApplicationType.DNA_RNA=DNA and Fusions
+WorkflowApplicationType.TYPING=Typing
+WorkflowApplicationType.ANEUPLOIDY=Aneuploidy
+WorkflowApplicationType.METAGENOMICS=Metagenomics
+WorkflowApplicationType.ANNOTATE_VARIANTS=Annotate Variants
+
+SINGLE=Single
+PAIRED=Paired
+PAIRED_TUMOR_NORMAL=Tumor-Normal
+MULTI=Multi
+TRIO=Trio
+POPULATION=Population
+PEDIGREE=Pedigree
+DNA_RNA_FUSION=DNA and Fusions
+SINGLE_RNA_FUSION=Single Fusions
+WorkflowSpecimenGroupType.SINGLE=Single
+WorkflowSpecimenGroupType.PAIRED=Pair
+WorkflowSpecimenGroupType.PAIRED_TUMOR_NORMAL=Tumor-Normal
+WorkflowSpecimenGroupType.MULTI=Multi
+WorkflowSpecimenGroupType.TRIO=Trio
+WorkflowSpecimenGroupType.POPULATION=Population
+WorkflowSpecimenGroupType.PEDIGREE=Pedigree
+WorkflowSpecimenGroupType.DNA_RNA_FUSION=DNA and Fusions
+WorkflowSpecimenGroupType.SINGLE_RNA_FUSION=Single Fusions
+
+VariantTypeDetection.GERMLINE_CELLS=Germline
+VariantTypeDetection.SOMATIC_CELLS=Somatic
+
+workflow.details.header=Details
+workflow.details.no.record.selected=<p>Workflows are a set of analysis components that have been put together to automate the analysis of your data. Ion Reporter provides workflows with optimized parameters for a number of applications. You can also <a href="workflow.html">create a custom workflow</a>. See the <a href="/ir/help/index.html#workflows" target="_blank">help guide</a> for more information.</p><p>To create annotation sets, filter chains, CNV baselines, or report templates used in workflow, visit <a href="workflows-presets.html">workflow presets</a>.</p><p>Select a row to view further details and actions.</p>
+
+workflow.validation.application.missing.application=you must select an application type
+workflow.validation.application.missing.group=you must select a grouping type
+workflow.validation.reference.missing.reference=Reference must be Set or Selected
+workflow.validation.reference.missing.variantTypeDetection=Variant detection type must be selected
+workflow.validation.reference.missing.targetRegion=Target region must be selected
+workflow.validation.reference.missing.fusionPanel=Fusion panel must be selected
+workflow.validation.reference.missing.annotationSet=Annotation Set must be selected
+workflow.validation.reference.missing.reportTemplate=A template for the final report must be selected
+workflow.validation.name.valid.characters=Workflow name can only contain letters, numbers, underscores, dashes, periods, and spaces
+workflow.validation.name.length=Workflow name must be between 1 and 256 characters in length
+
+workflow.applications.label=Applications
+workflow.sample.groups.label=Sample Groups
+workflow.reference.label=Reference
+workflow.references.title=References
+workflow.region.label=Focus Analysis
+workflow.fusion.reference.label=Fusion Reference
+workflow.fusion.panel.label=Fusion Panel
+workflow.targetRegion.file.label=Target Regions File
+workflow.targetRegion.file.upload.title=Upload Regions File
+workflow.hotspot.file.label=Hotspot Regions
+workflow.hotspot.file.upload.title=Upload Hotspot Regions
+workflow.variantTypeDetection.label=Variant Type Detection
+workflow.annotation.set.label=Annotation Set
+workflow.filter.chains.label=Filter Chains
+
+workflow.applications.help=Select the application and sample group type for the workflow you wish to create. <a href="/ir/help/index.html#workflows-application" target="_blank">Learn more...</a>
+workflow.reference.default.help=Select a reference and optionally focus your analysis by selecting a region/hotspot files
+workflow.reference.dna.single.help=All analyses are performed against hg19. Select the region file and optionally a hotspot file you wish to use in this analysis. Select whether you wish to detect somatic (low frequency) or germline mutations. <a href="/ir/help/index.html#workflows-reference" target="_blank">Learn more...</a>
+workflow.reference.dna.other.help=All analyses are performed against hg19. Select the region file and optionally a hotspot file you wish to use in this analysis. <a href="/ir/help/index.html#workflows-reference" target="_blank">Learn more...</a>
+workflow.reference.metagenomics.help=Select which reference you wish to map against. <a href="/ir/help/index.html#workflows-reference" target="_blank">Learn more...</a>
+workflow.reference.dna.rna.fusions.help=Select a Fusion Panel, and to focus your DNA analysis, select applicable target and/or hotspot file(s) and a Variant Type Detection.
+workflow.reference.rna.fusions.help=Select a Fusion Panel
+workflow.primers.help=Input the primers used in your library preparation. <a href="/ir/help/index.html#workflows-primers" target="_blank">Learn more...</a>
+workflow.primers.example.help=Please see the <a href="/ir/help/index.html#workflows-primers" target="_blank">primers section</a> of the help guide for required format information
+workflow.primers.metagenomicsPrimerWarning=Primer designs for 16S metagenomics may require optimization for optimal results.
+workflow.annotation.set.help=Select the annotation set that should be used to annotate your variants. <a href="/ir/help/index.html#workflows-annotations" target="_blank">Learn more...</a>
+workflow.filter.chains.help=Filters allow you to automatically remove variants that meet certain criteria. Select the filter set you wish to apply to the detected variants. <a href="/ir/help/index.html#workflows-filters" target="_blank">Learn more...</a>
+workflow.cnv.help=Baselines provide a reference point against which CNVs can be detected. This is required if you wish to detect CNVs in a single sample analysis. If not provided no CNVs will be called. <a href="/ir/help/index.html#workflows-cnv" target="_blank">Learn more...</a>
+workflow.plugins.chains.help=Plugins provide access to additional content and functionality. Select which plugins you wish to include in your workflow. <a href="/ir/help/index.html#workflows-plugins" target="_blank">Learn more...</a>
+workflow.final.report.chains.help=Variant report templates specify content that is provided when reporting variants. <a href="/ir/help/index.html#workflows-finalReport" target="_blank">Learn more...</a>
+workflow.parameters.warning=<strong>Warning!</strong> &nbsp;It's <u>not recommended</u> to change these defaults unless you know what you're doing. Invalid settings will <u>NOT</u> be saved.
+workflow.parameters.help=These are configurable runtime parameters to optimize your workflow. Fixed and community panels imported from AmpliSeq.com include optimized variant calling parameters. <a href="/ir/help/index.html#workflows-parameters" target="_blank">Learn more...</a>
+workflow.parameters.preview.title=Module Parameters for __workflowName__
+workflow.confirm.chains.help=Confirm your workflow is configured properly and save your workflow. <a href="/ir/help/index.html#workflows-confirm" target="_blank">Learn more...</a>
+workflow.cancel.warning=<strong>Warning!</strong> This workflow information will not be saved!
+workflow.cancel.confirm=Are you sure you want to cancel this workflow?
+workflow.redirect.label=Continue to Workflow Presets?
+workflow.redirect.warning=<strong>Warning!</strong> You will be leaving the workflow creation process and your current progress will be lost!
+
+workflow.lock.header=Lock Workflow
+workflow.lock.warning=<strong>Warning!</strong> Once this workflow is locked, it can no longer be edited or unlocked!
+workflow.lock.confirm=Are you sure you want to lock this workflow?
+workflow.lock.success=The workflow <strong>__workflowName__</strong> has been locked
+workflow.save.success=<strong>Congrats!</strong> Your workflow <strong>__workflowName__</strong> was successfully saved.
+workflow.delete.error=Could not delete your workflow <strong>__workflow.name__</strong>
+workflow.delete.confirm=Are you sure you want to delete this Workflow?
+workflow.delete.success=The workflow <strong>__workflow.name__</strong> has been deleted
+
+
+workflow.presets.annotationSets.label=Annotation Sets
+workflow.presets.filterChains.label=Filter Chains
+workflow.presets.baseline.label=Copy Number Baselines
+workflow.presets.finalReportTemplate.label=Final Report Templates
+workflow.presets.targetRegionFile.label=Target Region Files
+workflow.presets.hotspotRegionFile.label=Hotspot Region Files
+
+filter.multiselect.configuredFilterOption.CONFIGURED=Select Specific Annotations
+filter.multiselect.configuredFilterOption.INCLUDE=In
+filter.multiselect.configuredFilterOption.EXCLUDE=Not In
+
+workflow.presets.annotationSets.summaryTitle=Details
+workflow.presets.filterChains.summaryTitle=Details
+workflow.presets.baseline.summaryTitle=Details
+workflow.presets.finalReportTemplate.summaryTitle=Details
+workflow.presets.targetRegionFile.summaryTitle=Details
+workflow.presets.hotspotRegionFile.summaryTitle=Details
+
+item.lock.header=Lock __itemType__
+item.lock.warning=Once this __itemType__ is locked, it can no longer be edited or unlocked!
+item.lock.confirm=Are you sure you want to lock this __itemType__?
+item.lock.success=The __itemType__ <strong>__itemName__</strong> has been locked
+item.lock.error=Sorry, there was an error locking your __itemType__ <strong>__itemName__</strong>
+
+workflow.summary.application=Application
+workflow.summary.sample.group=Sample Group
+workflow.summary.reference=Genome Reference
+workflow.summary.region=Target Regions
+workflow.summary.variantTypeDetection=Variant Type Detection
+workflow.summary.hotspot=Hotspot Regions
+workflow.summary.fusionPanel=Fusion Panel
+workflow.summary.annotation=Annotations
+workflow.summary.filter.chains=Filters
+workflow.summary.baseline=Copy Number
+workflow.summary.plugins=Plugins
+workflow.summary.your.selections=Your Selections
+workflow.summary.parameters=Parameters
+workflow.summary.parametersModified=Modified
+workflow.summary.defaultParameters=Default
+workflow.summary.reportTemplate=Report Template
+
+WorkflowAction.EDIT=Edit
+WorkflowAction.PUBLISH=Publish
+WorkflowAction.DELETE=Delete
+WorkflowAction.FAVORITE=Flag
+WorkflowAction.UNFAVORITE=Unflag
+WorkflowAction.COPY=Copy
+WorkflowAction.SHARE=Share
+WorkflowAction.DISABLE=Disable
+WorkflowAction.LOCK=Lock
+WorkflowAction.RENAME=Rename
+WorkflowAction.BATCH_DELETE=Delete
+
+workflow.annotationSet.details.no.record.selected=<p>Annotation sets provide content that is used to annotate your variants. See the <a href="/ir/help/index.html#workflows-presetsAnnotations" target="_blank">help guide</a> for more information.</p><p>Select a row to view further details and actions.</p>
+workflow.filterChain.details.no.record.selected=<p>Filters allow users to automatically remove variants that meet certain criteria. See the <a href="/ir/help/index.html#workflows-presetsFilters" target="_blank">help guide</a> for more information.</p><p>Select a row to view further details and actions.</p>
+workflow.bed.details.no.record.selected=<p>Region &amp; hotspot files specify regions of the genome of interest that are used when creating a workflow. See the <a href="/ir/help/index.html#workflows-presetsBED" target="_blank">help guide</a> for more information.</p><p>Select a row to view further details and actions.</p>
+workflow.baseline.details.no.record.selected=<p>CNV baselines can be used for detecting CNVs in single sample workflows. See the <a href="/ir/help/index.html#workflows-presetsCNV" target="_blank">help guide</a> for more information.</p><p>Select a row to view further details and actions.</p>
+workflow.finalReportTemplate.details.no.record.selected=<p>Variant report templates specify content that is provided when reporting variants. See the <a href="/ir/help/index.html#workflows-presetsReport" target="_blank">help guide</a> for more information.</p><p>Select a row to view further details and actions.</p>
+workflow.targetRegionFile.details.no.record.selected=<p>Select a row to view further details and interactions.</p>
+workflow.hotspotRegionFile.details.no.record.selected=<p>Select a row to view further details and interactions.</p>
+
+workflow.annotation.set.successful.creation=<strong>Congrats!</strong> The Annotation Set has been successfully added!
+workflow.annotation.set.successful.modification=<strong>Congrats!</strong> The Annotation Set has been successfully updated!
+
+workflow.filter.chain.successful.creation=<strong>Congrats!</strong> The Filter Chain has been successfully added!
+workflow.filter.chain.successful.modification=<strong>Congrats!</strong> The Filter Chain has been successfully updated!
+
+batch.workflows.details.header=Batch Details
+batch.workflows.actions.warning=Not all actions are available if you have selected workflows that are currently being used in an analysis.
+batch.workflows.delete.confirm=Are you sure you want to delete the selected workflows?
+batch.workflows.delete.response.success=__deleted__ of __total__ workflows have been deleted.
+batch.workflows.delete.response.error=__failed__ of __total__ workflows could not be deleted.
+
+filter.chain.successful.save=<strong>Congrats!</strong> Filter chain __name__ has been saved successfully!
+filter.chain.failed.save=Error while saving filter chain __name__!
+filter.chain.successful.reset=Filter chain has been reset successfully!
+filter.chain.failed.reset=Error while reseting filter chain!
+
+filter.chain.changes.not.persisted=Filter chain changes have not been persisted
+analysis.filter.chain.changed=The default analysis filter chain selection has been changed, but will not persist without hitting the save button
+
+# Exception Handling Messages
+exception.msg.public.default=Sorry, we were unable to complete your requested action due to a system error. Please feel free to <a href="/ir/help/index.html#faq-feedback">contact technical support</a>.
+exception.msg.public.EulaNotAcceptedException=Please accept the End User License Agreement.
+exception.msg.public.MigrationInProgressException=Please be patient, a migration is in progress.
+exception.msg.public.OrganizationDisabledException=Sorry, this organization is no longer available in the system.
+exception.msg.public.UserDisabledException=Sorry, this user's account has been disabled. Please contact your organization administrator for more details.
+exception.msg.public.UserLockedException=Your account has been locked. Please use the Forgot Password link to reset your password.
+exception.msg.public.InvalidCredentialsException=Incorrect username or password.
+exception.msg.public.PasswordExpiredException=Password expired. Please check your email for password reset instructions.
+exception.msg.public.ValidationException=Validation exception. Please address the errors.
+exception.msg.public.NotYetImplementedException=Sorry, the requested functionality has not been implemented yet.
+exception.msg.public.ExpiredPasswordResetTokenException=Account activation token expired. Please contact your organizational administrator.
+exception.msg.public.InvalidPaymentCredentialsException=Your credentials are invalid. Please try again.
+exception.msg.public.CsrfSecurityException=There was a problem with your security token, please refresh the browser and try again.
+exception.msg.public.InsufficientFundsException=Sorry, there are insufficient funds to complete this transaction. Please contact <a href="http://www.lifetechnologies.com/us/en/home/technical-resources/order-support.html" target="_blank">customer support</a> for more information.
+exception.msg.public.PaymentAccountMissingException=Sorry, we were unable to locate the payment account required to complete this transaction. Please contact your organization administrator to attach a Life Technologies electronic commerce account to your organization.
+exception.msg.public.PaymentProcessingTimeoutException=The Life Technologies electronic commerce system is currently unavailable. Please try again in a couple of minutes or contact <a href="http://www.lifetechnologies.com/us/en/home/technical-resources/order-support.html" target="_blank">Website Support</a>.
+exception.msg.public.AmpliseqAlreadyImportedPanelException=This panel already exists in your organization's list of panels. You can import this panel again after deleting the old panel in workflow presets.
+exception.msg.public.AmpliseqInvalidCredentialsException=Invalid credentials. Please recheck the username and password.
+
+# Idle Timeout
+idleTimeout.title=Session Timeout
+idleTimeout.msg=Your session is about to expire and you will be automatically logged out in 60 seconds.
+idleTimeout.yes=Continue working
+idleTimeout.no=Exit
+
+#loading keys
+loading.wait=Please wait...
+loading.default=Loading...
+loading.purchase=We're retrieving price information from the Lifetechnologies.com<br> e-commerce system.
+loading.launch=Queueing Analysis
+loading.batch.launch=Launching Analyses
+
+# Dialogs
+dialog.close=Close
+dialog.done=Done
+dialog.save=Save
+dialog.review=Review
+dialog.cancel=Cancel
+dialog.add=Add
+dialog.analysis.sendToReport.title=Send to Report Role
+dialog.analysis.sendToReport.confirm=Send
+dialog.analysis.sendToReport.cancel=Cancel
+dialog.analysis.abort.title=Abort Analysis (__analysisName__)
+dialog.analysis.abort.confirm=Abort
+dialog.analysis.abort.cancel=Cancel
+dialog.analysis.sendBackToAnalyze.title=Send Back to Analyze Role
+dialog.iruploader.title=Download Ion Reporter Uploader
+dialog.changePassword.title=Change Password
+dialog.changePassword.confirm=Change
+dialog.changePassword.close=Cancel
+dialog.confirmPublishModal.title=Lock and Publish
+dialog.confirmPublishModal.confirm=Publish
+dialog.confirmPublishModal.close=Cancel
+dialog.manageApiToken.title=Manage API Token
+dialog.manageApiToken.btn.generate=Generate
+dialog.manageApiToken.close=Close
+
+# Confirm Dialogs
+confirm.yes=Yes
+confirm.no=No
+confirm.confirm=Confirm
+confirm.accept=Accept
+confirm.cancel=Cancel
+confirm.ok=OK
+confirm.purchase=Purchase
+confirm.eula.title=License Agreement
+confirm.eula.local.title=Terms and Conditions
+confirm.delete.title=Confirm Delete
+confirm.batch.delete.title=Confirm Batch Delete
+confirm.delete.msg=Do you wish to delete this item?
+confirm.reject.title=Confirm Reject
+confirm.invoice.title=Confirm Invoice
+confirm.purchased.title=Invoice Purchased
+confirm.purchased.msg=Your invoice has been successfully purchased
+confirm.abort.title=Confirm Abort
+
+error.title=Error
+error.exception.default=An error occurred
+error.exception.PaymentAccountMissingException=The payment account does not exist
+error.exception.InsufficientFundsException=Insufficient funds
+
+# Status Messages
+status.idleLogout=You have been logged out due to inactivity.
+forgot.password.alert.msg=Enter the email address for your account. You will receive an email with password reset instructions.
+
+# Annotation Source Types
+annotation.source.type.DBSNP=dbSNP
+annotation.source.type.COSMIC=COSMIC
+annotation.source.type.OMIM=OMIM
+annotation.source.type.DRUGBANK=DrugBank
+annotation.source.type.FIVETHOUSANDEXOMES=5000 Exomes
+annotation.source.type.PFAM=Pfam
+annotation.source.type.GENEMODEL=Gene Model
+annotation.source.type.FUNCTIONAL_SIFT_POLYPHEN=SIFT / PolyPhen
+annotation.source.type.GENE_ONTOLOGY=Gene Ontology
+annotation.source.type.PHYLOP=PhyloP Scores
+annotation.source.type.GENOMIC_REGIONS=Genomic Regions (Custom)
+annotation.source.type.GENESET=Gene Set (Custom)
+annotation.source.type.VARIANTDB=VariantDB (Custom)
+annotation.source.type.PREFERRED_TRANSCRIPT_SET=Transcript Set (Custom)
+annotation.source.type.CLINVAR=ClinVar
+annotation.source.type.DGV=DGV
+
+# Analyses
+
+analysis.details.header=Details
+analysis.details.no.record.selected=<p>Analyses represent workflows that have been executed on a set of samples. To launch an analysis you can either <a href="analysis-launch.html">manually launch</a> an analysis, which also allows you to analyze multiple samples using the same workflow, or <a href="batch-analysis-launch.html">batch launch</a> which allows you to analyze multiple samples using the same or different workflows. See the <a href="/ir/help/index.html#analyses" target="_blank">help guide</a> for more information.</p><p>Select a row to view further details and actions.</p>
+analysis.details.baseline=Copy Number
+analysis.details.nobaseline=No Baseline
+analysis.errorLog.header=Error Log
+analysis.errorLog.link=Log
+analysis.summary.header=Summary
+analysis.summary.application=Application
+analysis.summary.group=Group
+analysis.summary.workflow=Workflow
+analysis.summary.reference=Reference
+analysis.summary.target.region=Target Regions
+analysis.summary.hotspot.region=Hotspot Regions
+analysis.summary.fusion.panel=Fusion Panel
+analysis.summary.annotations=Annotations
+analysis.summary.samples=Samples
+analysis.summary.plugins=Plugins
+analysis.summary.your.selections=Your Selections
+analysis.summary.price=Price
+analysis.summary.filters=Filters
+analysis.summary.baseline=Copy Number
+
+analysis.results.plugins.header=Post-Analysis Plugins
+analysis.results.plugins.help=
+analysis.locus.tooltip.message=Click to launch IGV for this locus
+
+batch.analysis.help=The batch analysis launch page allows you to upload a set of analyses to launch in parallel (<a href="analyses/batch_analyses_example_file">download example</a>). These analyses can cover any combination of workflows. <a href="/ir/help/index.html#analysis-howLaunch-batch" target="_blank">Learn more...</a>
+batch.analysis.details.header=Batch Details
+batch.analysis.entry.noPlugins=-
+batch.analysis.error.messageToViewDetails=Please select an error to view the corresponding errors
+batch.analysis.error.details.header=Error details
+batch.analysis.actions.warning=Not all actions are available if you have selected different analysis types or incomplete analyses.
+batch.analysis.delete.confirm=Are you sure you want to delete the selected analyses?
+batch.analysis.delete.response.success=__deleted__ of __total__ analyses have been deleted.
+batch.analysis.delete.response.error=__failed__ of __total__ analyses could not be deleted.
+analysis.fetch.error=Sorry, there was an error while retrieving analysis <strong>__analysis.name__</strong>
+analysis.delete.confirm=Are you sure you want to delete this analysis?
+analysis.delete.success=The analysis <strong>__analysis.name__</strong> has been deleted
+analysis.sendToReport.success=The analysis <strong>__analysis.name__</strong> has been sent to the Report role.
+analysis.abort.success=The analysis <strong>__analysis.name__</strong> has been aborted.
+analysis.sendBack.confirm.text=Are you sure you want to send this analysis back to the Analyze role?
+analysis.sendBack.success=The analysis <strong>__analysis.name__</strong> has been sent back
+analysis.sendBack.error=Sorry, there was an error sending back your analysis <strong>__analysis.name__</strong>
+analysis.sendBack.confirm.title=Confirm Send Back
+analysis.share.response.success=The analysis was shared
+analysis.unshare.response.success=The analysis was unshared
+analysis.unshare.response.failure=Failed to unshare the analysis
+sharing.email.missing=Email address is required
+sharing.email.invalid=Invalid email address
+analysis.checkedOutBy.alert=This analysis is currently being edited by __checkedOutByFirst__ __checkedOutByLast__. You are in View only mode.
+analysis.shared.alert=This is a shared analysis from __name__ in __organization__
+analysis.checkIn.error=Error checking the current analysis
+analysis.timeout.error=Request to retrieve variants timed out
+batch.analysis.status.error=Error retrieving the status of the batch analysis file
+batch.analysis.invalid.file=Invalid batch analysis file
+batch.analysis.get.error=Error retrieving the batch analyses
+batch.analysis.share.response.success=The analyses were shared
+batch.analysis.share.response.failure=Failed to share the analyses because \u201C__objectName__\u201D \
+  has an error \u201C__objectError__\u201D
+batch.analysis.export.processing=Preparing data for export, download will start automatically when it is ready
+batch.analysis.delete.processing=Please wait while we delete your analyses...
+batch.samples.delete.processing=Please wait while we delete your samples...
+
+analysis.export.processing=Your download is being prepared ...
+
+purchase.order.label=PO Number
+analysis.purchase.help=<p>Purchase price shown here is for either advance purchase consumption or new purchase \
+  initiation. Advance purchase token will be used, if available. Purchases using credit card may be made from \
+  the administrator's account on <a target="_blank" href="http://www.lifetechnologies.com">lifetechnologies.com</a>.</p>
+AnalysisSearchOption.RUNNING=Running
+AnalysisSearchOption.COMPLETED=Successful
+AnalysisSearchOption.ERROR=Failed
+AnalysisSearchOption.PENDING_REVIEW=Pending Review
+AnalysisSearchOption.PENDING_REPORT_GENERATION=Pending Report Generation
+AnalysisSearchOption.FLAGGED=Flagged
+AnalysisSearchOption.CHECKED_OUT=Checked Out
+AnalysisSearchOption.ABORTED=Aborted
+AnalysisSearchOption.SHARED=Shared
+
+AnalysisStatus.QUEUED=Queued
+AnalysisStatus.PENDING=Pending
+AnalysisStatus.RUNNING=Running
+AnalysisStatus.SUCCESSFUL=Successful
+AnalysisStatus.FAILED=Failed
+AnalysisStatus.ABORTED=Aborted
+
+AnalysisStage.ANALYSIS=Analysis
+AnalysisStage.VARIANT_CLASSIFICATION=Variant Classification
+AnalysisStage.REPORT_PUBLISHING=Report Publishing
+AnalysisStage.INTERPRETATION_ASSIGNMENT=Interpretation Assignment
+AnalysisStage.VARIANT_REVIEW=Variant Review
+AnalysisStage.METAGENOMICS_REVIEW=Review
+AnalysisStage.PENDING_REPORT=Pending Report
+AnalysisStage.REPORT_PUBLISHED=Report Published
+AnalysisStage.REPORT_GENERATION=Report Generation
+AnalysisStage.PUSHED_BACK=Pushed Back
+
+AnalysisAction.CHECK_IN=Check In
+AnalysisAction.CHECK_OUT=Check Out
+AnalysisAction.MANAGE_ATTACHMENTS=Attachments
+AnalysisAction.EDIT_VARIANTS=Edit Analysis Results
+AnalysisAction.VIEW_VARIANTS=View Analysis Results
+AnalysisAction.DOWNLOAD_UNFILTERED_DATA=Download All Variants
+AnalysisAction.DOWNLOAD_UNFILTERED_DATA_METAGENOMICS=Download Results
+AnalysisAction.DOWNLOAD_FILTERED_DATA=Download Filtered Variants
+AnalysisAction.SEND_BACK_TO_VARIANT_REVIEW=Send Back to Analyze
+AnalysisAction.AUDIT_LOG=Audit Log
+AnalysisAction.DELETE=Delete
+AnalysisAction.FAVORITE=Flag
+AnalysisAction.UNFAVORITE=Unflag
+AnalysisAction.VIEW_METAGENOMICS=View Metagenomics Result
+AnalysisAction.SHARE=Share
+AnalysisAction.SEND_TO_REPORT_GENERATION=Send to Report Role
+AnalysisAction.EXPORT_ANALYSIS_LOG_FILE=Download Logs
+AnalysisAction.STOP_PARTICIPATION=Stop Sharing
+AnalysisAction.ABORT=Abort
+AnalysisAction.EXPORT_AUDIT_LOG=Export Audit Log
+AnalysisAction.EXPORT_QC_PACKAGE=Export QC Package
+AnalysisAction.EXPORT_QC_REPORT=Export QC Report
+AnalysisAction.VISUALIZE=Visualize
+
+# batch actions
+AnalysisAction.BATCH_EXPORT=Export
+AnalysisAction.BATCH_SHARE=Share
+AnalysisAction.BATCH_DELETE=Delete
+AnalysisAction.BATCH_VISUALIZE=Visualize
+# Report actions
+AnalysisAction.VIEW_QC_REPORT=View QC Report
+AnalysisAction.PREVIEW_FINAL_REPORT=Generate Report
+AnalysisAction.VIEW_FINAL_REPORT=View Final Report
+
+AnalysisAction.shortName.EDIT_VARIANTS=Edit
+AnalysisAction.shortName.VIEW_VARIANTS=View
+AnalysisAction.shortName.VIEW_METAGENOMICS=View
+
+analysis.launch.title=Analysis ready to launch!
+
+report.irVersion=Ion Reporter Version
+report.editedBy=Edited by
+report.analyzedBy=Analyzed by
+report.analyzedDate=Analyzed on
+report.launchedBy=Launched by
+report.launchedDate=Launched on
+report.workflow=Workflow
+report.annotations=Annotations
+report.reference=Reference
+report.baseline=Copy Number
+report.sampleName=Sample Name
+report.gender=Gender
+report.relationship=Relationship
+report.barcode=Bar Code
+report.chipType=Chip Type
+report.chipID=Chip ID
+report.libraryPreparation=Library Preparation
+report.deviceID=Device ID
+report.metric=Metric
+report.cnvBaseline=Copy Number Baseline
+report.calledGender=Called Gender
+report.mDNAToAutosomalDNARatio= mtDNA/autosomalDNA
+
+analysis.launch.review=Review the selected options, name your analysis and then launch it.
+analysis.launch.action=Launch Analysis
+analysis.launch.form.name=Analysis Name
+analysis.launch.success=<strong>Congrats!</strong> __analysis.name__ successfully started.
+analyses.launch.multiple={0} out of {1} analyses
+
+analysis.launch.workflow.help=Select the workflow you wish to launch. <a href="/ir/help/index.html#analysis-workflow" target="_blank">Learn more...</a>
+analysis.launch.samples.SINGLE.help=Select the sample you wish to analyze. You can select multiple samples and each one will be treated as a separate analysis. <a href="/ir/help/index.html" target="_blank">Learn more...</a>
+analysis.launch.samples.SINGLE_RNA_FUSION.help=Select the sample you wish to analyze. You can select multiple samples and each one will be treated as a separate analysis. <a href="/ir/help/index.html" target="_blank">Learn more...</a>
+analysis.launch.samples.MULTI.help=Select the samples you wish to analyze. You can select multiple samples to be analyzed as part of the analysis. <a href="/ir/help/index.html#analysis-samples" target="_blank">Learn more...</a>
+analysis.launch.samples.PAIRED.help=Select the samples you wish to analyze and click the "Add Samples" button, then give your relationship a name. You can create multiple relationships and each one will be treated as a separate analysis. <a href="/ir/help/index.htm#analysis-samples" target"_blank">Learn more...</a>
+analysis.launch.samples.PAIRED_TUMOR_NORMAL.help=Select the samples you wish to analyze and click the "Add Samples" button, then give your relationship a name. You can create multiple relationships and each one will be treated as a separate analysis. <a href="/ir/help/index.htm#analysis-samples" target"_blank">Learn more...</a>
+analysis.launch.samples.TRIO.help=Select the samples you wish to analyze and click the "Add Samples" button, then give your relationship a name. Only samples with a defined gender can be used in a trio analysis. To update your samples to provide gender information please visit <a href="samples.html">samples page</a>. You can create multiple relationships and each one will be treated as a separate analysis. <a href="/ir/help/index.html#analysis-samples" target"_blank">Learn more...</a>
+analysis.launch.samples.DNA_RNA_FUSION.help=Select the samples you wish to analyze and click the "Add Samples" button, then give your relationship a name. You can create multiple relationships and each one will be treated as a separate analysis. <a href="/ir/help/index.htm#analysis-samples" target"_blank">Learn more...</a>
+analysis.launch.samples.DNA_RNA_FUSION.info=Only samples that have the sample type, cancer type, and percent cellularity attributes defined can be assigned to an analysis. Please edit the sample to modify these attributes.
+analysis.launch.plugins.help=Select the plugins you wish to include in your analysis. Pricing information for your analysis will be shown on the next page. <a href="/ir/help/index.html#analysis-plugins" target"_blank">Learn more...</a>
+analysis.launch.confirm.help=
+analysis.launch.plugins.postAnalysis.notSelectable=This is a post-analysis plugin and will be available during variant review.
+analysis.launch.plugins.inAnalysis.header=In-Analysis Plugins
+analysis.launch.plugins.postAnalysis.header=Post-Analysis Plugins
+analysis.launch.plugins.postAnalysis.warning=These plugins are displayed here for <strong>informational purposes only</strong>. You will be able to select and run them when reviewing your analysis results.
+
+analysis.error.name=Please enter a valid analysis name
+analysis.error.duplicate.name=Please provide a unique name for each analysis.
+analysis.error.workflow=Please select a workflow
+analysis.error.specimenGroup=Please select a sample group
+analysis.error.specimen.group.not.fully.defined=Not all groups created have valid names and samples
+analysis.error.specimen.group.missing=Please create at least one specimen group to analyze
+analysis.error.duplicate.specimen.group.name=Multiple defined groups share the same name
+analysis.error.timeout.msg=Sorry, we did not receive a timely response from the server. Please be patient while we address the problem.
+analysis.error.insufficientFunds=Sorry, there are insufficient funds to complete this transaction
+analysis.error.paymentAccountMissing=Sorry, we were unable to locate the payment account required to complete this transaction
+analysis.error.timeout.value=100000
+
+analysis.summary.selected.specimen.groups=Selected Specimen Groups
+
+analysis.summary.specimengrouptype.SINGLE=Sample
+analysis.summary.specimengrouptype.SINGLE_RNA_FUSION=Fusions Sample
+analysis.summary.specimengrouptype.PAIRED=Pair
+analysis.summary.specimengrouptype.PAIRED_TUMOR_NORMAL=Tumor-Normal
+analysis.summary.specimengrouptype.MULTI=Sample
+analysis.summary.specimengrouptype.TRIO=Trio
+analysis.summary.specimengrouptype.DNA_RNA_FUSION=Group
+
+variant.review.help=<p>To learn more about reviewing your results, visit the <a href="/ir/help/index.html#analyses" target="_blank">help guide</a>.</p>
+
+variant.review.actions.HIDE=Hide
+variant.review.actions.UNHIDE=Unhide
+variant.review.actions.ADD_TO_VARIANT_KB=Add / Remove from MyVariants List
+variant.review.actions.CLASSIFY=Classify Variants
+variant.review.actions.ORDER_TAQMAN=Order TaqMan Assay
+variant.review.actions.ORDER_CE=Order CE Primers
+
+variant.review.ocp.label.name=Analysis Name
+variant.review.ocp.label.cancertype=Cancer Type
+variant.review.ocp.label.qcsummary=QC Summary
+variant.review.ocp.value.qcsummary.PASS=Pass
+variant.review.ocp.value.qcsummary.FAIL=Fail
+variant.review.ocp.value.qcsummary.OTHER=Unknown
+variant.review.ocp.label.rnaReadCounts=Total Mapped Fusion Panel Reads
+variant.review.ocp.label.mapd=MAPD
+variant.review.ocp.tooltip.mapd=Median Absolute Pairwise Difference
+
+
+VariantGroup.DEFAULT=Filtered In Variants
+VariantGroup.HIDDEN=Hidden Variants
+VariantGroup.FILTERED_OUT=Filtered Out Variants
+VariantGroup.REQUESTED=Requested Variants
+
+analysis.variants.classification.column.header=Classification
+analysis.variants.classification.bulk.header=Classify Selected Variants
+analysis.variant.classification.UNCLASSIFIED=Unclassified
+analysis.variant.classification.UNKNOWN=Unknown
+analysis.variant.classification.BENIGN=Benign
+analysis.variant.classification.SUSPECTED_BENIGN=Suspected Benign
+analysis.variant.classification.DELETERIOUS=Deleterious
+analysis.variant.classification.SUSPECTED_DELETERIOUS=Suspected Deleterious
+
+analysis.variant.myvariants.state.bulk=Add / Remove from MyVariants List
+analysis.variant.myvariants.state.none=None
+analysis.variant.myvariants.state.IMPORTANT=Important
+analysis.variant.myvariants.state.IGNORE=Ignore
+
+analysis.variant.chromosome.filter.label=Chromosome
+analysis.variant.chromosome.filter.all=All
+
+analysis.variant.calledGender=Called Gender
+analysis.variant.mDNAToAutosomalDNARatio=mtDNA/autosomalDNA
+
+analysis.switchto.actions.switchTo=Switch To
+analysis.switchto.actions.qcReport=QC Report
+analysis.switchto.actions.finalReport=Final Report
+analysis.switchto.actions.auditReport=Audit Log
+
+analysis.auditLog.title=Audit Log
+analysis.auditLog.actions.back=Back
+analysis.auditLog.actions.export.label=Export
+analysis.auditLog.actions.export.pdf=PDF
+analysis.auditLog.actions.results=Analysis Results
+analysis.auditLog.analysis.info=Analysis Information
+analysis.auditLog.analysis.reportVersion=Ion Reporter Version
+analysis.auditLog.analysis.launchedBy=Launched by
+analysis.auditLog.analysis.editedBy=Edited By
+analysis.auditLog.analysis.analyzedDate=Analyzed on
+analysis.auditLog.analysis.workflow.name=Workflow
+analysis.auditLog.analysis.workflow.header=Details
+analysis.auditLog.analysis.workflow.description=Description
+analysis.auditLog.analysis.workflow.grouping=Grouping
+analysis.auditLog.analysis.workflow.applicationType=Application Type
+analysis.auditLog.analysis.annotations.name=Annotations
+analysis.auditLog.analysis.annotations.sources.header=Annotation Sources
+analysis.auditLog.analysis.annotations.sources.name=Name
+analysis.auditLog.analysis.annotations.sources.type=Type
+analysis.auditLog.analysis.annotations.sources.version=Version
+analysis.auditLog.analysis.baseline.header=Details
+analysis.auditlog.analysis.baseline.type.label=Type
+analysis.auditlog.analysis.baseline.targetRegion.label=Target Region
+analysis.auditlog.analysis.baseline.description.label=Description
+analysis.auditLog.analysis.reference=Reference
+analysis.auditLog.specimen.info=Sample Information
+analysis.auditLog.specimen.name=Sample Name
+analysis.auditLog.specimen.gender=Gender
+analysis.auditLog.specimen.relationship=Relationship
+analysis.auditLog.specimen.barcode=Bar Code
+analysis.auditLog.specimen.chipType=Chip Type
+analysis.auditLog.specimen.chipId=Chip ID
+analysis.auditLog.specimen.libraryPreparation=Library Preparation
+analysis.auditLog.specimen.deviceId=Device ID
+analysis.auditLog.log.title=Log Information
+analysis.auditLog.log.info=This section shows a list of the actions that have been performed on this analysis.
+analysis.auditLog.event.ADD=Add
+analysis.auditLog.event.MODIFICATION=Modification
+
+analysis.report.successful.save=Report has been successfully published
+
+#Sample Messages
+sample.define.dropdown=Define Samples
+sample.details.header=Details
+manageSample.details.header=Sample Details
+sample.details.no.record.selected=<p>Samples represent a collection of data (sequence reads) from one or more sequencing runs. To import sample into Ion Reporter you can upload using the Ion Reporter Uploader, define a <a href="samples-manual.html">sample manually</a>, or <a href="samples-csv.html">batch define</a> a set of samples. See the <a href="/ir/help/index.html#samples" target="_blank">help guide</a> for more information.</p><p>To create sample attributes or controlled vocabularies used to annotate samples, visit <a href="samples-presets.html">sample presets</a>.</p><p>Select a row to view further details and actions.</p>
+import.sample.help=<p>Samples represent a collection of data (sequence reads) from one or more sequencing runs. To import sample into Ion Reporter you can upload using the Ion Reporter Uploader, define a <a href="samples-manual.html">sample manually</a>, or <a href="samples-csv.html">batch define</a> a set of samples. See the <a href="/ir/help/index.html#samples" target="_blank">help guide</a> for more information.</p><p>To create sample attributes or controlled vocabularies used to annotate samples, visit <a href="samples-presets.html">sample presets</a>.</p><p>Select a row to view further details and actions.</p>
+sample.define.manual.samples.help=Select the files you wish to include in your sample, click the Add Sample button, then provide a name. To add or edit attributes to your sample(s), please proceed to the next step. <a href="/ir/help/index.html#samples-manual" target="_blank">Learn more...</a>
+sample.define.manual.attributes.help=Select which attributes you want to associate with your sample and provide the input values. <a href="/ir/help/index.html#samples-manual" target="_blank">Learn more...</a>
+sample.define.manual.confirm.help=
+
+sample.define.import.samples.help=The batch samples page allows you to define a set of samples in parallel (<a href="__exampleSampleImportUrl__">download example</a>). <a href="/ir/help/index.html#samples-csv" target="_blank">Learn more...</a>
+sample.define.import.samples.invalid=The file format is invalid! Please check the format and try again
+sample.define.import.samples.status.error=Error retrieving the status of the batch samples file
+sample.define.import.samples.complete=Your file has been successfully uploaded. Click next to proceed with importing these samples.
+
+sample.define.name.duplicate=Sample name already exists.
+sample.define.name.invalid=Sample name must be at least 1 characters and can only contain alphanumeric, underscore, dash, dot or space.
+
+sample.define.action.MANUAL=Manual
+sample.define.action.BATCH=Import from CSV
+sample.define.action.TS_IMPORT=Import from TS Dx
+
+sample.define.action.url.MANUAL=samples-manual.html
+sample.define.action.url.BATCH=samples-csv.html
+sample.define.action.url.TS_IMPORT=samples-ts.html
+
+sample.delete.success=Selected sample(s) deleted successfully.
+sample.delete.warning=<strong>Warning!</strong> The files used in your sample will be deleted! If a file is being used by another sample, it will not be deleted
+sample.delete.confirm=Are you sure you want to delete this sample?
+sample.delete.nosamples=Samples cannot be deleted as they are already being used in a planned run.
+
+sample.preset.vocab.unique=Vocabulary terms must be unique
+
+sample.type.DNA=DNA
+sample.type.RNA=RNA
+sample.type.ANEUPLOIDY=Aneuploidy
+sample.type.METAGENOMICS=Metagenomics
+sample.type.VCF=VCF
+
+batch.samples.details.header=Batch Details
+batch.samples.actions.warning=Not all actions are available if you have selected samples that are currently being used in an analysis.
+batch.samples.delete.confirm=Are you sure you want to delete the selected samples?
+batch.samples.delete.response.success=__deleted__ of __total__ samples have been deleted.
+batch.samples.delete.response.error=__failed__ of __total__ samples could not be deleted.
+
+SampleAction.DELETE=Delete
+SampleAction.EDIT=Edit
+SampleAction.LOCK=Lock
+SampleAction.VIEW_DETAILS=View Details
+SampleAction.VIEW_AUDIT_LOG=Audit Log
+SampleAction.EXPORT_AUDIT_LOG=Export Audit Log
+SampleAction.BATCH_DELETE=Delete
+
+sample.delete.popup.warning=Following sample(s) cannot be deleted as already being used in a planned run.
+sample.delete.popup.confirm=Are you sure you want to delete the following Sample(s) ?
+sample.delete.popup.title=Confirm Deletion of Sample(s)
+plan.delete.popup.title=Confirm Deletion of Plan(s)
+plan.delete.popup.confirm=Are you sure you want to delete the following Plan(s) ?
+
+#Specimen
+
+specimen.add.label=Add New Specimen
+specimen.edit.label=Edit Specimen
+specimen.add.note.label=Add Notes
+specimen.add.note.link=Add Note
+specimen.add.success=<strong>Congrats!</strong> The specimen has been successfully added!
+specimen.edit.success=<strong>Congrats!</strong> The specimen has been successfully updated!
+specimen.delete.success=<strong>Congrats!</strong> The specimen has been successfully deleted!
+specimen.add.notes.success=<strong>Congrats!</strong> Notes have been successfully added!
+specimen.delete.label=Delete Specimen
+specimen.delete.message=Are you sure you want to delete selected specimen ?
+grid.label.specimenId=Specimen ID
+grid.label.patientId=Patient ID
+grid.label.specimenSource=Specimen Source
+grid.label.orderingPhysician=Ordering Physician
+grid.label.specimenCondition=Specimen Condition
+grid.label.collectionDate=Collection Date
+grid.label.receiveTime=Recieve Time
+grid.label.referenceInterval=Reference Interval
+grid.label.gender=Gender
+
+#plan A Run
+sample.planARun.title=Plan a Run
+sample.planARun.selectAssay=Select Assay
+sample.planARun.planRunName=Name
+sample.planARun.addNote=Notes
+sample.planARun.selectedSamples=Number of Samples
+
+SpecimenStatus.PENDING=Pending
+SpecimenStatus.PUBLISHED=Published
+SpecimenStatus.DISABLED=Disabled
+SpecimenStatus.LOCKED=Locked
+SpecimenStatus.DELETED=Deleted
+
+sample.relationships.trio=Trios
+sample.relationships.pairedTN=Tumor-Normal Pairs
+sample.relationships.paired=Sample Pairs
+sample.relationships.fusion=Sample Groups
+
+sample.error.name.invalid=Please enter valid characters for a name
+sample.error.name.duplicate=A sample with this name already exists
+sample.error.files.empty=A sample requires one or more files
+sample.error.files.mismatch=A sample cannot mix file types
+sample.error.files.vcf=A sample may only contain a single VCF file or multiple BAM files
+
+add.samples.name.duplicate=Group name already exists.
+add.samples.name.invalid=Group name must be at least 3 characters and can only contain alphanumeric, underscore, dash, dot or space.
+
+search.sampleid=Sample ID
+search.createdBy=Created By
+search.createdOn=Created On
+
+sample.save.success=<strong>Congrats!</strong> __sample.valid__ of __sample.total__ samples have been saved.
+
+specimen.role.FATHER=Father
+specimen.role.MOTHER=Mother
+specimen.role.CHILD=Child
+specimen.role.TUMOR=Tumor
+specimen.role.NORMAL=Normal
+specimen.role.SAMPLE=Sample
+specimen.role.CONTROL=Control
+specimen.role.PROBAND=Proband
+specimen.role.DNA_FUSION=DNA Sample
+specimen.role.RNA_FUSION=Fusions Sample
+specimen.role.RNA_SINGLE=RNA
+specimen.role.NONE=None
+
+specimen.role.RNA.PROBAND=Fusions Sample
+
+# Attributes Messages
+attribute.detail.title=Details
+
+attribute.create.name.label=Name
+attribute.create.description.label=Description
+attribute.create.encrypted.label=Encrypted
+attribute.create.lov.label=Terms
+
+attribute.create.text.label=Preset Value
+
+attribute.create.STRING.title=Text Preset
+attribute.create.INTEGER.title=Integer Preset
+attribute.create.FLOAT.title=Float Preset
+attribute.create.BOOLEAN.title=Boolean Preset
+attribute.create.FILE.title=File Preset
+attribute.create.LOV.title=Controlled Vocabulary Preset
+
+attribute.type.STRING=Text
+attribute.type.FILE=File
+attribute.type.BOOLEAN=Boolean
+attribute.type.INTEGER=Integer
+attribute.type.FLOAT=Float
+attribute.type.LOV=Controlled Vocabulary
+
+attribute.status.PENDING=Pending
+attribute.status.PUBLISHED=Successful
+attribute.status.DISABLED=Disabled
+attribute.status.LOCKED=Locked
+attribute.status.DELETED=Deleted
+
+attribute.save.success=<strong>Congrats!</strong> Your attribute was successfully saved!
+
+attribute.delete.success=The attribute __item.name__ was successfully deleted.
+attribute.delete.header.confirm=Confirm Delete (__name__)
+attribute.delete.confirm=If your preset is used in samples, the corresponding attribute in the samples will be deleted. Are you sure you want to delete this Sample Preset?
+attribute.delete.warning=
+
+attribute.error.name.invalid=Attribute name is invalid
+attribute.error.type.missing=Attribute type is missing
+attribute.error.terms.invalid=Controlled vocabulary attribute must contain at least one term
+attribute.error.terms.not.unique=Controlled vocabulary attribute terms must not contain duplicates
+
+attribute.gender.MALE=Male
+attribute.gender.FEMALE=Female
+
+#Admin Messages
+user.action.DELETE=Delete
+user.action.EDIT=Edit
+user.action.ACCEPT=Accept
+user.action.REJECT=Reject
+user.action.RESET_PASSWORD=Reset Password
+
+user.role.ROLE_ANALYZE=Analyze
+user.role.ROLE_REPORT=Report
+user.role.ROLE_IMPORT=Import
+user.role.ROLE_ORGADMIN=Admin
+user.role.ROLE_LTADMIN=LT Admin
+
+user.details.header=User Details
+user.details.no.record.selected=<p>This is the set of users which have access to your Ion Reporter organization. See the <a href="/ir/help/index.html#admin" target="_blank">help guide</a> for more information.</p><p>Select a row to view further details and actions.</p>
+admin.successful.user.creation=<strong>Congrats!</strong> The user has been successfully added!
+admin.successful.user.modification=<strong>Congrats!</strong> The user has been successfully updated!
+admin.manage.user.missing.first.name=First Name is Required
+admin.manage.user.short.first.name=First Name must be at least three characters
+admin.manage.user.missing.last.name=Last Name is Required
+admin.manage.user.short.last.name=Last Name must be at least three characters
+admin.manage.user.missing.email=Email is Required
+admin.manage.user.missing.roles=You must select at least one role for this user
+admin.user.delete.success=The user <strong>__name__</strong> has been successfully deleted.
+admin.user.reject.success=The user <strong>__name__</strong> has been successfully rejected.
+admin.user.password.reset.confirm.header=Confirm Password Reset
+admin.user.password.reset.confirm.body=Are you sure you want to send a password reset email to this user?
+admin.user.password.reset.success=<strong>__lastName__, __firstName__</strong> will receive an email to set up their new password.
+admin.user.password.reset.error=Failed to reset the password for <strong>__lastName__, __firstName__</strong>.
+admin.user.set.password.header=Reset User Password
+admin.user.set.password.body=This user will no longer be able to log in with their previous password.
+admin.user.set.password.success=You have successfully changed the password for <strong>__lastName__, __firstName__</strong>, please notify them with the change.
+admin.user.set.password.error.empty=Password cannot be empty.
+admin.user.set.password.error.match=Passwords do not match.
+admin.user.set.password.error.user.saved=Saving the user password has failed but the user has been saved successfully.
+admin.user.analyze.import.role.info=The Analyze role includes Import role functionality.
+admin.user.delete.confirm=Are you sure you want to delete this user?
+admin.user.reject.confirm=Are you sure you want to reject this user?
+admin.manage.user.DUPLICATE_EMAIL=EmailId already exists.
+
+admin.user.import.file=Users Import File (.csv)
+admin.user.import.success=You have successfully imported <strong>__successimport__</strong> users! You can set the user(s) password by editing the user's details from the Admin page.
+admin.user.import.errorFile=Errors were encountered while importing users from the file. These errors can be downloaded <a href='__downloadUrl__'>here</a>.
+admin.user.import.failed=Errors were encountered while importing users from the file.
+
+# Annotation Sets
+annotationSet.error.name=Name of annotation set is invalid
+annotationSet.error.exists=An annotation set with the same name already exists
+annotationSet.error.source.exists=An annotation source with the same name and version already exists
+annotationSet.error.sources=An annotation set must have one or more source
+
+annotationSet.delete.header.confirm=Confirm Delete (__name__)
+annotationSet.delete.confirm=Are you sure you want to delete this Annotation Set?
+annotationSet.delete.warning=Warning: If you delete this preset, any workflows that use it will now use the Ion-default preset
+annotationSet.delete.success=The Annotation Set <strong>__item.name__</strong> has been deleted
+
+
+# Filter Chains
+filterChain.error.name=Name of filter chain is invalid
+filterChain.error.exists=A filter chain with the same name already exists
+filterChain.error.filters=A filter chain must have one or more filters
+filterChain.delete.confirm=Are you sure you want to delete this filter chain?
+
+filterChain.totalGenes=Total Genes
+filterChain.totalVariants=Total Variants
+
+filterChain.delete.success=The filter chain __item.name__ has been deleted.
+
+filter.logical.include.missing=One or more filters includes<br>unannotated variants
+filter.other.include.missing=Includes Unannotated Variants
+
+# Payment Accounts
+payment.account.successful.creation=<strong>Congrats!</strong> The payment account has been linked!
+payment.account.successful.deletion=The payment account has been successfully unlinked.
+
+# Upload Messages
+upload.file.missing=Missing data file
+upload.success=File imported successfully
+upload.failed=File upload failed
+upload.invalid.file=Uploaded file is invalid
+upload.invalid.fileType=<strong>Error!</strong> Invalid file type
+upload.errorCode.BEDFILE_EXTENSION_INVALID=A BED file must end with a ".bed" extension
+upload.errorCode.TSVFILE_EXTENSION_INVALID=A TSV file must end with a ".tsv" extension
+upload.errorCode.FILE_ALREADY_PRESENT=A file with the same name already exists! Please delete it in workflow presets before uploading again.
+
+upload.label=Upload
+upload.label_vcf=Upload VCF
+upload.selectFile=Select file
+upload.change=Change
+upload.remove=Remove
+upload.cancel=Cancel
+upload.close=Close
+upload.validating=Please wait while your file is validated ...
+upload.validation.timeout=The validation is taking longer than expected. Please return later to see the status of your upload.
+upload.supportedTypes=Supported types: png, gif, jpg, jpeg
+sample.vcf.upload.supportedTypes=Supported types: vcf, bcf, vcf.gz, bcf.gz
+hotspotregion.upload.supportedTypes=Supported types: bed
+targetregion.upload.supportedTypes=Supported types: bed
+targetregion.download.processing=Your download is being prepared ...
+GENOMIC_REGIONS.upload.supportedTypes=Supported types: bed
+GENESET.upload.supportedTypes=Supported types: txt
+VARIANTDB.upload.supportedTypes=Supported types: vcf
+PREFERRED_TRANSCRIPT_SET.upload.supportedTypes=Supported types: tsv
+
+primers.upload.file.missing=Missing primers file
+primers.upload.file.nonAscii=Primers file contains non ASCII characters
+
+name.error.short=Name must be at least one characters long
+name.error.long=Name must be less or equal to 256 characters long
+name.error.content.badchar=Name must only contain alphanumeric characters, underscore, hyphen, period and space
+name.error.content.nospace=Name must only contain alphanumeric characters, underscore, hyphen and period
+
+CNVBaselineType.AMPLISEQ=AmpliSeq
+CNVBaselineType.AMPLISEQ_EXOME=AmpliSeq-Exome
+CNVBaselineType.TARGETSEQ_EXOME=TargetSeq-Exome
+CNVBaselineType.WHOLEGENOME_LOWCOVERAGE=Low-coverage Whole-Genome
+
+CNVBaselineTypeDesc.AMPLISEQ=When using Ion AmpliSeq&trade; libraries
+CNVBaselineTypeDesc.AMPLISEQ_EXOME=When using Ion AmpliSeq&trade; Exome libraries
+CNVBaselineTypeDesc.TARGETSEQ_EXOME=When using Ion TargetSeq&trade; Exome or other targeted libraries
+CNVBaselineTypeDesc.WHOLEGENOME_LOWCOVERAGE=When using whole genome libraries with whole genome amplification and low coverage (eg. Aneuploidy)
+
+CNVBaselineStatus.PENDING=Pending
+CNVBaselineStatus.QUEUED=Queued
+CNVBaselineStatus.RUNNING=Running
+CNVBaselineStatus.SUCCESSFUL=Successful
+CNVBaselineStatus.FAILED=Failed
+CNVBaselineStatus.ABORTED=Aborted
+
+AnnotationSetStatus.PENDING=Pending
+AnnotationSetStatus.VALIDATING=Validating
+AnnotationSetStatus.INVALID=Invalid
+AnnotationSetStatus.PUBLISHED=Successful
+AnnotationSetStatus.LOCKED=Locked
+
+cnvbaseline.no.type.selected=You must select a baseline type
+cnvbaseline.target.region.required=You must select or upload a target region for this baseline type.
+cnvbaseline.baselineType.help=Select the type of the Copy Number Baseline you wish to create. If creating a targeted baseline, please select or upload a target regions BED file. Please note that the workflow will have to use the same target regions file as the baseline you are creating. <a href="/ir/help/index.html#workflows-presetsCNV" target="_blank">Learn more...</a>
+cnvbaseline.baselineType.label=Baseline Type
+cnvbaseline.regions.label=Focus Analysis
+cnvbaseline.targetRegion.file.label=Target Regions File
+cnvbaseline.targetRegion.upload.label=Upload Target Regions File
+cnvbaseline.samples.help=Select ten or more samples to use as part of the baseline. Only male samples can be used to create a baseline. If you do not see your sample, please edit the sample's gender attribute. <a href="/ir/help/index.html#workflows-presetsCNV" target="_blank">Learn more...</a>
+baseline.specimens.not.enough.selected=You must select at least five samples to continue
+cnvbaseline.confirm.header=Baseline configured!
+cnvbaseline.confirm.subheader=Review the selected options, name your copy number baseline and then save it.
+cnvbaseline.confirm.save.button=Create Baseline
+baseline.summary.header=Summary
+
+cnvbaseline.details.name=Name
+cnvbaseline.details.description=Description
+cnvbaseline.details.factoryProvided=Ion Default
+cnvbaseline.details.settings=Settings
+cnvbaseline.details.type=Type
+cnvbaseline.details.samples=Samples
+cnvbaseline.details.sampleNames=Sample Names
+cnvbaseline.details.createdBy=Created By
+cnvbaseline.details.createdOn=Created On
+cnvbaseline.details.outputFilepath=Output Filepath
+cnvbaseline.details.status=Status
+cnvbaseline.details.panelName=Panel Name
+cnvbaseline.details.panelIad=Panel IAD #
+cnvbaseline.details.bedFileName=BED File Name
+cnvbaseline.details.bedFilePath=BED File Path
+cnvbaseline.errorLog.link=Log
+cnvbaseline.errorLog.header=Error Log
+
+targetregion.details.name=Name
+targetregion.details.description=Description
+targetregion.details.factoryProvided=Ion Default
+targetregion.details.settings=Settings
+targetregion.details.type=Type
+targetregion.details.createdBy=Created By
+targetregion.details.createdOn=Created On
+targetregion.details.ampliseqid=IAD Number
+
+hotspotregion.details.name=Name
+hotspotregion.details.description=Description
+hotspotregion.details.factoryProvided=Ion Default
+hotspotregion.details.createdBy=Created By
+hotspotregion.details.createdOn=Created On
+
+cnvbaseline.settings.description.label=Description
+cnvbaseline.settings.name.label=Name
+cnvbaseline.settings.type.label=Type
+cnvbaseline.settings.targetRegion.label=Target Regions
+cnvbaseline.settings.samples.label=Samples
+cnvbaseline.settings.sampleNames.label=Sample Names
+cnvbaseline.settings.createdBy.label=Created By
+cnvbaseline.settings.createdOn.label=Created On
+cnvbaseline.settings.panelName.label=Panel Name
+cnvbaseline.settings.bedFileName.label=BED File Name
+
+
+cnvbaseline.delete.warning=All workflows that use this preset will switch to using the Ion-default preset instead.
+cnvbaseline.delete.confirm=Are you sure you want to delete this Copy Number Baseline?
+cnvbaseline.delete.success=The Copy Number <strong>__item.name__</strong> has been deleted
+
+cnvbaseline.abort.confirm=Are you sure you want to abort this Copy Number Baseline?
+cnvbaseline.abort.success=The Copy Number <strong>__item.name__</strong> has been aborted
+
+targetRegionsFile.custom.label=Target Regions
+targetRegionsFile.custom.upload=Upload Target Regions File
+targetRegionsFile.configuration.label=Sequencing Platform
+targetRegionsFile.configuration.option.pgm=PGM
+targetRegionsFile.configuration.option.proton=Proton
+targetRegionType.ION_AMPLISEQ=Ion AmpliSeq&trade;
+targetRegionType.ION_TARGETSEQ=Ion TargetSeq&trade;
+targetRegionType.ION_AMPLISEQ_EXOME=Ion AmpliSeq&trade; Exome
+targetRegionType.OTHER_AMPLICON=Other Amplicon technology
+targetRegionType.OTHER_AMPLICON_EXOME=Other Amplicon Exome technology
+targetRegionType.OTHER_HYBRIDIZATION=Other Hybridization technology
+targetRegion.file.upload.success=Your file was uploaded successfully
+hotspot.file.upload.success=Your file was uploaded successfully
+hotspotregion.download.processing=Your download is being prepared ...
+
+hotspotRegionsFile.custom.upload=Upload Hotspot File
+
+targetRegionFile.delete.header.confirm=Confirm Delete (__name__)
+targetRegionFile.delete.confirm=Are you sure you want to delete this Target Region File?
+targetRegionFile.delete.success=The Target Region File <strong>__item.name__</strong> has been deleted
+
+hotspotRegionFile.delete.header.confirm=Confirm Delete (__name__)
+hotspotRegionFile.delete.warning=Warning: If this file is used in workflows, they will be switched to no hotspot file
+hotspotRegionFile.delete.confirm=Are you sure you want to delete this Hotspot File?
+hotspotRegionFile.delete.success=The Hotspot File <strong>__item.name__</strong> has been deleted
+
+file.upload.validation.success=Your file has been validated and is now available for use.
+file.upload.validation.invalid=Your file was found to be invalid. Please check the file contents and try again.
+file.upload.validation.error=An error occurred and your file could not be validated.
+
+vcfSpecimen.file.upload.success=Your VCF Sample File was uploaded successfully
+specimenFile.upload.header=Upload VCF Sample File
+specimenFile.upload.validating=Please wait while we validate your file.
+specimenFile.upload.validation.timeout=Validation of your VCF file is taking longer than expected. You can close the window and check back later.
+
+targetRegionsFile.upload.validating=Please wait while we validate your Target Regions File.
+
+# Import Ampliseq as Region Messages
+import.ampliseq.customPanelList.success=The following designs are available from your AmpliSeq account
+import.ampliseq.customPanelList.failure.invalidCredentials=Invalid credentials. Please recheck the username and password.
+import.ampliseq.customPanelList.failure.generic=Unable to load the list of designs from your AmpliSeq account because \
+  an unexpected error occurred.
+import.ampliseq.customPanel.success=Your AmpliSeq design was successfully imported
+import.ampliseq.customPanel.alreadyImported=This panel already exists in your organization's list of panels. You can \
+  import this panel again after deleting the old panel in workflow presets.
+import.ampliseq.customPanel.failure=This panel failed to import for an unexpected or unknown reason.
+import.ampliseq.fixedPanel.success=The AmpliSeq design was successfully imported
+import.ampliseq.fixedPanel.alreadyImported=This panel already exists in your organization's list of panels. You can \
+  import this panel again after deleting the old panel in workflow presets.
+import.ampliseq.fixedPanel.failure=This panel failed to import for an unexpected or unknown reason.
+import.ampliseq.label=AmpliSeq Import
+import.ampliseq.title=Import Panel from AmpliSeq
+
+
+preset.saved.successfully=<strong>Congrats!</strong> __preset.name__ was successfully created.
+
+admin.purchasing.payment.account.missing.warning=<strong>Warning!</strong>&nbsp;You don''t have a \
+Lifetechnologies.com e-commerce account linked. If you haven''t already, please visit <a href="{0}" target="_blank">\
+Life Technologies</a> to register for an e-commerce account then link it to Ion Reporter.
+admin.purchasing.payment.account.missing.nonadmin.warning=<strong>Warning!</strong>&nbsp;You don''t have a \
+Lifetechnologies.com e-commerce account linked. If you haven''t already, please visit <a href="{0}" target="_blank">\
+Life Technologies</a> to register for an e-commerce account then link it to Ion Reporter. \
+Please contact your administrator to configure your organization.
+admin.purchasing.payment.account.missing.admin.warningandlink=<strong>Warning!</strong>&nbsp;You don''t have a \
+Lifetechnologies.com e-commerce account linked. If you haven''t already, please visit <a href="{0}" target="_blank">\
+Life Technologies</a> to register for an e-commerce account then link it to Ion Reporter. \
+This account can be linked in the <a href="{1}">purchase history</a> page.
+# IR-706 Activate User / Set Password
+user.activate.successful=You have successfully set your password! Please login with your new password.
+
+#Forgot Password
+user.forgot.password.successful=Please check your email for password reset instructions.
+user.reset.password.instruction=Your new password must be at least 6 characters long, and must be alphanumeric.
+
+button.sendEmail=Send Email
+org.hibernate.validator.constraints.Email.message=not a well-formed email address
+
+IRSystemService.STOPPED=Stopped
+IRSystemService.RUNNING=Running
+
+systemService.action.success=Service '__name__' has been __action__ successfully
+systemService.action.error=Service '__name__' could not be __action__
+
+action.start.message=started
+action.stop.message=stopped
+action.restart.message=restarted
+
+
+#Create/Edit Final Report Templates
+finalReportTemplate.signoff.authors.label=Required Signatures
+finalReportTemplate.headersection.logo.file.upload.success=Image uploaded successfully
+HeaderSectionLogoFileUploadView.modal.header.title=Upload Header Logo
+workflow.final.report.template.successful.creation=<strong>Congrats!</strong> The Final Report Template has been successfully added!
+workflow.final.report.template.successful.modification=<strong>Congrats!</strong> The Final Report Template has been successfully updated!
+finalReportTemplate.error.name=Name of final report template is invalid
+finalReportTemplate.error.exists=A final report template with the same name already exists
+finalReportTemplate.error.sections=A final report template must have one or more section
+
+finalReportTemplate.delete.header.confirm=Confirm Delete (__name__)
+finalReportTemplate.delete.confirm=Are you sure you want to delete this Final Report Template?
+finalReportTemplate.delete.warning=Warning: If you delete this preset, any workflows that use it will now use the Ion-default preset
+finalReportTemplate.delete.success=The Final Report Template <strong>__item.name__</strong> has been deleted
+
+finalReportSection.HeaderSection=Header
+finalReportSection.AnalysisInformationSection=Analysis Information
+finalReportSection.BackgroundSection=Background
+finalReportSection.DisclaimerSection=Disclaimer
+finalReportSection.ReportedVariantsSection=Reported Variants
+finalReportSection.SamplesOverviewSection=Samples Overview
+finalReportSection.SignOffSection=Sign Off
+finalReportSection.VariantDetailsSection=Variant Details
+finalReportSection.CommentsSection=Comments
+
+finalReport.variantClassification.cssClass.UNKNOWN=unknown
+finalReport.variantClassification.cssClass.BENIGN=benign
+finalReport.variantClassification.cssClass.SUSPECTED_BENIGN=suspected-benign
+finalReport.variantClassification.cssClass.DELETERIOUS=deleterious
+finalReport.variantClassification.cssClass.SUSPECTED_DELETERIOUS=suspected-deleterious
+finalReport.variantClassification.cssClass.UNCLASSIFIED=unclassified
+
+variant.annotation.source.type.DBSNP=dbSNP
+variant.annotation.source.type.COSMIC=COSMIC
+variant.annotation.source.type.OMIM=OMIM
+variant.annotation.source.type.DRUGBANK=DRUGBANK
+variant.annotation.source.type.FIVETHOUSANDEXOMES=5000 EXOMES
+variant.annotation.source.type.PFAM=Pfam
+variant.annotation.source.type.GENEMODEL=Gene Model
+variant.annotation.source.type.FUNCTIONAL_SIFT_POLYPHEN=Functional SIFT/POLYPHEN Scores
+variant.annotation.source.type.GENE_ONTOLOGY=Gene Ontology
+variant.annotation.source.type.PHYLOP=PhyloP Scores
+variant.annotation.source.type.GENOMIC_REGIONS=Genomic Regions
+variant.annotation.source.type.GENESET=Gene Set
+variant.annotation.source.type.VARIANTDB=VariantDB
+variant.annotation.source.type.PREFERRED_TRANSCRIPT_SET=Preferred Transcript Set
+variant.annotation.source.type.CLINVAR=ClinVar
+variant.annotation.source.type.ONCOMINE=Oncomine
+variant.annotation.source.type.INGENUITY_VA=Ingenuity
+variant.annotation.source.type.DGV=DGV
+
+grid.column.header.desc.checkbox=Select variants to hide, add to My Variants, or classify
+grid.column.header.desc.myvariants=If a variant is flagged, it will be added to My Variants
+grid.column.header.desc.details=Variant Details
+
+grid.cell.editing.text.error=Please enter a valid __name__
+grid.cell.editing.integer.error=__name__ must be an integer
+
+ts.import.header=Import From TS Dx
+ts.import.review.header=Samples ready to import!
+ts.import.review.description=Review the selected samples and then import it.
+ts.import.button.import=Import
+
+ts.samples.server.missing.name=Name is Required
+ts.samples.server.missing.url=URL is Required
+ts.samples.server.invalid.url=The URL must be in the format `http|https://hostname|ipaddress(:port)(/path)`
+ts.samples.server.missing.credentials.username=Username is Required
+ts.samples.server.missing.credentials.password=Password is Required
+ts.samples.server.added='__name__' has been successfully added.
+ts.samples.server.removed='__name__' has been successfully removed.
+ts.samples.server.remove.confirm=Are you sure you want to remove the Linked TS Server '__name__'?
+
+ts.samples.specimens.summary.header=Summary
+ts.samples.specimens.server.name=Server Name
+ts.samples.specimens.server.username=Username
+ts.samples.specimens.daterange=Date Range
+ts.samples.specimens.samples=Samples
+ts.samples.details.header=Sample Details
+ts.samples.details.id=Sample ID
+ts.samples.details.gender=Gender
+ts.samples.details.createdBy=Created By
+ts.samples.details.createdOn=Created On
+ts.samples.details.no.record.selected=<p>Samples represent a collection of data (sequence reads) from one or more sequencing runs. To import sample into Ion Reporter you can upload using the Ion Reporter Uploader, define a <a href="samples-manual.html">sample manually</a>, or <a href="samples-csv.html">batch define</a> a set of samples. See the <a href="/ir/help/index.html#samples" target="_blank">help guide</a> for more information.</p><p>To create sample attributes or controlled vocabularies used to annotate samples, visit <a href="samples-presets.html">sample presets</a>.</p><p>Select a row to view further details.</p>
+ts.samples.review.importing=Please wait while we prepare your import
+ts.samples.import.initiated=<strong>Congrats!</strong> Your samples import has been successfully started!
+ts.samples.error.servers=Please select a server
+ts.samples.error.samples=Please select a sample
+
+view.all.label=View All
+date.range.filter.label=Filter By Date Range
+version.label=Version
+
+#Sample overview page
+sample.page.title=Samples
+
+#Sample Details
+sample.gender=Gender:
+sample.role=Role:
+sample.files=Files:
+sample.importedby=Imported By:
+sample.importedon=Imported On:
+
+#Batch Sample Details
+batch.samples.selected=Number of selected samples:
+
+#Audit Trail Details
+audit.trail.details=Audit Record Details
+audit.trail.user=User
+audit.trail.name=Name
+audit.trail.dataobjname=Data Object Name
+audit.trail.action=Action Performed
+audit.trail.timestamp=TimeStamp
+audit.trail.dataobjid=Data Object Id
+audit.trail.oldvalue=Old Value(s)
+audit.trail.newvalue=New Value(s)
+audit.reason.title=Reason
+audit.reason.lable=Reason for change
+
+#Sample Audit Log Page
+sample.audit.log.title=Audit Log
+sample.audit.label=Back
+sample.audit.exportpdf=Export PDF
+sample.audit.info=Sample Information
+sample.audit.log.info=Log Information
+
+# Manage Samples
+manage.sample.title=Manage Samples
+manage.sample.selectedsample=Selected samples:
+manage.sample.selectedcount=0
+
+manage.sample.new.title=Add New Sample
+manage.sample.edit.title=Sample
+manage.sample.id=Sample ID
+manage.sample.name=Sample Name
+manage.sample.librarykit=Library Kit
+manage.sample.barcode=Barcode ID
+manage.sample.barcodeId=Barcode ID
+manage.sample.description=Description
+manage.sample.cancel=Cancel
+manage.sample.save=Save
+manage.sample.sampleType=Sample Type
+manage.sample.cancerType=Cancer Type
+manage.sample.gender=Gender
+manage.sample.groupId=Sample Group ID
+
+audit.trail.title=Audit Trail
+audit.trail.sampleid=Sample ID
+audit.trail.samplename=Sample Name
+audit.trail.createdby=Created By
+audit.trail.cancel=Cancel
+audit.trail.print=Print
+audit.trail.export=Export
+
+# Import Samples
+import.samples.title=Import Samples
+
+# Manage Attributes
+manage.attribute.title=Manage Attributes
+manage.attribute.selectedsamples=Selected Samples
+
+add.attribute.title=Add New Attribute
+edit.attribute.title=Edit Attribute
+add.attribute.name=Attribute Name
+add.attribute.datatype=Data Type
+add.attribute.required=Required
+add.attribute.cancel=Cancel
+add.attribute.add=Save
+attribute.obsolete.confirm_message=Are you sure you want to make this attribute obsolete?
+attribute.obsolete.confirm=Confirm
+attribute.activate.confirm_message=Are you sure you want to activate this attribute ?
+attribute.activate.confirm=Confirm
+ 
+ # Install Template
+install.template.title=Install Templates
+install.template.onetouchprep = OneTouch Prep
+install.template.pgmsequencing = PGM Sequencing
+install.template.runplantemplate = Run Plan Template
+install.template.fieldengineer = Field Engineer Name
+
+# Planned Runs
+planned.runs.title=Planned Runs
+planned.runs.selectedRuns=Selected Runs
+planned.runs.review.title=Review Planned Run
+planned.runs.execute.title=Execute Planned Run
+planned.runs.edit.title=Edit Planned Run
+planned.runs.assay=Assay
+planned.runs.runShortCode=Run Short Code
+planned.runs.runBarCode=Run Barcode
+planned.runs.tubeLabel=Tube Label
+planned.runs.templatePrepKit=Template Prep Kit Barcode
+planned.runs.totalLibraries=Number of Libraries
+planned.runs.planName=Name
+planned.runs.notes=Notes
+planned.runs.remove=Remove
+planned.runs.add=Add more Libraries
+planned.runs.addLibraries=Add Libraries
+planrun.add.label=Add New Plan
+planred.runs.delete.success=<strong>Congrats!</strong> Planned Runs have been successfully deleted!
+
+#Plann Gird
+planned.grid.noOfLibraries=Number of Libraries
+planned.grid.plannedRunName=Planned Run Name
+planned.grid.lastModified=Last Modified
+planned.grid.notes=Notes
+
+#Grid
+grid.header.selectAll=(De)select All
+grid.column.createdBy=Created By
+grid.column.action=Actions
+grid.column.createdOn=Created On
+grid.column.name=Name
+grid.column.assay=Assay
+grid.column.panel=Panel
+grid.column.reanalysis=Reanalysis
+grid.column.reanalysisAssay=Reanalysis Assay
+grid.column.attributeName=Attribute Name
+grid.column.dataType=Data Type
+grid.column.obsolete=Obsolete
+grid.column.attributType=Attribute Type
+grid.column.required=Required
+grid.column.results=Results
+grid.column.qcStatus=QC Status
+grid.column.status=Status
+grid.column.makeCandidate=Make Candidate
+grid.column.sequence=Sequence
+grid.column.referenceSequence=Reference Sequence
+grid.column.state=State
+grid.column.CreatedBy=Created By
+
+#Assay Overview
+assay.title=Assays
+createassay.label=Add New
+assay.selected=Selected Assays:
+assay.search=Search
+assay.reset=Clear
+assay.lock.success=Assay locked successfully
+assay.cancel.confirm=Are you sure you want to cancel this assay?
+assay.presets.title=Assay Presets
+assay.presets.create=Create Presets
+assay.presets.report.template=Final Report Template
+
+#Assay Filter
+assay.filter.showAll=Show all
+assay.filter.only=only
+
+#Assay Save
+assay.config.title=Assay configured!
+assay.review.message=Review the summary, name your assay and then save it.
+assay.name=Assay Name:
+assay.namevalidation=Assay name must be between 1 and 50 characters in length
+assay.description=Description:
+assay.change.label=Reason for change:
+assay.save=Save Assay
+assay.cancel.warning=<strong>Warning!</strong> This assay information will not be saved!
+
+#Verification Runs
+verification.run.title=Verification Data
+verification.run.plannedRun=Planned Run
+verification.run.fieldEngName=Field Engineer Name
+verification.run.instrumentName=Instrument Name
+verification.run.otCompletion=OneTouch Completion
+verification.run.pgmCompletion=PGM Completion
+verification.run.analysisCompletion=Analysis Completion
+verification.run.csa=CSA
+result.data.sinnedOff=Signed Off Report
+data.title=Data
+data.results.otDetails=OneTouch Details
+data.results.plannedName=Planned Run Name
+data.results.instrumentName=Instrument Name
+data.results.otStartDate=OneTouch Start Date
+data.results.otCompletionDate=OneTouch Completion Date
+data.results.otOperator=OneTouch Operator
+data.results.templatePrep=Template Prep Reagent
+data.results.partNumber=Part Number
+data.results.lot=Lot #
+data.results.expDate=Expiration Date
+data.results.pgmStartDate=PGM Start Date
+data.results.pgmCompletionDate=PGM Completion Date
+data.results.pgmOperator=PGM Operator
+data.results.sequencingRea=Sequencing Reagent
+data.results.chip=Chip
+data.results.bottomBarcode=Bottom Barcode
+data.results.topBarcode=Top Barcode
+data.results.manufactureDate=Manufacture Date
+data.results.pgmDetails=PGM Details
+data.results.libraryBarcode=Library Barcode
+data.results.enrichmentYield=Enrichment Yield
+data.results.lastUpdatedOn=Last Updated On
+data.results.lastUpdatedBy=Last Updated By
+data.results.reanalyze=Reanalyze
+data.results.failed=Failed
+data.results.passed=Passed
+data.report.review=Review Report
+data.report.name=Report Name
+data.report.loadingMetrics=Loading Metrics
+data.report.filteringMetrics=Filtering Metrics
+data.results.name=Name
+data.results.selectAssay=Select a Reanalysis Assay
+data.report.count=Count
+data.report.percentage=Percentage
+data.report.creationDate=Report Creation Date
+data.report.dxVersion=Torrent Suite Dx Software Version
+data.report.runQcMetrics=Run QC Evaluation Metrics
+data.report.refRange=Reference Range
+data.report.value=Value
+data.report.metricName=Metric Name
+data.report.sampleQcMetrics=Sample QC Evaluation Metrics
+data.report.controlQcMetrics=Control QC Evaluation Metrics
+data.report.configSummary=Run and Configuration Summary
+data.report.targetSummary=Target Summary
+data.report.variantSummary=Variant Summary
+data.report.instrumentSummary=Instrument Summary
+data.report.tab.audit=Audit
+data.report.tab.files=File Locations
+data.report.tab.alleleCoverage=Allele Coverage
+data.report.tab.varient=Variants
+data.report.fileType=File Type
+data.report.path=Path
+
+data.signoff.title=Sign off Electronic Signature
+data.signoff.message=Are you sure you want to Signoff the analysis result
+data.signoff.username=User Name
+data.signoff.password=Password
+data.signoff.comments=Sign Off Comments
+data.signoff.meaning.signature=Meaning of Signature
+data.signoff.cancel=Cancel
+data.signoff.signoff=SignOff
+
+data.verificationruns.template=Verification Template Name
+data.verificationruns.templatePrep=Template Preparation
+data.verificationruns.startdate=Start Date
+data.verificationruns.completiondate=Completion Date
+data.verificationruns.operator=Operator
+
+
+#Report Template
+report.template.title=Create Report Template
+report.template.label.name=Template Name
+report.template.label.description=Description
+report.template.label.description=Description
+report.template.label.organization.name=Organization Name
+report.template.label.organization.address=Organization Address
+report.template.label.select.logo=Select Logo
+report.template.label.watermark=Watermark
+report.template.label.labdirector.name=Lab Director Name
+report.template.label.clia.number=CLIA Number
+report.template.label.legal.disclaimer=Legal Disclaimer
+
+#AlleleCoverage
+alleleCoverage.tab.chrom=Chrom
+alleleCoverage.tab.position=Position
+alleleCoverage.tab.hotspotId=Hotspot ID
+alleleCoverage.tab.ref=Ref 
+alleleCoverage.tab.readDepth=Read Depth 
+alleleCoverage.tab.refDepth=Ref Depth   
+alleleCoverage.tab.alleleDepth=Allele Depth    
+alleleCoverage.tab.refPlus=Ref+    
+alleleCoverage.tab.refMinus=Ref-    
+alleleCoverage.tab.altPlus=Alt+    
+alleleCoverage.tab.altMinus=Alt-    
+alleleCoverage.tab.hpLength=Hp length
+
+#Varient Tab
+varient.tab.type=Type
+varient.tab.zygosity=Zygosity
+varient.tab.genotypee=Genotype
+varient.tab.varFreq=Var Freq
+varient.tab.qualityScore=QualityScore
+varient.tab.coverage=Coverage
+varient.subtab.sim=SNP/INDEL/MNP
+varient.subtab.fusion=Fusion
+varient.subtab.cnv=CNV
+variant.table.geneSymbol=Gene Symbol
+variant.table.displayName=Display Name
+variant.table.testResult=Test Result
+variant.table.chr=Chr
+variant.table.position=Position
+variant.table.type=Type
+variant.table.genotype=Genotype
+variant.table.ref=Ref
+variant.table.varFrq=Var Frq
+variant.table.qualityScore=Quality Score
+variant.table.coverage=Coverage
+variant.table.hotspotID=Hotspot ID
+variant.table.fdaApprovedDrug=FDA Approved Drug
+variant.table.locus=Locus
+variant.table.readCount=Read Count
+variant.table.length=Length
+variant.table.copyNumber=Copy Number
+variant.table.tiles=#Tiles
+variant.table.cnvConfidence=CNV Confidence
+
+
+#Report
+report.button.germline=Download Analytical Report
+report.button.clinical=Download Clinical Report
+report.confirm.title=Make Candidate Report
+report.confirm.messageOne=Selected report
+report.confirm.messageTwo=will become the Candidate report. Are you sure?
+
+#Clinical Tab
+data.tab.clinical=Clinical
+data.subtab.hotspotVariants=Hotspot Variants
+
+#Library Grid
+grid.column.libraryPrepId=Library Prep ID
+grid.column.specimenId=Specimen ID
+grid.column.libraryName=Library Name
+grid.column.libraryType=Library Type
+
+#Library
+button.label.all=All
+button.label.toBePlanned=To Be Planned
+button.label.show=Show
+library.label.selectedLibrary=Selected Library
+library.label.ffpeKit=FFPE Kit Barcode
+library.label.libraryKitBarcode=Library Kit Barcode
+library.add.label=Prepare Library
+library.edit.label=Edit Library
+
+library.add.success=<strong>Congrats!</strong> The library has been successfully added!
+library.edit.success=<strong>Congrats!</strong> The library has been successfully updated!
+library.delete.success=<strong>Congrats!</strong> The library has been successfully deleted!
+library.add.notes.success=<strong>Congrats!</strong> Notes have been successfully added!
+library.delete.label=Delete Library
+library.delete.message=Are you sure you want to delete selected library ?

@@ -1,0 +1,42 @@
+<div class="container-fluid">
+     <div class="row-fluid">
+		<div class="pull-left">			
+			<div class="btn-toolbar">
+				{{t 'button.label.show'}}:&nbsp;&nbsp;				
+				<div class="btn-group" id="filterGroup">
+					<button class="btn btn-default btn-pressed" val="all">
+						{{t 'button.label.all'}}
+					</button>
+					<button class="btn btn-default" val="toBeProcessed">
+						{{t 'planned.runs.toBeStarted'}}
+					</button>
+				</div>
+			</div>
+		</div>
+        <div class="pull-right">
+            <button id="planRunAddBtn" class="btn btn-primary pull-right">{{t 'createassay.label'}}</button>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="actionSearch">
+            <button class="btn btn-default" id="planRunDelete" data-toggle="tooltip" data-placement="bottom" title="{{t 'actions.DELETE'}}" disabled><img src="{{img 'delete.png'}}"></button>
+            <span class="vpad14" >{{t 'planned.runs.selectedRuns'}}:<span class="selected-samples" id="plannedRunsCount">{{t 'manage.sample.selectedcount'}}</span></span>
+        
+        	<form id="query-form" class="form-search form-inline pull-right">
+				<!-- templates/common/search.html -->
+			</form>
+		</div>
+    </div>
+    <div class="row-fluid">
+        <div id="viewPlannedRuns-grid">
+            <!-- views/samples/manageTemplateGridView.js -->
+        </div>
+    </div>
+    <div class="modal hide fade" id="planARunDetailsModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>
+    <div class="modal hide fade" id="addPlan" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>
+    <div class="modal hide fade" id="addLibraryModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>
+    <div class="modal hide fade" id="viewNotes" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>
+    <div class="modal hide fade" id="addNotes" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>
+	<div class="modal hide fade" id="auditTrailModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>
+	<div class="modal hide fade" id="auditTrailDetailsModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>
+</div>

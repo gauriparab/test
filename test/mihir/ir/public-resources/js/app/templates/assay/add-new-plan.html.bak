@@ -1,0 +1,57 @@
+<div class="modal-scroll">
+	<form id="addPlanForm" class="form-horizontal">
+		<div class="control-group">
+			<label class="control-label">{{t 'sample.planARun.planRunName'}}: <span class="text-error requires-asterisk">*</span></label>
+			<div class="controls">
+				<input type="text" maxlength="50" id="planARunName">				
+			</div>
+		</div>
+		<div class="control-group">
+			{{#if assay}}
+			<label class="control-label">{{t 'assay.name'}}: </label>
+			<div class="controls">
+				<label>{{assay}}</label>
+			</div>
+			{{else}}
+			<label class="control-label">{{t 'sample.planARun.selectAssay'}}: </label>
+			<div class="controls">
+				<select id="planRunAssay" name="managePlanRunAssay">
+					{{#each assays}}
+					<option value="{{id}}">{{name}}</option>
+					{{/each}}
+				</select>
+			</div>
+			{{/if}}
+		</div>
+		
+		<div class="control-group">
+			<label class="control-label">{{t 'sample.planARun.selectReportTemplate'}}: </label>
+			<div class="controls">
+				<select id="planRunReportTemplate" name="managePlanRunReportTemplate">
+					{{#each reportTemplates}}
+					<option value="{{id}}">{{name}}</option>
+					{{/each}}
+				</select>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">{{t 'sample.planARun.addNote'}}: </label>
+			<div class="controls">
+				<textarea maxlength="256" id="planARunNote" cols="4" rows="3"></textarea>
+			</div>
+		</div>
+	</form>
+	<div class="form-small-text" id="controlsView">
+		
+	</div>
+	<div class="form-small-text">
+		<label>{{t 'planned.grid.noOfLibraries'}}: <b id="libraryCount">0</b></label>
+	</div>   		
+	<div id="plan-run-libraryGrid"> 
+	</div>
+</div>
+<br/>
+<div class="pull-left"><a href="javascript:void(0)" id="removePlanLibrary"><i class="icon-trash"></i> {{t 'planned.runs.remove'}}</a></div>
+<div class="pull-right"><a href="javascript:void(0)" id="addPlanLibrary"><i class="icon-plus-sign"></i> {{t 'planned.runs.add'}}</a></div>
+<br/>
+

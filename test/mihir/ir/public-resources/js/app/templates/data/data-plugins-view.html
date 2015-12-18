@@ -1,0 +1,27 @@
+{{#ifCond plugins.length '>' '0'}}
+<div class="row-fluid">
+	<div id="selectPlugin">
+		<form id="pluginsDropdown" class="form-horizontal">
+			<div class="control-group">
+				<label class="control-label" for="inputEmail">{{t 'data.plugins.selectplugin'}}:</label>
+				<div class="controls">
+					<select>
+						{{#each plugins}}
+							<option value="{{name}}">{{name}}</option>
+						{{/each}}
+					</select>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div id="pluginDetails">
+		<ul>
+			
+		</ul>
+	</div>
+</div>
+{{else}}
+<div class="row-fluid">
+	<h5>{{t 'data.plugins.noplugin'}}.</h5>
+</div>
+{{/ifCond}}

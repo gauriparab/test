@@ -1,0 +1,16 @@
+<h5>{{name}}</h5>
+<span class="parameter-help">{{description}}</span>
+<br>
+<div class="{{#ifNotUndefined rule.lowerBound}}input-prepend{{/ifNotUndefined}} {{#ifNotUndefined rule.upperBound}}input-append{{/ifNotUndefined}}">
+	{{#ifNotUndefined rule.lowerBound}}
+	<span class="add-on">
+	<b>{{rule.lowerBound}}</b> &lt;{{#if rule.includesLowerBound}}={{/if}}
+	</span>
+	{{/ifNotUndefined}}
+	<input class="input-mini" name="{{_key}}" type="text" data-key="{{key}}" value="{{value}}" maxlength="20" {{#unless isEditable}}disabled{{/unless}}>
+	{{#ifNotUndefined rule.upperBound}}
+	<span class="add-on">
+	&lt;{{#if rule.includesUpperBound}}={{/if}} <b>{{rule.upperBound}}</b>
+	</span>
+	{{/ifNotUndefined}}
+</div>

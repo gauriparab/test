@@ -1,0 +1,15 @@
+<div class="report-header" id="report-template-header-{{model._type}}" data-_type="{{model._type}}">
+	{{t 'finalReportSection.'  model._type}} {{#unless model.required}}{{t 'final.report.template.common.optional'}}{{/unless}}
+{{#unless _readonly}}
+	{{#unless model.required}}
+	<div class="pull-right">
+    	<label class="radio inline" style="padding-top:0px;">
+		  <input type="radio" name="{{model._type}}-toggle"  value="false" data-_type="{{model._type}}" {{#unless included}}checked{{/unless}}> {{t 'final.report.template.common.exclude'}}
+		</label>
+    	<label class="radio inline" style="padding-top:0px;">
+		  <input type="radio" name="{{model._type}}-toggle"  value="true" data-_type="{{model._type}}" {{#if included}}checked{{/if}}>{{t 'final.report.template.common.include'}}
+		</label>
+	</div>
+	{{/unless}}	
+{{/unless}}	
+</div>

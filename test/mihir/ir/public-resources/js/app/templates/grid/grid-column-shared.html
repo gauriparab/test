@@ -1,0 +1,5 @@
+{{#if shared}}
+	{{#if sharedBy}}
+		<i class="icon-user has-popover" rel="popover" data-content="This analysis is shared by {{sharedBy.firstName}} {{sharedBy.lastName}} of {{sharedBy.organization.name}}" data-original-title="{{t 'grid.column.sharedBy'}}"></i>
+	{{/if}}
+{{/if}}

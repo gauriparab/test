@@ -1,0 +1,32 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+    <h3 class="title"><span class="modalAction">{{t "actions." action}}</span> {{t 'assay.summary.filterChain'}}</h3>
+</div>
+<div class="modal-body" style="overflow: auto; max-height: 344px;">
+    <div id="errors"></div>
+    <div class="row-fluid">
+        <div class="span4 control-group">
+            <label class="control-label" for="filter-chain-name">{{t 'grid.column.name'}}</label>
+            <input id="filter-chain-name" name="name" class="filter-chain-input workflow-preset-input span12" type="text"
+                   title="Name" required="required" placeholder="Required" value="{{name}}" maxlength="255">
+        </div>
+        <div class="span8 control-group">
+            <label class="control-label" for="filter-chain-desc">{{t 'assay.description'}}</label>
+            <input id="filter-chain-desc" name="description" class="filter-chain-input workflow-preset-desc span12"
+                   type="text" title="Description" placeholder="Optional" value="{{description}}" maxlength="255">
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div id="filter-chain-edit-filter" class="span6">
+        <!-- templates/filterChain/filter-chain-edit-filter.html -->
+        </div>
+
+        <div id="filter-chain-edit-selected-filters" class="span6">
+          <!-- templates/filterChain/filters-selected.html -->
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button id="workflow-preset-btn-cancel" type="button" class="btn btn-secondary" data-dismiss="modal">{{t 'dialog.cancel'}}</button>
+    <button id="workflow-preset-btn-save" type="button" class="btn btn-primary">{{t primaryButtonKey}}</button>
+</div>

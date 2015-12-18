@@ -1,0 +1,12 @@
+{{#if status}}
+<span>{{t 'AnalysisStatus.' status}}</span>
+
+{{#ifCond status '===' 'FAILED'}}
+<i class="icon-exclamation-sign"></i>
+- <span>{{round progress}}%</span>
+&nbsp;<a href="javascript:void(0)" class="open-error-log-modal" data-id="{{id}}">{{t 'analysis.errorLog.link'}}</a>
+{{/ifCond}}
+{{#ifCond status '===' 'RUNNING'}}
+- <span>{{round progress}}%</span>
+{{/ifCond}}
+{{/if}}

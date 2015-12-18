@@ -1,0 +1,111 @@
+<div class="details">
+    <table cellpadding="5">
+        <tbody>
+            <tr>
+                <td colspan="2" >
+                    {{#if showSharing}}
+                    <span class="details-icons">
+                        <a id="showAnalysisSharingModal" href="javascript:void(0)" title="Share Analysis"><i class="icon-user"></i> ({{sharingCount}})</a>
+                    </span>
+                    {{/if}}                
+                </td>
+            </tr>
+            {{#if name}}
+            <tr>
+                <td colspan="2" class="breakall"><strong><span id="analysisDetailsNameId">{{name}}</span></strong><br/>
+                {{description}}
+                </td>                
+            </tr>
+            {{/if}}
+            {{#if applicationVersion}}
+            <tr>
+                <td><strong>Version:</strong></td>
+                <td id="workflowVersionId"> {{applicationVersion.name}}</td>
+            </tr>
+            {{/if}}
+            {{#if checkedOutBy}}
+            <tr>
+                <td><strong>{{t 'analysis.label.editedBy'}}:</strong></td>
+                <td id="analysisDetailsCheckedOutById">{{checkedOutBy.firstName}} {{checkedOutBy.lastName}}</td>
+            </tr>
+            {{/if}} 
+            {{#if stage}}
+            <tr>
+                <td><strong>{{t 'analysis.label.stage'}}:</strong></td>
+                <td id="analysisDetailsStageId">{{sub sub.stageTemplate}}</td>
+            </tr>
+            {{/if}} 
+            <tr>
+                <td><strong>{{t 'analysis.label.status'}}:</strong></td>
+                <td id="analysisDetailsStatusId">
+                    <span>{{status}}</span>
+                    {{#if isFailed}}
+                    <i class="icon-exclamation-sign"></i> - <span>{{progress}}%</span>
+                    {{/if}}
+                    {{#if isRunning}}
+                    - <span>{{progress}}%</span>
+                    {{/if}}
+                </td>
+            </tr>           
+            {{#if workflow.groupingType}}
+            <tr>
+                <td><strong>{{t 'analysis.label.sampleGroup'}}:</strong></td>
+                <td id="analysisDetailsRelationshipId">{{workflow.groupingType}}
+                    {{#if specimenGroup}}
+                    - <a id="specimenGroup" data-original-title="{{t 'analysis.summary.your.selections'}}"
+                       href="javascript:void(0)">{{specimenGroup.members.length}} Sample{{#ifCond specimenGroup.members.length ">" 1}}s{{/ifCond}}</a>                                       
+                    {{/if}} 
+                </td>
+            </tr>
+            {{/if}} 
+            {{#if workflow.name}}
+            <tr>
+                <td><strong>{{t 'analysis.label.workflow'}}:</strong></td>
+                <td id="analysisDetailsWorkflowId">{{workflow.name}}</td>
+            </tr>
+            {{/if}}
+            {{#if applicationType}}
+            <tr>
+                <td><strong>{{t 'analysis.label.application'}}:</strong></td>
+                <td id="analysisDetailsApplicationTypeId">
+                    {{sub subTemplates.applicationType}}
+                </td>
+            </tr>
+            {{/if}}
+            {{#if startedOn}}
+            <tr>
+                <td><strong>{{t 'analysis.label.startDate'}}:</strong></td>
+                <td id="analysisDetailsStartDateId">{{startedOn}}</td>
+            </tr>
+            {{/if}}
+            {{#if createdBy}}
+            <tr>
+                <td><strong>{{t 'analysis.label.createdBy'}}:</strong></td>
+                <td id="analysisDetailsCreatorId">{{sub sub.userTemplate createdBy}}</td>
+            </tr>
+            {{/if}}
+            {{#if variantSavedOn}}
+            <tr>
+               <td><strong>{{t 'analysis.label.variantSaved'}}:</strong></td>
+                <td id="analysisDetailsVariantSavedOnId">{{variantSavedOn}}</td>
+            </tr>
+            {{/if}} 
+            {{#if reportPublishedOn}}
+            <tr>
+                <td class="nowrap"><strong>{{t 'analysis.label.reportPublished'}}:</strong></td>
+                <td id="analysisDetailsReportPublishedOnId">{{reportPublishedOn}}</td>
+            </tr>
+            {{/if}} 
+            {{#if showBaseline}}
+            <tr>
+                <td><strong>{{t 'analysis.details.baseline'}}:</strong></td>
+                {{#if baseline}}
+                <td>{{baseline.name}}</td>
+                {{else}}
+                <td>{{t 'analysis.details.nobaseline'}}</td>
+                {{/if}}
+            </tr>
+            {{/if}}
+        </tbody>
+    </table>
+</div>

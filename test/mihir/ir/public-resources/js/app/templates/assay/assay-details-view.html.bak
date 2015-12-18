@@ -1,0 +1,277 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">x</button>
+    <h3 id="assayDetailsLabel">{{t 'assay.details.view'}}</h3>
+</div>
+<div class="modal-body" style="overflow-x: hidden; height: 500px;">
+    <div class="row-fluid">
+        <div id="errors"></div>
+        <div>
+       
+            <table style="width: 100%">
+		        <tr>
+		        	<td colspan="2">
+		        		<h5>{{assayName}}</h5>
+		        		<!-- <hr style="margin:0px" /> -->
+		        		
+		        	</td>
+		        </tr>
+		        <tr>
+		            <td valign="top" class="summary-item" style="padding-left:0px" width="130"></td>
+		        </tr>
+		    <!-- </table>
+		    
+		    <table style="width: 100%">  -->
+		   
+		        <tr>
+		            <td valign="top" class="summary-item" style="padding-left:0px" width="130">{{t 'assay.details.createdBy'}}:</td>
+		            <td id="selectedApplication">{{createdBy}}</td>
+		        </tr>
+		   
+		    
+		        <tr>
+		            <td valign="top" class="summary-item" style="padding-left:0px" width="130">{{t 'assay.details.createdOn'}}:</td>
+		            <td id="selectedApplication">{{formatDate createdDate}}</td>
+		        </tr>
+		    
+		        <tr>
+		            <td valign="top" class="summary-item" style="padding-left:0px" width="130">{{t 'assay.details.reanalysis'}}:</td>
+		            <td id="selectedApplication">{{reanalysisCount}}</td>
+		        </tr>
+		
+		        <tr>
+		            <td valign="top" class="summary-item"  style="padding-left:0px" width="130">{{t 'assay.details.finalReport'}}:</td>
+		            <td id="selectedApplication"></td>
+		        </tr>
+		
+		    </table>
+        </div>
+    </div>
+    <hr style="margin:0px;border-width:5px;color:black" />
+    <div class="row-fluid">
+    	<div class="span12">
+			<div class="span6">
+				<table style="width: 100%">
+			        <tr>
+			        	<td colspan="2">
+			        		<h5>{{t 'assay.panel.label'}}</h5>
+			        		<hr style="margin:0px" />
+			        	</td>
+			        </tr>
+			  
+			        <tr>
+			            <td valign="top" class="summary-item" width="130">{{t 'assay.details.genomeRef'}}:</td>
+			            <td id="selectedApplication">{{library.name}}</td>
+			        </tr>
+			     
+			        <tr>
+			            <td valign="top" class="summary-item" width="130">{{t 'assay.panel.label'}}:</td>
+			            <td id="selectedApplication">{{bedfile.name}}</td>
+			        </tr>
+			    
+			        <tr>
+			        	<td colspan="2">
+			        		<h5>{{t 'assay.summary.templatePrep'}}</h5>
+			        		<hr style="margin:0px" />
+			        	</td>
+			        </tr>
+			
+			        <tr>
+			            <td valign="top" class="summary-item" width="130">{{t 'assay.summary.libraryKitType'}}:</td>
+			            <td id="selectedApplication">{{rdxKitinfoByLibrarykitId.name}}</td>
+			        </tr>
+			     
+			      	<tr>
+			            <td valign="top" class="summary-item" width="130">{{t 'assay.details.forwardLibraryKey'}}:</td>
+			            <td id="selectedApplication">Ion {{libraryKey}}</td>
+			        </tr>
+			       
+			        <tr>
+			            <td valign="top" class="summary-item" width="130">{{t 'assay.details.forward3Adaptor'}}:</td>
+			            <td id="selectedApplication">Ion {{forward3primeadapter}}</td>
+			        </tr>
+			 
+			        <tr>
+			            <td valign="top" class="summary-item" width="130">{{t 'assay.summary.templatingKit'}}:</td>
+			            <td id="selectedApplication">{{rdxKitinfoByTemplatekitId.name}}</td>
+			        </tr>
+			      
+			         <tr>
+			            <td valign="top" class="summary-item" width="130">{{t 'assay.summary.control'}}:</td>
+			            <td id="selectedApplication">{{rdxInternalcontrol.name}}</td>
+			        </tr>
+			        
+			        <tr>
+			        	<td colspan="2">
+			        		<h5>{{t 'assay.details.sequencing'}}</h5>
+			        		<hr style="margin:0px" />
+			        	</td>
+			        </tr>
+			    
+			         <tr>
+			            <td valign="top" class="summary-item" width="130">{{t 'assay.summary.sequencingKit'}}:</td>
+			            <td id="selectedApplication">{{rdxKitinfoBySequencingkitId.name}}</td>
+			        </tr>
+			    
+			         <tr>
+			            <td valign="top" class="summary-item" width="130">{{t 'assay.summary.sequencingChip'}}:</td>
+			            <td id="selectedApplication">{{rdxKitinfoByChipkitId.name}}</td>
+			        </tr>
+			    
+			         <tr>
+			            <td valign="top" class="summary-item" width="130">{{t 'assay.details.flow'}}:</td>
+			            <td id="selectedApplication">{{flows}}</td>
+			        </tr>
+			      
+						<tr>
+							<td colspan="2">
+								<h5>{{t 'assay.summary.qc'}}</h5>
+								<hr style="margin:0px"/>
+							</td>
+						</tr>	
+				
+						<tr>
+							<td colspan="2">
+								<strong>{{t 'assay.qcsequence.runqc'}}</strong>
+							</td>
+						</tr>
+					{{#each rdxRuntemplateqcs.[Run QC]}}
+						<tr>
+							<td valign="top" class="summary-item">{{qcName}}:</td>
+							<td>{{threshold}}</td>
+						</tr>
+					{{/each}}        
+				
+						
+						
+				 </table>	
+			</div>
+			<div class="span6">
+	    		<table style="width: 100%">	 
+	    				<tr>
+							<td colspan="2">
+							    <strong>{{t 'assay.qcsequence.sampleqc'}}</strong>
+							    <hr style="margin:0px"/>
+							</td>
+						</tr>	
+	    		
+					{{#each rdxRuntemplateqcs.[Sample QC]}}
+						<tr>
+				            <td valign="top" class="summary-item">{{qcName}}:</td>
+				            <td>{{threshold}}</td>
+				        </tr> 
+					{{/each}}
+					
+						<tr>
+							 <td colspan="2">
+							    <strong>{{t 'assay.qcsequence.controlqc'}}</strong>
+							    <hr style="margin:0px"/>
+							</td>
+						</tr>
+					{{#each rdxRuntemplateqcs.[Internal Control QC]}}
+						<tr>
+				            <td valign="top" class="summary-item">{{qcName}}:</td>
+				            <td>{{threshold}}</td>
+				        </tr> 
+					{{/each}}
+					  
+				
+			   <!--  </table>	
+			</div> -->
+	    	<!-- <div class="span6">
+	    		<table style="width: 100%">	  -->   	
+			        <tr>
+			        	<td colspan="2">
+			        		<h5>{{t 'assay.summary.variantDetection'}}</h5>
+			        		<hr style="margin:0px" />
+			        	</td>
+			        </tr>
+
+			        <tr>
+			            <td valign="top" class="summary-item" width="130">{{t 'assay.variantDetection.hotspots'}}:</td>
+			            <td id="selectedApplication">{{variantDetection.hotspot.name}}</td>
+			        </tr>
+					<tr>
+						<td valign="top" class="summary-item" width="130">mode:</td>
+						<td id="mode">{{vcMode}}</td>
+					</tr>
+					<tr>
+						<td valign="top" class="summary-item" width="130">level:</td>
+						<td id="level">{{vcLevel}}</td>
+					</tr>
+					<tr>
+						<td valign="top" class="summary-item" width="130">type:</td>
+						<td id="type">{{vcType}}</td>
+					</tr>
+
+					<tr>
+			        	<td colspan="2">
+			        		 <h5>{{t 'assay.summary.variantFindingParameters'}} </h5>
+			        		<hr style="margin:0px" />
+			        	</td>
+			        </tr>
+			        <tr>
+			        	<td colspan="2">
+			        		<strong>{{t 'assay.summary.variantFinding'}}</strong>
+			        		<hr style="margin:0px" />
+			        	</td>
+			        </tr>
+			        
+			        <tr>
+			            <td valign="top" class="summary-item" width="130">{{t 'assay.details.minAllelFrq'}}:</td>
+			            <td id="selectedApplication">{{variantDetection.minAlleleFrequency}}</td>
+			        </tr>
+			        <tr>
+			            <td valign="top" class="summary-item" width="130">{{t 'assay.details.minCoverageEachStr'}}:</td>
+			            <td id="selectedApplication">{{variantDetection.coverageEachStrand}}</td>
+			        </tr>
+			        <tr>
+			            <td valign="top" class="summary-item" width="130">{{t 'assay.details.minCoverage'}}:</td>
+			            <td id="selectedApplication">{{variantDetection.minCoverage}}</td>
+			        </tr>
+			        <tr>
+			            <td valign="top" class="summary-item" width="130">{{t 'assay.details.minVariantScore'}}:</td>
+			            <td id="selectedApplication">{{variantDetection.minVariantScore}}</td>
+			        </tr>
+			        <tr>
+			            <td valign="top" class="summary-item" width="130">{{t 'assay.details.strandBias'}}:</td>
+			            <td id="selectedApplication">{{variantDetection.strandbias}}</td>
+			        </tr>
+			       
+			        <!--  <tr>
+			        	<td colspan="2">
+			        		<h5>{{t 'assay.details.presets'}}</h5>
+			        		<hr style="margin:0px" />
+			        	</td>
+			        </tr>
+			        <tr>
+			            <td valign="top" class="summary-item" width="130">{{t 'assay.summary.filterChain'}}:</td>
+			            <td id="selectedApplication"></td>
+			        </tr>
+			        <tr>
+			            <td valign="top" class="summary-item" width="130">{{t 'assay.details.copyNumBaseline'}}:</td>
+			            <td id="selectedApplication"></td>
+			        </tr>
+			        <tr>
+			            <td valign="top" class="summary-item" width="130">{{t 'assay.summary.annotation'}}:</td>
+			            <td id="selectedApplication"></td>
+			        </tr>
+			     
+			        <tr>
+			        	<td colspan="2">
+			        		<h5>{{t 'assay.details.plugins'}}</h5>
+			        		<hr style="margin:0px" />
+			        	</td>
+			        </tr>
+			        <tr>
+			            <td valign="top" class="summary-item" width="130">{{t 'assay.details.plugins'}}:</td>
+			            <td id="selectedApplication"></td>
+			        </tr> -->
+			     
+			    </table>
+			</div>
+		</div>
+    </div>
+</div>
+<div class="modal-footer">
+    <a id="closeAssayDetailsBtn" href="#" data-dismiss="modal" class="btn btn-secondary">{{t 'assay.details.closeBtn'}}</a>
+</div>

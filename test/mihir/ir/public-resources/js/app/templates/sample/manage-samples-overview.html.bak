@@ -1,0 +1,53 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="pull-left">
+            <h1><img src="{{img 'dash-samples.png'}}" width="40" />{{t 'manage.sample.title'}}</h1>
+        </div>
+        <div class="pull-right">
+            <button id="manageSampleAddBtn" class="btn btn-primary pull-right">{{t 'addSample.button.label'}}</button>
+        </div>
+        {{#ifCond defineActions '||' defineActions.length}}
+        <div class="pull-right">
+            <div id="defineSamplesButton" class="btn-group">
+                <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                    {{t 'sample.define.dropdown'}} <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu pull-right">
+                    {{#each defineActions}}
+                    <li><a id="defineSamples{{this}}" href="{{t 'sample.define.action.url.' this}}">{{t 'sample.define.action.' this}}</a></li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+        {{/ifCond}}
+    </div>
+
+    <div class="row-fluid">
+        <div class="actionSearch">
+            <!-- <select id="flag-filters" class="pull-left show-tick show-menu-arrow" title="Filter Samples" data-width="175px">
+                templates/common/filter.html
+            </select> -->
+            <button class="btn btn-secondary" id="manageSamplePlanARunBtn" data-toggle="tooltip" data-placement="bottom" title="Plan A Run" disabled>{{t 'planRun.button.label'}}</button>
+            <button class="btn btn-default" id="manageSampleExport" data-toggle="tooltip" data-placement="bottom" title="Export" disabled><img src="{{img 'Export.png'}}"></button>
+			<button class="btn btn-default" id="manageSampleDelete" data-toggle="tooltip" data-placement="bottom" title="Delete" disabled><img src="{{img 'delete.png'}}"></button>
+			<button class="btn btn-default" id="manageSamplePrint" data-toggle="tooltip" data-placement="bottom" title="Print" disabled><img src="{{img 'print.png'}}"></button>
+			<span class="vpad14" >{{t 'manage.sample.selectedsample'}}<span class="selected-samples" id="manageSampleCount">{{t 'manage.sample.selectedcount'}}</span></span>
+            <div id="details-options-menu" class="pull-left">
+                  <!-- templates/common/actions-menu.html -->
+            </div>
+            <form id="query-form" class="form-search form-inline pull-right">
+                <!-- templates/common/search.html -->
+            </form>
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div id="viewsamples-grid">
+            <!-- views/samples/sampleGridView.js -->
+        </div>
+    </div>
+    <div class="modal hide fade" id="addSample" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>
+    <div class="modal hide fade" id="editSampleModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>
+    <div class="modal hide fade" id="auditTrailModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>
+    <div class="modal hide fade" id="planARunModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>
+</div>

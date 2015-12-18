@@ -1,0 +1,21 @@
+
+<div class="control-group">
+    <label class="control-label" for="launch-form-name-{{id}}">
+        {{t 'analysis.launch.form.name'}}:
+    </label>
+    <div class="controls">
+        <input id="launch-form-name-{{id}}" name="name" type="text" maxlength="255"
+               class="input-xxlarge" placeholder="Required" value="{{name}}"/><br/>
+        <span class="help-inline breakall">
+            {{#if specimenGroup.name}} ({{specimenGroup.name}}){{/if}}
+            <img class="hide" src="{{img 'check.png'}}" alt="Success" />
+        </span>        
+    </div>
+</div>
+<div class="control-group">
+    <label class="control-label" for="launch-form-description-{{id}}">{{t 'analysis.label.description'}}:</label>
+    <div class="controls">
+        <textarea id="launch-form-description-{{id}}" rows="2" name="description"
+                  class="input-xxlarge" placeholder="Optional" value="{{description}}" maxlength="255"></textarea>        
+    </div>
+</div>

@@ -1,0 +1,34 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="pull-left">
+            <h1><img src="{{img 'dash-samples.png'}}" width="40" /> {{t 'manage.attribute.title'}}</h1>
+        </div>
+        <div class="pull-right">
+            <button id="manageAttributeAddBtn" class="btn btn-primary pull-right">{{t 'addAttribute.button.label'}}</button>
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div>
+            <!-- <select id="flag-filters" class="pull-left show-tick show-menu-arrow" title="Filter Samples" data-width="175px">
+                templates/common/filter.html
+            </select> -->
+            {{t 'manage.attribute.selectedsamples'}}
+            <div id="details-options-menu" class="pull-left" role="actions">
+                  <!-- templates/common/actions-menu.html -->
+            </div>
+            <form id="query-form" class="form-search form-inline pull-right">
+                <!-- templates/common/search.html -->
+            </form>
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div id="viewsamples-grid">
+            <!-- views/samples/manageAttributesGridView.js -->
+        </div>
+    </div>
+    <div class="modal hide fade" id="addSample" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+    <div class="modal hide fade" id="editSampleModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+    </div>
+</div>

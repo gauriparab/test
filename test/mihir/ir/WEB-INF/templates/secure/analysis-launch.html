@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:substituteby="layout.html :: headerFragment"></head>
+<body>
+<div class="wrapper">
+	<div class="header" th:substituteby="layout.html :: bodyHeaderFragment"></div>
+
+    <div class="sub-nav" th:substituteby="layout.html :: bodySubNavFragment"></div>
+
+    <div class="main">
+        <div class="main-content clearfix">
+            <div class="container-fluid">
+                <div class="pull-left">
+                    <h1><img src="../../../public-resources/img/dash-analysis.png" th:src="@{/resources/img/dash-analysis.png}" width="40"/> Launch Analysis</h1>
+                </div>
+                <div id="wizard" class="container-fluid" style="padding: 0px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer th:substituteby="layout.html::bodyFooter"></footer>
+</div>
+
+<script th:substituteby="layout.html::irHeaderModals"></script>
+
+<script type="text/javascript">
+    /*<![CDATA[*/
+    requireInit(['app/views/analysis/analysisLaunchWizardPageView'], function(View) {
+        var view = new View({ el: '#wizard' });
+        view.render();
+    });
+    /*]]>*/
+</script>
+
+</body>
+</html>

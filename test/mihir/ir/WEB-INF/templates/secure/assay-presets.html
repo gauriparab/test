@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:substituteby="layout.html :: headerFragment"></head>
+<body>
+<div class="wrapper">
+    <div class="header" th:substituteby="layout.html :: bodyHeaderFragment"></div>
+
+    <div class="sub-nav" th:substituteby="layout.html :: bodySubNavFragment"></div>
+
+    <div class="main">
+        <div class="main-content clearfix">
+        </div>
+    </div>
+
+    <footer class="footer" th:substituteby="layout.html::bodyFooter"></footer>
+</div>
+<script th:substituteby="layout.html::irHeaderModals"></script>
+
+<script type="text/javascript" th:inline="javascript">
+/*<![CDATA[*/
+    requireInit(['views/assay/assayPresetsPageView','models/configuration'], function(View,Configuration) {
+    	var auditConfig = _.object(_.map(Configuration.get('auditConfig'), function(item) {
+   			return [item.objectName, item]
+		}));
+        var view = new View({
+            el: '.main-content',
+            showClassificationTab:/*[[${#authorization.expression("hasPermission('ROLE_ORGADMIN','View Classification Permission')")}]]*/ false,
+            showAnnotationSetAddButton:/*[[${#authorization.expression("hasPermission('ROLE_ORGADMIN','Add Annotation Sets Permission')")}]]*/ false,
+            canImportCNVBaseline: /*[[${#authorization.expression("hasPermission('ROLE_ORGADMIN','Import CNV  Baseline Permission')")}]]*/ false,
+            canAddCNVBaseline: /*[[${#authorization.expression("hasPermission('ROLE_ORGADMIN','Create CNV  Baseline Permission')")}]]*/ false,
+	    showFilterChainTab: /*[[${#authorization.expression("hasPermission('ROLE_ORGADMIN','View Preset Filter Chain Permission')")}]]*/ false,
+            auditConfig: auditConfig
+        });
+        view.render();
+    });
+/*]]>*/
+</script>
+</body>
+</html>

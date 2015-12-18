@@ -1,0 +1,245 @@
+{{#if splitDnaRna}}
+<div class="row-fluid">
+	{{#if dnaType}}
+	<div class="span6">
+		<span class="info-label">
+			<h5 style="margin-top:0">
+				{{t 'specimen.role.DNA_FUSION'}}
+				<a href="javascript:void(0)" id="resetAllDNA" style="font-size:12px">({{t 'assay.qcsequence.resetAll'}})</a>
+			</h5>
+		</span>
+		<form class="form-horizontal">
+			{{#each runtemplateqcDtos}}
+			{{#ifCond libraryType '===' "DNA"}}
+			<div class="control-group">
+				<label class="control-label" for="{{qcTypeId}}" style="width:180px">{{qcName}}</label>
+				<!-- <div class="controls">
+					<input name="{{qcTypeId}}" {{#unless allowChange}} disabled {{/unless}} type="text" value="{{threshold}}" maxlength="50" class="input-small">
+					<span class="info-label">{{unit}}</span>
+					<span class="info-label">{{t 'assay.page.min'}}</span>
+				</div> -->
+				<div class="controls" style="width:200px;">
+					{{#ifCond threshold '!==' -1}} 
+					<div style="float: left;">
+						<input name="{{qcTypeId}}" {{#unless allowChange}} disabled {{/unless}} type="text" value="{{threshold}}" maxlength="50" style="width: 30px;" alt="threshold">
+						<span class="info-label">{{unit}} {{t 'assay.page.min'}}</span>
+					</div>
+					{{/ifCond}}
+					{{#ifCond upperThreshold '!==' -1}}
+					<!--<div style="margin: 0px 0px 0px 105px;">-->
+					<div>
+	 					<input name="{{qcTypeId}}" {{#unless allowChange}} disabled {{/unless}} type="text" value="{{upperThreshold}}" maxlength="50" style="width: 30px;" alt="upperThreshold">
+	 					<span class="info-label">{{unit}} {{t 'assay.page.max'}}</span>
+	 				</div>
+				    {{/ifCond}}
+				</div>
+				<!--<div class="controls">
+					{{#ifCond upperThreshold '!==' -1}} 
+	 					<input name="{{qcTypeId}}" {{#unless allowChange}} disabled {{/unless}} type="text" value="{{upperThreshold}}" maxlength="50" style="width: 40px;" alt="upperThreshold">
+	 					<span class="info-label">{{unit}} {{t 'assay.page.max'}}</span>
+				    {{/ifCond}}
+				</div>-->
+			</div>
+			{{/ifCond}}
+			{{/each}}
+		</form>
+	</div>
+	{{/if}}
+	{{#if rnaType}}
+	<div class="span6">
+		<span class="info-label">
+			<h5 style="margin-top:0">
+				{{t 'specimen.role.RNA_FUSION'}}
+				<a href="javascript:void(0)" id="resetAllRNA" style="font-size:12px">({{t 'assay.qcsequence.resetAll'}})</a>
+			</h5>
+		</span>
+		<form class="form-horizontal">
+			{{#each runtemplateqcDtos}}
+			{{#ifCond libraryType '===' "RNA"}}
+			<div class="control-group">
+				<label class="control-label" for="{{qcTypeId}}" style="width:180px">{{qcName}}</label>
+				<!-- <div class="controls">
+					<input name="{{qcTypeId}}" {{#unless allowChange}} disabled {{/unless}} type="text" value="{{threshold}}" maxlength="50" class="input-small">
+					<span class="info-label">{{unit}}</span>
+					<span class="info-label">{{t 'assay.page.min'}}</span>
+				</div> -->
+				<div class="controls" style="width:200px;">
+					{{#ifCond threshold '!==' -1}}
+					<div style="float: left;"> 
+						<input name="{{qcTypeId}}" {{#unless allowChange}} disabled {{/unless}} type="text" value="{{threshold}}" maxlength="50" style="width: 30px;" alt="threshold">
+						<span class="info-label">{{unit}} {{t 'assay.page.min'}}</span>
+					</div>
+					{{/ifCond}}
+					{{#ifCond upperThreshold '!==' -1}}
+					<!--<div style="margin: 0px 0px 0px 105px;">-->
+					<div>
+	 					<input name="{{qcTypeId}}" {{#unless allowChange}} disabled {{/unless}} type="text" value="{{upperThreshold}}" maxlength="50" style="width: 30px;" alt="upperThreshold">
+	 					<span class="info-label">{{unit}} {{t 'assay.page.max'}}</span>
+	 				</div>
+				    {{/ifCond}}
+				</div>
+				<!--<div class="controls">
+					{{#ifCond upperThreshold '!==' -1}}
+					<div style="display:inline-block;">  
+	 					<input name="{{qcTypeId}}" {{#unless allowChange}} disabled {{/unless}} type="text" value="{{upperThreshold}}" maxlength="50" style="width: 40px;" alt="upperThreshold">
+	 					<span class="info-label">{{unit}} {{t 'assay.page.max'}}</span>
+	 				</div>
+				    {{/ifCond}}
+				</div>-->
+			</div>
+			{{/ifCond}}
+			{{/each}}
+		</form>
+	</div>
+	{{/if}}
+</div>
+{{else}}
+<span class="info-label">
+<h5 style="margin-top:0">
+	{{name}}
+	<a href="javascript:void(0)" id="resetAll" style="font-size:12px">({{t 'assay.qcsequence.resetAll'}})</a>
+</h5>
+</span>
+<div class="row-fluid">
+	<div class="span7">
+	<form class="form-horizontal">
+		{{#each runtemplateqcDtos}}
+		<div class="control-group">
+			<label class="control-label" for="{{qcTypeId}}" style="width:180px">{{qcName}}</label>
+			<div class="controls" style="width:200px;">
+				{{#ifCond threshold '!==' -1}}
+				<div style="float: left;">
+					<input name="{{qcTypeId}}" {{#unless allowChange}} disabled {{/unless}} type="text" value="{{threshold}}" maxlength="50" style="width: 30px;" alt="threshold">
+					<span class="info-label">{{unit}} {{t 'assay.page.min'}}</span>
+				</div>
+				{{/ifCond}}
+				{{#ifCond upperThreshold '!==' -1}}
+				<!--<div style="margin: 0px 0px 0px 105px;">-->
+				<div>
+ 					<input name="{{qcTypeId}}" {{#unless allowChange}} disabled {{/unless}} type="text" value="{{upperThreshold}}" maxlength="50" style="width: 30px;" alt="upperThreshold">
+ 					<span class="info-label">{{unit}} {{t 'assay.page.max'}}</span>
+ 				</div>
+			    {{/ifCond}}
+			</div>
+			<!--<div class="controls">
+				{{#ifCond upperThreshold '!==' -1}} 
+ 					<input name="{{qcTypeId}}" {{#unless allowChange}} disabled {{/unless}} type="text" value="{{upperThreshold}}" maxlength="50" style="width: 40px;" alt="upperThreshold">
+ 					<span class="info-label">{{unit}} {{t 'assay.page.max'}}</span>
+			    {{/ifCond}}
+			</div>-->
+		</div>
+		{{/each}}
+	</form>
+	</div>
+</div>
+<div class="row-fluid">
+	<form class="form-horizontal">
+		{{#ifCond name '===' 'DNA Control'}}
+			<hr class="summary">
+			<div class="row-fluid">
+				<div id="variantHotspots" class="span6">
+					<label style="color: #989898; font-size: 13px;">{{t 'qccontrol.variant.hotspots'}}</label>
+					<div class="span4">
+						<table cellpadding="2">
+							<tr>
+								<th style="text-align: left;"><label style="color: #989898; font-size: 13px;">{{t 'assay.variantDetection.hotspots'}}</label></th>
+							</tr>
+							{{#each cosmicQcDtos}}
+									{{#ifCond cosmicType '===' 'Variant Hotspots'}}
+										<tr><td>{{cosmicName}}</td></tr>
+									{{/ifCond}}
+							{{/each}}
+						</table>
+					</div>
+					<div class="span7">
+						<table cellpadding="2">
+							<tr>
+								<th style="text-align: left;"><label style="color: #989898; font-size: 13px;">{{t 'assay.variantDetection.alleleFrequency'}}</label></th>
+								<th style="text-align: left;"><label style="color: #989898; font-size: 13px;">{{t 'assay.page.min'}}</label></th>
+								<th style="text-align: left;"><label style="color: #989898; font-size: 13px;">{{t 'assay.page.max'}}</label></th>
+							</tr>
+							{{#each cosmicQcDtos}}
+									{{#ifCond cosmicType '===' 'Variant Hotspots AF'}}
+										<tr>
+											<td>{{cosmicName}}</td>
+											<td style="text-align: center;">{{minValue}}</td>
+											<td style="text-align: center;">{{maxValue}}</td>
+										</tr>
+									{{/ifCond}}
+							{{/each}}
+						</table>
+					</div>
+				</div>
+				<div id="wildTypeHotspots" class="span6">
+					<label style="color: #989898; font-size: 13px; width: 115px">{{t 'qccontrol.wildtype.hotspots'}}</label>
+					<div class="span4">
+						<table cellpadding="2">
+							<tr>
+								<th style="text-align: left;"><label style="color: #989898; font-size: 13px;">{{t 'assay.variantDetection.hotspots'}}</label></th>
+							</tr>
+							{{#each cosmicQcDtos}}
+									{{#ifCond cosmicType '===' 'Wild Type Hotspots'}}
+										<tr><td>{{cosmicName}}</td></tr>
+									{{/ifCond}}
+							{{/each}}
+						</table>
+					</div>
+					<div class="span7">
+						<table cellpadding="2">
+							<tr>
+								<th style="text-align: left;"><label style="color: #989898; font-size: 13px;">{{t 'assay.variantDetection.alleleFrequency'}}</label></th>
+								<th style="text-align: left;"><label style="color: #989898; font-size: 13px;">{{t 'assay.page.min'}}</label></th>
+								<th style="text-align: left;"><label style="color: #989898; font-size: 13px;">{{t 'assay.page.max'}}</label></th>
+							</tr>
+							{{#each cosmicQcDtos}}
+									{{#ifCond cosmicType '===' 'Wild Type Hotspots AF'}}
+										<tr>
+											<td>{{cosmicName}}</td>
+											<td style="text-align: center;">{{minValue}}</td>
+											<td style="text-align: center;">{{maxValue}}</td>
+										</tr>
+									{{/ifCond}}
+							{{/each}}
+						</table>
+					</div>
+				</div>
+			</div>
+		{{/ifCond}}
+		{{#ifCond name '===' 'RNA Control'}}
+			<hr class="summary">
+			<div id="driverGenes" class="span6">
+				<div class="span4">
+					<table cellpadding="2">
+							<tr>
+								<th style="text-align: left;"><label style="color: #989898; font-size: 13px;">{{t 'qccontrol.driver.genes'}}</label></th>
+							</tr>
+							{{#each cosmicQcDtos}}
+									{{#ifCond cosmicType '===' 'Driver Genes'}}
+										<tr><td>{{cosmicName}}</td></tr>
+									{{/ifCond}}
+							{{/each}}
+						</table>
+				</div>
+				<div class="span8">
+					<table cellpadding="2">
+						<tr>
+							<th style="text-align: left;"><label style="color: #989898; font-size: 13px;">{{t 'qccontrol.driver.genesQc'}}</label></th>
+							<th style="text-align: left;"><label style="color: #989898; font-size: 13px;">{{t 'assay.page.min'}}</label></th>
+							<th style="text-align: left;"><label style="color: #989898; font-size: 13px;">{{t 'assay.page.max'}}</label></th>
+						</tr>
+						{{#each cosmicQcDtos}}
+								{{#ifCond cosmicType '===' 'Driver Genes QC'}}
+									<tr>
+										<td>{{cosmicName}}</td>
+										<td style="text-align: center;">{{minValue}}</td>
+										<td style="text-align: center;">{{maxValue}}</td>
+									</tr>
+								{{/ifCond}}
+						{{/each}}
+					</table>
+				</div>
+			</div>
+		{{/ifCond}}
+	</form>
+</div>
+{{/if}}

@@ -1,0 +1,14 @@
+{{#data}} 
+<div class="row-fluid">
+	<table>
+		{{#each evaluationQCDtoList}}
+		<tr>
+			<td>{{qcName}}</td>
+			<td style="padding-left: 15px;">
+				<input data-index="{{@index}}" type="text" value="{{defaultThreshold}}"/>
+			</td>
+		</tr>
+		{{/each}}
+	</table>
+</div>
+{{/data}}

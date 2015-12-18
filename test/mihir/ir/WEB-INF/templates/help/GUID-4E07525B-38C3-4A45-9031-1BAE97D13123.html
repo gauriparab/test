@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en"><head><!-- saved from url=(0014)about:internet -->
+<meta charset="utf-8" /><meta name="viewport" content="width=device-width" /><meta content="(C) Copyright 2005" name="copyright" /><meta content="(C) Copyright 2005" name="DC.rights.owner" /><meta content="reference" name="DC.Type" /><meta content="Example Planned Run .xml Files" name="DC.Title" /><meta content="GUID-5FAD6569-48B9-40DA-8797-AA01A0E630BD.html" name="DC.Relation" scheme="URI" /><meta content="XHTML" name="DC.Format" /><meta content="GUID-4E07525B-38C3-4A45-9031-1BAE97D13123" name="DC.Identifier" /><meta content="en" name="DC.Language" /><title>Example Planned Run .xml Files</title><link rel="prev" href="GUID-F02E84BF-0DE1-41CF-AD7C-514E391375F0.html" /><link rel="next" href="GUID-13AF654B-C9FC-4C0A-9FAD-0D06C9F2158C.html" /><link href="static/screen.css?vYqzNzBe" rel="stylesheet" /><link href="static/print.css?Of1595s7" media="print" rel="stylesheet" /><link href="static/help.ico" rel="shortcut icon" /><script src="static/head.js?qUF72lF0"></script></head><body id="GUID-4E07525B-38C3-4A45-9031-1BAE97D13123" data-approot=""><header><a href="index.html" id="logo-link"><img class="logo" src="GUID-E9DF9DD7-2132-4F7C-93DE-CF7D25CD9CB9-screen.svg" alt="Logo"/></a><h1>Torrent Suite™ Assay Development Software Help 
+	 </h1></header><section id="center"><article><noscript><p>JavaScript must be enabled in order to use this site.</p><p>Please enable JavaScript in your browser and refresh the page.</p></noscript><div id="thumbnailDialog"></div><a name="GUID-4E07525B-38C3-4A45-9031-1BAE97D13123"></a>
+
+<h1 class="title topictitle1">Example Planned Run .xml Files</h1>
+<div class="body refbody"> 
+	 <div class="section" id="GUID-4E07525B-38C3-4A45-9031-1BAE97D13123__GUID-D48A094E-3983-4F68-8AD0-5BB302B66449_unique_1"><a name="GUID-4E07525B-38C3-4A45-9031-1BAE97D13123__GUID-D48A094E-3983-4F68-8AD0-5BB302B66449_unique_1"></a> 
+		<p class="p">Request type: PUT 
+		</p>
+ 
+		<pre class="pre codeblock" id="GUID-4E07525B-38C3-4A45-9031-1BAE97D13123__GUID-3CF005E6-19ED-4A19-BE39-5F8E6482CC6B"><a name="GUID-4E07525B-38C3-4A45-9031-1BAE97D13123__GUID-3CF005E6-19ED-4A19-BE39-5F8E6482CC6B"></a>
+&lt;PlanRunRequest&gt;
+  &lt;PlannedRunName&gt;CustomPlan&lt;/PlannedRunName&gt;
+  &lt;Assay&gt;CustomAssay&lt;/Assay&gt;
+  &lt;TubeLabel&gt;test&lt;/TubeLabel&gt;
+  &lt;TemplateKitBarcode&gt;91A18930101212-12345671603172100001301&lt;/TemplateKitBarcode&gt;
+  &lt;ReportingTemplate&gt;CustomReport&lt;/ReportingTemplate&gt;
+  &lt;PlanRunNotes&gt;This is my 1st Plan&lt;/PlanRunNotes&gt;
+  &lt;LibraryPrepIDs&gt;
+    &lt;LibraryPrepID specimenID=&quot;&quot;&gt;1&lt;/LibraryPrepID&gt;
+  &lt;/LibraryPrepIDs&gt;
+&lt;/PlanRunRequest&gt;</pre>
+ 
+		<p class="p">  
+		</p>
+ 
+		<p class="p">Response: 
+		</p>
+ 
+		<pre class="pre codeblock" id="GUID-4E07525B-38C3-4A45-9031-1BAE97D13123__GUID-6D860D31-6213-498E-A8AA-83143F2CDDF8"><a name="GUID-4E07525B-38C3-4A45-9031-1BAE97D13123__GUID-6D860D31-6213-498E-A8AA-83143F2CDDF8"></a>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;
+&lt;PlanRunResponse&gt;
+  &lt;Mode&gt;Dx&lt;/Mode&gt;
+  &lt;Status&gt;Success&lt;/Status&gt;
+  &lt;PlanShortCode&gt;RS2I8&lt;/PlanShortCode&gt;
+  &lt;LogMessages&gt;
+    &lt;Message&gt;Experiment with Planned Run Name [CustomPlan] Added Successfully.&lt;/Message&gt;
+    &lt;Message&gt;Planned Run Name [CustomPlan] Executed Successfully.&lt;/Message&gt;
+  &lt;/LogMessages&gt;
+&lt;/PlanRunResponse&gt;</pre>
+ 
+	 </div>
+ 
+  </div>
+<div class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="GUID-5FAD6569-48B9-40DA-8797-AA01A0E630BD.html">Create Planned Run API</a></div>
+</div>
+</div>
+</article><nav id="topnav"><div id="breadcrumbs"></div><div id="topbuttons"><a id="button-hide-navigation" href="#" title="Hide navigation"><span>Hide navigation</span></a><a id="button-print" href="#" title="Print"><span>Print</span></a><a id="button-print-all" title="Print All"><span>Print All</span></a></div></nav></section><div id="leftbar"><ul class="tabs"><li class="currentli"><a class="current toc" href="#"><span>Contents</span></a></li><li><a class="glossary" href="#"><span>Glossary</span></a></li><li><a class="search" href="#"><span>Search</span></a></li></ul><nav class="toc current"><div class="loader"><img src="static/loader.gif" alt="Loading" /></div></nav><nav class="glossary"></nav><nav class="search"><div class="results"><span>No search has been performed.</span></div></nav></div><form id="searchform"><input class="search" type="search" placeholder="Search" /><input class="submit" type="submit" value="Go" /></form><script src="static/body.js?TC2GotM2"></script><footer><table xmlns:suite="http://www.suite-sol.com/lifetech"><tr><td class="col2"><p> 
+			  For Research Use Only. Not for use in diagnostic procedures.</p><p> 
+		  </p></td><td class="col3"><p class="col3a"> 
+		</p><p class="col3b">2015.10.28 09:20:64</p></td><td class="col4"><a href="legal.html"><img src="static/logo.png" class="corplogo"/></a></td></tr></table></footer></body></html>

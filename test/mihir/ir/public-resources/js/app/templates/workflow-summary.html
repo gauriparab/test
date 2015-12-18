@@ -1,0 +1,103 @@
+<div class="summary-section" id="summary">
+    <h4>Summary</h4>
+    <hr class="summary"></hr>
+    <table cellpadding="5">
+        {{#if applicationType}}
+        <tr>
+            <td valign="top" width="90"><strong>{{t "workflow.summary.application"}}:</strong></td>
+            <td id="selectedApplication">{{t applicationType}}</td>
+        </tr>
+        {{/if}}
+        {{#if groupingType}}
+        <tr>
+            <td valign="top"><strong>{{t "workflow.summary.sample.group"}}:</strong></td>
+            <td id="selectedGrouping">{{t groupingType}}</td>
+        </tr>
+        {{/if}}
+        {{#if references}}
+        <tr>
+            <td valign="top"><strong>{{t "workflow.summary.reference"}}:</strong></td>
+            <td id="selectedReference">
+            {{#ifCond references.length '<=' 1}}
+                {{firstValue references 'name'}}
+            {{else}}
+                {{firstValue references 'name'}}
+                <a id="multipleSelectedReferences" 
+                   data-original-title="{{t 'workflow.summary.your.selections'}}"
+                   href="javascript:void(0)">
+                    ({{references.length}})
+                </a>
+            {{/ifCond}}
+            </td>
+        </tr>
+        {{/if}}
+        {{#if targetRegion}}
+        <tr>
+            <td valign="top"><strong>{{t "workflow.summary.region"}}:</strong></td>
+            <td id="selectedTargetRegion">
+                {{targetRegion.name}}
+                {{#if targetRegionConfigurationChoice}}
+                    ({{t 'targetRegionsFile.configuration.option.' targetRegionConfigurationChoice.name}})
+                {{/if}}
+            </td>
+        </tr>
+        {{#if variantTypeDetection}}
+        <tr>
+            <td valign="top"><strong>{{t "workflow.summary.variantTypeDetection"}}:</strong></td>
+            <td id="selectedVariantTypeDetection">{{t "VariantTypeDetection." variantTypeDetection}}</td>
+        </tr>
+        {{/if}}
+        {{/if}}
+        {{#if hotspotRegion}}
+        <tr>
+            <td valign="top"><strong>{{t "workflow.summary.hotspot"}}:</strong></td>
+            <td id="selectedHotspotRegion">{{hotspotRegion.name}}</td>
+        </tr>
+        {{/if}}
+        {{#if fusionPanel}}
+        <tr>
+            <td valign="top"><strong>{{t "workflow.summary.fusionPanel"}}:</strong></td>
+            <td id="selectedfusionPanel">{{fusionPanel.name}}</td>
+        </tr>
+        {{/if}}
+        {{#if annotationSet}}
+        <tr>
+            <td valign="top"><strong>{{t "workflow.summary.annotation"}}:</strong></td>
+            <td id="selectedAnnotationSet">{{annotationSet.name}}</td>
+        </tr>
+        {{/if}}
+        {{#if filterChain}}
+        <tr>
+            <td valign="top"><strong>{{t "workflow.summary.filter.chains"}}:</strong></td>
+            <td id="selectedFilterChain">{{filterChain.name}}</td>
+        </tr>
+        {{/if}}
+        {{#if baseline}}
+        <tr>
+            <td valign="top"><strong>{{t "workflow.summary.baseline"}}:</strong></td>
+            <td id="selectedCNVBaseline">{{baseline.name}}</td>
+        </tr>
+        {{/if}}
+        {{#if plugins}}
+        <tr>
+            <td valign="top"><strong>{{t "workflow.summary.plugins"}}:</strong></td>
+            <td id="plugins" data-original-title="Your Selections">
+                <a id="selectedPlugins" data-original-title="{{t 'workflow.summary.your.selections'}}"
+                   href="javascript:void(0)">
+                    {{plugins.length}} Plugin{{#ifCond plugins.length ">" 1}}s{{/ifCond}}
+                </a>
+            </td>
+        </tr>
+        {{/if}}
+        {{#if reportTemplate}}
+        <tr>
+            <td valign="top"><strong>{{t "workflow.summary.reportTemplate"}}:</strong></td>
+            <td id="reportTemplate">{{reportTemplate.name}}</td>
+        </tr>
+        {{/if}}
+   </table>
+   <br/>
+   {{#if false}}
+   <p class="text-info"><strong>Credits Required: 24</strong></p>
+   {{/if}}
+</div>

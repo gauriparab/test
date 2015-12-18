@@ -1,0 +1,34 @@
+<div id="{{id}}" class="alert alert-{{style}} banner-view {{stickyBannerStyle}}">
+    <button type="button" class="close" data-dismiss="alert">x</button>
+    {{#if titleKey}}
+    {{t titleKey}}
+    {{/if}}
+    {{#if title}}
+    {{safe title}}
+    {{/if}}
+    {{#if messages}}
+	{{#if messages.categorize}}
+        <dl>
+        {{#each messages.list}}
+            <dt>{{title}}</dt>
+            {{#each list}}
+            <dd>{{this}}</dd>
+            {{/each}}
+        {{/each}}
+        </dl>
+	{{else}}
+        <ul>
+        {{#each messages}}
+            {{#if single}}
+                <li>{{t single}}</li>
+            {{/if}}
+            {{#if list}}
+                {{#each list}}
+                    <li>{{t this}}</li>
+                {{/each}}
+            {{/if}}
+        {{/each}}
+        </ul>
+	{{/if}}
+    {{/if}}
+</div>

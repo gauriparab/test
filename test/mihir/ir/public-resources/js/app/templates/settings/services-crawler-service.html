@@ -1,0 +1,43 @@
+<h1>ionCrawler {{t 'settings.label.serviceDetails'}}</h1>
+{{#data}}
+	<div id="crawler-status" style="margin:20px 0px;">
+		{{#if crawlerStatus}}
+		<div id="status-text">{{t 'settings.label.status'}} : {{t 'settings.label.online'}} <span id="status"><a href="javascript:void(0)" data-type="stop">{{t 'settings.label.stop'}}</a></span></div>
+		{{else}}
+		<div id="status-text">{{t 'settings.label.status'}} : {{t 'settings.label.offline'}} <span id="status"><a href="javascript:void(0)" data-type="start">{{t 'settings.label.start'}}</a></span></div>
+		{{/if}}
+	</div>
+		
+	<table class="table table-bordered">
+		<tbody>
+			<tr>
+				<td style="width:50%;">{{t 'settings.label.crawlerUpTime'}}</td>
+				<td style="width:50%;">{{crawlerUpTime}}</td>
+			</tr>
+			<tr>
+				<td style="width:50%;">{{t 'settings.label.runsAdded'}}</td>
+				<td style="width:50%;">{{experimentCount}}</td>
+			</tr>
+			<tr>
+				<td style="width:50%;">{{t 'settings.label.recentRuns'}}</td>
+				<td style="width:50%;">
+					{{#each recentRuns}}
+						<div>{{this}}</div>
+					{{/each}}
+				</td>
+			</tr>
+			<tr>
+				<td style="width:50%;">{{t 'settings.label.state'}}</td>
+				<td style="width:50%;">{{crawlerState}}</td>
+			</tr>
+			<tr>
+				<td style="width:50%;">{{t 'settings.label.host'}}</td>
+				<td style="width:50%;">{{host}}</td>
+			</tr>
+		</tbody>
+	</table>
+	
+{{/data}}
+{{#errors}}
+	<div>{{this}}</div>
+{{/errors}}

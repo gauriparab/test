@@ -1,0 +1,5 @@
+{{#unless factoryProvided}}
+	{{#ifCond status '===' 'LOCKED'}}
+		<b><a href='javascript:void(0)' data-action='obsolete'>{{t 'actions.OBSOLETE'}}</a></b>
+	{{/ifCond}}
+{{/unless}}

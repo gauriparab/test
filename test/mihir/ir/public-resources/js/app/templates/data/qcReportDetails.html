@@ -1,0 +1,60 @@
+<div>
+	<table style="width: 100%">
+		<tr>
+			<td valign="top" class="summary-item" style="padding-left: 0px"
+				width="200">{{t 'data.report.creationDate'}}:</td>
+			<td>{{reportCreationDate}}</td>
+		</tr>
+		<tr>
+			<td valign="top" class="summary-item" style="padding-left: 0px">{{t
+				'grid.column.qcStatus'}}:</td>
+			<td>
+		        {{#ifCond qCStatus '===' 'Passed'}}
+                       <span class="text-success">{{t 'data.results.passed'}}</span>
+                   {{else}}
+                        {{#ifCond qCStatus '===' 'Failed'}}
+                                <span class="text-error">{{t 'data.results.failed'}}</span>
+                        {{else}}
+                                <span></span>
+                        {{/ifCond}}
+                   {{/ifCond}}
+			</td>
+		</tr>
+		<tr>
+			<td valign="top" class="summary-item" style="padding-left: 0px">{{t
+				'planned.runs.assay'}}:</td>
+			<td>{{assay}}</td>
+		</tr>
+		<tr>
+			<td valign="top" class="summary-item" style="padding-left: 0px">{{t
+				'data.report.dxVersion'}}:</td>
+			<td>{{torrentSuiteDxSoftwareVersion}}</td>
+		</tr>
+	</table>
+</div>
+<br/>
+<div>
+	<div class="report-header">{{t 'library.details.header'}}</div>
+	<div class="report-body">
+		<table>
+			<tr>
+				<td class="summary-item" style="padding-left: 0px"
+				width="165">{{t 'grid.column.libraryPrepId'}}:</td>
+				<td class="summary-item" style="padding-left: 0px"
+				width="165">{{libraryPrepID}}</td>
+			</tr>
+			<tr>
+				<td class="summary-item" style="padding-left: 0px"
+				width="165">{{t 'grid.column.libraryName'}}:</td>
+				<td class="summary-item" style="padding-left: 0px"
+				width="165">{{libraryName}}</td>
+			</tr>
+			<tr>
+				<td class="summary-item" style="padding-left: 0px"
+				width="165">{{t 'manage.sample.barcodeId'}}:</td>
+				<td class="summary-item" style="padding-left: 0px"
+				width="165">{{libraryBarcode}}</td>
+			</tr>
+		</table>
+	</div>
+</div>

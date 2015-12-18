@@ -1,0 +1,113 @@
+/*global define:false*/
+define(['jquery', 'underscore', 'kendo', 'views/formView', 'models/sample/planRunModel', 'views/errorsView',
+        'hb!templates/sample/plan-run.html', 'collections/assay/assays']
+    .concat('bootstrap'),
+
+    function($, _, kendo, FormView, PlanRunModel, ErrorsView, template, Assays) {
+        'use strict';
+        var PlanARun = FormView.extend({
+
+            el: '#planARunModal',
+
+            initialize: function(options) {
+                this._oldContent = this.$el.html();
+                options = options || {};
+				this.model = new PlanRunModel({
+					samples:options.data
+				});
+		        this.errorsView = new ErrorsView({
+		            model: this.model
+		        });
+				this.assays = new Assays();
+		     },
+	
+            events: {
+            	'click #planRunSaveButton': '_onSave'
+            },
+
+            render: function() {
+                this._renderForm();
+                var self = this;
+  		      	this.$el.unbind('hide').on('hide', function () {
+  		      		self.undelegateEvents();
+  		      		self.unbind();
+	            });
+                this.renderSubView(this.errorsView, "#errors");
+            },
+
+            delegateEvents: function() {
+                FormView.prototype.delegateEvents.apply(this, arguments);
+            },
+
+            _renderForm: function() {
+            	var self =this;
+            	$.when(this.assays.fetch()).done(function() {
+           	     	self.$el.html(template({
+                        model: self.model.toJSON(),
+                        assays: self.assays.toJSON()
+                    }));
+		    self.$el.find($('input')).keypress(function (e) {
+  			if (e.which == 13) {
+    			    self._onSave();
+    			    self.$el.find($('input')).blur();
+    			    return false;
+  		    	}
+		    });
+		    self.$el.find($('select')).keypress(function (e) {
+                        if (e.which == 13) {
+                            self._onSave();
+                            self.$el.find($('select')).blur();
+                            return false;
+                        }
+                    });
+                    self.$el.modal({
+                        backdrop: 'static',
+                        attentionAnimation: null,
+                        keyboard: false,
+                        show : true
+                    });
+            	});
+            },
+            
+            _onSave: function(){
+            	var samples = this.options.data;
+                var self = this;
+                this.model.set('assayId', $("#planRunAssay").val()); 
+                this.model.set('planName', $("#planARunName").val());
+                this.model.set('note', $("#planARunNote").val());
+                var sampleData =[];
+               for(var i = 0; i < samples.length ; i++){
+            	   var sample = {};
+            	   sample.id = samples[i].id;
+            	   /*if(null!= samples[i].barcode && samples[i].barcode != ""){
+            		   sample.barcodeId = samples[i].barcode.id;
+            	   }else{
+            		   sample.barcodeId = null;
+            	   }*/
+            	   sample.libraryKit = samples[i].libraryPrepReagentBarcode;
+            	   sampleData.push(sample);
+               }
+               this.model.unset("samples");
+               delete this.model.cid;
+               this.model.set('planRunSampleDtoList', sampleData);
+               $('#planARunModal #ajaxerror').remove();
+                this.model.save(null, {
+                	success: function() {
+                		self.closeDialog();
+                        window.location = "/ir/secure/planned-runs.html";
+                	}
+		        });
+            },
+            
+            closeDialog: function() {
+                this.$el.modal('hide');
+            },
+    	    undelegateEvents: function() {
+    			Backbone.View.prototype.undelegateEvents.apply(this, arguments);
+    		}
+        });
+
+        return PlanARun;
+    });
+
+

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org">
+<head th:fragment="headerFragment">
+	<title th:text="#{html.head.title}">Ion Reporter | Life Technologies</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" charset="utf-8"/>
+	<link rel="shortcut icon" type="image/x-icon" href="../../public-resources/img/lifetech_favicon_0.gif" th:href="@{/resources/img/lifetech_favicon_0.gif}"/>
+    <link rel="icon" type="image/x-icon" href="../../public-resources/img/lifetech_favicon_0.gif" th:href="@{/resources/img/lifetech_favicon_0.gif}"/>
+
+	<!-- Common Kendo UI Web CSS -->
+	<link href="../../public-resources/kendoui.web.2013.1.319.commercial/styles/kendo.common.min.css" rel="stylesheet" th:href="@{/resources/kendoui.web.2013.1.319.commercial/styles/kendo.common.min.css}"/>
+	<!-- Default Kendo UI Web theme CSS -->
+	<link href="../../public-resources/kendoui.web.2013.1.319.commercial/styles/kendo.default.min.css" rel="stylesheet" th:href="@{/resources/kendoui.web.2013.1.319.commercial/styles/kendo.default.min.css}"/>
+	<link href="../../public-resources/css/kendo.ir.css" rel="stylesheet" th:href="@{/resources/css/kendo.ir.css}"/>
+
+	<link rel="stylesheet" type="text/css" href="../../public-resources/css/bootstrap.min.css" th:href="@{/resources/css/bootstrap.min.css}" />
+	<link rel="stylesheet" type="text/css" href="../../public-resources/css/bootstrap-fileupload.min.css" th:href="@{/resources/css/bootstrap-fileupload.min.css}" />
+    <link rel="stylesheet" type="text/css" href="../../public-resources/css/bootstrap-select.min.css" th:href="@{/resources/css/bootstrap-select.min.css}" />
+    <link rel="stylesheet" type="text/css" href="" th:href="@{/resources/css/bootstrap-modal.css}" />
+    <link rel="stylesheet" type="text/css" href="" th:href="@{/resources/css/datepicker.css}" />
+    
+
+	<!-- <link href="../../public-resources/css/ir.css" rel="stylesheet" th:href="@{/resources/css/ir.css}"/>
+	<link href="../../public-resources/css/app.css" rel="stylesheet" th:href="@{/resources/css/app.css}" />
+	 -->
+
+	<link href="../../public-resources/css/app.css" rel="stylesheet" th:href="@{'/resources/css/'+${session.applicationType}+'/ir.css'}" />
+	<link href="../../public-resources/css/app.css" rel="stylesheet" th:href="@{'/resources/css/'+${session.applicationType}+'/app.css'}" />
+
+
+	<script src="../../../public-resources/js/lib/require-2.1.6.min.js" th:src="@{/resources/js/lib/require-2.1.6.min.js}"></script>
+	<script src="../../../public-resources/js/_lib.js" th:src="@{/resources/js/_lib.js} + '?v=' + ${beans.versionProps['build.commit.abbrev']}" th:if="${beans.applicationProps['application.optimizejs']}"></script>
+	<script src="../../../public-resources/js/_app.js" th:src="@{/resources/js/_app.js} + '?v=' + ${beans.versionProps['build.commit.abbrev']}" th:if="${beans.applicationProps['application.optimizejs']}"></script>
+
+	<!--<script src="../../../public-resources/kendoui.web.2013.1.319.commercial/src/js/cultures/kendo.culture.fr.js" th:src="@{/resources/kendoui.web.2013.1.319.commercial/src/js/cultures/kendo.culture.fr.js} + '?v=' + ${beans.versionProps['build.commit.abbrev']}"></script>
+	<script src="../../../public-resources/kendoui.web.2013.1.319.commercial/src/js/cultures/kendo.culture.en-US.js" th:src="@{/resources/kendoui.web.2013.1.319.commercial/src/js/cultures/kendo.culture.en-US.js} + '?v=' + ${beans.versionProps['build.commit.abbrev']}"></script>
+	<script src="../../../public-resources/kendoui.web.2013.1.319.commercial/src/js/cultures/kendo.culture.zh-CN.js" th:src="@{/resources/kendoui.web.2013.1.319.commercial/src/js/cultures/kendo.culture.zh-CN.js} + '?v=' + ${beans.versionProps['build.commit.abbrev']}"></script>-->
+
+
+    <script th:substituteby="global-module.html"></script>
+
+    <script type="text/javascript" json:stringify="javascript">
+        /*<![CDATA[*/
+        function requireInit(modules, moduleFunction) {
+            require(['global'], function(global) {
+                require([ global.resources + 'js/main.js'], function(main) {
+                    require(['ir'], function() {
+                        require(modules, moduleFunction);
+                    });
+                });
+            });
+        }
+        /*]]>*/
+    </script>
+
+    <script th:if="${beans.applicationProps['test.mode'] == 'true'}">
+        /*<![CDATA[*/
+        if (document.location.search.length && document.location.search.indexOf("ajaxerror=") >= 0) {
+            setTimeout(function() {
+                $.ajax({
+                    url: document.location.search.substring(document.location.search.indexOf("ajaxerror=") + 10),
+                    type: "GET",
+                    beforeSend: function(xhr){xhr.setRequestHeader('Content-Type', 'application/json');}
+                });
+            }, 4000);
+        }
+        /*]]>*/
+    </script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<div id="layout.bodyHeaderFragment" class="header" th:fragment="bodyHeaderFragment">
+			<div id="layout.bodyHeaderTopFragment" class="container-fluid" th:fragment="bodyHeaderTopFragment" style="background: -webkit-linear-gradient(top, #FFFFFF, #E8E8E8);padding:0">
+				<div class="pull-left">
+					<a href="home.html" th:href="@{/secure/manage-specimens.html}">						
+						<dl class="dl-horizontal" style="font-family:myriadproregular;padding: 5px 0px;margin: 3px 0px 0 0;">
+				            <dt style="font-size:22px;color:#333333;width:135px">Torrent Suite</dt>
+				            <dd style="font-size:13px; color:#777777;margin-left:150px">Assay Developement</dd>
+				        </dl>
+					</a>
+				</div>
+				<ul class="nav nav-pills pull-right" style="margin-top:0">
+					<li th:if="${session.expirePasswordError}" class="password-expired-msg disabled" >Your password is about to expire. Please reset your password.</li>
+					<li class="disabled">
+						<a href="#" class="user-details" style="color: #777777;"> Today's date: <span style="color:#343434">August 21, 2015</span></a>
+					</li>
+					<li class="disabled">
+						<a href="#" class="user-details" style="color: #777777;"> Last logged in: August 12, 18:43:35 hrs</a>
+					</li>
+					<li class="disabled" th:with="user=${@securityContextUtil.authenticatedUser}">
+                        <a href="#" style="color: #777777;" class="user-details" sec:authorize="${isAuthenticated()}"> <span th:utext="#{'header.greeting.hi'}"></span>, <span th:text="${user.firstName}"></span> <span th:text="${user.lastName}"></span></a>
+                    </li>                    
+					<li class="dropdown pull-right">
+                      <a href="#" id="actions" role="button" class="dropdown-toggle" data-toggle="dropdown" style="color: #777777;font-weight: normal;"> My Profile <img src="/ir/resources/img/Icon-Settings.png" style="margin-bottom:2.5px"/> </a>
+                      <ul class="dropdown-menu" role="menu" aria-labelledby="actions">
+                        <li role="presentation" th:if="${@utilService.isAssayDev()}">
+                        	<a href="javascript:void(0)" role="menuitem" tabindex="-1" target="_blank" id="helpLink"><span th:utext="#{'help.label'}"></span></a>
+                        </li>
+                        <li role="presentation">
+                        	<a href="javascript:void(0)" id="profile" role="menuitem" tabindex="-1" th:href="@{/secure/profile.html}"><span th:utext="#{'header.greeting.my.prifle'}"></span></a>
+                        </li>
+                        <li role="presentation">
+                        	<a href="javascript:void(0)" id="logout" role="menuitem" tabindex="-1" sec:authorize="${isAuthenticated()}" th:href="@{/logout.html}"><span th:utext="#{'header.greeting.sign.out'}"></span></a>
+                        </li>
+                      </ul>
+                    </li>
+				</ul>
+			</div>
+			<ul class="nav nav-tabs">
+                <li th:each="tab : ${tabs}" th:id="'nav-item-' + ${tab.identifier.toLowerCase()}" th:if="${#authorization.expression(tab.authorization)}" th:classappend="${tab.isActive()}? 'active'"><a th:id="${tab.identifier.toLowerCase()} + '-tab-id'" th:href="@{${tab.path}}" th:utext="#{${tab.name}}"></a></li>
+			</ul>
+		</div>
+
+		<div id="subNavHeaderFragment" class="sub-nav" th:fragment="bodySubNavFragment">
+			<div class="container-fluid" style="padding:0">
+                <ul class="nav pull-left">
+                    <li th:each="tab : ${activeTab.children}" th:id="'nav-item-' + ${tab.identifier.toLowerCase()}" th:if="${#authorization.expression(tab.authorization) and __${tab.condition}__}" th:classappend="${tab.isActive()}? 'active'"><a th:id="${tab.identifier.toLowerCase()} + '-tab-id'" th:href="@{${tab.path}}" th:utext="#{${tab.name}}"></a></li>
+                </ul>
+			</div>
+		</div>
+
+		<div class="main" id="applicationBody">
+			<div class="main-content clearfix" th:fragment="bodyMain">
+
+			</div>
+		</div>
+
+        <footer th:fragment="bodyFooter" class="cloak-footer">
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <div class="pull-left">
+                    	<img src="../../public-resources/img/iontorrent-logo-footer.png" th:src="@{/resources/img/iontorrent-logo-footer.png}" alt="" class="iontorrent-logo-footer" style="padding-right:10px;" />
+                    </div>
+                    <div class="copyright">
+                    	<span class="span6">
+                       		<p th:text="#{${@utilService.getFooterDisclaimer()}}"></p>
+                        </span>
+                        <span class="span6">
+                        	<p class="pull-right" th:text="#{footer.copyright}"></p>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+	</div>
+
+
+    <script type="text/javascript" th:fragment="irHeaderModals">
+        /*<![CDATA[*/
+        requireInit(['jquery', 'views/client/irUploadersView', 'views/changePasswordView', 'views/manageApiTokenView', 'data/help'],
+            function($, IRUploadersView, ChangePasswordView, ManageApiTokenView, Help) {
+                // IR Uploader dialog
+                window.openIRUploaderDialog = function() {
+                    IRUploadersView.openDialog();
+                };
+
+                // Change password dialog
+                window.openChangePasswordDialog = function() {
+                    ChangePasswordView.openDialog();
+                };
+
+                // Manage API token dialog
+                window.openManageApiTokenDialog = function() {
+                    ManageApiTokenView.openDialog();
+                };
+
+                // User details popover
+                $("a.user-details").popover({
+                    html: true,
+                    trigger: 'hover',
+                    placement: 'bottom'
+                });
+
+				$("a#helpLink").unbind('click').bind('click', function(){
+				    var pathName = location.pathname;
+				    var origUrl = pathName.substring(location.pathname.lastIndexOf("/") + 1);
+				    $(this).attr("href", location.href.replace(origUrl, Help.lookup(origUrl)).replace("secure", "help"));
+				});
+				
+				(function(that){
+					var mainNavEl = $($.find('.header'));
+					var subNavEl = $($.find('.sub-nav'));
+					var footerEl = $($.find('footer'));
+					var bodyEl = $($.find('.main'));
+					
+					var unusableHeight = mainNavEl.height() + subNavEl.height() + footerEl.height();
+					var availableHeight = window.innerHeight;
+					var contentMinHeight = availableHeight - unusableHeight;
+					
+					bodyEl.css('min-height',contentMinHeight);
+					footerEl.removeClass('cloak-footer');
+					
+				})(this);
+				
+        	});
+        /*]]>*/
+    </script>
+</body>
+</html>

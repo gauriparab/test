@@ -1,0 +1,23 @@
+<ul class="box-inr">
+    <li class="span5">
+
+        <div class="{{#if SAMPLE1}} {{#ifCond SAMPLE1.gender '===' 'Male'}} blue {{else}} {{#ifCond SAMPLE1.gender '===' 'Female'}} pink {{/ifCond}} {{/ifCond}} {{else}} dotted {{/if}} box sample1" 
+             data-value="{{SAMPLE1.role}}">
+            <h3>{{t 'specimen.role.' sampleRole1}}:</h3>
+
+            <p>{{#if SAMPLE1}}{{SAMPLE1.name}}{{else}}Empty{{/if}}</p>
+            {{#if SAMPLE1}}
+            <input class="cross pull-right" type="button" value=""/>
+            {{/if}}
+        </div>
+    </li>
+    <li class="span2">&nbsp;</li>
+    <li class="span5">
+        <div class="{{#if SAMPLE2}} {{#ifCond SAMPLE2.gender '===' 'Male'}} blue {{else}} {{#ifCond SAMPLE2.gender '===' 'Female'}} pink {{/ifCond}} {{/ifCond}} {{else}} dotted {{/if}} box sample2"
+             data-value="{{SAMPLE2.role}}">
+            <h3>{{t 'specimen.role.' sampleRole2}}: </h3>
+            <p>{{#if SAMPLE2}}{{SAMPLE2.name}}{{else}}Empty{{/if}}</p>
+            {{#if SAMPLE2}}<input class="cross pull-right" type="button" value=""/>{{/if}}
+        </div>
+    </li>
+</ul>

@@ -1,0 +1,67 @@
+{{#if showOT}}
+	{{#if otDto}}
+	<table style="width: 100%">
+	    <tr>
+	        <td colspan="4">
+		    	<h5><img {{#if otDto.usedForChef}}src="{{img 'CHEF.png'}}"{{else}}src="{{img 'OT.png'}}"{{/if}} width="30" /> {{t 'monitor.run.templating.label'}} : {{otDto.serialNumber}}</h5>
+			</td>
+	    </tr>
+	    <tr>
+	        <td valign="top" class="summary-item" style="padding-left:0px" width="110">{{t 'monitor.run.instrumentName'}} :</td>
+	        <td><strong>{{otDto.name}}</strong></td>
+	        <td valign="top" class="summary-item" style="padding-left:0px" width="110">{{t 'monitor.run.startTime'}} :</td>
+	        <td>{{#if otDto.startTime}}<strong>{{otDto.startTime}}</strong>{{/if}}</td>
+	    </tr>
+	    <tr>
+	         <td valign="top" class="summary-item" style="padding-left:0px" width="110">{{t 'monitor.run.operator'}} :</td>
+	        <td><strong>{{otDto.user}}</strong></td>
+	        <td valign="top" class="summary-item" style="padding-left:0px" width="110">{{t 'monitor.run.completionTime'}} :</td>
+	        <td>{{#if otDto.completionTime}}<strong>{{otDto.completionTime}}</strong>{{/if}}</td>
+	    </tr>
+	    <tr>
+	    	<td valign="top" class="summary-item" style="padding-left:0px" width="110">{{t 'monitor.run.timeLeft'}} :</td>
+	        <td>{{#if otDto.timeLeft}}<strong>{{otDto.timeLeft}}</strong>{{/if}}</td>
+	        <td valign="top" class="summary-item" style="padding-left:0px" width="110">{{t 'monitor.run.templating.status'}} :</td>
+	        <td><strong>{{otDto.status}}</strong></td>
+	    </tr>
+	    {{#unless otDto.usedForChef}}
+		    <tr>
+		        <td colspan="4">
+							{{#ifCond otDto.percentCompleted '==' 100}}
+			  	    	<div class="progress" style="height: 10px; margin: 10px 0px 0px 0px;">
+									<div class="bar" style="width: {{otDto.percentCompleted}}%;"></div>
+								</div>
+							{{else}}
+								<div class="progress progress-striped active" style="height: 10px; margin: 10px 0px 0px 0px;">
+									<div class="bar" style="width: {{otDto.percentCompleted}}%;"></div>
+								</div>
+							{{/ifCond}}
+				    {{#if otDto.showTime}}
+				    	<div>{{t 'monitor.run.templating.progress.status'}} : <strong>{{otDto.completedTime}}</strong> {{t 'monitor.run.sequencing.progress.of'}} <strong>{{otDto.totalTime}}</strong> {{t 'monitor.run.templating.progress.completed'}}</div>
+				    {{/if}}
+				</td>
+		    </tr>
+		{{/unless}}
+	    <tr>
+	        <td colspan="4">
+	        {{#if otDto.outOfSync}}
+	        	<div class="alarms"><img src="{{img 'alert.png'}}" style="vertical-align: text-top;"/><span class="raised"> {{otDto.outOfSyncMesssage}}</span></div>
+	        {{/if}}
+	        {{#if otDto.instrumentAlarms}}
+	        	<ul class="alarms" {{#if otDto.outOfSync}} style="border-top: 0;" {{/if}}>
+			    	{{#each otDto.instrumentAlarms}}
+			        	<li><img src="{{#if raisedAlarmFlag}}{{img 'alert.png'}}{{else}}{{img 'info_no_alarms.png'}}{{/if}}" style="vertical-align: text-top;width: 14px;"/><span class="{{#if raisedAlarmFlag}}raised{{else}}cleared{{/if}}"> {{value}}</span></li>
+			    	{{/each}}
+			    </ul>
+		    {{/if}}
+		</td>
+	    </tr>
+	</table>
+	{{/if}}
+{{else}}
+<table style="width: 100%; height: 100%;">
+    <tr>
+        <td valign="top"></td>
+    </tr>
+</table>
+{{/if}}

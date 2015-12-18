@@ -1,0 +1,31 @@
+<div class="row-fluid">
+    <div>
+        <div class="fileupload fileupload-new" data-provides="fileupload">
+            <div class="input-append">
+                <div class="uneditable-input span3">
+                    <i class="icon-file fileupload-exists"></i>
+                    <span class="fileupload-preview"></span>
+                </div>
+                <span class="btn btn-file">
+                    <span class="fileupload-new">{{t 'upload.selectFile'}}</span>
+                    <span class="fileupload-exists">{{t 'upload.change'}}</span>
+                    <input type="file" name="fileData" id="headerSectionLogoUpload" accept="image/jpeg,image/gif,image/png" />
+                </span>
+                <button id="removeFile" class="btn fileupload-exists" data-dismiss="fileupload">{{t 'upload.remove'}}</button>
+                &nbsp;&nbsp;
+                <button id="upload" style="margin-left: 10px;" class="btn fileupload-exists">{{t 'upload.label'}}</button>
+                &nbsp;&nbsp;
+            </div>
+            <div id="progressBar" class="progress hide" style="width : 400px">
+                <div class="bar" style="width: 0%;"></div>
+            </div>
+            <div><span class="upload-message"></span></div>
+            <div id="validationProgressMessage" class="hide">{{t 'upload.validating'}}</div>
+            <div id="validationTimeout" class="hide">{{t 'upload.validation.timeout'}}</div>
+        </div>
+        <div id="invalid-filetype-message" style="display:none" class="alert alert-error file-type-error">
+            {{t 'upload.invalid.fileType'}}
+        </div>
+        <p>{{t 'upload.supportedTypes'}}</p>
+    </div>
+</div>

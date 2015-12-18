@@ -1,0 +1,12 @@
+<label class="radio inline">
+    <input type="radio" name="filter-button" id="all" value="all" checked> {{t 'view.all.label'}}
+</label>
+<label class="radio inline">
+    <input type="radio" name="filter-button" id="filter" value="filter"> {{t 'date.range.filter.label'}}:
+</label>
+
+<div class="date-range-widget">
+    <input id="start" /> - <input id="end" />
+    <button type="submit" class="btn" id="filterButton" disabled>{{t 'filter.button.label'}}</button>
+ </div>
+

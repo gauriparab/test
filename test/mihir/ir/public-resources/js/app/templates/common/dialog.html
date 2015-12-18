@@ -1,0 +1,12 @@
+<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal"> x </button>
+    <h3 class="breakall">{{headerText}}</h3>
+</div>
+<div class="modal-body">
+    {{#if bodyText}}{{bodyText}}{{/if}}
+</div>
+<div id="modalFooter" class="modal-footer">
+    {{#each buttons}}
+        <button id="{{idPrefix}}{{btnType}}" type="button" data-button-type="{{btnType}}" class="btn {{btnClass}}">{{t buttonKey}}</button>
+    {{/each}}
+</div>

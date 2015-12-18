@@ -1,0 +1,7 @@
+{{#each regions}}
+<label class="radio">
+    <input name="targetRegionType" type="radio" title="{{t ../msgKeyPrefix this}}" id="targetRegionType"
+                                   value="{{this}}" {{#ifCond @index '===' 0}}checked{{/ifCond}}/>
+    {{t ../msgKeyPrefix this}}
+</label>
+{{/each}}

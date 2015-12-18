@@ -1,0 +1,18 @@
+<div class="modal-header">
+    {{#ifNotUndefined headerCtx}}
+        <h3>{{headerCtx}}</h3>
+    {{else}}
+        <h3>{{t headerKey}}</h3>
+    {{/ifNotUndefined}}
+    
+</div>
+<div class="modal-body">
+	<form class="form-horizontal modal-scroll">
+		{{message}}
+	</form>
+</div>
+{{#if done}}
+<div id="modalFooter" class="modal-footer">
+    
+</div>
+{{/if}}

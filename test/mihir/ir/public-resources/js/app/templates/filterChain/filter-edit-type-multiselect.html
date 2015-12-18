@@ -1,0 +1,24 @@
+<!-- Multi Select Filter -->
+<label for='filter-select-filter-option' class='control-label'>{{t 'filterChains.edit.option'}}</label>
+<div class='controls'>
+    <select id='filter-select-filter-option' class='settingDatumSelector filter-input'>
+        {{#each filterOptions}}
+        <option value='{{this}}'>{{t "filter.multiselect.configuredFilterOption." this}}</option>
+        {{/each}}
+    </select>
+    <button id="filter-chain-edit-filter-main-button" type="button" class="btn btn-primary filter-chain-filter-btn-configure pull-right">{{t 'filterChains.edit.set'}}</button>
+</div>
+
+{{#if filter.attributes.handleMissing}}
+<div class="control-group">
+    <div class="controls">
+        <label class="checkbox">
+            <input id="multiselectfilter-includeUnannotated" class="filter-input" type="checkbox" value="true"
+            {{#if filter.attributes.configuredIncludeMissing}}checked="checked"{{/if}}>{{t 'filterChains.edit.include.unannotatedVariants'}}
+        </label>
+    </div>
+</div>
+{{/if}}
+
+<div id="filter-select-configured-grid"></div>
+<button type="button" class="btn btn-primary filter-chain-filter-btn-configure pull-right">{{t 'filterChains.edit.set'}}</button>

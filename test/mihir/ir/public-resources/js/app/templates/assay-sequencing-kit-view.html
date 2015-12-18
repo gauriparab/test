@@ -1,0 +1,12 @@
+{{#ifCond collection.length '>=' 1}}
+<div style="display:table-cell; width:136px; font-size: 12px;vertical-align: top;"><strong>{{t labelKey}}: </strong></div>
+<div style="display:table-cell">
+	<div class="custom-region-container" style="display:inline-block;">
+		<select id="{{idKey}}" class="input-xlarge">
+			{{#each collection}}
+			<option value={{this.id}}>{{this.name}}</option>
+			{{/each}}
+		</select>
+	</div>
+</div>
+{{/ifCond}}

@@ -1,0 +1,13 @@
+<h1>{{t 'settings.label.smartMonitoring'}}</h1>
+{{#data}}
+	<div id="rsm-status" style="margin:20px 0px;">
+		{{#ifCond action '==' 'stop'}}
+		<div id="status-text">{{t 'settings.label.status'}} : {{t 'settings.label.online'}} <span id="status"><a href="javascript:void(0);" data-type="stop">{{t 'settings.label.stop'}}</a></span></div>
+		{{else}}
+		<div id="status-text">{{t 'settings.label.status'}} : {{t 'settings.label.offline'}} <span id="status"><a href="javascript:void(0);" data-type="start">{{t 'settings.label.start'}}</a></span></div>
+		{{/ifCond}}
+	</div>
+{{/data}}
+{{#errors}}
+	<div>{{this}}</div>
+{{/errors}}

@@ -1,0 +1,44 @@
+<form class="form-horizontal">
+	<div class="control-group">
+		<label class="control-label" for="libraryTypeDna">{{t 'sample.add.dna.template.library.type'}}: </label>
+		<div class="controls">
+			<label id="libraryTypeDna">{{t 'sample.add.dna.template.dna.title'}}</label>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="libraryNameDna">{{t 'sample.add.dna.template.library.name'}}: <span class="text-error requires-asterisk ">*</span></label>
+		<div class="controls">
+			<input name="libraryNameDna" type="text" id="libraryNameDna" value="{{data.libraryName}}" maxlength="50"/>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="barcodeIdDna">{{t 'sample.add.dna.template.barcode.id'}}: <span class="text-error requires-asterisk ">*</span></label>
+		<div class="controls">
+			<select class="input-medium" id="barcodeIdDna" name="barcodeIdDna">
+	        	{{#each barcodes}}
+					<option value="{{id}}">{{idStr}}</option>
+				{{/each}}
+	        </select>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="libraryKitBarcodeDna">{{t 'sample.add.dna.template.library.kit.barcode'}}: </label>
+		<div class="controls">
+			<input name="libraryKitBarcodeDna" type="text" id="libraryKitBarcodeDna" value="{{data.libraryKitBarcode}}" maxlength="40"/>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="quantityDna">{{t 'sample.add.dna.template.library.quantity'}}: </label>
+		<div class="controls">
+			<input name="quantityDna" type="text" id="quantityDna" value="{{data.quantity}}" maxlength="10"/>
+		</div>
+	</div>
+	{{#if data.id}}{{else}}
+	<div class="control-group">
+		<label class="control-label" for="notesDna">{{t 'sample.add.dna.template.notes.title'}}: </label>
+		<div class="controls">
+			<textarea name="notesDna" id="notesDna" maxlength="256" rows="3">{{notes}}</textarea>
+		</div>
+	</div>
+	{{/if}}
+</form>		

@@ -1,0 +1,70 @@
+{{#if splitDnaRna}}
+<div class="row-fluid">
+	{{#if dnaType}}
+	<div class="span6">
+		<span class="info-label">
+			<h5 style="margin-top:0">
+				{{t 'qccontrol.dna.sample'}}
+				<a href="javascript:void(0)" id="resetAllDNA" style="font-size:12px">({{t 'assay.qcsequence.resetAll'}})</a>
+			</h5>
+		</span>
+		<form class="form-horizontal">
+			{{#each runtemplateqcDtos}}
+			{{#ifCond libraryType '===' "DNA"}}
+			<div class="control-group">
+				<label class="control-label" for="{{qcTypeId}}" style="width:180px">{{qcName}}</label>
+				<div class="controls">
+					<input name="{{qcTypeId}}" type="text" value="{{threshold}}" maxlength="50" class="input-small">
+					<span class="info-label">{{unit}}</span>
+					<span class="info-label">{{t 'assay.page.min'}}</span>
+				</div>
+			</div>
+			{{/ifCond}}
+			{{/each}}
+		</form>
+	</div>
+	{{/if}}
+	{{#if rnaType}}
+	<div class="span6">
+		<span class="info-label">
+			<h5 style="margin-top:0">
+				{{t 'qccontrol.rna.sample'}}
+				<a href="javascript:void(0)" id="resetAllRNA" style="font-size:12px">({{t 'assay.qcsequence.resetAll'}})</a>
+			</h5>
+		</span>
+		<form class="form-horizontal">
+			{{#each runtemplateqcDtos}}
+			{{#ifCond libraryType '===' "RNA"}}
+			<div class="control-group">
+				<label class="control-label" for="{{qcTypeId}}" style="width:180px">{{qcName}}</label>
+				<div class="controls">
+					<input name="{{qcTypeId}}" type="text" value="{{threshold}}" maxlength="50" class="input-small">
+					<span class="info-label">{{unit}}</span>
+					<span class="info-label">{{t 'assay.page.min'}}</span>
+				</div>
+			</div>
+			{{/ifCond}}
+			{{/each}}
+		</form>
+	</div>
+	{{/if}}
+</div>
+{{else}}
+<span class="info-label">
+<h5 style="margin-top:0">
+	{{name}}
+	<a href="javascript:void(0)" id="resetAll" style="font-size:12px">({{t 'assay.qcsequence.resetAll'}})</a>
+</h5>
+</span>
+<form class="form-horizontal">
+	{{#each runtemplateqcDtos}}
+	<div class="control-group">
+		<label class="control-label" for="{{qcTypeId}}" style="width:180px">{{qcName}}</label>
+		<div class="controls">
+			<input name="{{qcTypeId}}" type="text" value="{{threshold}}" maxlength="50" class="input-small">
+			<span class="info-label">{{t 'assay.page.min'}}</span>
+		</div>
+	</div>
+	{{/each}}
+</form>
+{{/if}}

@@ -1,0 +1,46 @@
+{{#unless readOnly}}
+    <div class="control-group form-horizontal form">
+      <label class="control-label" for="noteText">{{t 'variant.label.noteText'}}</label>
+      <div class="controls">
+        <textarea id="noteText" placeholder="Your note here"></textarea>
+      </div>
+    </div>
+    <div class="control-group form-horizontal form">
+      <div class="controls">
+        <button id="addNoteBtn" type="button" class="btn">{{t 'variant.label.addNote'}}</button>
+      </div>
+    </div>
+{{/unless}}
+
+<table class="table table-bordered" id="notesTable">
+    <thead>
+    <tr>
+        <th>Added By</th>
+        <th>Date</th>
+        <th>Note</th>
+        {{#ifCond viz '===' true}}
+            <th>Analysis Name</th>
+        {{/ifCond}}
+    </tr>
+    </thead>
+    <tbody>
+    {{#each comments}}
+        <tr>
+            <td>{{createdBy.firstName}} {{createdBy.lastName}}</td>
+            <td>{{formatDate createdOn}}</td>
+            <td>{{message}}
+            {{#unless ../readOnly}}
+                <i class="icon-trash pull-right" data-id="{{id}}"></i>
+            {{/unless}}
+            </td>
+            {{#ifCond ../viz '===' true}}
+                <td>{{commentable.analyses.0.name}}</td>
+            {{/ifCond}}
+        </tr>
+    {{else}}
+        <tr>
+            <td colspan="2">{{t 'variant.label.noNotes'}}</td>
+        </tr>
+    {{/each}}
+    </tbody>
+</table>

@@ -1,0 +1,44 @@
+{{#model}}
+
+<div><b>{{name}}</b></div>
+
+<table class="table">
+	<tbody>
+		<tr>
+			<td><b>{{t 'analysis.auditLog.analysis.annotations.sources.version'}}:</b></td>
+			<td>{{applicationVersion.name}}</td>
+		</tr>
+		<tr>
+			<td><b>{{t 'targetregion.details.createdBy'}}:</b></td>
+			<td>{{createdBy.firstName }} {{createdBy.lastName}}</td>
+		</tr>
+		
+		<tr>
+			<td><b>{{t 'targetregion.details.createdOn'}}:</b></td>
+			<td>{{formatDate createdOn}}</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>{{t 'filterChains.edit.order.label'}}.</p>
+<p>{{t 'filterChains.details.help'}}</p>
+<table class="filterChains table table-striped table-condensed">
+    <tbody>
+    {{#each _filters}}
+    <tr id="{{id}}" data-filter-type="{{type}}" class="workflow-setting">
+    <td>{{displayValue}}</td>
+    <td>
+        <div class="pull-right right-buffer filter">
+            {{#ifCond handleMissing '&&' includeMissing}}
+            <i class="icon-plus has-title-tooltip" data-toggle="tooltip" data-html="true" data-placement="left"
+               title="{{#ifCond type '===' '.filter.LogicalFilterGroup'}} {{t 'filter.logical.include.missing'}} {{else}} {{t 'filter.other.include.missing'}} {{/ifCond}}"></i>
+            {{/ifCond}}
+        </div>
+    </td>
+    </tr>
+    {{/each}}
+    </tbody>
+</table>
+
+
+{{/model}}

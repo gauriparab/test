@@ -1,0 +1,31 @@
+<form id="signOffForm" class="form-horizontal">
+    <div class="control-group">
+        <label class="control-label" for="userName">{{t 'data.signoff.username'}}:<span class="text-error requires-asterisk">*</span></label>
+        <div class="controls">
+            <input name="userName" type="text" id="signOffUserName" />
+        </div>
+    </div>
+    
+    <div class="control-group">
+        <label class="control-label" for="password">{{t 'data.signoff.password'}}:<span class="text-error requires-asterisk">*</span></label>
+        <div class="controls">
+            <input name="password" type="password" id="signOffPassword" maxlength="50"/>
+         </div>
+    </div>
+    
+    <div class="control-group">
+        <label class="control-label" for="comments">{{t 'data.signoff.comments'}}:<span class="text-error requires-asterisk">*</span></label>
+        <div class="controls">
+            <textarea name="comments" id="signOffComments" rows="4"  maxlength="256"></textarea>
+        </div>
+    </div>
+    
+    <div class="control-group">
+        <label class="control-label" for="signatureMeaning">{{t 'data.signoff.meaning.signature'}}:<span class="text-error requires-asterisk">*</span></label>
+        <div class="controls">
+         <select class="input-medium" id="signOffSignatureMeaning" name="signatureMeaning">
+                    <option value="Approval">{{t 'data.signoff.approval'}}</option>
+         </select>
+        </div>
+    </div>
+</form>

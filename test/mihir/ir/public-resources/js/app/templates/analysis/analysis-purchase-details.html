@@ -1,0 +1,22 @@
+<table class="filterChains table table-striped table-condensed" >
+    <thead>
+        <th>{{t 'analysis.label.sku.title'}}</th>
+        <th>{{t 'analysis.label.sku.associatedSKU'}}</th>
+        <th>{{t 'analysis.label.sku.name'}}</th>
+        <th>{{t 'analysis.label.sku.qty'}}</th>
+        <th>{{t 'analysis.label.sku.price'}}</th>
+        <th>{{t 'analysis.label.sku.total'}}</th>
+    </thead>
+    <tbody>
+        {{#each invoice.items}}
+        <tr>
+            <td>{{sku}}</td>
+            <td data-toggle="tooltip" title="{{thirdPartyDescription}}">{{thirdPartySKU}}</td>
+            <td data-toggle="tooltip" title="{{description}}">{{name}}</td>
+            <td>{{quantity}}</td>
+            <td>{{pricePerSKU}} {{currency}}</td>
+            <td>{{total}} {{currency}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

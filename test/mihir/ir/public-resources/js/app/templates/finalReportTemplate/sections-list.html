@@ -1,0 +1,135 @@
+<p>{{t 'final.report.template.sections.info'}}</p>
+<div class="report-sections">
+{{#each sections}}
+	{{#ifCond this._type '===' 'HeaderSection'}} 
+	<div class="report-section row-fluid">
+		<div class="offset1">
+			<h5>Header</h5>
+			<div class="row-fluid offset1">
+			<table>
+			<tr>
+				<td>{{t 'report.template.label.organization.name'}}:</td>
+				<td>{{this.organizationName}}</td>
+			</tr>
+			<tr>
+				<td>{{t 'report.template.label.organization.address'}}:</td>
+				<td class="organization-address">{{this.organizationAddress}}</td>
+			</tr>
+			<tr>
+				<td>Logo:<br/><img src="{{logoURL}}" style="width: 100px;"></td>
+				<td></td>
+			</tr>
+			</table>
+			</div>
+		</div>
+	</div>
+	{{/ifCond}}
+    {{#ifCond this._type '===' 'BackgroundSection'}}
+    <div class="report-section row-fluid">
+        <div class="offset1">
+            <h5>{{t 'final.report.background.header'}}</h5>
+            <div class="row-fluid offset1">
+            <table>
+            <tr>
+                <td>{{t 'final.report.template.sections.summary'}}:</td>
+                <td style="white-space:pre;">{{this.summary}}</td>
+            </tr>
+            </table>
+            </div>
+        </div>
+    </div>
+    {{/ifCond}}   
+    {{#ifCond this._type '===' 'AnalysisInformationSection'}} 
+    <div class="report-section row-fluid">
+        <div class="offset1">
+            <h5>{{t 'final.report.template.sections.analysis.header'}}</h5>
+        </div>
+    </div>
+    {{/ifCond}}     
+	{{#ifCond this._type '===' 'SamplesOverviewSection'}} 
+	<div class="report-section row-fluid">
+		<div class="offset1">
+			<h5>{{t 'final.report.template.sections.samples.header'}}</h5>
+		</div>
+	</div>	
+	{{/ifCond}}
+    {{#ifCond this._type '===' 'ReportedVariantsSection'}} 
+    <div class="report-section row-fluid">
+        <div class="offset1">
+            <h5>{{t 'final.report.template.sections.reportedVariants.header'}}</h5>
+        </div>
+    </div>
+    {{/ifCond}}
+
+	{{#ifCond this._type '===' 'VariantDetailsSection'}}
+	<div class="report-section row-fluid">
+		<div class="offset1">
+			<h5>{{t 'final.report.template.sections.variantDetails.header'}}</h5>
+		</div>
+	</div>
+	{{/ifCond}}   
+
+	{{#ifCond this._type '===' 'CommentsSection'}} 
+	<div class="report-section row-fluid">
+		<div class="offset1">
+			<h5>{{t 'finalReportSection.CommentsSection'}}</h5>
+		</div>
+	</div>
+	{{/ifCond}}
+    
+    {{#ifCond this._type '===' 'SignOffSection'}} 
+    <div class="report-section row-fluid">
+        <div class="offset1">
+            <h5>{{t 'finalReportSection.SignOffSection'}} {{t 'final.report.template.common.optional'}}</h5>
+            <div class="row-fluid offset1">
+            <table>
+            <tr>
+                <td>{{t 'finalReportTemplate.signoff.authors.label'}}:</td>
+                <td>
+                    {{#if this.authors}}
+                    <table>
+                    <thead>
+                    <tr>
+                        <th>{{t 'final.report.template.sections.signoff.name'}}</th>
+                        <th>{{t 'final.report.template.sections.signoff.qualification'}}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#each this.authors}}
+                    <tr>
+                        <td>{{this.name}}</td>
+                        <td>{{this.qualification}}</td>
+                    </tr>
+                    {{else}}
+                    <tr>
+                        <td colspan="2">{{t 'final.report.template.sections.signoff.noSigners'}}</td>
+                    </tr>
+                    {{/each}}
+                    </tbody>
+                    </table>
+                    {{/if}}
+                </td>
+            </tr>
+            </table>
+            </div>
+        </div>
+    </div>
+    {{/ifCond}}   
+    
+    {{#ifCond this._type '===' 'DisclaimerSection'}} 
+    <div class="report-section row-fluid">
+        <div class="offset1">
+            <h5>{{t 'finalReportSection.DisclaimerSection'}} {{t 'final.report.template.common.optional'}}</h5>
+            <div class="row-fluid offset1">
+            <table>
+            <tr>
+                <td>{{t 'finalReportSection.DisclaimerSection'}}:</td>
+                <td style="white-space:pre;">{{this.disclaimer}}</td>
+            </tr>
+            </table>
+            </div>
+        </div>
+    </div>
+    {{/ifCond}}     
+{{/each}}
+</div>

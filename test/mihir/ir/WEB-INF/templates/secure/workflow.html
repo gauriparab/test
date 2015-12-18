@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:substituteby="layout.html :: headerFragment"></head>
+<body>
+<div class="wrapper">
+	<div class="header" th:substituteby="layout.html::bodyHeaderFragment"></div>
+
+    <div class="sub-nav" th:substituteby="layout.html :: bodySubNavFragment"></div>
+    
+    <div class="main">
+        <div class="main-content clearfix">
+            <div class="container-fluid">
+                <div class="pull-left">
+                    <h1><img src="" th:src="@{/resources/img/dash-workflows.png}" width="40"/> 
+                        <span th:if="${workflow.id}" th:text="#{actions.EDIT}"></span>
+                        <span th:unless="${workflow.id}" th:text="#{actions.CREATE}"></span>
+                        
+                        Workflow</h1>
+                </div>
+                <div class="pull-right" th:if="${workflow.id}">
+                    <h2 th:text="${workflow.name}">workflow.name</h2>
+                </div>
+                <div id="wizard" class="container-fluid" style="padding: 0px;"></div>
+                <div class="modal hide fade modal-overflow" id="dialog" tabindex="-1" role="dialog"
+                     style="width: 940px; margin-left: -470px; margin-top: 0px;" />
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer" th:substituteby="layout.html::bodyFooter"></footer>
+</div>
+
+
+
+<script th:substituteby="layout.html::irHeaderModals"></script>
+
+<script type="text/javascript" json:stringify="javascript">
+ /*<![CDATA[*/
+     requireInit(["app/views/workflow/workflowWizardPageView"], function(View){
+         new View({
+             el: "#wizard",
+             modelData: /*[[${workflow}]]*/{'applicationType':'DNA'},
+             currentApplicationTypes: /*[[${applicationTypes}]]*/ [ 'DNA', 'METAGENOMICS', 'ANNOTATE_VARIANTS', 'ANEUPLOIDY'],
+             currentSpecimenGroups: /*[[${specimenGroups}]]*/ ['SINGLE','PAIRED','PAIRED_TUMOR_NORMAL'],
+             updateExistingEntity: /*[[${updateExistingEntity}]]*/ false
+         }).render();
+     });
+ /*]]>*/
+</script>
+</body>
+</html>
+

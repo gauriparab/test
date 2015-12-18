@@ -1,0 +1,120 @@
+/*global define:false*/
+define(['jquery', 'underscore', 'kendo', 'views/formView', 'models/admin/policyModel',
+    'views/errorsView', 'hb!templates/admin/policies.html']
+    .concat('bootstrap'),
+
+    function($, _, kendo, FormView, PolicyModel, ErrorsView, template) {
+        'use strict';
+        var PolicyView = FormView.extend({
+
+            el: '#manageUserModal',
+
+            // FormView
+            submitButtonSelector: '#policiesSaveButton',
+
+            initialize: function(options) {
+                options = options || {};
+                this.initializeModel(options);
+
+                this._errorsView = new ErrorsView({
+                    model: this.model
+                });
+
+               
+            },
+
+            initializeModel: function(options) {
+                this.model = new PolicyModel();
+                this.completeAction = options.completeAction;
+            },
+
+            events: {
+                'click .btn-secondary': 'closeDialog',
+                'click #policiesSaveButton': 'save',
+                'change select#passwordLifetime': 'lifetimeChange',
+                "click input[type=checkbox]" : "onCheckboxClicked",
+            },
+
+            render: function() {
+            	var self= this;
+					
+				this.model.fetch({
+					 success: function() {
+					     self.$el.html(template({
+					    	 policies: self.model.toJSON()
+					     }));
+
+
+					 self.$el.modal({
+						 backdrop: 'static',
+						 attentionAnimation: null,
+						 keyboard: false,
+						 show : true
+					 });
+					 }
+				});
+				
+				/*var select = this.$el.find('select#passwordLifetime');
+				
+				if( select.val() == "NoExpiration") {
+            		var $notifyUser = this.$el.find('select#notifyUser');
+            		$notifyUser.attr('disabled', 'disabled');
+                }*/
+				
+            },
+
+            _onSaveSuccess: function(model, response) {
+                this.closeDialog();
+                if (_.isFunction(this.completeAction)) {
+                    this.completeAction(response);
+                }
+            },
+
+            closeDialog: function() {
+                this.$el.modal('hide');
+                this.undelegateEvents();
+            },
+            
+            lifetimeChange: function(e) {
+            	var select = $(e.currentTarget);
+            	var $notifyUser = this.$el.find('select#notifyUser');
+            	if( select.val() == "NoExpiration") {
+            		$notifyUser.attr('disabled', 'disabled');
+                } else {
+                	$notifyUser.removeAttr('disabled');
+                }
+            },
+            
+            onCheckboxClicked: function(e) {
+                var enabled = $(e.currentTarget);
+                var $timeoutPeriod = this.$el.find('select#timeoutPeriod');
+                if(enabled.is(':checked')){
+                	$timeoutPeriod.removeAttr('disabled');
+                } else {
+                	$timeoutPeriod.attr('disabled', 'disabled');
+				}
+                
+               
+            },
+
+            save: function() {
+            	this.model.set('failed_login_attempts', $("#failedLoginAttempts").val());
+                this.model.set('attempt_interval', $("#within").val());
+                this.model.set('account_suspension_hours', $("#suspensionPeriod").val());
+                this.model.set('password_lifetime', $("#passwordLifetime").val());
+                this.model.set('password_notification_period', $("#notifyUser").val());
+                //this.model.set('session_policies_enabled', $("#enabledLabel").val());
+                this.model.set('session_policies_enabled', $("#enabled").is(':checked') ? 'true' : 'false');
+                this.model.set('session_timeout', $("#timeoutPeriod").val());
+                this.model.save(this.model.toJSON(), {
+            		success: _.bind(this._onSaveSuccess, this)
+            	});
+            }
+
+            
+        });
+
+        return PolicyView;
+    });
+    
+    

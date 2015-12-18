@@ -1,0 +1,11 @@
+<div class="clearfix">
+    <div class="pull-left">
+        <ul id="navigationPillsId" class="nav nav-pills">
+            {{#each this}}
+            <li class="{{#ifCond name '==' ../selected}}active{{/ifCond}}">
+                <a href="#" data-toggle="pill" role="{{name}}">{{name}}</a>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+</div>

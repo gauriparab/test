@@ -1,0 +1,74 @@
+<form id="addPlanForm" class="form-horizontal modal-scroll">
+	<div class="row-fluid">
+		<div class="span6">
+			<div class="control-group">
+				{{#if model.assayName}}
+					<label class="control-label">{{t 'assay.name'}}: </label>
+					<div class="controls">
+						<label id="libraryBatchAssay">{{model.assayName}}</label>
+					</div>
+				{{else}}
+					<label class="control-label">{{t
+						'sample.planARun.selectAssay'}}: </label>
+					<div class="controls">
+						<select id="libraryBatchAssay" name="libraryBatchAssay">
+							{{#each assays}}
+							<option value="{{id}}" {{#ifCond id '===' ../assayId}}selected="selected"{{/ifCond}}>{{name}}</option> 
+							{{/each}}
+						</select>
+					</div>
+				{{/if}}
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="libraryPrepType">{{t 'specimens.library.prep.type'}}:</label>
+				<div class="controls">
+					<label class="control-label" style="color: #000000;" for="libraryPrepType" id="libraryPrepType">{{libraryPrepType}}</label>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="libraryKitBarcode">{{t 'specimens.library.barcode.libKitBarcode'}}: <span class="text-error requires-asterisk ">*</span></label>
+				<div class="controls">
+					<input name="libraryKitBarcode" type="text" id="libraryKitBarcode" required="required"
+					value="{{model.libraryKitBarcode}}" maxlength="80"/>
+				</div>
+			</div>
+		</div>
+		<div class="span6">
+			{{#if isPanelKit}}
+			<div class="control-group">
+				<label class="control-label" for="panelKitBarcode">{{t 'specimens.library.barcode.panelKitBarcode'}}: <span class="text-error requires-asterisk ">*</span></label>
+				<div class="controls">
+					<input name="panelKitBarcode" type="text" id="panelKitBarcode" required="required"
+					value="{{model.panelKitBarcode}}" maxlength="80"/>
+				</div>
+			</div>
+			{{/if}}
+			{{#if isControlsKit}}
+			<div class="control-group">
+				<label class="control-label" for="controlKitBarcode">{{t 'specimens.library.barcode.controlKitBarcode'}}: <span class="text-error requires-asterisk ">*</span></label>
+				<div class="controls">
+					<input name="controlKitBarcode" type="text" id="controlKitBarcode" required="required"
+					value="{{model.controlKitBarcode}}" maxlength="80"/>
+				</div>
+			</div>
+			{{/if}}
+			{{#if isCNVCalibrator}}
+			<div class="control-group">
+				<label class="control-label">{{t 'specimens.library.cnv.calibrator'}}: </label>
+				<div class="controls">
+					<select id="cnvCalibrator" name="cnvCalibrator">
+						{{#each barcodes}}
+						<option value="{{id}}"  {{#ifCond id '===' ../model.cnvcalibratorBarcodeId}}selected="selected"{{/ifCond}}>{{idStr}}</option>
+						{{/each}}
+					</select>
+				</div>
+			</div>
+			{{/if}}
+		</div>
+	</div>
+</form>
+
+<div class="form-small-text">
+	<label>{{t 'planned.grid.noOfSampleLibraries'}}: <b id="totalLibraries">0</b></label>
+</div>
+<div id="libraryGrid" class="modal-scroll"></div>

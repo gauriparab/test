@@ -1,0 +1,27 @@
+<h2>{{t 'final.report.annotations.header'}}</h2>
+<table class="table table-bordered" data-variant-id="{{id}}">
+    <thead>
+    <tr>
+        {{#ifCond status '===' 'DRAFT_PREVIEW'}}
+        <th>{{t 'final.report.annotations.include'}}</th>
+        {{/ifCond}}
+        <th>{{t 'final.report.annotations.source'}}</th>
+        <th>{{t 'final.report.annotations.description'}}</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each annotations}}
+    <tr>
+        {{#ifCond ../status '===' 'DRAFT_PREVIEW'}}
+        <td><input type="checkbox"
+                   data-variant-id="{{../../id}}"
+                   data-is-variant-annotation="true"
+                   data-variant-annotation-id="{{id}}"
+                   {{#if included}}checked="checked"{{/if}}></td>
+        {{/ifCond}}
+        <td>{{t 'variant.annotation.source.type.' source}}</td>
+        <td>{{description}}</td>
+    </tr>
+    {{/each}}
+    </tbody>
+</table>

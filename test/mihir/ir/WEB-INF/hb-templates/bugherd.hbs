@@ -1,0 +1,9 @@
+(function (d, t) {
+    var src = "{{bugherdUrl}}";
+    if (src !== "") {
+        var bh = d.createElement(t), s = d.getElementsByTagName(t)[0];
+        bh.type = 'text/javascript';
+        bh.src = src;
+        s.parentNode.insertBefore(bh, s);
+    }
+})(document, 'script');

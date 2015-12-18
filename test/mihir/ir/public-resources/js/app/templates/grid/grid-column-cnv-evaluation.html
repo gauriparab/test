@@ -1,0 +1,10 @@
+<div>
+	<a data-toggle="popover" data-action="show-popover" data-placement="right" data-trigger="hover" data-content='<table><tbody><tr><td style="border:none;">Read Count</td><td style="border:none;">{{readCount}}</td></tr><tr><td style="border:none;">Zero Read Count Ratio</td><td style="border:none;">{{percentNonZeroReads}}</td></tr><tr><td style="border:none;">Aligned Reads Ratio</td><td style="border:none;">{{percentReadsAssignedToPanelAmplicons}}</td></tr></tbody></table>'>
+		{{#ifCond status '===' 'Pass'}}
+			<span style="color:green;">{{status}}</span>
+		{{else}}
+			<span style="color:red;">{{status}}</span>
+		{{/ifCond}}
+	</a>
+</div>
+

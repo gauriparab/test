@@ -1,0 +1,54 @@
+/*global define:false*/
+define(['jquery', 'underscore', 'backbone', 'views/formView', 'views/errorsView', 'models/assay/installTemplate', 'hb!templates/assay/template-details-view.html'].concat('bootstrap.modal', 'bootstrap.modalmanager'),
+    function($, _, Backbone, FormView, ErrorsView, InstallTemplate, template) {
+    "use strict";
+
+    var TemplateDetailsView = FormView.extend({
+
+        id: 'templateDetailsModal',
+
+        tagName: 'div',
+
+        className: 'modal fade',
+        
+        cancelButtonSelector: '.btn-secondary',
+
+        initialize: function(options) {
+        	this.templateId = options.templateId;
+	        this.model = new InstallTemplate({
+	        	templateId : this.templateId
+	        });
+	        this.errorsView = new ErrorsView({
+                model: this.model
+            });
+        },
+
+        events: {           
+            'click #closeTemplateDetailsBtn' : 'close'           
+        },
+        
+        delegateEvents: function() {
+            FormView.prototype.delegateEvents.apply(this, arguments);
+        },
+
+        render: function() {
+			var self=this;
+			this.model.fetch({
+			   success: function(){
+		        self.$el.html(template(self.model.toJSON()));
+		        self.renderSubView(self.errorsView, "#errors");
+		        self.$el.modal({
+	                show: true,
+	                backdrop: 'static',
+	                attentionAnimation: null,
+	                keyboard: false,
+	                width: "700px"
+	           });
+			}});
+            return this;
+        }
+
+    });
+
+    return TemplateDetailsView;
+});

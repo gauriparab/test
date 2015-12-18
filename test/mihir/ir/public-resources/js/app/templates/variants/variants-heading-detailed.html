@@ -1,0 +1,37 @@
+<div id="variants-heading-ocp">
+    <div class="variants-heading-item pull-left">
+        <strong>{{t 'variant.review.ocp.label.name'}}</strong>:
+        <div id="analysisNameId" class="breakall variants-heading-item-value" data-toggle="tooltip" title="{{name}}">{{name}}</div>
+    </div>
+    {{#if cancerType}}
+    <div class="variants-heading-item pull-left">
+        <strong>{{t 'variant.review.ocp.label.cancertype'}}</strong>:
+        <div id="analysisCancerTypeId" class="breakall variants-heading-item-value">{{cancerType}}</div>
+    </div>
+    {{/if}}
+    {{#if mapd}}
+    <div class="variants-heading-item pull-left">
+        <div class="variants-heading-item-label" id="analysisMapdLabel" data-toggle="tooltip" style="display: inline-block;"
+            title="{{t 'variant.review.ocp.tooltip.mapd'}}"><strong>{{t 'variant.review.ocp.label.mapd'}}</strong>:</div>
+        <div id="analysisMapdId" class="breakall variants-heading-item-value">{{mapd}}</div>
+    </div>
+    {{/if}}
+    {{#if rnaReadCounts}}
+    <div class="variants-heading-item pull-left">
+        <div class="variants-heading-item-label" style="display: inline-block"><strong>{{t 'variant.review.ocp.label.rnaReadCounts'}}</strong>:</div>
+        <div id="analysisRnaReadCountsId" class="breakall variants-heading-item-value">{{rnaReadCounts}}</div>
+    </div>
+    {{/if}}
+    {{#if calledGender}}        
+        <div class="variants-heading-item pull-left">
+            <strong>{{t 'analysis.variant.calledGender'}}</strong>:
+            <div id="analysisCalledGender" class="breakall variants-heading-item-value" >{{t 'attribute.gender.'calledGender}}</div>
+        </div>
+    {{/if}}
+    {{#if mDNAToAutosomalDNARatio}}
+        <div class="variants-heading-item pull-left">
+            <strong>{{t 'analysis.variant.mDNAToAutosomalDNARatio'}}</strong>:
+            <div id="analysisMDNAToAutosomalDNARatio" class="breakall variants-heading-item-value" >{{mDNAToAutosomalDNARatio}}</div>
+        </div>
+    {{/if}}
+</div>

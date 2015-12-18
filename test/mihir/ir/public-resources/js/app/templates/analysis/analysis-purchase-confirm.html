@@ -1,0 +1,38 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"> x </button>
+    <h3 id="myModalLabel">{{t 'analysis.label.confirmLaunch'}}</h3>
+</div>
+<div class="modal-body">
+    <div class="container-fluid analysis-confirm">
+        <div class="row-fluid">
+            <div class="alert alert-info">
+                {{t 'analysis.purchase.help' }}
+            </div>
+            <div class="alert alert-error hide" id="analysis-purchase-error">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>{{t 'variants.label.warning'}}</strong> {{t 'variants.label.requirePo'}}.
+            </div>
+            <form class="form-horizontal">
+                <div class="control-group">
+                    <label class="control-label" for="purchase-order-number">{{t 'variants.label.po'}}:</label>
+                    <div class="controls">
+                        <input id="purchase-order-number" type="text" placeholder="Required" require="required" maxlength="255" value="{{invoice.purchaseOrder.number}}">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div id="analysis-purchase-details" class="row-fluid">
+            <!--  analysis-purchase-details -->
+            {{sub sub.details}}
+        </div>
+        <div class="row-fluid">
+            <div class="pull-right">
+                <h4>Total Cost: {{invoice.invoiceTotal}} {{invoice.currency}}</h4>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <a id="cancel-purchase" href="javascript:void(0)" class="btn btn-secondary" data-dismiss="modal">{{t 'analysis.label.cancel'}}</a>
+    <a id="confirm-purchase" href="javascript:void(0)" class="btn btn-primary disabled">{{t 'analysis.label.confirmAndLaunch'}}</a>
+</div>

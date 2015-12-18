@@ -1,0 +1,44 @@
+{{#if headerRow}}
+<span data-toggle="tooltip" title="{{t 'grid.column.header.desc.myvariants'}}" data-container=".main-content">
+    <i class="icon-flag"></i>
+</span>
+{{else}}
+    <div class="btn-group">
+        {{#if hideDropdown}}
+            <span class="btn-content">
+                <i class="icon-flag-custom icon-flag-{{default myVariantsState 'disabled'}}"></i>
+                {{#if showName}} 
+                    {{t 'analysis.variant.myvariants.state.none'}} 
+                {{/if}}
+            </span>
+        {{else}}
+        <a class="btn {{#unless showName}} btn-link {{/unless}} dropdown-toggle
+        {{#unlessCond actions 'contains' 'ADD_TO_VARIANT_KB'}} disabled {{/unlessCond}}"
+           data-toggle="dropdown" {{#unless showName}} style="padding: 0" {{/unless}} href="javascript:void(0)">
+            <span class="btn-content">
+                <i class="icon-flag-custom icon-flag-{{default myVariantsState 'disabled'}}"></i>
+                {{#if showName}}
+                    {{t 'analysis.variant.myvariants.state.none'}}
+                {{/if}}
+            </span>
+        <span class="caret"></span>
+        </a>
+        {{/if}}
+        <ul class="dropdown-menu">
+            <li>
+                <a data-value="" href="javascript:void(0)">
+                    <i class="icon-flag-custom icon-flag-disabled"></i>
+                    {{t 'analysis.variant.myvariants.state.none'}}
+                </a>
+            </li>
+            {{#each myVariantsStates}}
+            <li>
+                <a data-value="{{this}}" href="javascript:void(0)">
+                    <i class="icon-flag-custom icon-flag-{{this}}"></i>
+                    {{t 'analysis.variant.myvariants.state.' this}}
+                </a>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+{{/if}}

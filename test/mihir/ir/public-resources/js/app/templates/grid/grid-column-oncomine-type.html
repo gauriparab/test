@@ -1,0 +1,14 @@
+{{#if this}}
+{{#if value.value}}
+    <div class="oncomine-indicator {{#toLower value.value}}{{/toLower}}"></div>
+        {{#if value.url}}
+            <a href='{{value.url}}' target='_blank'>    
+        {{/if}}
+          
+        {{value.value}}  
+
+        {{#if value.url}}
+            </a>
+        {{/if}}
+{{/if}}
+{{/if}}

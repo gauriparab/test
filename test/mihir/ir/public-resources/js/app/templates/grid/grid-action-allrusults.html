@@ -1,0 +1,26 @@
+<div class="action-icon-spacing">
+	{{#unless isArchived}}
+		{{#if isAnalysisComplete}}
+			{{#unless genericWorkflow}}
+				{{#if isFusion}}
+					{{#if summaryReportRequired}}
+						<b><a href='javascript:void(0)' data-action='view_clinicalReport'>{{t 'data.results.clinicalReport'}}</a></b> |
+	    			{{/if}}
+				{{/if}}
+				<b><a href='javascript:void(0)' data-action='view_labReport'>{{t 'data.results.labReport'}}</a></b> |
+			{{/unless}}
+	    {{/if}}
+	    {{#if viewResult}}
+	    	<b><a href='javascript:void(0)' data-action='view_results'>{{t 'data.results.viewResult'}}</a></b> |
+	    {{/if}}
+		{{#unless isReanalysisAssay}}
+			{{#unless genericWorkflow}}
+	    		{{#if enableReanalysis}}
+	    			<b><a href='javascript:void(0)' data-action='view_reanalyze'>{{t 'data.results.reanalyze'}}</a></b> | 
+				{{/if}}
+	    	{{/unless}}
+	    {{/unless}}
+	{{else}}
+		 <b><a href='javascript:void(0)' data-action='restore'>{{t 'data.results.restore'}}</a></b>
+	{{/unless}}
+</div>

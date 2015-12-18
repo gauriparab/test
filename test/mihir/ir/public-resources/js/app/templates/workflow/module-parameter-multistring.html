@@ -1,0 +1,11 @@
+<h5>{{name}}</h5>
+<span class="parameter-help">{{description}}</span>
+<br>
+<div class="control-group">
+    {{#each rule.possibleValues}}
+    <label class="checkbox inline">
+        <input type="checkbox" name="{{../_key}}" data-key="{{../key}}" value="{{this}}" {{#unless isEditable}}disabled {{/unless}} {{#ifCond ../value 'contains'
+        this}}checked{{/ifCond}}> {{this}}
+    </label>
+    {{/each}}
+</div>

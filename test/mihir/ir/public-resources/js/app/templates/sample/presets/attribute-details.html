@@ -1,0 +1,79 @@
+<div class="summary-section">
+    <div class="header">
+        <h4><span class="detailsTitle">{{t 'attribute.detail.title'}}</span>
+            <div id="attribute-actions" class="pull-right"></div>
+        </h4>
+        <hr class="summary">
+    </div>
+    <div class="body">
+        {{#if this}}
+            <table cellpadding="5">
+                <tr>
+                    <td colspan="2">
+                        <span class="details-icons">
+                            {{sub subs.factoryProvided}}
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <span class="breakall"><strong>{{name}}</strong></span><br/>
+                        {{description}}
+                    </td>
+                </tr>
+                {{#if type}}
+                <tr>
+                    <td valign="top"><strong>Type:</strong></td>
+                    <td>{{t 'attribute.type.' type}}</td>
+                </tr>
+                {{/if}}
+                {{#if status}}
+                <tr>
+                    <td valign="top"><strong>Status:</strong></td>
+                    <td>{{t 'attribute.status.' status}}</td>
+                </tr>
+                {{/if}}
+                {{#if createdOn}}
+                <tr>
+                    <td valign="top"><strong>Created On:</strong></td>
+                    <td>{{sub subs.createdOn createdOn}}</td>
+                </tr>
+                {{/if}}
+                {{#if createdBy}}
+                <tr>
+                    <td valign="top"><strong>Created By:</strong></td>
+                    <td>{{sub subs.createdBy createdBy}}</td>
+                </tr>
+                {{/if}}
+                <tr>
+                    <td valign="top"><strong>Encrypted:</strong></td>
+                    <td>
+                        {{#if valueGarbled}}
+                        {{t 'sample.presets.encrypted.yes'}}
+                        {{else}}
+                        {{t 'sample.presets.encrypted.no'}}
+                        {{/if}}
+                    </td>
+                </tr>
+                {{#ifCond type '===' 'LOV'}}
+                <tr>
+                    <td valign="top"><strong>Values:</strong></td>
+                </tr>
+                <tr>
+                    <table class="table table-striped table-condensed">
+                        <tbody>
+                        {{#each controlledVocabulary.terms}}
+                            <tr>
+                                <td>{{fieldValue}}</td>
+                            </tr>
+                        {{/each}}
+                        </tbody>
+                    </table>
+                </tr>
+                {{/ifCond}}
+            </table>
+        {{else}}
+            <p>{{t 'no.record.selected'}}</p>
+        {{/if}}
+    </div>
+</div>

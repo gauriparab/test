@@ -1,0 +1,21 @@
+<div class="modal-header">
+    {{#ifNotUndefined headerCtx}}
+        <h3>{{headerCtx}}</h3>
+    {{else}}
+        <h3>{{t headerKey}}</h3>
+    {{/ifNotUndefined}}
+    
+</div>
+<div class="modal-body">
+	<div class="form-horizontal modal-scroll">
+	    <div class="control-group">
+			<label class="control-label" for="serviceBadge">{{t 'admin.fse.popup.scan.message'}}: <span class="text-error requires-asterisk ">*</span></label>
+			<div class="controls">
+				<input name="serviceBadge" type="text" id="serviceBadge" required="required" autofocus>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="modalFooter" class="modal-footer">
+    
+</div>

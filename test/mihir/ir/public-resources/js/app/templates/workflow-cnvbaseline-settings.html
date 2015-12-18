@@ -1,0 +1,110 @@
+<h5>Settings</h5>
+{{#if selectedCnvBaseline}}
+<div class="settings-table">
+    <table class="table table-stripped">
+        <tbody>
+        	{{#if selectedCnvBaseline.name}}
+            <tr class="workflow-setting">
+                <td class="input-cell">
+                    <div class="layout-setting setting-type">{{t "cnvbaseline.settings.name.label"}}:</div>
+                </td>
+                <td class="input-cell">
+                    <div class="layout-setting setting-value">{{selectedCnvBaseline.name}}</div>
+                </td>
+            </tr>
+            {{/if}}
+            {{#if selectedCnvBaseline.description}}
+            <tr class="workflow-setting">
+                <td class="input-cell">
+                    <div class="layout-setting setting-type">{{t "cnvbaseline.settings.description.label"}}:</div>
+                </td>
+                <td class="input-cell">
+                    <div class="layout-setting setting-value">{{selectedCnvBaseline.description}}</div>
+                </td>
+            </tr>
+            {{/if}}
+            {{#if selectedCnvBaseline.type}}
+            <tr class="workflow-setting">
+                <td class="input-cell">
+                    <div class="layout-setting setting-type">{{t "cnvbaseline.settings.type.label"}}:</div>
+                </td>
+                <td class="input-cell">
+                    <div class="layout-setting setting-value">{{t "CNVBaselineType." selectedCnvBaseline.type}}</div>
+                </td>
+            </tr>
+            {{/if}}
+            {{#if selectedCnvBaseline.targetRegion}}
+            <tr class="workflow-setting">
+                <td class="input-cell">
+                    <div class="layout-setting setting-type">{{t "cnvbaseline.settings.targetRegion.label"}}:</div>
+                </td>
+                <td class="input-cell">
+                    <div class="layout-setting setting-value">{{selectedCnvBaseline.targetRegion.name}}</div>
+                </td>
+            </tr>
+            {{/if}}
+            
+            {{#if selectedCnvBaseline.samples}}
+            <tr class="workflow-setting">
+                <td class="input-cell">
+                    <div class="layout-setting setting-type">{{t "cnvbaseline.settings.samples.label"}}:</div>
+                </td>
+                <td class="input-cell">
+                    <div class="layout-setting setting-value">{{selectedCnvBaseline.samples}}</div>
+                </td>
+            </tr>
+            {{/if}}
+            {{#if selectedCnvBaseline.sampleNames}}
+            <tr class="workflow-setting">
+                <td class="input-cell">
+                    <div class="layout-setting setting-type">{{t "cnvbaseline.settings.sampleNames.label"}}:</div>
+                </td>
+                <td class="input-cell">
+                    <div class="layout-setting setting-value">{{selectedCnvBaseline.sampleNames}}</div>
+                </td>
+            </tr>
+            {{/if}}
+            {{#if selectedCnvBaseline.panelName}}
+            <tr class="workflow-setting">
+                <td class="input-cell">
+                    <div class="layout-setting setting-type">{{t "cnvbaseline.settings.panelName.label"}}:</div>
+                </td>
+                <td class="input-cell">
+                    <div class="layout-setting setting-value">{{selectedCnvBaseline.panelName}}</div>
+                </td>
+            </tr>
+            {{/if}}
+            {{#if selectedCnvBaseline.bedFileName}}
+            <tr class="workflow-setting">
+                <td class="input-cell">
+                    <div class="layout-setting setting-type">{{t "cnvbaseline.settings.bedFileName.label"}}:</div>
+                </td>
+                <td class="input-cell">
+                    <div class="layout-setting setting-value">{{selectedCnvBaseline.bedFileName}}</div>
+                </td>
+            </tr>
+            {{/if}}
+            {{#if selectedCnvBaseline.creator}}
+            <tr class="workflow-setting">
+                <td class="input-cell">
+                    <div class="layout-setting setting-type">{{t "cnvbaseline.settings.createdBy.label"}}:</div>
+                </td>
+                <td class="input-cell">
+                    <div class="layout-setting setting-value">{{selectedCnvBaseline.creator}}</div>
+                </td>
+            </tr>
+            {{/if}}
+            {{#if selectedCnvBaseline.createdOn}}
+            <tr class="workflow-setting">
+                <td class="input-cell">
+                    <div class="layout-setting setting-type">{{t "cnvbaseline.settings.createdOn.label"}}:</div>
+                </td>
+                <td class="input-cell">
+                    <div class="layout-setting setting-value">{{selectedCnvBaseline.createdOn}}</div>
+                </td>
+            </tr>
+            {{/if}}
+        </tbody>
+    </table>
+</div>
+{{/if}}

@@ -1,0 +1,90 @@
+{{#if isEdit}}
+	{{#data}}
+		<div class="row-fluid">
+			<table>
+				<tr>
+					<td>{{t 'cnv.baseline.panel.name'}}</td>
+					<td>
+						<input type="text" id="cnvName" value="{{displayname}}" disabled/>
+					</td>
+				</tr>
+				<tr>
+					<td>{{t 'cnv.baseline.panel.selectPanel'}}</td>
+					<td>
+						<div id="selectPanel">
+							<select disabled>
+								<option value="{{panelFile.id}}">{{panelFile.name}}</option>
+							</select>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						{{t 'cnv.baseline.panel.referenseBase'}}
+						<input type="checkbox" id="isCnvReference" disabled {{#if referenceCnvBaseline}} checked {{/if}} style="display:inline-block; margin: 0px 10px;"/>
+						
+					</td>
+					<td>
+						<div id="cnvReference">
+							<select disabled>
+								{{#if referenceCnvBaseline}}
+									<option value="{{referenceCnvBaseline.id}}">{{referenceCnvBaseline.value}}</option>
+								{{else}}
+									<option value="-1">{{t 'cnv.panel.noExistingReference'}}</option>
+								{{/if}}
+							</select>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>{{t 'cnv.baseline.panel.note'}}</td>
+					<td>
+						<textarea id="cnvNote">{{notes}}</textarea>
+					</td>
+				</tr>
+			</table>
+		</div>
+	{{/data}}
+{{else}}
+	{{#data}}
+		<div class="row-fluid">
+			<table>
+				<tr>
+					<td>{{t 'cnv.baseline.panel.name'}}</td>
+					<td>
+						<input type="text" id="cnvName" value="{{name}}" {{#if isEdit}} disabled {{/if}}/>
+					</td>
+				</tr>
+				<tr>
+					<td>{{t 'cnv.baseline.panel.selectPanel'}}</td>
+					<td>
+						<div id="selectPanel">
+							<select disabled>{{t 'cnv.baseline.loadingPanels'}}</select>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						{{t 'cnv.baseline.panel.referenseBase'}}
+						<input type="checkbox" id="isCnvReference" {{#if isEdit}} disabled {{/if}} {{#if existingReference}} checked {{/if}} style="display:inline-block; margin: 0px 10px;"/>
+						
+					</td>
+					<td>
+						<div id="cnvReference">
+							<select disabled>{{t 'cnv.baseline.loadingCNVs'}}</select>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>{{t 'cnv.baseline.panel.note'}}</td>
+					<td>
+						<textarea id="cnvNote">{{notes}}</textarea>
+					</td>
+				</tr>
+			</table>
+		</div>
+	{{/data}}
+{{/if}}
+
+{{#data}}
+{{/data}}

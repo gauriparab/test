@@ -1,0 +1,22 @@
+<div id="btn-add-file" class="add-samp span1">
+    <span class="rotate rotate-add-to-sample">{{t 'sample.define.manual.add.to.sample'}}</span>
+</div>
+<div class="add-box span11">
+    <div id="sample-name" class="row-fluid control-group">
+        <h2>
+            {{#unless isAdded}}
+            <input type="text" placeholder="Sample Name (Required)" value="{{name}}" maxlength="255" />
+            {{/unless}}
+            {{#if isAdded}}
+            <span class="pull-left"><strong>{{name}}</strong></span>
+            <input type="hidden" value="{{name}}" />
+            <a href="#" class="delete-btn btn pull-right right-buffer" data-index="{{index}}">
+                <i class="icon-trash"></i>
+            </a>
+            {{/if}}
+        </h2>
+    </div>
+    <div id="selected-files" class="row-fluid">
+        <!-- templates/sample/define/manual/sample-define-manual-selected-files.html -->
+    </div>
+</div>

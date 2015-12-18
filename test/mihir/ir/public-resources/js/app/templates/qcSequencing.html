@@ -1,0 +1,16 @@
+<div class="row-fluid">
+	<div class="span3">
+		<div class="row-fluid">
+			<ul class="nav nav-list parameters-sidebar">
+				{{#each qcs}}
+				<li>
+					<a href="javascript:void(0)" data-toggle="tab" data-qc="{{this}}">{{#ifCond this '===' 'Sample QC'}}{{t 'data.report.libraryQcMetrics'}}{{else}}{{this}}{{/ifCond}}</a>
+				</li>
+				{{/each}}
+			</ul>
+		</div>
+	</div>
+	<div class="span9" id="qcDetails">
+		
+	</div>
+</div>

@@ -1,0 +1,11 @@
+{{#if headerRow}}
+<span data-toggle="tooltip" title="{{t 'grid.column.header.desc.details'}}" data-container=".main-content">
+{{/if}}
+<i class="icon-list-alt"
+    {{#unless headerRow}}
+        style="cursor: pointer"
+    {{/unless}}>
+</i>
+{{#if headerRow}}
+</span>
+{{/if}}

@@ -1,0 +1,34 @@
+<div class="container-fluid">
+	<div class="row-fluid">
+		<form class="form-horizontal">
+			{{#if runsList}}
+			<div class="pull-left">
+				<span id="selectRun"><!-- select-run-view.html --></span>
+                <span id='selectLibraries'>
+	                <label style="display: inline;">{{t 'monitor.run.select.library'}}:</label>
+	                <select class="input-medium" id="libraries" name="libraries" style="margin-right: 25px;">
+					</select> 
+				</span>
+                <span id="assayLabel" class="assayDetails"><a id="assayName" href="#" style="color: #70A2E2;"></a></span>
+            </div>
+            {{/if}}
+            <div class=" pull-right">
+                 <a id="refresh" href="#" data-toggle="modal" title="{{t 'monitor.refresh'}}" class="btn btn-primary">{{t 'monitor.refresh'}}</a>
+            </div>
+         </form>
+    </div>
+
+	<div id="carousel" data-interval="false" class="carousel slide" style="line-height: 2">
+	{{#if runsList}}
+		   <div class="item">
+			    <div class="row-fluid" style="padding-top: 15px">
+	            		<div class="span12" id="runView">
+	            		</div>
+	        	</div>
+	        </div>
+	{{else}}
+		<div align="center"><strong>{{t 'monitor.run.progress'}}</strong></div>
+	{{/if}}
+  	</div>
+</div>
+<div class="modal hide fade" id="templateDetailsModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>

@@ -1,0 +1,31 @@
+<h1>{{t 'settings.services.activeJobs'}}</h1>
+	<table class="table table-bordered">
+	<thead style="background: #F3F3F5;">
+		<tr>
+			<td style="width:20%;"><b>{{t 'settings.label.jobId'}}</b></td>
+			<td style="width:20%;"><b>{{t 'settings.label.jobName'}}</b></td>
+			<td style="width:20%;"><b>{{t 'settings.label.jobType'}}</b></td>
+			<td style="width:20%;"><b>{{t 'settings.label.statusMessage'}}</b></td>
+			<td style="width:20%;"></td>
+		</tr>
+	</thead>
+	<tbody>
+	{{#each data}}
+			<tr>
+				<td style="width:20%;">{{jobId}}</td>
+				<td style="width:20%;">{{jobName}}</td>
+				<td style="width:20%;">{{type}}</td>
+				<td style="width:20%;">{{statusMessage}}</td>
+				<td style="width:20%;"><a href='javascript:void(0)' class='terminateLink' data-jobid="{{jobId}}">{{t 'settings.label.terminate'}}</a></td>
+			</tr>
+		{{else}}
+			<tr>
+				<td>{{t 'settings.services.noActiveJobs'}}</td>
+				<td style="width:20%;"></td>
+				<td style="width:20%;"></td>
+				<td style="width:20%;"></td>
+				<td style="width:20%;"></td>
+			</tr>
+	{{/each}}
+	</tbody>
+</table>

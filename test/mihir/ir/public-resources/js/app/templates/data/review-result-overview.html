@@ -1,0 +1,246 @@
+<div class="container-fluid">
+	<div class="row-fluid">
+		<!-- div class="pull-left">
+			<h1>
+				<img src="{{img 'data.png'}}" width="40" /> {{t
+				'data.report.review'}}
+			</h1>
+		</div-->
+		<div class="pull-right">
+			<a href="javascript:history.back()" class="btn"> < {{t 'analysis.auditLog.actions.back'}}</a>
+			{{#unless genericWorkflow}}
+			{{#if isAnalysisComplete}}
+					{{#if isSignOff}}
+						{{#if isReportCreated}}
+							<a href="javascript:void(0)" class="btn btn-primary" disabled>{{t 'finalReportSection.SignOffSection'}}</a>
+						{{else}}
+							<a href="javascript:void(0)" id="signOffBtn" alt="{{resultId}}" class="btn btn-primary">{{t 'finalReportSection.SignOffSection'}}</a>
+						{{/if}}
+					{{/if}}
+			{{/if}}
+			{{/unless}}
+			{{#if showDownload}}
+				<a href="javascript:void(0)" id="downloadFiles" alt="{{resultId}}" class="btn btn-primary">{{t 'data.tab.downloadfiles'}}</a>
+			{{/if}}
+		</div>
+	</div>
+	<div>
+		<table style="width: 100%">
+			<tr>
+				<td valign="top" class="summary-item" style="padding-left: 0px; width:10%;">{{t
+					'verification.run.plannedRun'}}:</td>
+				<td>
+					<a href='#' id='planReview'>{{plannedRun}}</a>
+				</td>
+			</tr>
+			<tr>
+				<td valign="top" class="summary-item" style="padding-left: 0px; width:10%;">{{t
+					'grid.label.specimenId'}}:</td>
+
+				<td>
+					{{specimenId}}
+				</td>
+			</tr>
+			<tr>
+				<td valign="top" class="summary-item" style="padding-left: 0px; width:10%;">{{t
+					'grid.column.libraryName'}}:</td>
+				<td>
+					{{libraryNames}}
+				</td>
+			</tr>
+			<tr>
+				<td valign="top" class="summary-item" style="padding-left: 0px; width:10%;">{{t
+					'grid.column.qcStatus'}}:</td>
+				<td>
+					{{#ifCond qcValue '===' 'Passed'}}
+    					<span class="text-success">{{t 'data.results.passed'}}</span>
+					{{else}}
+    					{{#ifCond qcValue '===' 'Failed'}}
+         					<span class="text-error">{{t 'data.results.failed'}}</span>
+    					{{/ifCond}}
+					{{/ifCond}}
+				</td>
+			</tr>
+		</table>
+	</div>
+	<br />
+	<div class="row-fluid">
+		<div class="span12">
+			<ul class="nav nav-tabs" id="reportTab">
+				<li class="active"><a href="#metrics" data-toggle="tab">{{t 'data.report.loadingMetrics'}}</a></li>
+				<li><a href="#qcReport" data-toggle="tab">{{t 'analysis.switchto.actions.qcReport'}}</a></li>
+				{{#if tabConfigs.metagenomics}}
+					<li><a href="#metagenomicsresult" data-toggle="tab">{{t 'data.tab.result'}}</a></li>
+				{{else}}
+					{{#unless tabConfigs.generic}}
+						<li><a href="#summary" data-toggle="tab">{{t 'analysis.summary.header'}}</a></li>
+						{{#if tabConfigs.allelePlan}}
+							<li><a href="#alleleCoverage" data-toggle="tab">{{t 'data.report.tab.alleleCoverage'}}</a></li>
+						{{/if}}
+						<li><a href="#varient" data-toggle="tab">{{t 'data.report.tab.varient'}}</a></li>
+						{{#if tabConfigs.clinical}}
+							<li><a href="#clinical" data-toggle="tab">{{t 'data.tab.clinical'}}</a></li>
+						{{/if}}
+					{{/unless}}
+				{{/if}}
+				<!-- li><a href="#audit" data-toggle="tab">{{t 'data.report.tab.audit'}}</a></li -->
+				{{#if isPluginsEnabled}}
+				<li><a href="#plugins" data-toggle="tab">{{t 'assay.details.plugins'}}</a></li>
+				{{/if}}
+				<!-- li><a href="#annotation" data-toggle="tab">Annotation</a></li-->
+				<!-- li><a href="#files" data-toggle="tab">{{t 'data.report.tab.files'}}</a></li-->
+			</ul>
+
+			<div class="tab-content">
+				<div class="tab-pane active" id="metrics">
+				<div style="border:1px solid #d8d8d8;background:#f8f8f8;">
+						<div style="width:15%; display:inline-block;"></div>
+						<div style="width:84%; display:inline-block;">
+							<table class="table" style="width:100%; margin: 0px;border:none;">
+								<thead>
+									<tr>
+										<td style="width: 33%; border:none;"><b>{{t 'analysis.auditLog.analysis.annotations.sources.name'}}</b></td>
+										<td style="width: 34%;"><b>{{t 'data.report.count'}}</b></td>
+										<td style="width: 33%;"><b>{{t 'data.report.percentage'}}</b></td>
+									</tr>
+								</thead>
+							</table>
+						</div>
+					</div>
+					<div id="loadingMetrics"></div>
+					<div id="filteringMetrics"></div>
+				</div>
+				<div class="tab-pane" id="metagenomicsresult">
+
+				</div>
+				<div class="tab-pane" id="qcReport">
+					<div id="qcReportDetails"></div>
+					<div style="border:1px solid #d8d8d8;background:#f8f8f8;">
+						<div style="width:15%; display:inline-block;"></div>
+						<div style="width:16%; display:inline-block;"></div>
+						<div style="width:68%; display:inline-block;">
+							<table class="table" style="width:100%; margin: 0px;border:none;">
+								<thead>
+									<tr>
+										<td style="width: 25%; border:none;"><b>{{t 'data.report.metricName'}}</b></td>
+										<td style="width: 25%;"><b>{{t 'data.report.value'}}</b></td>
+										<td style="width: 25%;"><b>{{t 'monitor.run.referenceRange'}}</b></td>
+										<td style="width: 25%;"><b>{{t 'monitor.run.qcStatus'}}</b></td>
+									</tr>
+								</thead>
+							</table>
+						</div>
+					</div>
+					<div id="runQc" style="border:1px solid #d8d8d8; border-bottom:none;border-top: none;"></div>
+					{{#unless genericWorkflow}}
+						<div id="sampleQc" style="border:1px solid #d8d8d8; border-bottom:none;"></div>
+					{{/unless}}
+					<div id="controlQc" style="border:1px solid #d8d8d8;"></div>
+					<div id="histoGram"></div>
+					<div id="signOffDetails"></div>
+				</div>
+				<div class="tab-pane" id="summary">
+					<div id="configSummary"></div>
+					<div id="targetSummary"></div>
+					<div id="variantSummary"></div>
+					<div id="instrumnetSummary"></div>
+				</div>
+				<div class="tab-pane" id="audit">
+					<div id="auditData"></div>
+				</div>
+				<div class="tab-pane" id="alleleCoverage">
+					<div id="alleleCoverageData"></div>
+				</div>
+				<div class="tab-pane" id="varient">
+					{{#if tabConfigs.varientPlan}}
+					<div id="varientData"></div>
+					{{else}}
+					<div class="clearfix {{#if showFilterChain}} span9 {{/if}}" style="margin-left: 0;">
+						<div class="pull-left">
+							<ul id="navigationPillsId" class="nav nav-pills">
+								{{#if tabConfigs.summary}}
+								<li><a href="#variantsummary" data-toggle="pill">{{t
+										'variant.subtab.summary'}}</a></li> {{/if}} {{#if tabConfigs.sim}}
+								<li><a href="#sim" data-toggle="pill">{{t
+										'variant.subtab.sim'}}</a></li> {{/if}} {{#if tabConfigs.fusion}}
+								<li><a href="#fusion" data-toggle="pill">{{t
+										'variant.subtab.fusion'}}</a></li> {{/if}} {{#if tabConfigs.cnv}}
+								<li><a href="#cnv" data-toggle="pill">{{t
+										'variant.subtab.cnv'}}</a></li> {{/if}}
+								{{#if canExport}} <li class="pull-right"><button class="btn btn-default" id="variantExport"><img src="/ir/resources//img/Export.png"></button></li>{{/if}}
+							</ul>
+							<div class="tab-content">
+								<div class="tab-pane" id="variantsummary" style="overflow-x: hidden">
+									<div id="variantsummary-grid"></div>
+								</div>
+								<div class="tab-pane" id="sim" style="overflow-x: hidden">
+									<div id="sim-grid"></div>
+								</div>
+								<div class="tab-pane" id="fusion" style="overflow-x: hidden">
+									<div id="fusion-grid"></div>
+								</div>
+								<div class="tab-pane" id="cnv" style="overflow-x: hidden">
+									<div id="cnv-grid"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					{{#if showFilterChain}}
+						<div id="sidebar" class="span3 pull-right"></div>
+					{{/if}}
+					{{/if}}
+				</div>
+				<div class="tab-pane" id="clinical">
+					<div class="clearfix">
+						<div class="pull-left">
+							<ul id="navigationPillsId" class="nav nav-pills">
+								{{#if tabConfigs.clinicalSummary}}
+								<li><a href="#clinicalsummary" data-toggle="pill">{{t
+										'variant.subtab.summary'}}</a></li>
+								{{/if}} {{#ifCond tabConfigs.hotspotVariant '&&' tabConfigs.targetSummaryHotspot}}
+								<li><a href="#hotspotVariant"
+									data-toggle="pill">{{t 'variant.subtab.sim'}}</a></li>
+								{{/ifCond}} {{#ifCond tabConfigs.clinicalfusion '&&' tabConfigs.targetSummaryFusion}}
+								<li><a href="#clinicalfusion" data-toggle="pill">{{t
+										'variant.subtab.fusion'}}</a></li>
+								{{/ifCond}} {{#ifCond tabConfigs.clinicalcnv '&&' tabConfigs.targetSummaryCNV}}
+								<li><a href="#clinicalcnv" data-toggle="pill">{{t
+										'variant.subtab.cnv'}}</a></li>
+								{{/ifCond}}
+								{{#if canExport}}<li class="pull-right"><button class="btn btn-default" id="targetExport"><img src="/ir/resources//img/Export.png"></button></li>{{/if}}
+							</ul>
+							<div class="tab-content">
+								<div class="tab-pane" id="clinicalsummary"
+									style="overflow-x: hidden">
+									<div id="clinicalsummary-grid"></div>
+								</div>
+								<div class="tab-pane" id="hotspotVariant"
+									style="overflow-x: hidden">
+									<div id="hotspotVariant-grid"></div>
+								</div>
+								<div class="tab-pane" id="clinicalfusion"
+									style="overflow-x: hidden">
+									<div id="clinicalfusion-grid"></div>
+								</div>
+								<div class="tab-pane" id="clinicalcnv" style="overflow-x: hidden">
+									<div id="clinicalcnv-grid"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+              {{#if isPluginsEnabled}}
+            <div class="tab-pane" id="plugins">
+				<div id="pluginsInfo"></div>
+			</div>
+			{{/if}}
+			</div>
+		</div>
+	</div>
+	<div class="modal hide fade" id="openSignOff" tabindex="-1"
+		role="dialog" aria-labelledby="" aria-hidden="true"></div>
+	<div class="modal hide fade" id="openDownloadFiles" tabindex="-1"
+		role="dialog" aria-labelledby="" aria-hidden="true"></div>
+	<div class="modal hide fade" id="planARunDetailsModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>
+	<div class="modal hide fade" id="viewAnnotationSources" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>
+</div>

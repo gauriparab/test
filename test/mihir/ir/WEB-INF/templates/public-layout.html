@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head th:fragment="headerFragment">
+    <title th:text="#{html.head.title}">Ion Reporter | Life Technologies</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="shortcut icon" type="image/x-icon" href="../../../public-resources/img/lifetech_favicon_0.gif" th:href="@{/resources/img/lifetech_favicon_0.gif}"/>
+    <link rel="icon" type="image/x-icon" href="../../../public-resources/img/lifetech_favicon_0.gif" th:href="@{/resources/img/lifetech_favicon_0.gif}"/>
+
+    <link rel="stylesheet" type="text/css" href="../../../public-resources/css/bootstrap.min.css" th:href="@{/resources/css/bootstrap.min.css}" />
+    <link rel="stylesheet" type="text/css" href="" th:href="@{/resources/css/bootstrap-modal.min.css}" />
+    <link rel="stylesheet" href="../../../public-resources/css/theme.css" th:href="@{'/resources/css/'+${@utilService.getServerMode()}+'/theme.css'}" />
+
+    <script src="../../../public-resources/js/lib/require-2.1.6.min.js" th:src="@{/resources/js/lib/require-2.1.6.min.js}"></script>
+    <script src="../../../public-resources/js/_login.js" th:src="@{/resources/js/_login.js} + '?v=' + ${beans.versionProps['build.commit.abbrev']}" th:if="${beans.applicationProps['application.optimizejs']}"></script>
+    <script src="../../../public-resources/js/_lib.js" th:src="@{/resources/js/_lib.js} + '?v=' + ${beans.versionProps['build.commit.abbrev']}" th:if="${beans.applicationProps['application.optimizejs']}"></script>
+    <script src="../../../public-resources/js/lib/jquery-1.9.1.min.js" th:src="@{/resources/js/lib/jquery-1.9.1.min.js}" th:unless="${beans.applicationProps['application.optimizejs']}"></script>
+    <script src="../../../public-resources/js/lib/bootstrap.min.js" th:src="@{/resources/js/lib/bootstrap.min.js}" th:unless="${beans.applicationProps['application.optimizejs']}"></script>
+    <script type="text/javascript" src="//www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
+    <script th:substituteby="global-module.html"></script>
+    <script type="text/javascript" json:stringify="javascript">
+        /*<![CDATA[*/
+        function requireInit(modules, moduleFunction) {
+        	// (function (){
+        	// 	var lang = navigator.language;
+        	// 	var currentLang = localStorage.getItem('ionUserLanguage') || lang;
+        	// 	localStorage.setItem('ionUserLanguage',currentLang);
+        	// })();
+            require(['global'], function(global) {
+                require([global.resources + 'js/main.js'], function(main) {
+                    require(['handlebarHelper', 'bootstrap', 'i18n'], function(handlebarHelper) {
+                        handlebarHelper.initialize(global.rootcontext, global.resources);
+						require(['ir'], function() {
+                            	require(modules, moduleFunction);
+                            });
+                        /*$.i18n.init({
+                            resGetPath: '/ir/locales/en/messages',
+                            dynamicLoad: true,
+                            getAsync: false
+                        }, function() {
+                            require(['ir'], function() {
+                            	require(modules, moduleFunction);
+                            });
+                        });*/
+                    });
+                });
+            });
+        }
+        /*]]>*/
+    </script>
+</head>
+<body>
+<div class="wrapper">
+    <div class="header" layout:fragment="publicBodyHeader">
+        <div class="container">
+            <div class="row">
+                <img src="../../public-resources/img/ion-logo.png" th:src="@{/resources/img/ion-logo.png}" alt="" class="ion-logo" />
+                <img src="../../public-resources/img/informatics-workflow.png" th:src="@{/resources/img/informatics-workflow.png}" alt="" class="pull-right" />
+            </div>
+        </div>
+    </div>
+    <div class="banner">
+        <div class="container" layout:fragment="banner">
+            <div class="row-fluid" layout:fragment="bannerContent">
+                // Replace with content to be displayed in front of background in page
+            </div>
+        </div>
+    </div>
+	<div class="container marketing" th:fragment="learnMore">
+		<div class="row">
+			<div class="span6">
+				<h2 th:utext="#{torrent.suite.section.title}">Torrent Suite&trade; Software Integration</h2>
+				<p th:utext="#{torrent.suite.section.body}">Automate your data analysis needs and leverage the power of Ion Reporter&trade; Software directly from within Torrent Suite&trade; Software. Just select create an Ion Reporter&trade; workflow as you plan your sequencing runs and the software automates the rest from primary analysis, to data transfer, and secondary analysis in Ion Reporter&trade; Software.</p>
+			</div>
+			<div class="span6">
+				<h2 th:utext="#{sample.analysis.section.title}">Sample &amp; Analysis Management</h2>
+				<p th:utext="#{sample.analysis.section.body}">Direct integration with Torrent Suite&trade; means there is no need to enter information twice - all data is automatically transferred after sequencing. Ion Reporter&trade; provides simple tools to manage, track, and highlight any sample or analysis, making it easy to stay organized and allows you to access your data from any computer. Leveraging secure, redundant storage, Ion Reporter&trade; ensures your data is available when you need it.</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="span6">
+				<h2 th:utext="#{data.security.section.title}">Data Security</h2>
+				<p th:utext="#{data.security.section.body}">Ion Reporter&trade; Software makes use of the latest security protocols, including 256-bit encryption and transfer over SSL, ensuring that your data is secure whether in motion or at rest. Ion Reporter&trade; software is built upon the industry leading cloud provider, Amazon AWS, which serves many academic, commercial, and government agencies. Our systems have been reviewed and tested by independent security professionals.</p>
+			</div>
+			<div class="span6">
+				<h2 th:utext="#{annotate.variants.section.title}">Annotate your Variants</h2>
+				<p th:utext="#{annotate.variants.section.body}">Ion Reporter&trade; streamlines the annotation of your variant VCF files by leverage a wealth of publically available content. Upload your VCF and annotate your variants with information from sources such as dbSNP, 1000 genomes, OMIM, COSMIC, and more. You can even upload your own custom annotations and leverage them within Ion Reporter&trade; Software.</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="span6">
+				<h2 th:utext="#{ingenuity.section.title}">Ingenuity&reg; Variant Analysis&trade; Workflows</h2>
+				<p th:utext="#{ingenuity.section.body}">The Ingenuity&reg; Variant Analysis&trade; workflow enables biological analysis and interpretation to rapidly identify the most compelling variants for follow-up in human sequencing studies with an interactive filter cascade that uses a single source of accurate, curated content — the Ingenuity&reg; Knowledge Base.</p>
+				<p><a href="http://www.ingenuity.com/products/variant-analysis" class="btn" target="_new">Learn more</a></p>
+			</div>
+			<div class="span6">
+				<h2 th:utext="#{16s.section.title}">16S Metagenomics Workflow - beta</h2>
+				<p th:utext="#{16s.section.body}">Ion Reporter&trade; Software enables the identification of microbes present in complex polybacterial samples at genus/species level by using both curated GreenGenes and curated MicroSeq&reg; ID 16S reference databases. Along with identifying microorganism genus/species ID, Ion Reporter&trade; Metagenomics Workflow also provides primer information, classification information, percent ID, and mapping information. It is easy to interpret population diversity at any level in the taxonomy with the interactive display.</p>
+            </div>
+		</div>
+	</div>
+    <footer th:fragment="bodyFooter">
+        <div class="container">
+            <div class="row-fluid">
+                <div class="pull-left copyright">
+                    <ul class="contentinfo-legal">
+                        <li class="">
+                            <a id="hfTermsOfServiceLink" href="http://www.lifetechnologies.com/us/en/home/global/terms-and-conditions.html">Terms of Service</a>
+                        </li>
+                        <li class="">
+                            <a id="hfPrivacyPolicyLink" href="http://www.lifetechnologies.com/us/en/home/global/privacy-policy">Privacy Policy</a>
+                        </li>
+                        <li class="last-of-type">
+                            <a id="hfOnlinePricePolicyLink" href="http://www.lifetechnologies.com/us/en/home/global/online-pricing-policy">Price &amp; Freight Policy</a>
+                        </li>
+                    </ul>
+                    <p th:text="#{footer.warning}">This is for research use only. It is not intended for any animal or human therapeutic or diagnostic use.</p>
+                    <p th:text="#{footer.copyright}">&copy; 2014 Life Technologies Corporation. All Rights Reserved.</p>
+                    <p>Build Version: <span th:text="${beans.versionProps['build.commit.abbrev']}"/></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

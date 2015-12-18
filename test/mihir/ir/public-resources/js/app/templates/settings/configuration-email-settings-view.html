@@ -1,0 +1,69 @@
+<div class="instument-select" style="width: auto; padding: 10px 5px;">
+	<div>
+		<b>
+			{{t 'settings.configurationPage.emailTab.title'}}
+			(<a href="#" id="email-settings-audit-trail">{{t 'audit.trail.title'}}</a>)
+		</b>
+	</div>
+</div>
+{{#settings}}
+<div class="row-fluid">
+	<div style="margin:15px;">
+		<div style="width:100%; margin:10px 0px;">
+			<div style="width:15%; display:inline-block">
+			{{t 'settings.configurationPage.emailTab.smtpURL'}}
+			<span class="text-error requires-asterisk">*</span></div>
+			<div style="width:25%; display:inline-block;">
+				<input style="margin: 0px;" type="text" id="smtp" value="{{smtpServerURL}}"/>
+			</div>
+		</div>
+
+		<div style="width:100%; margin:10px 0px;">
+			<div style="width:15%; display:inline-block">{{t 'settings.configurationPage.emailTab.port'}}<span class="text-error requires-asterisk">*</span></div>
+			<div style="width:25%; display:inline-block;">
+				<input style="margin: 0px;" type="text" id="port" value="{{port}}"/>
+			</div>
+		</div>
+
+		<div style="width:100%; margin:10px 0px;">
+			<div style="width:15%; display:inline-block">{{t 'settings.configurationPage.emailTab.tls'}}</div>
+			<div style="width:25%; display:inline-block;">
+				<input style="margin: 0px;" type="checkbox" id="tls" {{#if useTLS }}checked{{/if}}/>
+			</div>
+		</div>
+
+		<div style="width:100%; margin:10px 0px;">
+			<div style="width:15%; display:inline-block">{{t 'settings.configurationPage.emailTab.username'}}<span class="text-error requires-asterisk">*</span></div>
+			<div style="width:25%; display:inline-block;">
+				<input style="margin: 0px;" type="text" id="email-username" value="{{userName}}"/>
+			</div>
+		</div>
+
+		<div style="width:100%; margin:10px 0px;">
+			<div style="width:15%; display:inline-block">{{t 'settings.configurationPage.emailTab.password'}}<span class="text-error requires-asterisk">*</span></div>
+			<div style="width:25%; display:inline-block;">
+				<input style="margin: 0px;" type="password" id="email-password" value="{{password}}"/>
+			</div>
+		</div>
+
+		<div style="width:100%; margin:10px 0px;">
+			<div style="width:15%; display:inline-block">
+				{{t 'settings.configurationPage.emailTab.sender'}}
+				<span class="text-error requires-asterisk">*</span>
+			</div>
+			<div style="width:25%; display:inline-block;">
+				<input style="margin: 0px;" type="text" id="sender" value="{{senderAddress}}"/>
+			</div>
+		</div>
+
+		<div style="width:100%; margin:20px 0px;" id="buttonGroup">
+			<a href="#" id="update" class="btn">{{t 'settings.configurationPage.emailTab.update'}}</a>
+			<a href="#" id="reset" class="btn">{{t 'settings.configurationPage.emailTab.reset'}}</a>
+			<a href="#" id="send-test" class="btn {{#unless showSendTestEmail}} disabled _noFollow {{/unless}}">{{t 'settings.configurationPage.emailTab.sendTest'}}</a>
+		</div>
+
+	</div>
+</div>
+{{/settings}}
+<div class="modal hide fade" id="email-settings-audit-modal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>
+<div class="modal hide fade" id="auditTrailDetailsModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>

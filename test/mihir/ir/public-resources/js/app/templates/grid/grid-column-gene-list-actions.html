@@ -1,0 +1,8 @@
+<div>
+	{{#unless defaultFile}}
+		{{#if canObsolete}}
+			<b><a href='javascript:void(0)' data-action='obsolete'>{{t 'grid.column.obsolete'}}</a></b> |
+		{{/if}}
+	{{/unless}}
+	<b><a href='javascript:void(0)' data-action='download_file'>{{t 'actions.EXPORT'}}</a></b> 
+</div>

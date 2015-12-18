@@ -1,0 +1,149 @@
+<table cellpadding="5">
+    <tr>
+        <td colspan="2">
+            <!-- TODO: Restore this when SL implements flagging -->
+            <!--{{#if favorite}}-->
+            <!--<span class="details-icons">                -->
+                <!--<i class="icon-flag"></i>            -->
+            <!--</span>-->
+            <!--{{/if}}-->
+            {{#if isLocked}}
+            <span class="details-icons">                
+                <i class="lock-sign icon-lock icon-tips has-title-tooltip" data-original-title="Workflow is locked"></i>                
+            </span>
+            {{/if}}
+            {{#if factoryProvided}}
+            <span class="details-icons">                
+                <i class="ion-default" data-toggle="tooltip" title="Workflow is provided by Ion"></i>                
+            </span>
+            {{/if}}
+            {{#if applicationType}}
+            <span class="details-icons" id="application">
+                {{#applicationTypeImg applicationType}}{{/applicationTypeImg}}<span>{{t applicationType}}</span>
+            </span>
+            {{/if}}
+        </td>
+    </tr>
+    {{#if name}}
+    <tr>
+        <td colspan="2">
+            <span class="breakall"><strong>{{name}}</strong></span><br/>
+            {{description}}
+        </td>
+    </tr>
+    {{/if}}
+    {{#if applicationVersion}}
+    <tr>
+        <td valign="top"><strong>{{t "version.label"}}:</strong></td>
+        <td>{{applicationVersion.name}}</td>
+    </tr>
+    {{/if}}
+    {{#if groupingType}}
+    <tr>
+        <td valign="top"><strong>{{t "workflow.summary.sample.group"}}:</strong></td>
+        <td>{{groupingType}}</td>
+    </tr>
+    {{/if}}
+    <tr>
+        <td valign="top"><strong>{{t "workflow.summary.reference"}}:</strong></td>
+        <td id="selectedReference">
+        {{#ifCond references.length '<=' 1}}
+            {{firstValue references 'name'}}
+        {{else}}
+            {{firstValue references 'name'}}
+            <a id="multipleSelectedReferences" 
+               data-original-title="{{t 'workflow.references.title'}}"
+               href="javascript:void(0)">
+                ({{references.length}})
+            </a>
+        {{/ifCond}}
+        </td>
+    </tr>
+    {{#if isAppTypeMetagenomics}}
+    <tr>
+        <td valign="top"><strong>{{t 'settings.label.primers'}}:</strong></td>
+        <td>
+            {{#if primers}}
+            <div class="primers" data-original-title="Primers">
+                <a href="javascript:void(0)">{{primers.length}} {{t 'settings.label.primers'}}</a>
+            </div>
+            {{/if}}
+        </td>
+    </tr>
+    {{/if}}
+    {{#if targetRegion.name}}
+    <tr>
+        <td valign="top"><strong>{{t "workflow.summary.region"}}:</strong></td>
+        <td>{{targetRegion.name}}</td>
+    </tr>
+    {{/if}}
+    {{#if variantTypeDetection}}
+    <tr>
+        <td valign="top"><strong>{{t "workflow.summary.variantTypeDetection"}}:</strong></td>
+        <td>
+            {{t "VariantTypeDetection." variantTypeDetection}}
+        </td>
+    </tr>
+    {{/if}}
+    {{#if hotspotRegion.name}}
+    <tr>
+        <td valign="top" class="nowrap"><strong>{{t "workflow.summary.hotspot"}}:</strong></td>
+        <td>{{hotspotRegion.name}}</td>
+    </tr>
+    {{/if}}
+    {{#if fusionPanel}}
+    <tr>
+        <td valign="top"><strong>{{t "workflow.summary.fusionPanel"}}:</strong></td>
+        <td id="selectedfusionPanel">{{fusionPanel.name}}</td>
+    </tr>
+    {{/if}}
+    {{#if annotationSet}}
+    <tr>
+        <td valign="top"><strong>{{t "workflow.summary.annotation"}}:</strong></td>
+        <td>{{annotationSet.name}}</td>
+    </tr>
+    {{/if}}
+    {{#unless isAppTypeMetagenomics}}
+    {{#if filterChain.name}}
+    <tr>
+        <td valign="top"><strong>{{t "workflow.summary.filter.chains"}}:</strong></td>
+        <td>{{filterChain.name}}</td>
+    </tr>
+    {{/if}}
+    {{/unless}}
+    {{#if copyNumberBaseline}}
+    <tr>
+        <td valign="top"><strong>{{t "workflow.summary.baseline"}}:</strong></td>
+        <td>{{copyNumberBaseline}}</td>
+    </tr>
+    {{/if}}
+    {{#if pluginNames}}
+    <tr>
+        <td valign="top"><strong>{{t "workflow.summary.plugins"}}:</strong></td>
+        <td>{{pluginNames}}</td>
+    </tr>
+    {{/if}}
+    {{#if reportTemplate}}
+    <tr>
+        <td valign="top"><strong>{{t "workflow.summary.reportTemplate"}}:</strong></td>
+        <td>{{reportTemplate}}</td>
+    </tr>
+    {{/if}}
+    {{#if createdBy}}
+    <tr>
+        <td valign="top"><strong>{{t 'assay.details.createdBy'}}:</strong></td>
+        <td>{{createdBy}}</td>
+    </tr>
+    {{/if}}
+    {{#if createdOn}}
+    <tr>
+        <td valign="top"><strong>{{t 'search.createdOn'}}:</strong></td>
+        <td>{{createdOn}}</td>
+    </tr>
+    {{/if}}
+    <tr>
+        <td valign="top"><strong>{{t 'assay.summary.variantFindingParameters'}}:</strong></td>
+        <td><a id="view-parameters-link" href="javascript:void(0)">{{t 'dialog.review'}}</a></td>
+    </tr>
+
+</table>

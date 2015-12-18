@@ -1,0 +1,28 @@
+<div>
+    <label class="inline">
+        {{{contextHelp}}}
+    </label>
+    <div class='fileupload fileupload-new' data-provides='fileupload'>
+        <div class='input-append'>
+            <div class='uneditable-input span3'>
+                <i class='icon-file fileupload-exists'></i>
+                <span class='fileupload-preview'></span>
+            </div>
+            <span class='btn btn-file'>
+                <span class='fileupload-new'>{{t 'annotation.set.label.select.file'}}</span>
+                <span class='fileupload-exists'>{{t 'annotation.set.label.change'}}</span>
+                <input type='file' name='fileData'>
+            </span>
+            <button type="button" class="btn fileupload-exists" data-dismiss="fileupload">{{t 'annotation.set.label.remove'}}</button>
+            &nbsp;&nbsp;
+            <button type="button" style='margin-left: 10px;' class='btn fileupload-exists btn-upload'>{{t 'annotation.set.label.upload'}}</button>
+        </div>
+    </div>
+    <div class='progress progress-striped active hide' style='width: 400px'>
+        <div class='bar' style='width: 0%;'></div>
+    </div>
+    <div><span class='upload-message'></span></div>
+    <div class="validation-progress-message hide">{{t 'upload.validating'}}</div>
+    <div class="upload-failed-message hide">{{t 'upload.failed'}}</div>
+    <div class="validation-timeout hide">{{t 'upload.validation.timeout'}}</div>
+</div>

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans:beans
+        xmlns:beans="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="
+                        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+                        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+    <!-- hierarchical configuration of applicationProps, can be overridden by env-specific external config -->
+    <beans:bean id="applicationProps" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <beans:property name="ignoreResourceNotFound" value="true" />
+        <beans:property name="locations">
+            <beans:list>
+                <beans:value>classpath:META-INF/spring/application.properties</beans:value>
+                <!-- "server/server.properties" is used to configure the entire app, not just front-end -->
+                <beans:value>file:${IONREPORTERMANAGERROOT}/server/server.properties</beans:value>
+            </beans:list>
+        </beans:property>
+    </beans:bean>
+
+    <beans:bean id="tabs" class="com.lifetech.ionreporter.mgc.ui.web.page.Tabs">
+        <beans:constructor-arg name="tabs">
+            <beans:set>            
+                <beans:bean class="com.lifetech.ionreporter.mgc.ui.web.page.Tab">
+                    <beans:constructor-arg name="id" value="SPECIMEN_NEW" />
+                    <beans:constructor-arg name="path" value="/secure/manage-samples.html" />
+                    <!-- beans:constructor-arg name="authorization" value="hasAnyRole('ROLE_ORGADMIN', 'ROLE_IMPORT', 'ROLE_ANALYZE','MANAGER','OPERATOR')" /-->
+					<beans:constructor-arg name="authorization" value="hasPermission('ROLE_ORGADMIN', 'View Specimens')" />
+                    <beans:constructor-arg name="children">
+                        <beans:bean class="com.lifetech.ionreporter.mgc.ui.web.page.Tabs">
+                            <beans:constructor-arg name="tabs">
+                                <beans:set>
+                                	<beans:bean class="com.lifetech.ionreporter.mgc.ui.web.page.Tab">
+                                        <beans:constructor-arg name="id" value="MANAGE_SPECIMENS" />
+                                        <beans:constructor-arg name="path" value="/secure/manage-samples.html" />
+                                        <beans:constructor-arg name="authorization" value="hasPermission('ROLE_ORGADMIN','Manage Specimens')" />
+                                    </beans:bean>
+                                    <beans:bean class="com.lifetech.ionreporter.mgc.ui.web.page.Tab">
+                                        <beans:constructor-arg name="id" value="IMPORT_SPECIMEN" />
+                                        <beans:constructor-arg name="path" value="/secure/import-sample.html" />
+                                        <beans:constructor-arg name="authorization" value="hasPermission('ROLE_ORGADMIN','Import Samples')" />
+                                    </beans:bean>
+                                    <beans:bean class="com.lifetech.ionreporter.mgc.ui.web.page.Tab">
+                                        <beans:constructor-arg name="id" value="LIBRARARIES" />
+                                        <beans:constructor-arg name="path" value="/secure/library.html" />
+										<beans:constructor-arg name="authorization" value="hasPermission('ROLE_ORGADMIN','Libraries')" />
+                                        <!--beans:constructor-arg name="authorization" value="hasAnyRole('ROLE_ORGADMIN', 'ROLE_ANALYZE')" /-->
+                                    </beans:bean>
+                                    <beans:bean class="com.lifetech.ionreporter.mgc.ui.web.page.Tab">
+                                        <beans:constructor-arg name="id" value="MANAGE_ATTRIBUTES" />
+                                        <beans:constructor-arg name="path" value="/secure/manage-attributes.html" />
+                                        <beans:constructor-arg name="authorization" value="hasPermission('ROLE_ORGADMIN','Manage Attributes')" />
+                                    </beans:bean>                                    
+                                </beans:set>
+                            </beans:constructor-arg>
+                       </beans:bean>
+                    </beans:constructor-arg>
+                 </beans:bean>                  
+				<beans:bean class="com.lifetech.ionreporter.mgc.ui.web.page.Tab">
+                    <beans:constructor-arg name="id" value="ASSAY" />
+                    <beans:constructor-arg name="path" value="/secure/assay.html" />
+                    <!-- beans:constructor-arg name="authorization" value="hasAnyRole('ROLE_ORGADMIN', 'ROLE_IMPORT', 'ROLE_ANALYZE','MANAGER','OPERATOR')" /-->
+					<beans:constructor-arg name="authorization" value="hasPermission('ROLE_ORGADMIN', 'View Assay')" />
+                    <beans:constructor-arg name="children">
+                        <beans:bean class="com.lifetech.ionreporter.mgc.ui.web.page.Tabs">
+                            <beans:constructor-arg name="tabs">
+                                <beans:set>
+                                    <beans:bean class="com.lifetech.ionreporter.mgc.ui.web.page.Tab">
+                                        <beans:constructor-arg name="id" value="OVERVIEW" />
+                                        <beans:constructor-arg name="path" value="/secure/assay.html" />
+                                        <beans:constructor-arg name="authorization" value="hasPermission('ROLE_ORGADMIN','Overview')" />
+                                    </beans:bean>
+                                    <beans:bean class="com.lifetech.ionreporter.mgc.ui.web.page.Tab">
+                                        <beans:constructor-arg name="id" value="CREATE" />
+                                        <beans:constructor-arg name="path" value="/secure/create-assay.html" />
+                                        <beans:constructor-arg name="authorization" value="hasPermission('ROLE_ORGADMIN','Create')" />
+                                    </beans:bean>
+                                    <beans:bean class="com.lifetech.ionreporter.mgc.ui.web.page.Tab">
+                                        <beans:constructor-arg name="id" value="IMPORT_ASSAY" />
+                                        <beans:constructor-arg name="path" value="/secure/import-assay.html" />
+                                        <beans:constructor-arg name="authorization" value="hasPermission('ROLE_ORGADMIN','Create')" />
+                                    </beans:bean>
+                                    <beans:bean class="com.lifetech.ionreporter.mgc.ui.web.page.Tab">
+                                        <beans:constructor-arg name="id" value="PRESETS" />
+                                        <beans:constructor-arg name="path" value="/secure/assay-presets.html" />
+                                        <beans:constructor-arg name="authorization" value="hasPermission('ROLE_ORGADMIN','Presets')" />
+                                    </beans:bean>
+                                    <beans:bean class="com.lifetech.ionreporter.mgc.ui.web.page.Tab">
+                                        <beans:constructor-arg name="id" value="INSTALL_TEMPLATES" />
+                                        <beans:constructor-arg name="path" value="/secure/install-templates.html" />
+                                        <beans:constructor-arg name="authorization" value="hasPermission('ROLE_ORGADMIN','Install Templates')" />
+                                    </beans:bean>
+                                    <beans:bean class="com.lifetech.ionreporter.mgc.ui.web.page.Tab">
+                                        <beans:constructor-arg name="id" value="PLANNED_RUNS" />
+                                        <beans:constructor-arg name="path" value="/secure/planned-runs.html" />
+                                        <beans:constructor-arg name="authorization" value="hasPermission('ROLE_ORGADMIN','Planned Runs')" />
+                                    </beans:bean>
+                                </beans:set>
+                            </beans:constructor-arg>
+                        </beans:bean>
+                    </beans:constructor-arg>
+                 </beans:bean>
+                 <beans:bean class="com.lifetech.ionreporter.mgc.ui.web.page.Tab">
+                    <beans:constructor-arg name="id" value="MONITOR" />
+                    <beans:constructor-arg name="path" value="/secure/run.html" />
+                    <!-- beans:constructor-arg name="authorization" value="hasAnyRole('ROLE_REPORT', 'ROLE_ORGADMIN', 'ROLE_IMPORT', 'ROLE_ANALYZE','MANAGER','OPERATOR')" /-->
+					<beans:constructor-arg name="authorization" value="hasPermission('ROLE_ORGADMIN', 'View Monitor')" />
+                    <beans:constructor-arg name="children">
+                        <beans:bean class="com.lifetech.ionreporter.mgc.ui.web.page.Tabs">
+                            <beans:constructor-arg name="tabs">
+                                <beans:set>
+                                    <beans:bean class="com.lifetech.ionreporter.mgc.ui.web.page.Tab">
+                                        <beans:constructor-arg name="id" value="RUN" />
+                                        <beans:constructor-arg name="path" value="/secure/run.html" />
+                                        <beans:constructor-arg name="authorization" value="hasPermission('ROLE_ORGADMIN','Run View')" />
+                                    </beans:bean>
+                                    <beans:bean class="com.lifetech.ionreporter.mgc.ui.web.page.Tab">
+                                        <beans:constructor-arg name="id" value="INSTRUMENT" />
+                                        <beans:constructor-arg name="path" value="/secure/instrument.html" />
+                                        <beans:constructor-arg name="authorization" value="hasPermission('ROLE_ORGADMIN','Instrument View')" />
+                                    </beans:bean>
+                                </beans:set>
+                            </beans:constructor-arg>
+                        </beans:bean>
+                    </beans:constructor-arg>
+                </beans:bean>
+                <beans:bean class="com.lifetech.ionreporter.mgc.ui.web.page.Tab">
+                    <beans:constructor-arg name="id" value="DATA" />
+                    <beans:constructor-arg name="path" value="/secure/run-result.html" />
+                    <!--beans:constructor-arg name="authorization" value="hasAnyRole('ROLE_REPORT', 'ROLE_ORGADMIN', 'ROLE_IMPORT', 'ROLE_ANALYZE','MANAGER','OPERATOR')" /-->
+					<beans:constructor-arg name="authorization" value="hasPermission('ROLE_ORGADMIN', 'View Data')" />
+                    <beans:constructor-arg name="children">
+                        <beans:bean class="com.lifetech.ionreporter.mgc.ui.web.page.Tabs">
+                            <beans:constructor-arg name="tabs">
+                                <beans:set>
+                                    <beans:bean class="com.lifetech.ionreporter.mgc.ui.web.page.Tab">
+                                        <beans:constructor-arg name="id" value="RESULT" />
+                                        <beans:constructor-arg name="path" value="/secure/run-result.html" />
+                                        <beans:constructor-arg name="authorization" value="hasPermission('ROLE_ORGADMIN','Completed Runs Results')" />
+                                    </beans:bean>
+                                    <beans:bean class="com.lifetech.ionreporter.mgc.ui.web.page.Tab">
+                                        <beans:constructor-arg name="id" value="VERIFICATION" />
+                                        <beans:constructor-arg name="path" value="/secure/verification-run.html" />
+                                        <beans:constructor-arg name="authorization" value="hasPermission('ROLE_ORGADMIN','Verification Runs')" />
+                                    </beans:bean>
+                                </beans:set>
+                            </beans:constructor-arg>
+                        </beans:bean>
+                    </beans:constructor-arg>
+					</beans:bean>					
+					<beans:bean class="com.lifetech.ionreporter.mgc.ui.web.page.Tab">
+                    <beans:constructor-arg name="id" value="SETTINGS" />
+                    <beans:constructor-arg name="path" value="/secure/references.html" />
+                    <!--beans:constructor-arg name="authorization" value="hasAnyRole('ROLE_REPORT', 'ROLE_ORGADMIN', 'ROLE_IMPORT', 'ROLE_ANALYZE','MANAGER')" /-->
+					<beans:constructor-arg name="authorization" value="hasPermission('ROLE_ORGADMIN', 'View Settings')" />
+                    <beans:constructor-arg name="children">
+                        <beans:bean class="com.lifetech.ionreporter.mgc.ui.web.page.Tabs">
+                            <beans:constructor-arg name="tabs">
+                                <beans:set>
+                                	<beans:bean class="com.lifetech.ionreporter.mgc.ui.web.page.Tab">
+                                        <beans:constructor-arg name="id" value="ABOUT" />
+                                        <beans:constructor-arg name="path" value="/secure/about.html" />
+                                        <beans:constructor-arg name="authorization" value="hasPermission('ROLE_ORGADMIN','About')" />
+                                    </beans:bean>
+                                    <beans:bean class="com.lifetech.ionreporter.mgc.ui.web.page.Tab">
+                                        <beans:constructor-arg name="id" value="AUDIT_RECORDS" />
+                                        <beans:constructor-arg name="path" value="/secure/audit-records.html" />
+                                        <beans:constructor-arg name="authorization" value="hasPermission('ROLE_ORGADMIN','Audit Records')" />
+                                    </beans:bean>
+                                    <beans:bean class="com.lifetech.ionreporter.mgc.ui.web.page.Tab">
+                                        <beans:constructor-arg name="id" value="CONFIGURATION" />
+                                        <beans:constructor-arg name="path" value="/secure/configuration.html" />
+                                        <beans:constructor-arg name="authorization" value="hasPermission('ROLE_ORGADMIN','Configuration')" />
+                                    </beans:bean>
+                                    <beans:bean class="com.lifetech.ionreporter.mgc.ui.web.page.Tab">
+                                        <beans:constructor-arg name="id" value="DATA_MGMT" />
+                                        <beans:constructor-arg name="path" value="/secure/data-management.html" />
+                                        <beans:constructor-arg name="authorization" value="hasPermission('ROLE_ORGADMIN','Data Management')" />
+                                    </beans:bean>
+                                    <beans:bean class="com.lifetech.ionreporter.mgc.ui.web.page.Tab">
+                                        <beans:constructor-arg name="id" value="LOGS" />
+                                        <beans:constructor-arg name="path" value="/secure/logs.html" />
+                                        <beans:constructor-arg name="authorization" value="hasPermission('ROLE_ORGADMIN','Logs')" />
+                                    </beans:bean>
+                                    <beans:bean class="com.lifetech.ionreporter.mgc.ui.web.page.Tab">
+                                        <beans:constructor-arg name="id" value="REFERENCES" />
+                                        <beans:constructor-arg name="path" value="/secure/references.html" />
+                                        <beans:constructor-arg name="authorization" value="hasPermission('ROLE_ORGADMIN','References')" />
+                                    </beans:bean>
+                                    <beans:bean class="com.lifetech.ionreporter.mgc.ui.web.page.Tab">
+                                        <beans:constructor-arg name="id" value="SETTINGS_SERVICES" />
+                                        <beans:constructor-arg name="path" value="/secure/services.html" />
+                                        <beans:constructor-arg name="authorization" value="hasPermission('ROLE_ORGADMIN','Services')" />
+                                    </beans:bean>
+                                    <beans:bean class="com.lifetech.ionreporter.mgc.ui.web.page.Tab">
+										<beans:constructor-arg name="id" value="USERS" />
+										<beans:constructor-arg name="path" value="/secure/admin-users.html" />
+										<beans:constructor-arg name="authorization" value="hasPermission('ROLE_ORGADMIN','User Management')" />
+									</beans:bean>   
+                                </beans:set>
+                            </beans:constructor-arg>
+                        </beans:bean>
+                    </beans:constructor-arg>
+                    </beans:bean>				
+            </beans:set>
+        </beans:constructor-arg>
+    </beans:bean>
+
+</beans:beans>
+

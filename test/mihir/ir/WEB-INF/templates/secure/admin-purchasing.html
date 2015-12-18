@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:substituteby="layout.html :: headerFragment"></head>
+<body>
+<div class="wrapper">
+    <div class="header" th:substituteby="layout.html :: bodyHeaderFragment"></div>
+
+    <div class="sub-nav" th:substituteby="layout.html :: bodySubNavFragment"></div>
+
+    <div class="main">
+        <div class="main-content clearfix">
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <div th:utext="#{admin.purchasing.payment.account.missing.warning(${beans.applicationProps['lifetechnologies.registration.host']})}" id="unlinked-account-warning"
+                         th:unless="${isPaymentAccountLinked}" class="alert">
+                        <strong>Warning!</strong>&nbsp;You have not linked a payment account.
+                    </div>
+                </div>
+                <div id="payment-prefs" class="row-fluid">
+                    <h1 class="pull-left">Purchase History</h1>
+                    <form class="form-search pull-right">
+                        <div class="input-append" style="display:none;margin-right: 25px;">
+                            <input type="text" class="input-medium search-query" />
+                            <button type="submit" class="btn">Search</button>
+                        </div>
+                        <div class="input-prepend">
+                            <span class="add-on">Default PO#</span>
+                            <input class="span6" id="po-number" type="text" maxlength="255" placeholder="Optional"/>
+                        </div>
+                        <span id="payment-prefs-accountname-label" th:class="${isPaymentAccountLinked} ? '' : 'hide'"><strong>Life Technologies eCommerce Account: </strong></span><span id="payment-prefs-accountname"></span>
+                        &nbsp;
+                        <span>
+                            <a id="unlinkAccount" href="#"
+                               th:class="${isPaymentAccountLinked} ? 'btn btn-danger right-buffer' : 'hide btn btn-danger right-buffer'">Remove&nbsp;Account</a>
+                            <a id="linkAccount" href="#"
+                               th:class="${isPaymentAccountLinked} ? 'hide btn btn-primary right-buffer' : 'btn btn-primary right-buffer'">Link&nbsp;Account</a>
+                        </span>
+                    </form>
+                </div>
+                <div class="row-fluid">
+                    <div id="viewpurchasing-grid" class="span8"></div>
+                    <div id="viewpurchasing-details" class="span4"></div>
+                </div>
+            </div>
+            <div class="modal hide fade" id="payment-account-modal" tabindex="-1" role="dialog" aria-labelledby="createPurchasingAccountModal" aria-hidden="true">
+            </div>
+        </div>
+    </div>
+    
+    <footer class="footer" th:substituteby="layout.html::bodyFooter"></footer>
+</div>
+
+<script th:substituteby="layout.html::irHeaderModals"></script>
+
+<script type="text/javascript" json:stringify="javascript">
+/*<![CDATA[*/
+requireInit(["views/paymentPrefs/paymentPrefsView", "views/paymentAccounts/paymentAccountLauncherView"],
+    function(PaymentPrefsView, PaymentAccountLauncherView) {
+
+    var paymentPrefsView = new PaymentPrefsView({
+        el: '#payment-prefs'
+    });
+
+    var paymentAccountLauncherView = new PaymentAccountLauncherView({
+        el: '.main-content',
+        paymentPrefsView: paymentPrefsView
+    });
+
+    paymentAccountLauncherView.render();
+});
+/*]]>*/
+</script>
+</body>
+</html>

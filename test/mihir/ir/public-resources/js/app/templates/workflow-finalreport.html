@@ -1,0 +1,23 @@
+<div class="row-fluid">
+    <p class="context-help">{{t 'workflow.final.report.chains.help'}}</p>
+</div>
+<div class="row-fluid" id="final-report-messages">
+</div>
+<div class="row-fluid">
+    <div class="span12">
+        <div class="settings-selector-box">
+            <h5>{{t 'workflow.label.final.report.template'}}</h5>
+            <div id="report-template-select" class="btn-group selectBox">
+                <!--  workflow-finalreport-selection -->
+            </div>
+            <br/>
+            <p class="workflow-presets-redirect">
+                {{t 'annotation.set.label.unable.find'}} {{t 'annotation.set.label.configure.in'}} <a id="presets_redirect" href="{{surl 'workflows-presets.html'}}">{{t 'workflow.presets.title'}}</a>.
+            </p>            
+        </div>
+    </div>
+</div>
+<div id="workflow-report-sections">
+    <!-- report-template-sections.html -->
+</div>
+<div class="modal hide fade modal-overflow" id="final-report-template-dialog" tabindex="-1" role="dialog"></div>

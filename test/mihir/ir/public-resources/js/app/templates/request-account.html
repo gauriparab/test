@@ -1,0 +1,55 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+    <h3 class="title">{{t 'admin.label.request.account'}}</h3>
+</div>
+<div class="modal-body" >
+    <div class="alert alert-info">{{t 'request.account.alert.info'}}</div>
+    <div id="errors"></div>
+    <form class='form-horizontal'>
+
+        <div class='control-group'>
+            <label class='control-label' for='organizationName'>{{t 'admin.label.organization.name}}</label>
+            <div class='controls'><input type='text' id='organizationName' name='organizationName' maxlength='255' placeholder='Required' required  />
+                <a href="#" data-trigger="hover" data-html="true" data-toggle="popover" data-placement="bottom" data-content="{{t 'request.account.popover.orgname'}}" title="" data-original-title=""><i class="icon-question-sign"></i></a>
+            </div>
+        </div>
+    
+        <div class='control-group'>
+            <label class='control-label' for='organizationAddress'>{{t 'admin.label.organization.address'}}</label>
+            <div class='controls'><input type='text' id='organizationAddress' name='organizationAddress' placeholder='Required' required /></div>
+        </div>
+        <div class='control-group'>
+            <label class='control-label' for='organizationCountry'>{{t 'admin.label.country'}}</label>
+            <div class='controls'>
+                <select id='organizationCountry' name='organizationCountry' required>
+                </select>
+            </div>
+        </div>
+        <div class='control-group'>
+            <label class='control-label' for='firstName'>{{t 'admin.label.name.first'}}</label>
+            <div class='controls'><input type='text' id='firstName' name='firstName'  maxlength='255' placeholder='Required' required /></div>
+        </div>
+    
+        <div class='control-group'>
+            <label class='control-label' for='lastName'>{{t 'admin.label.name.last'}}</label>
+            <div class='controls'><input type='text' id='lastName' name='lastName' maxlength='255' placeholder='Required' required /></div>
+        </div>
+    
+        <div class='control-group'>
+            <label class='control-label' for='email'>{{t 'admin.label.email'}}</label>
+            <div class='controls'><input type='email' id='email' name='email' placeholder='Required' required /></div>
+        </div>
+        
+        <div class='control-group'>
+            <label class='control-label' for='phoneNumber'>{{t 'admin.label.phone.number'}}</label>
+            <div class='controls'><input type='text' id='phoneNumber' name='phoneNumber' /></div>
+        </div>
+        <div class='control-group'>
+            <div id='recaptcha' class='offset1'></div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button id="request-account-btn-cancel" type="button" class="btn btn-secondary" data-dismiss="modal">{{t 'admin.button.cancel'}}</button>
+    <button id="request-account-btn-save" type="button" class="btn btn-primary">{{t 'admin.button.submit'}}</button>
+</div>

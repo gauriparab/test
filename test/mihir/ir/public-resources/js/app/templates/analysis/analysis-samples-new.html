@@ -1,0 +1,44 @@
+<!--Box start-->
+<div class="box-list row-fluid">
+    <div class="add-samp span1" data-value="{{id}}">
+        {{#unless isFull}}
+        <span class="rotate">{{t 'analysis.label.addSamples'}}</span>
+        {{/unless}}
+    </div>
+    <div class="add-box span11">
+        <div class="row-fluid">
+            <h2>
+                {{#unless id}}
+                    <input type="text" placeholder="{{placeholder}}" value="{{name}}" maxlength="255" required="required"/>
+                {{/unless}}
+                {{#if id}}
+                    <span class="pull-left"><strong>{{name}}</strong></span>
+                    <input type="hidden" value="{{name}}" />
+                    <a href="#" class="delete-btn btn pull-right right-buffer"><i class="icon-trash"/></a>
+                {{/if}}
+            </h2>
+        </div>
+        <div class="row-fluid">
+            {{sub body}}
+        </div>
+        {{#if id}}
+            <div id="{{id}}-rel-ready" class="row-fluid alert-success"
+                {{#unless isComplete}}style="display:none"{{/unless}}>
+                {{t 'analysis.label.readyToAnalyze'}}
+                <img class="pull-right" src="{{img 'check.png'}}"/>
+            </div>
+            <div id="{{id}}-rel-not-ready" class="row-fluid alert-error"
+                {{#if isComplete}}style="display:none"{{/if}}>
+                {{t 'analysis.label.notReadyForAnalysis'}}
+                <img class="pull-right" src="{{img 'error.png'}}"/>
+            </div>
+        {{/if}}
+    </div>
+    {{#unless id}}
+    <div class="row-fluid text-center">
+        <button type="button" class='btn btn-primary' {{#unless readyToAdd}} disabled{{/unless}}>
+        {{t 'analysis.label.addToAnalysis'}}
+        </button>
+    </div>
+    {{/unless}}
+</div>

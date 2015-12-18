@@ -1,0 +1,64 @@
+<beans:beans
+        xmlns:beans="http://www.springframework.org/schema/beans"
+        xmlns:mvc="http://www.springframework.org/schema/mvc"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
+
+    <!-- Placeholder for interceptors needed by PSL, example:
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/secure/**" />
+            <beans:bean
+                class="org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor">
+                <beans:property name="entityManagerFactory" ref="entityManagerFactory" />
+            </beans:bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+    -->
+
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/resources/**" />
+            <beans:bean class="com.lifetech.ionreporter.mgc.ui.web.interceptor.PlatformForwardInterceptor" />
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/secure/**" />
+            <beans:bean class="com.lifetech.ionreporter.mgc.ui.web.interceptor.InjectTabsInterceptor" />
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/lims/**" />
+            <beans:bean class="com.lifetech.ionreporter.mgc.ui.web.interceptor.AuthInterceptor" />
+        </mvc:interceptor> 
+        <mvc:interceptor>
+            <mvc:mapping path="/crawler/**" />
+            <beans:bean class="com.lifetech.ionreporter.mgc.ui.web.interceptor.AuthInterceptor" />
+        </mvc:interceptor> 
+        <mvc:interceptor>
+            <mvc:mapping path="/analysis/startDatAnalysis" />
+            <beans:bean class="com.lifetech.ionreporter.mgc.ui.web.interceptor.AuthInterceptor" />
+        </mvc:interceptor> 
+        <mvc:interceptor>
+            <mvc:mapping path="/import/api/assay/change-mode" />
+            <beans:bean class="com.lifetech.ionreporter.mgc.ui.web.interceptor.AuthInterceptor" />
+        </mvc:interceptor>
+         <mvc:interceptor>
+            <mvc:mapping path="/exportAssay/upload" />
+            <beans:bean class="com.lifetech.ionreporter.mgc.ui.web.interceptor.AuthInterceptor" />
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/api/ir/**" />
+            <beans:bean class="com.lifetech.ionreporter.mgc.ui.web.interceptor.AuthInterceptor" />
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/**" />
+            <beans:bean class="com.lifetech.ionreporter.mgc.ui.web.interceptor.InternetExplorerCompatibilityInterceptor" />
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/secure/**" />
+            <beans:bean class="com.lifetech.ionreporter.mgc.ui.web.interceptor.AccessControlInterceptor" />
+        </mvc:interceptor>
+    </mvc:interceptors>
+        
+</beans:beans>

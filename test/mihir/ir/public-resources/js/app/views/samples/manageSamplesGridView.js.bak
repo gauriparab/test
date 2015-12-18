@@ -1,0 +1,255 @@
+/*global define:false*/
+define([
+    'jquery',
+    'underscore',
+    'kendo',
+    'views/common/grid/kendoGridView',
+    'collections/sampleAttributes',
+    'models/sample/sampleModel',
+    'hb!templates/grid/grid-sample-actions.html',
+    'hb!templates/grid/grid-sample-libraryKit.html',
+    'hb!templates/grid/grid-sample-description.html'
+].concat(
+    'utils/templateFunctions',
+    'views/common/grid/plugins/rowSelectionGridPlugin',
+    'views/common/grid/plugins/actionsGridPlugin',
+    'views/common/grid/plugins/multiSelectionGridPlugin'),
+
+    function($,
+             _,
+	     kendo,
+             KendoGridView,
+	     SampleAttributes,
+             Sample,
+	     actionTemplate,
+	     libKitTemplate,
+	     descriptionTemplate) {
+
+        'use strict';
+
+	var Transport = kendo.Class.extend({
+
+        _grid: null,
+
+        /**
+         * Constructor
+         * @param options
+         */
+        init: function(grid) {
+            this._grid = grid;
+        },
+
+        /**
+         * Method for fetching data
+         *
+         * @param options
+         */
+        read: function(options) {
+            $.ajax({
+                url: this._grid._url + '?' + $.param(_.extend({},
+                    this._parameterMap(options.data),
+                    this._grid._filters
+                )),
+                type: 'POST',
+		data: JSON.stringify(this._grid._filters),
+                contentType: 'application/json',
+                success: options.success,
+                error: options.error
+            });
+        },
+
+        /**
+         * Convert kendo grid parameters to spring parameters
+         *
+         * @param options
+         * @returns {Object|*|Mixed}
+         * @private
+         */
+        _parameterMap: function(options) {
+            return _.reduce(options, function(memo, v, k) {
+                switch (k) {
+                case 'take':
+                    memo['page.size'] = v;
+                    break;
+                case 'page':
+                    memo['page.page'] = v;
+                    break;
+                case 'sort':
+                    _.each(v, function(sortObj) {
+                        memo['page.sort'] = sortObj.field;
+                        memo['page.sort.dir'] = sortObj.dir;
+                    });
+                    break;
+                }
+                return memo;
+            }, {});
+        }
+
+    });
+
+        /**
+         * A re-usable sample grid view
+         *
+         * @type {*}
+         */
+        var manageSamplesGridView = KendoGridView.extend({
+
+            _excludedAttributes: ['File Path', 'Gender', 'Sample Name'],
+
+            _url: '/ir/secure/api/samplemanagement/samples',
+
+            _model: Sample,
+
+            _fields: {
+                analyzed: {
+                    type: 'boolean'
+                },
+                flagged: {
+                    type: 'boolean'
+                },
+                name: {
+                    type: 'string'
+                },
+                createdOn: {
+                    type: 'string'
+                },
+                attributeValueMap : {
+                    type : 'object'
+                },
+                metadata : {
+                    type : 'object'
+                }
+            },
+
+            _sort: [{
+                field: 'createdDate',
+                dir: 'desc'
+            }],
+
+            initialize: function(options) {
+            	if(options.sampleAttributes)
+            		this.sampleAttributes = options.sampleAttributes.toJSON();
+            	else
+            		this.sampleAttributes = [];
+                KendoGridView.prototype.initialize.apply(this, arguments);
+                this.loadPlugin('actions');
+                this.loadPlugin('rowSelection');
+                this.loadPlugin('multiSelection');
+            },
+
+	    _transportCls: Transport, 
+
+	    _scrollable: true,
+
+	    _onGridDataBound: function() {
+                this.trigger(Event.DATA_BOUND);
+
+                _.each(this.$el.find("div.dropdown"), function(div) {
+                    $(div).parent().css("overflow", "visible");
+                });
+
+                $("[data-toggle='tooltip']").tooltip();
+
+				_.each(this.$el.find("colgroup"), function(colgroup) {
+				    $(colgroup).find('col').first().css("width", "25px");
+				});
+		
+				this.$el.find("div.k-grid-content").css("border", "none");
+				this.$el.find("div.k-grid-header").css("border", "none");
+				this.$el.find("div.k-grid-header-wrap").css("border", "none");
+		
+				if(this.$el.find("div.k-grid-content").width() === this.$el.find("div.k-grid-content").find('table').width()){
+				    this.$el.find("div.k-grid-content").removeClass("k-grid-content");
+				} else{
+				    this.$el.find("div.k-grid-content").find('table').css("padding-bottom", "65px");
+				}
+                _.each(this._loadedPlugins, function(plugin) {
+                    plugin.onGridDataBound();
+                });
+            },
+	
+            _columns: function() {
+
+		var columns = [];
+
+                var idColumn = this.cb()
+                    .field('sampleId')
+                    .title($.t('manage.sample.id'))
+		    .width("150px")
+                    .build();
+				
+		var nameColumn = this.cb()
+                    .field('sampleName')
+                    .title($.t('manage.sample.name'))
+		    .width("200px")
+                    .build();
+					
+		var libraryKitColumn = this.cb()
+                    .field('libraryPrepReagentBarcode')
+                    .title($.t('manage.sample.librarykit'))
+		    .width("60px")
+		    .template(libKitTemplate)
+                    .build();
+				
+		var barcodeColumn = this.cb()
+                    .field('barcode')
+                    .title($.t('manage.sample.barcode'))
+		    .width("80px")
+		    .template('#= (barcode != null) ? barcode.idStr: "" #')
+                    .build();
+
+                var createdByColumn = this.cb()
+                    .field('createdBy')
+		    .width("200px")
+                    .title($.t('grid.column.createdBy'))
+                    .build();
+
+                var createdOnColumn = this.cb()
+                    .field('createdDate')
+                    .title($.t('grid.column.createdOn'))
+		    .width("140px")
+                    .template('#= (createdDate != null) ? kendo.toString(new Date(Date.parse(createdDate)),"yyyy-MM-dd HH:mm") : "" #')
+                    .build();
+		
+		var descriptionColumn = this.cb()
+                    .field('description')
+		    .width("100px")
+                    .title($.t('manage.sample.description'))
+                    .template(descriptionTemplate)
+                    .build();
+
+		columns.push(idColumn);
+		columns.push(nameColumn);
+		columns.push(libraryKitColumn);
+		columns.push(barcodeColumn);
+		columns.push(createdByColumn);
+		columns.push(createdOnColumn);
+		columns.push(descriptionColumn);
+
+		var self = this;
+		_.each(this.sampleAttributes, function(attribute, index) {
+		    var temp = self.cb()
+			.field('sampleAttributes')
+			.title(attribute.attributeName)
+			.width("100px")
+			.template('#= (sampleAttributes[' + index + ']) ? sampleAttributes[' + index + '].value : "" #')
+			.build();
+		    columns.push(temp);
+		});
+
+		var actionsColumn = this.cb()
+		    .title($.t('actions.dropdown.label'))
+		    .template(actionTemplate)
+		    .width("70px")
+		    .build();
+		columns.push(actionsColumn);		
+
+                return columns;
+            }
+
+        });
+
+        return manageSamplesGridView;
+
+    }
+);

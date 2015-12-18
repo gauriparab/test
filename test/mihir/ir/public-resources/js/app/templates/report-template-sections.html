@@ -1,0 +1,13 @@
+{{#each sections}}
+<!--  Display the report section -->
+{{/each}}
+<div class="row-fluid">
+	<div class="span12">	
+		<h5>{{t 'report.tamplate.label.sections'}}</h5>
+        
+   		{{#each sections}}
+   		<div id="section-{{this._type}}">
+   		</div>
+   		{{/each}}
+	</div>    
+</div>

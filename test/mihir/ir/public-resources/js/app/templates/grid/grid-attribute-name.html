@@ -1,0 +1,10 @@
+ <div>
+	 <b>{{truncate attributeName 24}}</b>
+	 {{#if isCustom}}
+	 <div class="entity-links">
+	 	{{#unless isObsolete}}
+			<span><a href="javascript:void(0)" data-action="edit">{{t 'actions.EDIT'}}</a></span>
+		{{/unless}}
+	 </div>
+	 {{/if}}
+</div>

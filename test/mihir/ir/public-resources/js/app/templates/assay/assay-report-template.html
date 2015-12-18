@@ -1,0 +1,160 @@
+<legend>Report Sections</legend>
+<div class="row-fluid">
+	<div class="report-header">
+		<h4 style="margin: 0">{{t 'finalReportSection.HeaderSection'}}</h4>
+	</div>
+	<div class="report-body">
+		<div class="row-fluid">
+			<div class="span12">
+				<p class="workflow-presets-redirect">{{t 'finalReportTemplate.help'}}</p>
+				<div class="span10" style="padding: 10px">
+					<div class="control-group">
+						<label class="control-label">{{t
+							'report.template.label.organization.name'}}:</label>
+						<div class="controls">
+							<input name="organizationName" type="text" id="organizationName"
+								size="135" value="{{organizationName}}"/>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">{{t
+							'report.template.label.organization.address'}}: </label>
+						<div class="controls">
+							<textarea name="organizationAddr" id="organizationAddressTextA"
+								class="form-control" rows="3">{{organizationAddr}}</textarea>
+						</div>
+					</div>
+					<div class="control-group" style="margin-bottom: 0px">
+						<label class="control-label">{{t 'finalReportTemplate.logo.label'}}: </label>
+						<div class="controls">
+							<img alt="report logo" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="report-header">
+		<h4 style="margin: 0">{{t 'analysis.auditLog.specimen.info'}}</h4>
+	</div>
+	<div class="report-body">
+		<div class="row-fluid">
+			<div class="span12">
+				<p class="workflow-presets-redirect">{{t 'finalReportTemplate.sample.help'}}</p>
+				<div class="span4">
+					<h4>{{t 'finalReportTemplate.columns.one'}}</h4>
+					<div class="report-body" style="border: 1px solid #ccc">
+						<ul id="sortable1" class="connected unstyled">
+							{{#each columnOneList}} {{#if isCustom}}
+							<li class="btn btn-block"><label class="checkbox text-left"
+								style="margin-left: 5%"> <input type="checkbox"
+									name="id" id="{{id}}">{{attributeName}}
+							</label></li> {{else}}
+							<li class="btn btn-block disabled" name="id" disabled><label
+								class="checkbox text-left" style="margin-left: 5%"> <input
+									type="checkbox" disabled name="id" id="{{id}}" checked>{{attributeName}}
+							</label></li> {{/if}} {{/each}}
+						</ul>
+					</div>
+				</div>
+				<div class="span4">
+					<h4>{{t 'finalReportTemplate.columns.two'}}</h4>
+					<div class="report-body" style="border: 1px solid #ccc">
+						<ul id="sortable2" class="connected unstyled"
+							style="min-height: 60px">
+							{{#each columnTwoList}} {{#if isCustom}}
+							<li class="btn btn-block"><label class="checkbox text-left"
+								style="margin-left: 5%"> <input type="checkbox"
+									name="id" id="{{id}}">{{attributeName}}
+							</label></li> {{else}}
+							<li class="btn btn-block disabled" name="id" disabled><label
+								class="checkbox text-left" style="margin-left: 5%"> <input
+									type="checkbox" disabled name="id" id="{{id}}" checked>{{attributeName}}
+							</label></li> {{/if}} {{/each}}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	{{#if testDescIncluded}}
+	<div class="report-header">
+		<h4 style="margin: 0">{{t 'finalReportTemplate.test.description'}}</h4>
+	</div>
+	<div class="report-body">
+		<div class="row-fluid">
+			<div class="span12">
+				<p class="workflow-presets-redirect">{{t 'finalReportTemplate.report.help'}}</p>
+				<textarea class="span12" name="testDesc" id="testDescTextA" rows="3" {{#unless testDescEditable}} disabled {{/unless}}>{{testDesc}}</textarea>
+			</div>
+		</div>
+	</div>
+	{{/if}}
+	{{#if analyticalTestDescIncluded}}
+	<div class="report-header">
+		<h4 style="margin: 0">{{t 'finalReportTemplate.test.analyticaldescription}}</h4>
+	</div>
+	<div class="report-body">
+		<div class="row-fluid">
+			<div class="span12">
+				<p class="workflow-presets-redirect">{{t 'finalReportTemplate.report.help'}}</p>
+				<textarea class="span12" name="analyticalTestDesc"
+					id="AnalyticaltestDescTextA" rows="3" {{#unless analyticalTestDescEditable}} disabled {{/unless}}>{{analyticalTestDesc}}</textarea>
+			</div>
+		</div>
+	</div>
+	{{/if}}
+	{{#if appendixIncluded}}
+	<div class="report-header">
+		<h4 style="margin: 0">{{t 'finalReportTemplate.appendix.label'}}</h4>
+	</div>
+	<div class="report-body">
+		<div class="row-fluid">
+			<div class="span12">
+				<p class="workflow-presets-redirect">{{t 'finalReportTemplate.report.help'}}</p>
+				<textarea class="span12" name="appendix" id="AppendixTextA" rows="3" {{#unless appendixEditable}} disabled {{/unless}}>{{appendix}}</textarea>
+			</div>
+		</div>
+	</div>
+	{{/if}}
+	<div class="report-header">
+		<h4 style="margin: 0">{{t 'finalReportTemplate.footer.label'}}</h4>
+	</div>
+	<div class="report-body">
+		<div class="row-fluid">
+			<div class="span12">
+				<p class="workflow-presets-redirect">{{t 'finalReportTemplate.logo.help'}}</p>
+				<div class="control-group">
+					<label class="control-label">{{t
+						'report.template.label.labdirector.name'}}:</label>
+					<div class="controls">
+						<input name="labDirectorName" type="text" id="labdirectorName"
+							size="135">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{{t
+						'report.template.label.clia.number'}}:</label>
+					<div class="controls">
+						<input name="cliaNumber" type="text" id="clianumber" size="135">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{{t
+						'report.template.label.legal.disclaimer'}}:</label>
+					<div class="controls">
+						<textarea class="span8" name="legalDisclaimer"
+							id="legaldisclaimerTextA" rows="3"></textarea>
+					</div>
+
+				</div>
+				<div class="control-group">
+					<label class="control-label"></label>
+					<div class="controls">
+						<p style="color: #B1B1AC">{{t 'finalReportTemplate.warning}}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

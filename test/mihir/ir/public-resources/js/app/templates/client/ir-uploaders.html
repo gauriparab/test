@@ -1,0 +1,22 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>File</th>
+                    <th>Description</th>
+                    <th>Size</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each uploaders}}
+                <tr>
+                    <td><a href="{{downloadURL}}">{{name}}</a></td>
+                    <td><div class="ir-uploader-description">{{description}}</div></td>
+                    <td>{{fileLength}} bytes</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>

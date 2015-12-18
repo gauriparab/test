@@ -1,0 +1,113 @@
+
+<!-- =========================================================================
+      CHART CONTROL SECTION 
+      this is placed in the div with the id container-fusion-control
+========================================================================= -->
+<div id="order" class="summary-section" style="z-index: 10">
+	<!-- 
+	<div class="btn-group bootstrap-select pull-left show-tick show-menu-arrow" style="width: 184px; margin-left: -15px;">
+		<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" data-id="filters-pane">
+			<div title="The scoring function that is used for coloring the variants" id="scoringfunction" class="filter-option pull-left">Scoring (log odds)</div>
+			&nbsp;<div class="caret"></div>
+		</button>
+		<div class="dropdown-menu open"	style="max-height: 184px; overflow: hidden; min-height: 30px;">
+			<ul id="score" class="dropdown-menu inner" style="max-height: 172px; overflow-y: auto;">
+			<li class="selected"><a  value="logodds"  class="score" style=""><span title="log odds ratio of counts"
+						class="text">Log odds ratio</span><i class="icon-ok check-mark"></i></a></li>
+				<li><a  value="log"  class="score" style=""><span
+						title="log of absolute counts" class="text">log of counts</span><i class="icon-ok check-mark"></i></a></li>
+				<li ><a value="absolute" class="score" style=""><span
+						title="Absolute counts" class="text">Absolute counts</span><i class="icon-ok check-mark"></i></a></li>
+					 
+				<li><a value="normalized" class="score" style=""><span				
+						title="Relative counts" class="text">Normalized counts</span><i class="icon-ok check-mark"></i></a></li>						
+			</ul>
+		</div>
+	</div><br>
+	 -->
+	<div class="btn-group bootstrap-select pull-left show-tick show-menu-arrow" style="width: 184px; margin-left: -15px;">
+		<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" data-id="filters-pane">
+			<div title="How the fusions are grouped in the heat map" id="fusionorder" class="filter-option pull-left">Fusion Order (fusion id)</div>
+			&nbsp;<div class="caret"></div>
+		</button>
+		<div class="dropdown-menu open"	style="max-height: 184px; overflow: hidden; min-height: 30px;">
+			<ul  id="ordery" class="dropdown-menu inner"	style="max-height: 172px; overflow-y: auto;">
+			    <li title="two fusions are next to each other if they have the same genes, but in any order">
+			    	<a value="middle" class="ordery" style="">
+					<span title="sort fusion products by which gene pair they contain (the order of the pair does not matter)" 
+					class="text">Gene pair</span><i class="icon-ok check-mark "></i></a></li>
+				 <li class="selected"><a value="id" class="ordery" style="">
+					<span title="sort by the full fusion id" class="text">Fusion id</span><i class="icon-ok check-mark "></i></a></li>
+				<li class=""><a value="fiveprime" class="ordery" style="">
+					<span  title="sort by the 5'name"  class="text">5' name</span><i class="icon-ok check-mark "></i></a></li>
+				<li class=""><a value="threeprime" class="ordery" style="">
+					<span title="sort by the 3'name" class="text">3' name</span><i class="icon-ok check-mark "></i></a></li>
+						
+			</ul>
+		</div>
+	</div><br>
+	<div class="btn-group bootstrap-select pull-left show-tick show-menu-arrow" style="width: 184px; margin-left: -15px;">
+		<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" data-id="filters-pane">
+			<div id="sampleorder" class="filter-option pull-left">Sample Order (distance)</div>
+			&nbsp;<div class="caret"></div>
+		</button>
+		<div class="dropdown-menu open"
+			style="max-height: 184px; overflow: hidden; min-height: 30px;">
+			<ul  id="orderx"  class="dropdown-menu inner"style="max-height: 172px; overflow-y: auto;">
+				<li ><a class="orderx"  value="name"  style=""><span title="sort samples by sample name"
+						class="text">Name</span><i class="icon-ok check-mark"></i></a></li>
+				<!-- <li ><a class="orderx" value="date" style=""><span
+						class="text">date</span><i class="icon-ok check-mark"></i></a></li>
+						 -->
+				<li class="selected"><a  class="orderx" value="distance" style=""><span  title="sort samples by the similarity of the fusion product patterns between each other"
+						class="text">Similarity</span><i class="icon-ok check-mark"></i></a></li>
+			    <li ><a class="orderx"  value="reversedistance" style=""><span title="sort samples by the similarity of the fusion product patterns between each other (reversed)"
+						class="text">Similarity (left/right reversed)</span><i class="icon-ok check-mark"></i></a></li>
+				 <li ><a value="analysis" class="orderx" style="" >
+					<span title="order samples by analysis name" class="text">Analysis</span><i class="icon-ok check-mark"></i></a></li>				
+			</ul>
+		</div>
+	</div><br>
+
+<div class="btn-group bootstrap-select pull-left show-tick show-menu-arrow" style="width: 184px; margin-left: -15px;">
+		<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" data-id="filters-pane">
+			<div id="colorscale"  class="filter-option pull-left">Color Scale (green-red)</div>
+			&nbsp;<div class="caret"></div>
+		</button>
+		<div class="dropdown-menu open"
+			style="max-height: 184px; overflow: hidden; min-height: 30px;">
+			<ul  id="orderx"  class="dropdown-menu inner"style="max-height: 172px; overflow-y: auto;">
+			<li class=""><a class="scale"  value="thermoblue"  style=""><span
+						class="text">White-blue</span><i class="icon-ok check-mark"></i></a></li>
+			<li class=""><a class="scale"  value="thermopurple"  style=""><span
+						class="text">Blue-white-purple</span><i class="icon-ok check-mark"></i></a></li>
+			<li class="selected"><a class="scale"  value="thermogreenred"  style=""><span
+						class="text">Green-yellow-red</span><i class="icon-ok check-mark"></i></a></li>
+			
+			<li class=""><a class="scale"  value="bluered"  style=""><span
+						class="text">Blue-white-red</span><i class="icon-ok check-mark"></i></a></li>
+			
+				<li ><a class="scale" value="gray" style=""><span
+						class="text">White-gray-black</span><i class="icon-ok check-mark"></i></a></li>
+				<li ><a  class="scale" value="red" style=""><span
+						class="text">White-red</span><i class="icon-ok check-mark"></i></a></li>
+			    			    	
+			</ul>
+		</div>
+	</div><br>
+
+<div class="btn-group bootstrap-select pull-left show-tick show-menu-arrow" style="width: 184px; margin-left: -15px;">
+		<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" data-id="filters-pane">
+			<div id="colorscale"  class="filter-option pull-left">Export Heatmap</div>
+			&nbsp;<div class="caret"></div>
+		</button>
+		<div class="dropdown-menu open"
+			style="max-height: 184px; overflow: hidden; min-height: 30px;">
+			<ul  id="export"  class="dropdown-menu inner"style="max-height: 172px; overflow-y: auto;">
+			<li><a title="Save heat map as PNG. Note, this may not always work for large heat maps" id="exportImage">Image (PNG)</a></li>
+	  	 	<li><a title="scalable vector graphics format that you can open in programs like Inkscape" id="exportSVG">Scalable Vector Graphics (SVG)</a></li>
+	  	 	<li><a title="save data that is in the heat map in .csv format" id="exportCSV">Excel (CSV)</a></li>	  	 	  	 		
+			</ul>
+		</div>
+	</div>
+</div>

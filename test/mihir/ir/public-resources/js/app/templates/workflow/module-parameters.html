@@ -1,0 +1,54 @@
+{{! See views/moduleParameters.js }}
+{{#each parametersBySectionByGroup}} 
+	{{! Explanation of JSON, built from collections/moduleParameters :: getParametersBySectionThenByGroupMap()
+	parametersBySectionByGroup = 
+	{
+		'main' : {
+			'group1' : [
+				{<ModuleParameter>},
+				{<ModuleParameter>},
+				{<ModuleParameter>}
+			],
+			'group2' : [
+				{<ModuleParameter>},
+				{<ModuleParameter>},
+				{<ModuleParameter>}
+				]
+		},
+		'advanced' : {
+			'group3' : [
+				{<ModuleParameter>},
+				{<ModuleParameter>},
+				{<ModuleParameter>}
+			],
+			'group4' : [
+				{<ModuleParameter>},
+				{<ModuleParameter>},
+				{<ModuleParameter>}
+			],
+		}
+	}
+	}}
+<div class="tab-pane" id="module-tab-{{@key}}">
+
+	{{#each this}}
+	<div class="tab-pane-group" style="padding-left: 30px;" data-value="{{@key}}">
+		{{#each this}}
+			{{#ifCond ../../../version.value '===' "IR36"}}
+				{{#if isEditable}}
+					<div id="{{_key}}" data-key="{{key}}">
+						<!-- templates/workflow/module-parameter-[boolean|float-integer|multistring|singlestring].html  -->
+					</div>
+				{{/if}}
+			{{else}}
+				<div id="{{_key}}" data-key="{{key}}">
+						<!-- templates/workflow/module-parameter-[boolean|float-integer|multistring|singlestring].html  -->
+				</div>
+			{{/ifCond}}
+		{{/each}}
+
+	</div>
+	{{/each}}
+
+</div>
+{{/each}}

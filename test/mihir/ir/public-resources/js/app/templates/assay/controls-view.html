@@ -1,0 +1,31 @@
+<label><b>{{t 'assay.details.selectcontrols'}}</b></label>
+<table class="table-striped" style="width: 100%;">
+	{{#each positiveControls}}
+	<tr>
+		<td>
+		<input type="checkbox" id="{{id}}" {{#if isChecked}} checked=checked{{/if}} disabled/>
+		</td>
+		<td>{{name}}</td>
+		<td>
+		<select class="input-medium" id="{{id}}{{controlType}}" style="margin: 0" {{#unless isChecked}} disabled {{/unless}}>
+			{{#each ../barcodes}}
+			<option value="{{id}}">{{idStr}}</option>
+			{{/each}}
+		</select></td>
+	</tr>
+	{{/each}}
+	{{#each internalControls}}
+	<tr>
+		<td>
+		<input type="checkbox" id="{{id}}" {{#if isChecked}} checked=checked{{/if}} disabled/>
+		</td>
+		<td>{{name}}</td>
+		<td>
+		<select class="input-medium" id="{{id}}{{controlType}}" style="margin: 0" {{#unless isChecked}} disabled {{/unless}}>
+			{{#each ../barcodes}}
+			<option value="{{id}}">{{idStr}}</option>
+			{{/each}}
+		</select></td>
+	</tr>
+	{{/each}}
+</table>

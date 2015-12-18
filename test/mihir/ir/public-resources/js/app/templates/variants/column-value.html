@@ -1,0 +1,47 @@
+{{#if this}}
+{{#ifCond values.length '>' 1}}
+    <div title='{{value.value}}({{values.length}})'>
+    <a href='javascript:void(0)' data-toggle='popover' data-title='{{title}}' data-content='
+        <ul>
+        {{#each values}}
+            <li>
+                {{#if url}}
+                    <a href="{{url}}" target="_blank">{{value}}</a>
+                {{else}}
+                    {{value}}
+                {{/if}}
+            </li>
+        {{/each}}
+        </ul>
+    '> {{value.value}} ...({{values.length}})</a>
+    </div>
+{{else}}
+    {{#if value.first}}
+        <span title='{{value.first.value}}'>
+            {{#if value.first.url}}
+            <a href='{{value.first.url}}' onclick="window.open(this.href);" target='_blank'>{{value.first.value}}</a>
+            {{else}}
+            {{value.first.value}}
+            {{/if}}
+        </span> -
+        {{#if wrapValues}}
+            <br/>
+        {{/if}}
+        <span title='{{value.second.value}}'>
+            {{#if value.second.url}}
+            <a href='{{value.second.url}}' onclick="window.open(this.href);" target='_blank'>{{value.second.value}}</a>
+            {{else}}
+            {{value.second.value}}
+            {{/if}}
+        </span>
+    {{else}}
+        <div title='{{value.value}}'>
+        {{#if value.url}}
+            <a href='{{value.url}}' onclick="window.open(this.href);" target='_blank'>{{value.value}}</a>
+        {{else}}
+            {{value.value}}
+        {{/if}}
+        </div>
+    {{/if}}
+{{/ifCond}}
+{{/if}}

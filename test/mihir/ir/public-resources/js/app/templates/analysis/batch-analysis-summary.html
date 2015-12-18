@@ -1,0 +1,18 @@
+<div class="summary-section">
+    <h4>{{t 'analysis.summary.header'}}</h4>
+    <hr class="summary">
+    <table cellpadding="4">
+        <tbody>
+            {{#if invoice}}
+            <tr>
+                <td><strong>{{t "purchase.order.label"}}:</strong></td>
+                <td id="purchaseOrderNumber">{{invoice.purchaseOrder.number}}</td>
+            </tr>
+            <tr>
+                <td><strong>{{t "analysis.summary.price"}}:</strong></td>
+                <td id="analysisPrice">{{formattedInvoiceTotal}} {{invoice.currency}}</td>
+            </tr>
+            {{/if}}
+        </tbody>
+    </table>
+</div>

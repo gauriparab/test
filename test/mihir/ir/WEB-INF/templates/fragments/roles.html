@@ -1,0 +1,6 @@
+<!-- fragments/roles.html -->
+<div class="arrow"></div>
+<h3 class="popover-title"><span th:utext="#{'header.greeting.your.roles'}"></span></h3>
+<ul th:each="role : ${@securityContextUtil.authenticatedUser.roles}">
+    <li th:text="#{|user.role.${role.name()}|}"></li>
+</ul>

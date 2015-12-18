@@ -1,0 +1,21 @@
+{{#if isEdit}}
+	<button data-dismiss="modal" id="planRunCancelButton" type="button" class="btn btn-secondary">{{t 'dialog.cancel'}}</button>
+	<button id="planRunEditSave" type="button" class="btn btn-primary">{{t 'dialog.save'}}</button>
+{{else}}
+    <button data-dismiss="modal" id="planRunCancelButton" type="button" class="btn btn-secondary">
+	{{#if isExecute}}
+	    {{t 'dialog.cancel'}}
+	{{else}}
+	    {{t 'actions.CLOSE'}}
+	{{/if}}
+    </button>
+    {{#if isExecute}}
+    <button id="planRunReview" type="button" class="btn btn-primary">{{t 'dialog.review'}}</button>
+	<button id="planRunSave" type="button" class="btn btn-primary">{{t 'dialog.save'}}</button>
+    {{else}}
+    	{{#if showEdit}}
+        <button id="planRunEditButton" type="button" class="btn btn-primary">{{t 'actions.EDIT'}}</button>
+    	{{/if}}
+        <button id="planRunPrintButton" type="button" class="btn btn-primary">{{t 'actions.PRINT'}}</button>
+    {{/if}}
+{{/if}}

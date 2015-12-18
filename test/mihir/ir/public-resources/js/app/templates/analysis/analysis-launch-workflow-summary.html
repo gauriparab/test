@@ -1,0 +1,83 @@
+<div class="summary-section">
+    <h4>{{t 'analysis.summary.header'}}</h4>
+    <hr class="summary">
+    <table cellpadding="5">
+        <tbody>
+            {{#if applicationType}}
+            <tr>
+                <td><strong>{{t "analysis.summary.application"}}:</strong></td>
+                <td id="summaryApplicationTypeId">{{t applicationType}}</td>
+            </tr>
+            {{/if}}
+            {{#if name}}
+            <tr>
+                <td><strong>{{t "analysis.summary.workflow"}}:</strong></td>
+                <td id="summaryApplicationNameId">{{name}}</td>
+            </tr>
+            {{/if}}
+            {{#if applicationVersion}}
+            <tr>
+                <td><strong>{{t "version.label"}}:</strong></td>
+                <td id="applicationVersionId">{{applicationVersion.name}}</td>
+            </tr>
+            {{/if}}
+            {{#if groupingType}}
+            <tr>
+                <td><strong>{{t "analysis.summary.group"}}:</strong></td>
+                <td id="summaryGroupingTypeId">{{t groupingType}}</td>
+            </tr>
+            {{/if}}
+            {{#if reference}}
+            <tr>
+                <td><strong>{{t "analysis.summary.reference"}}:</strong></td>
+                <td id="summaryReferenceNameId">{{reference.name}}</td>
+            </tr>
+            {{/if}}
+            {{#if fusionPanel}}
+            <tr>
+                <td class="nowrap"><strong>{{t "analysis.summary.fusion.panel"}}:</strong></td>
+                <td id="summaryTargetRegionId">{{fusionPanel.name}}</td>
+            </tr>
+            {{/if}}
+            {{#if targetRegion}}
+            <tr>
+                <td class="nowrap"><strong>{{t "analysis.summary.target.region"}}:</strong></td>
+                <td id="summaryTargetRegionId">{{targetRegion.name}}</td>
+            </tr>
+            {{/if}}
+            {{#if hotspotRegion}}
+            <tr>
+                <td class="nowrap"><strong>{{t "analysis.summary.hotspot.region"}}:</strong></td>
+                <td id="summaryHotspotRegionId">{{hotspotRegion.name}}</td>
+            </tr>
+            {{/if}}
+            {{#if annotationSet.id}}
+            <tr>
+                <td><strong>{{t "analysis.summary.annotations"}}:</strong></td>
+                <td id="summaryAnnotationSetId">{{annotationSet.name}}</td>
+            </tr>
+            {{/if}}
+            {{#if filterChain}}
+            <tr>
+                <td><strong>{{t "analysis.summary.filters"}}:</strong></td>
+                <td id="summaryFilterChainsId">{{filterChain.name}}</td>
+            </tr>
+            {{/if}}
+            {{#if baseline}}
+            <tr>
+                <td><strong>{{t "analysis.summary.baseline"}}:</strong></td>
+                <td>{{baseline.name}}</td>
+            </tr>
+            {{/if}}
+            {{#if plugins.length}}
+            <tr>
+                <td><strong>{{t "analysis.summary.plugins"}}:</strong></td>
+                <td id="plugins" data-original-title="Your Selections">
+                    <a id="selectedPlugins" data-original-title="{{t 'analysis.summary.your.selections'}}" href="javascript:void(0)">
+                        {{plugins.length}} Plugin{{#ifCond plugins.length ">" 1}}s{{/ifCond}}
+                    </a>
+                </td>
+            </tr>
+            {{/if}}
+        </tbody>
+    </table>

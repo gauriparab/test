@@ -1,0 +1,194 @@
+<div class="report-header">{{t 'final.report.analysis.header'}}</div>
+<div id="analysisInformationCollapse" class="report-body">
+	<div class="normal-images">
+        <p>{{description}}</p>		
+        <br/>
+		<div class="row-fluid analysis-report-iconset">
+			<div class="span3">
+                <ul class="unstyled">
+                    <li>            
+                        <div style="float:left; width:42px;">
+                            <img src="{{img 'reporter.png'}}" alt="{{t 'report.irVersion'}}" width="36"/>
+                        </div>
+                    </li>
+                    <li>
+                        <strong>{{t 'report.irVersion'}}</strong><br/>
+                        {{analysisInformationSection.ionReporterVersion}}
+                    </li>
+                </ul>                        
+			</div>
+			<div class="span3">
+                <ul class="unstyled">
+                    <li>            
+                        <div style="float:left; width:42px;">
+                            <img src="{{img 'filepath.png'}}" alt="{{t 'report.launchedBy'}}" width="36" />
+                        </div>
+                    </li>
+                    <li>
+                        <strong>{{t 'report.launchedBy'}}</strong><br/>
+                        {{launchedBy}}
+                    </li>
+                </ul>                        
+			</div>
+			<div class="span3">
+                <ul class="unstyled">
+                    <li>            
+                        <div style="float:left; width:42px;">
+                            <img src="{{img 'analyze.png'}}" alt="{{t 'report.analyzedBy'}}" width="36"/>
+                        </div>
+                    </li>
+                    <li>
+                        <strong>{{t 'report.analyzedBy'}}</strong><br/>
+                        {{analyzedBy}}
+                    </li>
+                </ul>            
+			</div>
+			<div class="span3">
+                <ul class="unstyled">
+                    <li>            
+                        <div style="float:left; width:42px;">
+                            <img src="{{img 'cal.png'}}" alt="{{t 'report.launchedDate'}}" width="36" />
+                        </div>
+                    </li>
+                    <li>
+                        <strong>{{t 'report.launchedDate'}}</strong><br/>
+                        {{formatDate analysis.createdOn}}
+                    </li>
+                </ul>            
+			</div>
+		</div>
+		<div class="row-fluid analysis-report-iconset">
+			<div class="span3">
+                <ul class="unstyled">
+                    <li>            
+                        <div style="float:left; width:42px;">
+                            <img src="{{img 'cal.png'}}" alt="{{t 'report.analyzedDate'}}" width="36" />
+                        </div>
+                    </li>
+                    <li>
+                        <strong>{{t 'report.analyzedDate'}}</strong><br/>
+                        {{formatDate analysis.startedOn}}
+                    </li>
+                </ul>            
+			</div>
+			<div class="span3">
+                <ul class="unstyled">
+                    <li>            
+                        <div style="float:left; width:42px;">
+                            <img src="{{img 'amplseq.png'}}" alt="{{t 'report.workflow'}}" width="36"/>
+                        </div>
+                    </li>
+                    <li>
+                        <strong>{{t 'report.workflow'}}</strong><br/>
+                        <a href="javascript:void(0)" data-toggle='popover' data-content='
+                            <ul>
+                                <li><strong>Description:</strong> {{analysis.workflow.description}}</li>
+                                <li><strong>{{t "analysis.summary.application"}}:</strong> {{t analysis.workflow.applicationType}}</li>
+                                <li><strong>{{t "analysis.summary.group"}}:</strong> {{t analysis.workflow.groupingType}}</li>
+                                {{#if analysis.workflow.targetRegion}}
+                                    <li><strong>{{t "analysis.summary.target.region"}}:</strong> {{analysis.workflow.targetRegion.name}}</li>
+                                {{/if}}
+                                {{#if analysis.workflow.hotspotRegion}}
+                                    <li><strong>{{t "analysis.summary.hotspot.region"}}:</strong> {{analysis.workflow.hotspotRegion.name}}</li>
+                                {{/if}}
+                            </ul>
+                        '>{{analysis.workflow.name}}</a>
+                    </li>
+                </ul>                        
+			</div>
+			<div class="span3">
+                <ul class="unstyled">
+                    <li>            
+                        <div style="float:left; width:42px;">
+                            <img src="{{img 'annotations.png'}}" alt="{{t 'report.annotations'}}" width="36" />
+                        </div>
+                    </li>
+                    <li>
+                        <strong>{{t 'report.annotations'}}</strong><br/>
+                        <a href="javascript:void(0)" data-toggle='popover' data-content='
+                            <ul>
+                            {{#each analysis.annotationSet.sources}}
+                                <li>{{name}} | {{version}}</li>
+                            {{/each}}
+                            </ul>
+                        '>{{analysis.annotationSet.name}}</a>
+                    </li>
+                </ul>            
+			</div>
+			<div class="span3">
+                <ul class="unstyled">
+                    <li>            
+                        <div style="float:left; width:42px;">
+                            <img src="{{img 'annotations.png'}}" alt="{{t 'report.reference'}}" width="36" />
+                        </div>
+                    </li>
+                    {{#if references}}
+                    <li>
+                        <strong>{{t 'report.reference'}}</strong><br/>
+                        {{#ifCond references.length '===' 1}}
+                            {{#each references}}
+                                {{this.name}}
+                            {{/each}}
+                        {{else}}
+                            <ul>
+                                {{#each references}}
+                                <li>{{this.name}}</li>
+                                {{/each}}
+                            </ul>
+                        {{/ifCond}}
+                    </li>
+                    {{/if}}                    
+                </ul>
+			</div>
+		</div>
+		{{#if analysis.baseline.name}}
+		<div class="row-fluid analysis-report-iconset">
+			<div class="span3">
+				<ul class="unstyled">
+					<li>
+						<div class="final-report-analysis-info-section">
+                            <img src="{{img 'baseline.png'}}" alt="{{t 'report.cnvBaseline'}}" width="36" />
+                        </div>
+					</li>
+					<li>
+                        <strong>{{t 'report.cnvBaseline'}}</strong><br/>
+						{{analysis.baseline.name}}
+					</li>
+				</ul>
+			</div>
+		</div>
+		{{/if}}
+        <div class="row-fluid analysis-report-iconset">
+        {{#if analysis.calledGender}}
+        <div class="span3">
+            <ul class="unstyled">
+                <li>
+                    <div class="qc-info-cell">
+                        <img src="/ir/resources/img/gender.png" alt="{{t 'attribute.gender.' analysis.calledGender}}" width="36" />
+                    </div>
+                </li>
+                <li>
+                    <strong>{{t 'report.calledGender'}}</strong><br />
+                    {{t 'attribute.gender.' analysis.calledGender}}
+                </li>
+            </ul>
+        </div>
+        {{/if}}
+        {{#if analysis.mDNAToAutosomalDNARatio}}
+        <div class="span3">
+            <ul class="unstyled">
+                <li>
+                    <div class="qc-info-cell">
+                        <img src="{{img 'reporter.png'}}" alt="{{analysis.mDNAToAutosomalDNARatio}}" width="36" />
+                    </div>
+                </li>
+                <li>
+                    <strong>{{t 'report.mDNAToAutosomalDNARatio'}}</strong><br />
+                    {{analysis.mDNAToAutosomalDNARatio}}
+                </li>
+            </ul>
+        </div>
+        {{/if}}
+        </div>
+	</div>
+</div>

@@ -1,0 +1,11 @@
+ <div style="font-size:13px">
+	 <span><a data-toggle="tooltip" title="{{specimenId}}" href='javascript:void(0)' data-action='view-details'>{{truncate specimenId 24}}</a></span>
+	 <div class="entity-links">
+	 	{{#unless isExecuted}}
+			{{#if edit}}
+				<span><a href="javascript:void(0)" data-action="edit">{{t 'actions.EDIT'}}</a></span> |
+	 		{{/if}}
+		{{/unless}}
+		<span><a href="javascript:void(0)" data-action="audit_trail">{{t 'actions.AUDIT'}}</a></span>
+	 </div>
+</div>

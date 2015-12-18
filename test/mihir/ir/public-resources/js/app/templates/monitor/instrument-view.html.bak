@@ -1,0 +1,86 @@
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="pull-left">
+			<h1><img src="{{img 'dash-analysis.png'}}" width="40" /> {{t 'monitor.instrument.view'}}</h1>
+		</div>
+		<div class="pull-right">
+			<a id="refresh" href="#" data-toggle="modal" title="Add New Attribute" class="btn btn-primary">{{t 'monitor.refresh'}}</a>
+		</div>
+	</div>
+	<div class="row-fluid">
+	    <div class="span12">
+		{{#each instruments}}
+		    <div class="report-header">
+		        {{instrumentName}}
+		    </div>
+		    <div class="report-body" id="report-template-body-BackgroundSection" style="margin-bottom: 0px; border-bottom: none">
+			<div class="row-fluid">
+			    <div class="span4" style="border-right: 1px solid #D3D3D3;">
+				<ul class="unstyled">
+				    <li style="list-style: none; display: inline">
+					<div style="float:left; width:145px;">
+					    {{#ifCond instrumentType '==' "OT"}}
+                		                <img src="{{img 'onetouch.png'}}" width="120" height="120"/>
+					    {{else}}
+						<img src="{{img 'pgmInstru.png'}}" width="120" height="120"/>
+		                            {{/ifCond}}
+					</div>
+				    </li>
+				    <li>{{t 'monitor.instrument.state'}}: <strong>{{state}}</strong>
+					<br>
+					{{t 'monitor.instrument.status'}}: <strong>{{status}}</strong>
+				    </li>
+				</ul>
+			    </div>
+			    <div class="span4">
+				<ul class="unstyled">
+				{{#if waterClean}}
+				    <li>
+					{{t 'monitor.instrument.water.clean'}}: {{formatDate waterClean.time}}
+				    </li>
+				{{/if}}
+				{{#if lastClean}}
+                    <li>
+                    {{t 'monitor.instrument.last.clean'}}: {{formatDate lastClean.time}}
+                    </li>
+                {{/if}}
+                 {{#ifCond instrumentType '==' "OT"}}
+                    <li>
+                    {{t 'monitor.instrument.nextPQDate'}}: {{pqDue}}
+                    </li>
+                {{/ifCond}}
+				{{#if cloriteClean}}
+				    <li>
+					{{t 'monitor.instrument.chlorite.clean'}}: {{formatDate cloriteClean.time}}
+				    </li>
+				{{/if}}
+				    <li>
+					{{t 'monitor.instrument.serial'}}: {{serial}}
+				    </li>
+				</ul>
+			    </div>
+			    <div class="span4">
+				<ul class="unstyled">
+				    <li>
+					{{t 'monitor.instrument.pqStatus'}}: {{pqStatus}}
+				    </li>
+				     {{#ifCond instrumentType '==' "PGM"}}
+				    <li>
+					{{t 'monitor.instrument.nextPQDate'}}: {{pqDue}}
+				    </li>
+				    {{/ifCond}}
+				</ul>
+			    </div>
+			</div>
+		    </div>
+		    <div class="report-footer">
+			<ul class="unstyled alert alert-error" style="margin-bottom: 0px; border-radius: 0px;">
+			{{#each instrumentAlarms}}
+			    <li><img src="{{img 'alert.png'}}" /> {{this}}</li>
+			{{/each}}
+			</ul>
+		    </div>
+		{{/each}}
+	    </div>
+	</div>
+</div>

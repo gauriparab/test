@@ -1,0 +1,65 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="pull-left">
+            <h1><img src="{{img 'dash-analysis.png'}}" width="40" /> QC Report</h1>
+        </div>
+        <div class="btn-toolbar pull-right">
+            <div class="btn-group">
+                <a href="{{surl 'analyses.html'}}" class="btn btn-primary">Back</a>
+            </div>
+            <div class="btn-group">
+                <a href="#" class="btn dropdown-toggle" data-toggle="dropdown">
+                    Export <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="{{surl 'analyses/' id '/qc-report.pdf'}}">PDF</a></li>
+                    <li><a href="{{surl 'analyses/' id '/qc-report.zip'}}">QC Package</a></li>
+                </ul>
+            </div>
+            <div class="btn-group">
+                <a class="btn dropdown-toggle {{#if analysis.aborted}}disabled{{/if}}" data-toggle="dropdown" href="#">
+                    {{t 'analysis.switchto.actions.switchTo'}}
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-scrolling pull-right" id="switchToMenuLinks">
+                    <li><a href="{{surl 'analyses/' id '/audit_log'}}">{{t 'analysis.switchto.actions.auditReport'}}</a></li>
+                    {{#ifCond analysis.stage '===' 'REPORT_PUBLISHED'}}
+                        <li><a href="{{surl 'analyses/' id '/view_final_report.html'}}">{{t 'analysis.switchto.actions.finalReport'}}</a></li>
+                    {{/ifCond}}
+                </ul>                
+            </div>
+        </div>
+    </div>
+
+    {{sub analysisSampleHeader}}
+
+    <div class="report-header">QC Metrics</div>
+    <div class="report-body">
+        <div id="variantSummaryInfoPane" class="row-fluid">
+            <div class="row-fluid">
+                <div class="span12">
+                    <p>This section provides coverage metrics for hotspots, amplicons, and genes are available via export package.</p>
+                </div>
+            </div>            
+            <table class="table table-hover sortable">
+                <tbody>
+                    <tr>
+                        <th class="up">{{t 'report.metric'}}</th>
+                       {{#each qcTitles}}
+                            <th>{{title}}</th>
+                        {{/each}}
+                    </tr>
+                    {{#each qcMetrics}}
+                    <tr>
+                        <td>{{key}}</td>
+                        {{#each value}}
+                        <td>{{this}}</td> 
+                        {{/each}}
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+</div>

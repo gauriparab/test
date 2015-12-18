@@ -1,0 +1,14 @@
+<div class="summary-section">
+    <h4>{{t 'batch.analysis.error.details.header'}}</h4>
+    
+    <hr class="summary">
+
+    {{#if errors}}
+    {{#each errors}}
+        <p>{{this}}
+    {{/each}}
+    {{else}}
+    <p>{{t 'batch.analysis.error.messageToViewDetails'}}</p>
+    {{/if}}
+
+</div>

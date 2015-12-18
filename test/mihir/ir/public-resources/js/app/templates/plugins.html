@@ -1,0 +1,18 @@
+<div>
+	{{#data}}
+	<form id="plugins">
+		{{#ifCond pluginDtoList.length '>' '0' }}
+		<fieldset>
+			{{#each pluginDtoList}}
+			<label class="checkbox">
+				<input type="checkbox" value="{{name}}" {{#if isSelected}} checked {{/if}}>
+				<span>{{name}}</span>
+			</label>
+			{{/each}}
+		</fieldset>
+		{{else}}
+		<h5>{{t 'assay.views.plugins.plugins.not.found'}}</h5>
+		{{/ifCond}}
+	</form>
+	{{/data}}
+</div>

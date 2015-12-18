@@ -1,0 +1,36 @@
+{{sub sub.header}}
+<div class="report-body" id="report-template-body-{{model._type}}">
+	<p>{{t 'final.report.template.header.info'}}</p>
+	<div class="report-template-body-content">
+		<div class="form-horizontal">
+		  <div class="control-group">
+		    <label class="control-label" for="inputOrgName">{{t 'report.template.label.organization.name'}}</label>
+		    <div class="controls">
+		      <input type="text" id="inputOrgName" class="span6 requiredInput" required="required" placeholder="Required" value="{{model.organizationName}}" data-property="organizationName" {{#if _readonly}}readonly="readonly" {{/if}}>
+		    </div>
+		  </div>
+		  <div class="control-group">
+		    <label class="control-label" for="inputOrgAddresss">{{t 'report.template.label.organization.address'}}</label>
+		    <div class="controls">
+		      <textarea rows="4" cols="80" class="span6" id="inputOrgAddresss" data-property="organizationAddress" {{#if _readonly}}readonly="readonly" {{/if}}>{{model.organizationAddress}}</textarea>
+		    </div>
+		  </div>
+		  <div class="control-group">
+		    <label class="control-label" for="uploadCustomLogo">{{t 'final.report.template.header.logo'}}<br/>
+                {{#unless _readonly}}
+                <a id="uploadCustomLogo" href="#" 
+                            title="Upload Custom Logo" class="btn btn-small" style="margin-top:5px;"><i class="icon icon-upload"></i> {{t 'upload.label'}}</a>
+                {{/unless}}
+            </label>
+		    <div class="controls">
+		    	<div id="headersectionlogo-upload-success"></div>
+				<span class="help-block">
+					<div class="company-logo">
+						<img id="headersectionlogo-preview-img">
+					</div>
+				</span>
+		    </div>
+		  </div>
+		</div>
+	</div>
+</div>

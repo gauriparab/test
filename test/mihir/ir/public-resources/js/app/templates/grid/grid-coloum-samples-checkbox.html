@@ -1,0 +1,21 @@
+{{#ifCond gender '!==' 'Unknown'}}
+	{{#if isNormalMale}}
+	<div class="isNormalMale"style="width:100%;text-align:center;" data-action="checked_normalMale" data-normal-id="{{id}}" data-is-selected="true">
+		<div class="no" style="display:none;">
+			<img src="/ir/resources/img/specimen_not-selected.png">
+		</div>
+		<div class="yes" style="display:block;">
+			<img src="/ir/resources/img/specimen_selected.png">
+		</div>
+	</div>
+	{{else}}
+	<div class="isNormalMale"style="width:100%;text-align:center;" data-action="checked_normalMale" data-normal-id="{{id}}" data-is-selected="false">
+		<div class="no" style="display:block;">
+			<img src="/ir/resources/img/specimen_not-selected.png">
+		</div>
+		<div class="yes" style="display:none;">
+			<img src="/ir/resources/img/specimen_selected.png">
+		</div>
+	</div>
+	{{/if}}
+{{/ifCond}}

@@ -1,0 +1,15 @@
+<div class="alert alert-error">
+    <button type="button" class="close" data-dismiss="alert">x</button>
+    {{{message}}}
+    {{#if errors}}
+    {{#if errors.allErrors}}
+    <ul>
+        {{#each errors.allErrors}}
+            {{#if defaultMessage}}
+                <li>{{{t defaultMessage}}}</li>
+            {{/if}}
+        {{/each}}
+    </ul>
+    {{/if}}
+    {{/if}}
+</div>

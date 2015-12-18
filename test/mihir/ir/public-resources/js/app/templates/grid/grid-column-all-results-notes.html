@@ -1,0 +1,13 @@
+{{#if hasNotes}}
+   	<div data-action="view-notes" data-toggle="tooltip" title="{{t 'common.label.viewNotes'}}">
+		<a href="#">
+			<img src="/ir/resources/img/note.png" />
+		</a>
+	</div>
+{{else}}
+	<div data-action="add_note" data-toggle="tooltip" title="{{t 'specimen.add.note.link'}}">
+		<a href="#">
+			<img src="/ir/resources/img/add-DNA-RNA.png" />
+		</a>
+	</div>
+{{/if}}

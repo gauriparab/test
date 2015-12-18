@@ -1,0 +1,12 @@
+<select {{#if isEdit}} disabled {{/if}} {{#if isDisabled}}disabled{{/if}}>
+	<option value="-1">-{{t 'cnv.baseline.select'}}-</option>
+	{{#each data}}
+		{{#isObject this}}
+			{{#if cnvBaselinePanelDto}}
+			<option value={{id}} data-text="{{cnvBaselinePanelDto.displayname}}">{{cnvBaselinePanelDto.displayname}}</option>
+			{{else}}
+			<option value={{id}} data-text="{{name}}">{{name}}</option>
+			{{/if}}
+		{{/isObject}}
+	{{/each}}
+</select>

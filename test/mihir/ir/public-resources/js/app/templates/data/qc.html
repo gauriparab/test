@@ -1,0 +1,49 @@
+<table class="table no-border" style="margin:0px;">
+	<tbody>
+		<tr style="border: 1px 1px 0px 1px solid #d8d8d8;">
+			<td style="width: 15%; border:none;"><b>
+				{{#ifCond qcType '===' 'Run QC'}}
+					{{t 'data.report.runQcMetrics'}}
+				{{else}}
+					{{#ifCond qcType '===' 'Sample QC'}}
+						{{t 'data.report.libraryQcMetrics'}}
+					{{else}}
+						{{t 'data.report.controlQcMetrics'}}
+					{{/ifCond}}
+				{{/ifCond}}
+			</b></td>
+			<td style="padding:0px;">
+				<div>
+					<table style="width:100%;" class="inner_1">
+						<tbody class="inner_table">
+						{{#each Qcs}}
+							<tr>
+								<td class="tr-bg" style="width:20%;"><b>{{this.title}}</b></td>
+								<td style="padding:0px;background: white;">
+									<table class="no-border" style="width:100%;">
+										<tbody>
+											{{#each this.data}}
+											<tr style="border:none;">
+												<td style="width:25%; border:none;">{{metricName}}</td>
+												{{#ifCond iscosmic '!==' true}}
+													<td style="width:25%; border:none;">{{value}}</td>
+													<td style="width:25%; border:none;">{{referenceRange}}</td>
+												{{else}}
+													<td style="width:25%; border:none;">{{strValue}}</td>
+													<td style="width:25%; border:none;">{{strThreshold}}</td>
+												{{/ifCond}}
+												<td style="width:25%; {{#ifCond qCStatus '===' 'Passed'}}color:green;{{else}} color:red; {{/ifCond}} border:none;"> {{qCStatus}}</td>
+											</tr>
+											{{/each}}
+										</tbody>
+									</table>
+								</td>
+							</tr>
+						{{/each}}
+						</tbody>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</tbody>
+</table>

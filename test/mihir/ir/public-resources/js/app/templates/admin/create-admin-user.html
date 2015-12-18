@@ -1,0 +1,68 @@
+        <div class="modal-header">
+            <button id="createUserDismiss" type="button" class="close" data-dismiss="modal">x</button>
+            <h4 id="createUserModalLabel">{{t 'createUser.label.header'}}</h4>
+        </div>
+        <div class="modal-body">
+            <div id="errors"></div>
+            <form id="manageUserForm" class="form-horizontal">
+                <div class="control-group">
+                    <label class="control-label" for="userFirstName">{{t 'user.profile.page.firstName.label'}}</label>
+                    <div class="controls"><input name="firstName" type="text" id="userFirstName" required="required" 
+                            value="{{model.firstName}}" maxlength="60"/></div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="userLastName">{{t 'user.profile.page.lastName.label'}}</label>
+                    <div class="controls"><input name="lastName" type="text" id="userLastName" required="required" 
+                            value="{{model.lastName}}" maxlength="60"/></div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="userEmail">{{t 'user.profile.page.email.label'}}</label>
+                    <div class="controls"><input name="email" type="email" id="userEmail"
+                                                 value="{{model.email}}" maxlength="100"
+                        {{#ifCond manageAction '===' 'Edit'}} disabled="disabled" {{/ifCond}}
+                        {{#ifCond manageAction '===' 'Accept'}} disabled="disabled" {{/ifCond}}/>
+                    </div>
+                </div>
+
+               
+                {{#if allowedUserStates}}
+                <div class="control-group">
+                    <label class="control-label" id="statusLabel">{{t 'user.profile.page.status.label'}}</label>
+                    <div class="controls">
+                        <select id=userStatus name="model.state">
+                            {{#each allowedUserStates}}
+                                <option value="{{this}}" {{#ifCond this "===" ../model.state}}selected="true"{{/ifCond}}>{{this}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                </div>
+                {{/if}}
+                <div class="control-group">
+                    <label class="control-label" id="electronicSignatureLabel">{{t 'createUser.label.esign'}}</label>
+                    <div id="electronicSignature" class="controls" aria-labelledby="signatureLabel" for="electronicSignature">
+                        <label class="checkbox"><input name="electronicSignature" type="checkbox" id="electronicSignature" value="ENABLED"/></label>
+                    </div>
+                </div>
+                
+                <div class="control-group {{#ifCond model.roles 'contains' 'ROLE_ORGADMIN'}}hide{{/ifCond}}">
+                    <div class="controls">
+                        <label class="checkbox">  
+                            <input id="privateFolder" name="visibilityPreference" type="checkbox" 
+                            {{#ifCond model.visibilityPreference '===' 'PRIVATE'}}checked="true"{{/ifCond}}/> {{t 'createUser.label.reqPrivateFolder'}}
+                        </label>
+                    </div>
+                </div>
+                
+                 
+                
+                
+
+            </form>
+        </div>
+        
+        <div class="modal-footer">            
+            <button id="createUserCancelButton" type="button" class="btn btn-secondary">{{t 'dialog.cancel'}}</button>
+            <button id="createUserSaveButton" type="button" class="btn btn-primary">{{t 'button.save'}}</button>
+        </div>

@@ -1,0 +1,337 @@
+<div class="{{#if isView}}modal-scroll {{else}} container-fluid {{/if}}">
+	<div class="form-horizontal" id="reporttempalteForm">
+		{{#unless isView}}
+		<div class="row-fluid">
+			<div class="pull-left">
+				<h1>
+					{{t 'report.template.title'}}
+				</h1>
+			</div>
+			<div class="pull-right">
+				<button id="reportTemplateSaveButton" type="submit"
+					class="btn btn-primary">{{t 'button.save'}}</button>
+			</div>
+		</div>
+		{{/unless}}
+		<div class="report-body" style="border: 1px solid #ccc; padding: 20px">
+			<div class="row-fluid">
+				<div class="span4">
+					<label class="control-label">{{t
+						'data.report.name'}}: <span class="text-error requires-asterisk ">*</span></label>
+					<div class="controls">
+						{{#if isView}}
+							<label>{{model.name}}</label>
+						{{else}}
+							<input name="name" type="text" id="templateName" maxlength="100">
+						{{/if}}
+					</div>
+
+				</div>
+			</div>
+			<div id="assayDropdown" style="margin: 10px 0px;">
+				<label class="control-label" style="margin: 0px 20px 0px 0px;">{{t 'planned.runs.assay'}}:<span class="text-error requires-asterisk ">*</span>
+				</label> <select id="assay"> {{#each assays}}
+					<option data-is-summary-report="{{summaryReportRequired}}" data-description="{{description}}"value={{id}}>{{name}}</option> {{/each}}
+				</select>
+			</div>
+			<table style="width: 100%">
+				<tbody>
+					<tr>
+						<td colspan="2">
+								<label id="includeAnalyticalSummarySection" class="checkbox control-label" style="width: 500px"> 
+									<input id="includeAnalyticalSummary" type="checkbox">{{t 'report.template.analyticasummary'}}
+								</label>
+						</td>
+					</tr>
+					<!--<tr>
+						<td colspan="2">
+								<label id="includeClinicalSummarySection" class="checkbox control-label" style="width: 500px"> 
+									<input id="includeClinicalSummary" type="checkbox">{{t 'report.template.clinicalTestDetails'}}
+								</label>
+						</td>
+					</tr>-->
+				</tbody>
+			</table>
+		</div>
+		
+		<div class="row-fluid">
+			<div class="report-header">
+				<h4 style="margin: 0">{{t 'settings.configurationPage.tabs.lab'}}</h4>
+			</div>
+			<div class="report-body">
+				<div class="row-fluid">
+					<div class="span12">
+						<p class="workflow-presets-redirect">{{t 'report.template.help'}}.</p>
+
+						<div class="span7" style="margin-left: 0;">
+
+							<div class="control-group" style="margin-bottom: 0px">
+								<label class="control-label">{{t
+									'report.template.label.select.logo'}}: </label>
+								<div class="controls">
+									<form id="regionFileUpload"
+										action="/ir/secure/api/rdxReportTemplate/upload" method="POST"
+										enctype="multipart/form-data" style="margin: 0">
+										<div class="row-fluid">
+											<div>
+												<div class="fileupload fileupload-new"
+													data-provides="fileupload">
+													<div class="input-append">
+														<div class="uneditable-input span3">
+															<i class="icon-file fileupload-exists"></i> <span
+																class="fileupload-preview"></span>
+														</div>
+														<span class="btn btn-file"> <span
+															class="fileupload-new">{{t 'upload.selectFile'}}</span> <span
+															class="fileupload-exists">{{t 'upload.change'}}</span> <input
+															type="file" name="fileData" id="file-data-input">
+														</span> <a href="#" id="removeFile" class="btn fileupload-exists"
+															data-dismiss="fileupload">{{t 'upload.remove'}}</a>
+														&nbsp;&nbsp; <a id="upload" style="margin-left: 10px;"
+															class="btn fileupload-exists" href="#">{{t
+															'upload.label'}}</a> &nbsp;&nbsp;
+													</div>
+													<div style="color: #B1B1AC">{{t 'img.upload.help'}}</div>
+													<div id="progressBar" class="progress hide"
+														style="width: 400px">
+														<div class="bar" style="width: 0%;"></div>
+													</div>
+													<div>
+														<span class="upload-message"></span>
+													</div>
+													<div id="validationProgressMessage" class="hide">{{t
+														'specimenFile.upload.validating'}}</div>
+													<div id="validationTimeout" class="hide">{{t
+														'specimenFile.upload.validation.timeout'}}</div>
+												</div>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+							
+							<div class="control-group">
+								<label class="control-label">{{t
+									'report.template.label.organization.name'}}: <span class="text-error requires-asterisk ">*</span></label>
+								<div class="controls">
+									<input name="organizationName" type="text"
+										id="organizationName" size="135" maxlength="40">
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label">{{t
+									'report.template.label.organization.address'}}: <span class="text-error requires-asterisk ">*</span></label>
+								<div class="controls" >
+									<input name="organizationAddr1" type="text"
+										id="organizationAddress1" size="135" maxlength="55" placeholder="{{t 'report.template.address.placeholder'}}">
+								</div>
+								
+							</div>
+							<div class="control-group">
+								<label class="control-label" ></label>
+								<div class="controls" >
+									<input name="organizationAddr2" type="text"
+										id="organizationAddress2" size="135" maxlength="55" placeholder="{{t 'report.template.address.placeholder2'}}">
+								</div>
+								
+							</div>
+						</div>
+						<div class="span5" style="margin-left: 0;">
+							<div class="control-group">
+								<label class="control-label">{{t 'report.template.telephone'}}: <span class="text-error requires-asterisk ">*</span></label>
+								<div class="controls">
+									<input name="telephone" type="text"
+										id="telephone" size="135" maxlength="20">
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label">{{t 'report.template.fax'}}:</label>
+								<div class="controls">
+									<input name="fax" type="text"
+										id="fax" size="135" maxlength="20">
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label">{{t 'report.template.website'}}:</label>
+								<div class="controls">
+									<input name="website" type="text"
+										id="website" size="135" maxlength="55">
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label">{{t 'report.template.email'}}:</label>
+								<div class="controls">
+									<input name="email" type="text"
+										id="email" size="135" maxlength="55">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<hr>
+				<div class="row-fluid">
+					<div class="span6" style="margin-left: 0;">
+							<div class="control-group">
+								<label class="control-label">{{t 'report.template.label.labdirector.name'}}: <span class="text-error requires-asterisk ">*</span></label>
+								<div class="controls">
+									<input name="labDirectorName" type="text"
+										id="labDirectorName" size="135" maxlength="30">
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label">{{t 'report.template.clipnumber'}}: <span class="text-error requires-asterisk ">*</span></label>
+								<div class="controls">
+									<input name="cliaNumber" type="text"
+										id="cliaNumber" size="135" maxlength="15">
+								</div>
+							</div>
+					</div>
+				</div>
+			</div>
+			<div class="report-header">
+				<h4 style="margin: 0">{{t 'report.template.specimendetails'}}</h4>
+			</div>
+			<div class="report-body">
+				<div class="row-fluid">
+					<div class="span12">
+						<p class="workflow-presets-redirect">{{t 'report.tempalte.specimenhelp'}}</p>
+						<div class="span4" style="margin-left: 0;">
+							<h4>{{t 'finalReportTemplate.columns.one'}}</h4>
+							<div class="report-body" style="border: 1px solid #ccc">
+								<ul id="default1" class="connected unstyled">
+									{{#each defaultAttributes.columnOneList}} 
+									{{#if isMandatory}} 
+										{{#unless isCustom}} 
+											<li class="btn btn-block disabled" name="id" disabled>
+												<label class="checkbox text-left" style="margin-left: 5%">
+													<input type="checkbox" name="id" id="{{id}}">{{attributeName}}
+												</label>
+											</li> 
+										{{/unless}}
+									{{/if}} 
+									{{/each}}
+								</ul>
+							</div>
+						</div>
+						<div class="span4">
+							<h4>{{t 'finalReportTemplate.columns.two'}}</h4>
+							<div class="report-body" style="border: 1px solid #ccc">
+								<ul id="default2" class="connected unstyled"
+									style="min-height: 60px">
+									{{#each defaultAttributes.columnTwoList}} 
+									{{#if isMandatory}}
+										{{#unless isCustom}} 
+											<li class="btn btn-block disabled" name="id" disabled>
+												<label class="checkbox text-left" style="margin-left: 5%">
+													<input type="checkbox" name="id" id="{{id}}">{{attributeName}}
+												</label>
+											</li> 
+										{{/unless}}
+									{{/if}} 
+									{{/each}}
+								</ul>
+							</div>
+						</div>
+						<div class="span4">
+							<h4>{{t 'finalReportTemplate.columns.three'}}</h4>
+							<div class="report-body" style="border: 1px solid #ccc">
+								<ul id="default3" class="connected unstyled"
+									style="min-height: 60px">
+									{{#each defaultAttributes.columnThreeList}} 
+									{{#if isMandatory}}
+										{{#unless isCustom}} 
+											<li class="btn btn-block disabled" name="id" disabled>
+												<label class="checkbox text-left" style="margin-left: 5%">
+													<input type="checkbox" name="id" id="{{id}}">{{attributeName}}
+												</label>
+											</li> 
+										{{/unless}}
+									{{/if}}
+									{{/each}}
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<hr />
+				<div class="row-fluid">
+					<div class="span12">
+						<p class="workflow-presets-redirect">{{t 'report.template.dragdrop'}}</p>
+						<div class="span4" style="margin-left: 0;">
+							<div class="report-body" style="border: 1px solid #ccc">
+								<ul id="sortable1" class="connected unstyled"
+									style="min-height: 60px">
+									{{#each defaultAttributes.columnOneList}} 
+									{{#unless isMandatory}}
+										<li class="btn btn-block">
+											<label class="checkbox text-left" style="margin-left: 5%"> <input
+												type="checkbox" name="id" id="{{id}}">{{attributeName}}
+											</label>
+										</li>
+									{{else}}
+										{{#if isCustom}}
+											<li class="btn btn-block">
+												<label class="checkbox text-left" style="margin-left: 5%"> <input
+													type="checkbox" name="id" id="{{id}}">{{attributeName}}
+												</label>
+											</li> 
+										{{/if}}
+									{{/unless}} 
+									{{/each}}
+									{{#each defaultAttributes.columnTwoList}} 
+									{{#unless isMandatory}}
+										<li class="btn btn-block">
+											<label class="checkbox text-left" style="margin-left: 5%"> <input
+												type="checkbox" name="id" id="{{id}}">{{attributeName}}
+											</label>
+										</li>
+									{{else}}
+										{{#if isCustom}}
+											<li class="btn btn-block">
+												<label class="checkbox text-left" style="margin-left: 5%"> <input
+													type="checkbox" name="id" id="{{id}}">{{attributeName}}
+												</label>
+											</li> 
+										{{/if}}
+									{{/unless}}
+									{{/each}}
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="report-header">
+				<h4 style="margin: 0">
+					{{t 'finalReportTemplate.test.description'}}
+				</h4>
+			</div>
+			<div class="report-body">
+				<div class="row-fluid">
+					<div class="span12">
+						<p class="workflow-presets-redirect">{{t 'report.template.testdescription'}}</p>
+
+						<textarea class="span12" name="description" id="description"
+							rows="3" maxlength="10000"></textarea>
+						<p>{{t 'report.template.maxwords'}}</p>
+					</div>
+				</div>
+			</div>
+			<div class="report-header">
+				<h4 style="margin: 0">
+					{{t 'finalReportSection.CommentsSection'}} <span style="color: #aaa"></span>
+				</h4>
+			</div>
+			<div class="report-body">
+				<div class="row-fluid">
+					<div class="span12">
+						<p class="workflow-presets-redirect">{{t 'report.template.comments'}}</p>
+						<textarea class="span12" name="appendix" id="AppendixTextA"
+							rows="3" maxlength="5000"></textarea>
+						<p>{{t 'report.template.commentwords'}}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,5 @@
+<a href="#" data-action="view_assayDetails">{{#ifCond assay.value '!==' null}}{{assay.value}}{{/ifCond}}</a>
+{{#if isReanalysisAssay}}
+	<i class="reanalysis" title="{{t 'grid.column.reanalysis'}}"></i>
+{{/if}}
+   

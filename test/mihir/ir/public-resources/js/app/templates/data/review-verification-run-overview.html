@@ -1,0 +1,42 @@
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="pull-left">
+			<table style="width: 100%">
+			<tr>
+				<td valign="top" class="summary-item" style="padding-left: 0px"
+					width="200"><h1>{{t 'user.role.ROLE_REPORT'}}:</h1></td>
+				<td><h1>{{reportName}}</h1></td>
+			</tr>
+			<tr>
+				<td valign="top" class="summary-item" style="padding-left: 0px">{{t 'data.verificationruns.template'}}:</td>
+				<td><a href="javascript:void(0)" id="templateDetails">{{verificationTemplateName}}</a></td>
+			</tr>
+			</table>
+			
+		</div>
+		<div class="pull-right">
+			{{#if signoff}}
+			<a target="_self" href="javascript:void(0)" class="btn btn-primary" id="exportInstallTemplatePdf">{{t 'verficationrun.download.pdf'}}</a>
+			<a href="javascript:void(0)" id="print" class="btn btn-primary">{{t 'verficationrun.show.print'}}</a>
+			{{else}}
+				{{#if showSignOff}}
+        			<a href="javascript:void(0)" class="btn btn-primary" id="signOffBtn">{{t 'finalReportSection.SignOffSection'}}</a>
+        		{{/if}}
+        	{{/if}}
+		</div>
+	</div>
+	<br/>
+	<div class="row-fluid" id="printContent">
+		<div id="instrumentInfo"></div>
+		{{#if showTemplatePrep}}
+			<div id="templatePrep"></div>
+		{{/if}}
+		<div id="sequencing"></div>
+		<div id="analysisInfo"></div>
+		<div id="controlQcs"></div>
+		<div id="signOffDetails"></div>
+	</div>
+	<div class="modal hide fade" id="openSignOff" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>
+	<div class="modal hide fade" id="openDownloadFiles" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>
+	<div class="modal hide fade" id="templateDetailsModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>
+</div>

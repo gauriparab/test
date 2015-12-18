@@ -1,0 +1,139 @@
+<div class="row-fluid">
+	<div class="span3">
+		<ul class="unstyled">
+			<li>
+				<div style="float:left; width:42px;">
+                    <img src="{{img 'sample.png'}}" alt="{{t 'report.sampleName'}}" width="36" />
+                </div>
+			</li>
+			<li><strong>{{t 'report.sampleName'}}</strong><br/>
+				<span id="sampleName">{{specimen.name}}</span></li>
+		</ul>
+	</div>
+	{{#if specimen.attributeValueMap.Gender}}
+	<div class="span3">
+		<ul class="unstyled">
+			<li>
+				<div style="float:left; width:42px;">
+                    <img src="{{img 'gender.png'}}" alt="{{t 'report.gender'}}" width="36"/>
+                </div>
+			</li>
+			<li>
+                <strong>{{t 'report.gender'}}</strong><br/>
+				{{specimen.attributeValueMap.[Gender]}}
+			</li>
+		</ul>
+	</div>
+	{{/if}}
+	<div class="span3">
+		<ul class="unstyled">
+			<li>
+				<div style="float:left; width:42px;">
+                    <img src="{{img 'annotations.png'}}" alt="{{t 'report.relationship'}}" width="36"/>
+                </div>
+			</li>
+			<li><strong>{{t 'report.relationship'}}</strong><br/>
+				{{t 'specimen.role.' role}} {{#if name}}in {{name}}{{/if}}
+			</li>
+		</ul>
+	</div>
+	{{#if specimen.metadata.[Bar Code]}}
+	<div class="span3">
+		<ul class="unstyled">
+			<li>
+				<div style="float:left; width:42px;">
+                    <img src="{{img 'barcode.png'}}" alt="{{t 'report.barcode'}}" width="36" />
+                </div>
+			</li>
+			<li>
+                <strong>{{t 'report.barcode'}}</strong><br/>
+				{{specimen.metadata.[Bar Code]}}
+			</li>
+		</ul>
+	</div>
+	{{/if}}
+</div>
+<div class="row-fluid">
+	{{#if specimen.metadata.[Chip Type]}}
+	<div class="span3">
+		<ul class="unstyled">
+			<li>
+				<div style="float:left; width:42px;">
+                    <img src="{{img 'three_chip_icon.png'}}" alt="{{t 'report.chipType'}}" width="36"/>
+                </div>
+            </li>                
+            <li>				
+                <strong>{{t 'report.chipType'}}</strong><br/>
+				{{specimen.metadata.[Chip Type]}}
+			</li>
+		</ul>
+	</div>
+	{{/if}}
+	{{#if specimen.metadata.[Chip ID]}}
+	<div class="span3">
+		<ul class="unstyled">
+			<li>
+				<div style="float:left; width:42px;">
+                    <img src="{{img 'three_chip_icon.png'}}" alt="{{t 'report.chipID'}}" width="36"/>
+                </div>
+			</li>
+			<li>
+                <strong>{{t 'report.chipID'}}</strong><br/>
+				{{specimen.metadata.[Chip ID]}}
+			</li>
+		</ul>
+	</div>
+	{{/if}}
+	{{#if specimen.metadata.[Library Preparation]}}
+	<div class="span3">
+		<ul class="unstyled">
+			<li>
+				<div style="float:left; width:42px;">
+                    <img src="{{img 'library.png'}}" alt="{{t 'report.libraryPreparation'}}" width="36"/>
+                </div>
+			</li>
+			<li>
+                <strong>{{t 'report.libraryPreparation'}}</strong><br/>
+				{{specimen.metadata.[Library Preparation]}}
+			</li>
+		</ul>
+	</div>
+	{{/if}}
+	{{#if specimen.metadata.[Device ID]}}
+	<div class="span3">
+		<ul class="unstyled">
+			<li>
+				<div style="float:left; width:42px;">
+                    <img src="{{img 'pgm.png'}}" alt="{{t 'report.deviceID'}}" width="36" />
+				</div>
+			</li>
+			<li>
+                <strong>{{t 'report.deviceID'}}</strong><br/>
+				{{specimen.metadata.[Device ID]}}
+			</li>
+		</ul>
+	</div>
+	{{/if}}
+    
+    {{#each specimen.attributes}}
+        <div class="span3">
+            <ul class="unstyled">
+                <li>
+                    <div style="float:left; width:42px;">
+                        <img src="{{img 'reporter.png'}}" alt="{{attribute.name}}" width="36"/>
+                    </div>
+                </li>
+                <li>
+                    <strong>
+                        {{attribute.name}}
+                        {{#if attribute.valueGarbled}}
+                            (Encrypted)
+                        {{/if}}
+                    </strong><br/>
+                    {{value}}
+                </li>
+            </ul>
+        </div>
+    {{/each}}
+    
+</div>

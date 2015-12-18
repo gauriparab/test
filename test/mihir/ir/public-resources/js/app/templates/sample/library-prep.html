@@ -1,0 +1,45 @@
+<div>
+	<div class="control-group">
+		<label class="control-label" for="libraryPrepType">{{t 'specimens.library.prep.type'}}:</label>
+		<div class="controls">
+			<label for="libraryPrepType" id="libraryPrepType">{{libraryPrepType}}</label>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="libraryKitBarcode">{{t 'specimens.library.barcode.libKitBarcode'}}: <span class="text-error requires-asterisk ">*</span></label>
+		<div class="controls">
+			<input name="libraryKitBarcode" type="text" id="libraryKitBarcode" required="required"
+			value="{{model.libraryKitBarcode}}" maxlength="50"/>
+		</div>
+	</div>
+	{{#if isPanelKit}}
+	<div class="control-group">
+		<label class="control-label" for="panelKitBarcode">{{t 'specimens.library.barcode.panelKitBarcode'}}: <span class="text-error requires-asterisk ">*</span></label>
+		<div class="controls">
+			<input name="panelKitBarcode" type="text" id="panelKitBarcode" required="required"
+			value="{{model.panelKitBarcode}}" maxlength="50"/>
+		</div>
+	</div>
+	{{/if}}
+	{{#if isControlsKit}}
+	<div class="control-group">
+		<label class="control-label" for="controlKitBarcode">{{t 'specimens.library.barcode.controlKitBarcode'}}: <span class="text-error requires-asterisk ">*</span></label>
+		<div class="controls">
+			<input name="controlKitBarcode" type="text" id="controlKitBarcode" required="required"
+			value="{{model.controlKitBarcode}}" maxlength="50"/>
+		</div>
+	</div>
+	{{/if}}
+	{{#if isCNVCalibrator}}
+	<div class="control-group">
+		<label class="control-label">{{t 'specimens.library.cnv.calibrator'}}: </label>
+		<div class="controls">
+			<select id="cnvCalibrator" name="cnvCalibrator">
+				{{#each barcodes}}
+				<option value="{{id}}">{{idStr}}</option>
+				{{/each}}
+			</select>
+		</div>
+	</div>
+	{{/if}}
+</div>

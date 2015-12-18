@@ -1,0 +1,50 @@
+{{#if main}}
+<div class="span6">
+	<table style="width: 100%">
+		<tr>
+			<td colspan="2" style="padding-left: 5%; font-weight:600">{{t 'parameters.view.main'}}</td>
+		</tr>
+		{{#each main}}
+			{{#unless hidden}}
+				<tr>
+					<td class="summary-item" width="250">{{name}}:</td>
+					<td>
+						{{#if rule.lowerBound}}
+							<span class="info-label">{{rule.lowerBound}} <= </span>
+						{{/if}}
+						{{value}}
+						{{#if rule.upperBound}}
+							<span class="info-label"> <= {{rule.upperBound}} </span>
+						{{/if}}
+					</td>
+				</tr>
+			{{/unless}}
+		{{/each}}
+	</table>
+</div>
+{{/if}}
+{{#if advanced}}
+<div class="span6" style="border-left: 1px solid #aaa">
+	<table style="width: 100%">
+		<tr>
+			<td colspan="2" style="padding-left: 5%; font-weight:600">{{t 'parameters.view.advanced'}}</td>
+		</tr>
+		{{#each advanced}}
+			{{#unless hidden}}
+				<tr>
+					<td class="summary-item" width="250">{{name}}:</td>
+					<td>
+						{{#if rule.lowerBound}}
+							<span class="info-label">{{rule.lowerBound}} <= </span>
+						{{/if}}
+						{{value}}
+						{{#if rule.upperBound}}
+							<span class="info-label"> <= {{rule.upperBound}} </span>
+						{{/if}}
+					</td>
+				</tr>
+			{{/unless}}
+		{{/each}}
+	</table>
+</div>
+{{/if}}

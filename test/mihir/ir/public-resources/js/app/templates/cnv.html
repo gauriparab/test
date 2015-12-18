@@ -1,0 +1,52 @@
+<div class="row-fluid">
+	<div>
+		<label class="checkbox">
+			<input type="checkbox" id="runCnvAlgo" value="" {{#if data.runCnvAlgo}}checked="checked"{{/if}}>
+			<b>{{t 'assay.views.cnv.run.algo'}}</b>
+		</label>
+	</div>
+	<div id="cnv-items" style="margin: 15px 0px 0px 0px; display:none;">
+		<div style="margin-bottom: 10px;">
+			<div style="display:inline-block;">
+				<label><b style="font-size:12px;">{{t 'assay.views.cnv.apply.reference'}}</b></label>
+			</div>
+			<div style="display:inline-block;">
+				{{#ifCond cnvBaselines.length '>' '0'}}
+					<select style="margin: 0px 0px 0px 5px;" id="cnvSelect" disabled>
+						{{#each cnvBaselines}}
+							<option id="{{id}}" value="{{id}}" name={{cnvBaselinePanelDto.name}}{{#ifCond data.cnvBaselineId '===' id}}selected="selected"{{/ifCond}}>{{cnvBaselinePanelDto.displayname}}</option>
+						{{/each}}
+					</select>
+				{{else}}
+					<select style="margin: 0px 0px 0px 5px; width: 315px;" id="cnvSelect" disabled>
+						<option value="0"> -{{t 'assay.views.cnv.no.cnvs.for.panel'}} -</option>
+					</select>
+				{{/ifCond}}
+
+			</div>
+		</div>
+		<div class="form-horizontal">
+			<label class="checkbox">
+				<input type="checkbox" id="copyNumberAdjustment" value="" {{#if data.cellularityFlag}}checked="checked"{{/if}}>
+				<b>{{t 'cnv.apply.cnvAdjustment'}}</b>
+			</label>
+			<div class="control-group"  id="sampleCellularitySection" style="margin: 15px 0px 0px 0px; display:none;">
+				<label class="control-label" style="width:180px;font-size:12px;">{{t 'cnv.sample.percentCellularity'}}:</label>
+				<div class="controls">
+					<span class="info-label">{{t 'assay.page.min'}}</span>
+					<input name="sampleCellularity" id="sampleCellularity" type="text" value="{{data.percentCellularity}}" maxlength="50" class="input-small">
+					<span class="info-label">%</span>
+				</div>
+			</div>
+		</div>
+		<!--
+		<div>
+			<label class="checkbox">
+				<input type="checkbox" value="" id="cnvCalibrator" disabled>
+				{{t 'assay.views.cnv.use.calibrator'}}
+			</label>
+		</div>
+		-->
+
+	</div>
+</div>

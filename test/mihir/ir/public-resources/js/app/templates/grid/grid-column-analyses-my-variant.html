@@ -1,0 +1,12 @@
+{{#if headerRow}}
+    <span data-toggle="tooltip" title="{{t 'grid.column.header.desc.myvariants'}}" data-container=".main-content">
+        <i class="icon-flag"></i>
+    </span>
+{{else}}
+    <span class="btn-content">
+        <i class="icon-flag-custom icon-flag-{{default myVariantsState 'disabled'}}"></i>
+        {{#if showName}}
+            {{t 'analysis.variant.myvariants.state.none'}}
+        {{/if}}
+    </span>
+{{/if}}

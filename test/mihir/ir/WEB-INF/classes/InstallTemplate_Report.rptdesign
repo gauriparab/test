@@ -1,0 +1,3108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.3.2.v20140211-1400 Build &lt;4.3.2.v20140218-1056></property>
+    <property name="units">in</property>
+    <method name="initialize"><![CDATA[importPackage(Packages.com.lifetech.dx.ionreporter.services.reports);
+var auditLogEvents = serObjectName;
+
+var isSystemRun=auditLogEvents.isSystemRun();]]></method>
+    <method name="beforeFactory"><![CDATA[if(reportContext.getHttpServletRequest().getParameter("_format")=="pdf"){ this.getStyle().backgroundImage="Life.png"}]]></method>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <list-property name="configVars">
+        <structure>
+            <property name="name">serObjectName</property>
+        </structure>
+    </list-property>
+    <data-sources>
+        <script-data-source name="FusionDS" id="1425"/>
+    </data-sources>
+    <data-sets>
+        <script-data-set name="AssayDetailsDST" id="1758">
+            <list-property name="resultSetHints">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">applicationName</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">panel</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">templatingKit</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">control</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">sequenceingKit</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">chip</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">flow</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">assayName</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">applicationName</property>
+                    <text-property name="displayName" key="applicationName">applicationName</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">panel</property>
+                    <text-property name="displayName" key="panel">panel</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">templatingKit</property>
+                    <text-property name="displayName" key="templatingKit">templatingKit</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">control</property>
+                    <text-property name="displayName" key="control">control</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">sequenceingKit</property>
+                    <text-property name="displayName" key="sequenceingKit">sequenceingKit</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">chip</property>
+                    <text-property name="displayName" key="chip">chip</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">flow</property>
+                    <text-property name="displayName" key="flow">flow</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">assayName</property>
+                    <text-property name="displayName" key="assayName">assayName</text-property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">applicationName</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">panel</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">templatingKit</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">control</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">sequenceingKit</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">chip</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">flow</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">assayName</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">FusionDS</property>
+            <method name="open"><![CDATA[importPackage(Packages.com.lifetech.dx.ionreporter.services.reports);
+var myData = auditLogEvents.getAssayDetailSection();
+myIterator = myData.iterator();]]></method>
+            <method name="fetch"><![CDATA[if(myIterator.hasNext()){
+var node = myIterator.next();
+row["applicationName"] = node.getApplicationName();
+row["assayName"] = node.getAssayName();
+row["panel"] = node.getPanel();
+row["templatingKit"] = node.getTemplatingKit();
+row["control"] = node.getControl();
+row["sequenceingKit"] = node.getSequenceingKit();
+row["chip"] = node.getChip();
+row["flow"] = node.getFlow();
+return true;
+} 
+else return false;]]></method>
+        </script-data-set>
+        <script-data-set name="ControlQCMatricsDST" id="2010">
+            <list-property name="resultSetHints">
+                <structure>
+                    <property name="position">0</property>
+                    <property name="name">metricName</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">value</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">referenceRange</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">qCStatus</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">metricName</property>
+                    <text-property name="displayName" key="metricName">metricName</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">value</property>
+                    <text-property name="displayName" key="value">value</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">referenceRange</property>
+                    <text-property name="displayName" key="referenceRange">referenceRange</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">qCStatus</property>
+                    <text-property name="displayName" key="qCStatus">qCStatus</text-property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">metricName</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">value</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">referenceRange</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">qCStatus</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">FusionDS</property>
+            <method name="open"><![CDATA[importPackage(Packages.com.lifetech.dx.ionreporter.services.reports);
+var myData = auditLogEvents.getControlQCMatrics();
+myIterator = myData.iterator();]]></method>
+            <method name="fetch"><![CDATA[if(myIterator.hasNext()){
+var node = myIterator.next();
+row["metricName"] = node.getMetricName();
+row["value"] = node.getValue();
+row["referenceRange"] = node.getReferenceRange();
+row["qCStatus"] = node.getqCStatus();
+return true;
+} 
+else return false;]]></method>
+        </script-data-set>
+        <script-data-set name="LibraryPreparationDST" id="2178">
+            <list-property name="resultSetHints">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">kitname</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">kitbarcode</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">partnumber</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">lotnumber</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">expirationDate</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">kitname</property>
+                    <text-property name="displayName" key="kitname">kitname</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">kitbarcode</property>
+                    <text-property name="displayName" key="kitbarcode">kitbarcode</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">partnumber</property>
+                    <text-property name="displayName" key="partnumber">partnumber</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">lotnumber</property>
+                    <text-property name="displayName" key="lotnumber">lotnumber</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">expirationDate</property>
+                    <text-property name="displayName" key="expirationDate">expirationDate</text-property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">kitname</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">kitbarcode</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">partnumber</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">lotnumber</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">expirationDate</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">FusionDS</property>
+            <method name="open"><![CDATA[importPackage(Packages.com.lifetech.dx.ionreporter.services.reports);
+var myData = auditLogEvents.getLibraryPreparation();
+myIterator = myData.iterator();]]></method>
+            <method name="fetch"><![CDATA[if(myIterator.hasNext()){
+var node = myIterator.next();
+row["kitname"] = node.getKitname();
+row["kitbarcode"] = node.getKitbarcode();
+row["partnumber"] = node.getPartnumber();
+row["expirationDate"] = node.getExpirationDate();
+row["lotnumber"] = node.getLotnumber();
+return true;
+} 
+else return false;]]></method>
+        </script-data-set>
+        <script-data-set name="RunQCMetricDST" id="1997">
+            <list-property name="resultSetHints">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">qCStatus</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">value</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">referenceRange</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">metricName</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">qCStatus</property>
+                    <text-property name="displayName" key="qCStatus">qCStatus</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">value</property>
+                    <text-property name="displayName" key="value">value</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">referenceRange</property>
+                    <text-property name="displayName" key="referenceRange">referenceRange</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">metricName</property>
+                    <text-property name="displayName" key="metricName">metricName</text-property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">qCStatus</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">value</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">referenceRange</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">metricName</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">FusionDS</property>
+            <method name="open"><![CDATA[importPackage(Packages.com.lifetech.dx.ionreporter.services.reports);
+var myData = auditLogEvents.getRunQCMatrics();
+myIterator = myData.iterator();]]></method>
+            <method name="fetch"><![CDATA[if(myIterator.hasNext()){
+var node = myIterator.next();
+row["metricName"] = node.getMetricName();
+row["value"] = node.getValue();
+row["referenceRange"] = node.getReferenceRange();
+row["qCStatus"] = node.getqCStatus();
+return true;
+} 
+else return false;]]></method>
+        </script-data-set>
+        <script-data-set name="SampleQCMatricsDst" id="2009">
+            <list-property name="resultSetHints">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">metricName</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">value</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">referenceRange</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">qCStatus</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">metricName</property>
+                    <text-property name="displayName" key="metricName">metricName</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">value</property>
+                    <text-property name="displayName" key="value">value</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">referenceRange</property>
+                    <text-property name="displayName" key="referenceRange">referenceRange</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">qCStatus</property>
+                    <text-property name="displayName" key="qCStatus">qCStatus</text-property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">metricName</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">value</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">referenceRange</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">qCStatus</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">FusionDS</property>
+            <method name="open"><![CDATA[importPackage(Packages.com.lifetech.dx.ionreporter.services.reports);
+var myData = auditLogEvents.getSampleQCMatrics();
+myIterator = myData.iterator();]]></method>
+            <method name="fetch"><![CDATA[if(myIterator.hasNext()){
+var node = myIterator.next();
+row["metricName"] = node.getMetricName();
+row["value"] = node.getValue();
+row["referenceRange"] = node.getReferenceRange();
+row["qCStatus"] = node.getqCStatus();
+return true;
+} 
+else return false;]]></method>
+        </script-data-set>
+        <script-data-set name="SequencingSectionDST" id="2184">
+            <list-property name="resultSetHints">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">kitbarcode</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">partnumber</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">operator</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">expirationDate</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">startDate</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">completionDate</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">chipManufacturingDate</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">lotNumber</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">chip</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">10</property>
+                    <property name="name">manufactureCode</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">11</property>
+                    <property name="name">chipBarcode</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">12</property>
+                    <property name="name">chipSerialNumber</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">13</property>
+                    <property name="name">chipManufactureNumber</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">14</property>
+                    <property name="name">kitname</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">15</property>
+                    <property name="name">serialNumber</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">kitbarcode</property>
+                    <text-property name="displayName" key="kitbarcode">kitbarcode</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">partnumber</property>
+                    <text-property name="displayName" key="partnumber">partnumber</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">operator</property>
+                    <text-property name="displayName" key="operator">operator</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">expirationDate</property>
+                    <text-property name="displayName" key="expirationDate">expirationDate</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">startDate</property>
+                    <text-property name="displayName" key="startDate">startDate</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">completionDate</property>
+                    <text-property name="displayName" key="completionDate">completionDate</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">chipManufacturingDate</property>
+                    <text-property name="displayName" key="chipManufacturingDate">chipManufacturingDate</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">lotNumber</property>
+                    <text-property name="displayName" key="lotNumber">lotNumber</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">chip</property>
+                    <text-property name="displayName" key="chip">chip</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">manufactureCode</property>
+                    <text-property name="displayName" key="manufactureCode">manufactureCode</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">chipBarcode</property>
+                    <text-property name="displayName" key="chipBarcode">chipBarcode</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">chipSerialNumber</property>
+                    <text-property name="displayName" key="chipSerialNumber">chipSerialNumber</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">chipManufactureNumber</property>
+                    <text-property name="displayName" key="chipManufactureNumber">chipManufactureNumber</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">kitname</property>
+                    <text-property name="displayName" key="kitname">kitname</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">serialNumber</property>
+                    <text-property name="displayName" key="serialNumber">serialNumber</text-property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">kitbarcode</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">partnumber</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">operator</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">expirationDate</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">startDate</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">completionDate</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">chipManufacturingDate</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">lotNumber</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">chip</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">10</property>
+                        <property name="name">manufactureCode</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">11</property>
+                        <property name="name">chipBarcode</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">12</property>
+                        <property name="name">chipSerialNumber</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">13</property>
+                        <property name="name">chipManufactureNumber</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">14</property>
+                        <property name="name">kitname</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">15</property>
+                        <property name="name">serialNumber</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">FusionDS</property>
+            <method name="open"><![CDATA[importPackage(Packages.com.lifetech.dx.ionreporter.services.reports);
+var myData = auditLogEvents.getSequencingSection();
+myIterator = myData.iterator();]]></method>
+            <method name="fetch"><![CDATA[if(myIterator.hasNext()){
+var node = myIterator.next();
+row["kitbarcode"] = node.getKitbarcode();
+row["partnumber"] = node.getPartnumber();
+row["lotNumber"] = node.getLotNumber();
+row["operator"] = node.getOperator();
+row["chip"] = node.getChip();
+row["manufactureCode"] = node.getManufactureCode();
+row["chipBarcode"] = node.getChipBarcode();
+row["chipSerialNumber"] = node.getChipSerialNumber();
+row["chipManufactureNumber"] = node.getChipManufactureNumber();
+row["kitname"] = node.getKitname();
+row["startDate"] = node.getStartDate();
+row["expirationDate"] = node.getExpirationDate();
+row["completionDate"] = node.getCompletionDate();
+row["chipManufacturingDate"] = node.getChipManufacturingDate();
+row["serialNumber"] = node.getSerialNumber();
+return true;
+} 
+else return false;]]></method>
+        </script-data-set>
+        <script-data-set name="TemplatePreKitDST" id="2002">
+            <list-property name="resultSetHints">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">kitname</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">kitbarcode</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">partnumber</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">lotnumber</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">startdate</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">operator</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">endDate</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">expirationDate</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">serialNumber</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">kitname</property>
+                    <text-property name="displayName" key="kitname">kitname</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">kitbarcode</property>
+                    <text-property name="displayName" key="kitbarcode">kitbarcode</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">partnumber</property>
+                    <text-property name="displayName" key="partnumber">partnumber</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">lotnumber</property>
+                    <text-property name="displayName" key="lotnumber">lotnumber</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">startdate</property>
+                    <text-property name="displayName" key="startdate">startdate</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">operator</property>
+                    <text-property name="displayName" key="operator">operator</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">endDate</property>
+                    <text-property name="displayName" key="endDate">endDate</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">expirationDate</property>
+                    <text-property name="displayName" key="expirationDate">expirationDate</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">serialNumber</property>
+                    <text-property name="displayName" key="serialNumber">serialNumber</text-property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">kitname</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">kitbarcode</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">partnumber</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">lotnumber</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">startdate</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">operator</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">endDate</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">expirationDate</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">serialNumber</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">FusionDS</property>
+            <method name="open"><![CDATA[importPackage(Packages.com.lifetech.dx.ionreporter.services.reports);
+var myData = auditLogEvents.getTemplatePreparation();
+myIterator = myData.iterator();]]></method>
+            <method name="fetch"><![CDATA[if(myIterator.hasNext()){
+var node = myIterator.next();
+row["kitname"] = node.getKitname();
+row["kitbarcode"] = node.getKitbarcode();
+row["partnumber"] = node.getPartnumber();
+row["lotnumber"] = node.getLotnumber();
+row["startdate"] = node.getStartdate();
+row["endDate"] = node.getEnddate();
+row["operator"] = node.getOperator();
+row["expirationDate"] =node.getExpirationDate();
+row["serialNumber"] =node.getSerialNumber();
+return true;
+} 
+else return false;]]></method>
+        </script-data-set>
+        <script-data-set name="SignOffDetailsDST" id="2547">
+            <list-property name="resultSetHints">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">signBy</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">signOfDate</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">ipAddress</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">signOffComments</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">meaningofSignature</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">signBy</property>
+                    <text-property name="displayName" key="signBy">signBy</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">signOfDate</property>
+                    <text-property name="displayName" key="signOfDate">signOfDate</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">ipAddress</property>
+                    <text-property name="displayName" key="ipAddress">ipAddress</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">signOffComments</property>
+                    <text-property name="displayName" key="signOffComments">signOffComments</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">meaningofSignature</property>
+                    <text-property name="displayName" key="meaningofSignature">meaningofSignature</text-property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">signBy</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">signOfDate</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">ipAddress</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">signOffComments</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">meaningofSignature</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">FusionDS</property>
+            <method name="open"><![CDATA[importPackage(Packages.com.lifetech.dx.ionreporter.services.reports);
+var myData = auditLogEvents.getSignOfDetail();
+myIterator = myData.iterator();]]></method>
+            <method name="fetch"><![CDATA[if(myIterator.hasNext()){
+var node = myIterator.next();
+row["signBy"] = node.getSignBy();
+row["signOfDate"] = node.getSignOfDate();
+row["signOffComments"] = node.getSignOffComments();
+row["ipAddress"] = node.getIpAddress();
+row["meaningofSignature"] = node.getMeaningofSignature();
+return true;
+} 
+else return false;]]></method>
+        </script-data-set>
+        <script-data-set name="AnalysisDataSectionDST" id="2834">
+            <list-property name="resultSetHints">
+                <structure>
+                    <property name="position">0</property>
+                    <property name="name">operator</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">createdOn</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">operator</property>
+                    <text-property name="displayName" key="operator">operator</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">createdOn</property>
+                    <text-property name="displayName" key="createdOn">createdOn</text-property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">operator</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">createdOn</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">FusionDS</property>
+            <method name="open"><![CDATA[importPackage(Packages.com.lifetech.dx.ionreporter.services.reports);
+var myData = auditLogEvents.getAnalysisSectionList();
+myIterator = myData.iterator();]]></method>
+            <method name="fetch"><![CDATA[if(myIterator.hasNext()){
+var node = myIterator.next();
+row["createdOn"] = node.getCreatedOn();
+row["operator"] = node.getOperator();
+return true;
+} 
+else return false;]]></method>
+        </script-data-set>
+        <script-data-set name="HeaderLogoDST" id="2844">
+            <list-property name="resultSetHints">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">date</property>
+                    <property name="dataType">date-time</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">date</property>
+                    <text-property name="displayName" key="date">date</text-property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">date</property>
+                        <property name="dataType">date-time</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">FusionDS</property>
+            <method name="open"><![CDATA[importPackage(Packages.com.lifetech.dx.ionreporter.services.reports);
+var myData = auditLogEvents.getHeaderSectionList();
+myIterator = myData.iterator();]]></method>
+            <method name="fetch"><![CDATA[if(myIterator.hasNext()){
+var node = myIterator.next();
+row["date"] = node.getDate();
+return true;
+} 
+else return false;]]></method>
+        </script-data-set>
+        <script-data-set name="InstrumentInfoDST" id="3304">
+            <list-property name="resultSetHints">
+                <structure>
+                    <property name="position">0</property>
+                    <property name="name">oTInstrumentName</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">oTInstrumentSerialNumber</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">pgmInstrumentName</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">pgmInstrumentSerialNumber</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">oTInstrumentName</property>
+                    <text-property name="displayName" key="oTInstrumentName">oTInstrumentName</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">oTInstrumentSerialNumber</property>
+                    <text-property name="displayName" key="oTInstrumentSerialNumber">oTInstrumentSerialNumber</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">pgmInstrumentName</property>
+                    <text-property name="displayName" key="pgmInstrumentName">pgmInstrumentName</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">pgmInstrumentSerialNumber</property>
+                    <text-property name="displayName" key="pgmInstrumentSerialNumber">pgmInstrumentSerialNumber</text-property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">oTInstrumentName</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">oTInstrumentSerialNumber</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">pgmInstrumentName</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">pgmInstrumentSerialNumber</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">FusionDS</property>
+            <method name="open"><![CDATA[importPackage(Packages.com.lifetech.dx.ionreporter.services.reports);
+var myData = auditLogEvents.getInstrumentSummary();
+myIterator = myData.iterator();]]></method>
+            <method name="fetch"><![CDATA[if(myIterator.hasNext()){
+var node = myIterator.next();
+row["oTInstrumentName"] = node.getoTInstrumentName();
+row["oTInstrumentSerialNumber"] = node.getoTInstrumentSerialNumber();
+row["pgmInstrumentName"] = node.getPgmInstrumentName();
+row["pgmInstrumentSerialNumber"] = node.getPgmInstrumentSerialNumber();
+return true;
+} 
+else return false;]]></method>
+        </script-data-set>
+        <script-data-set name="RunTemplateQcIonDxCB1DST" id="3309">
+            <list-property name="resultSetHints">
+                <structure>
+                    <property name="position">0</property>
+                    <property name="name">metricName</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">value</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">referenceRange</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">qCStatus</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">metricName</property>
+                    <text-property name="displayName" key="metricName">metricName</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">value</property>
+                    <text-property name="displayName" key="value">value</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">referenceRange</property>
+                    <text-property name="displayName" key="referenceRange">referenceRange</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">qCStatus</property>
+                    <text-property name="displayName" key="qCStatus">qCStatus</text-property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">metricName</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">value</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">referenceRange</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">qCStatus</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">FusionDS</property>
+            <method name="open"><![CDATA[importPackage(Packages.com.lifetech.dx.ionreporter.services.reports);
+var myData = auditLogEvents.getRunTemplateQcIonDxCB1();
+myIterator = myData.iterator();]]></method>
+            <method name="fetch"><![CDATA[if(myIterator.hasNext()){
+var node = myIterator.next();
+row["metricName"] = node.getMetricName();
+row["value"] = node.getValue();
+row["referenceRange"] =">="+ node.getReferenceRange();
+row["qCStatus"] = node.getqCStatus();
+return true;
+} 
+else return false;]]></method>
+        </script-data-set>
+        <script-data-set name="RunTemplateQcIonDxCF1DST" id="3310">
+            <list-property name="resultSetHints">
+                <structure>
+                    <property name="position">0</property>
+                    <property name="name">metricName</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">value</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">referenceRange</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">qCStatus</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">metricName</property>
+                    <text-property name="displayName" key="metricName">metricName</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">value</property>
+                    <text-property name="displayName" key="value">value</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">referenceRange</property>
+                    <text-property name="displayName" key="referenceRange">referenceRange</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">qCStatus</property>
+                    <text-property name="displayName" key="qCStatus">qCStatus</text-property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">metricName</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">value</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">referenceRange</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">qCStatus</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">FusionDS</property>
+            <method name="open"><![CDATA[importPackage(Packages.com.lifetech.dx.ionreporter.services.reports);
+var myData = auditLogEvents.getRunTemplateQcIonDxCF1();
+myIterator = myData.iterator();]]></method>
+            <method name="fetch"><![CDATA[if(myIterator.hasNext()){
+var node = myIterator.next();
+row["metricName"] = node.getMetricName();
+row["value"] = node.getValue();
+row["referenceRange"] = ">="+node.getReferenceRange();
+row["qCStatus"] = node.getqCStatus();
+return true;
+} 
+else return false;]]></method>
+        </script-data-set>
+        <script-data-set name="AssayControlQCDST" id="3508">
+            <list-property name="resultSetHints">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">key</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">value</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">qcName</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">key</property>
+                    <text-property name="displayName" key="key">key</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">value</property>
+                    <text-property name="displayName" key="value">value</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">qcName</property>
+                    <text-property name="displayName" key="qcName">qcName</text-property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">key</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">value</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">qcName</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">FusionDS</property>
+            <method name="open"><![CDATA[importPackage(Packages.com.lifetech.dx.ionreporter.services.reports);
+var myData = auditLogEvents.getControlQCListForInstallTemplate();
+myIterator = myData.iterator();]]></method>
+            <method name="fetch"><![CDATA[if(myIterator.hasNext()){
+var node = myIterator.next();
+row["key"] = node.getKey();
+row["qcName"] = node.getQcName();
+row["value"] = node.getValue();
+return true;
+} 
+else return false;]]></method>
+        </script-data-set>
+        <script-data-set name="SoftwareDetailDST" id="4920">
+            <list-property name="resultSetHints">
+                <structure>
+                    <property name="position">0</property>
+                    <property name="name">softwareName</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">softwareVersion</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">softwareName</property>
+                    <text-property name="displayName" key="softwareName">softwareName</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">softwareVersion</property>
+                    <text-property name="displayName" key="softwareVersion">softwareVersion</text-property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">softwareName</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">softwareVersion</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">FusionDS</property>
+            <method name="open"><![CDATA[importPackage(Packages.com.lifetech.dx.ionreporter.services.reports);
+var myData = auditLogEvents.getSoftwareDetails();
+myIterator = myData.iterator();]]></method>
+            <method name="fetch"><![CDATA[if(myIterator.hasNext()){
+var node = myIterator.next();
+row["softwareName"] = node.getSoftwareName();
+row["softwareVersion"] = node.getSoftwareVersion();
+return true;
+} 
+else return false;]]></method>
+        </script-data-set>
+    </data-sets>
+    <styles>
+        <style name="clinicalSummaryColour" id="4765">
+            <property name="backgroundColor">#BAC6E5</property>
+        </style>
+        <style name="tableHeader" id="4769">
+            <property name="backgroundColor">#BAC6E5</property>
+            <property name="borderBottomColor">#005EAC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">thin</property>
+            <property name="borderTopColor">#005EAC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">thin</property>
+        </style>
+        <style name="backgroundColor" id="4930">
+            <property name="backgroundColor">#283F78</property>
+            <property name="color">#FFFFFF</property>
+        </style>
+        <style name="report" id="4935">
+            <property name="fontFamily">"Ubuntu"</property>
+        </style>
+    </styles>
+    <page-setup>
+        <simple-master-page name="SimpleMasterPage" id="2">
+            <property name="topMargin">0in</property>
+            <property name="leftMargin">0in</property>
+            <property name="bottomMargin">0in</property>
+            <property name="rightMargin">0in</property>
+            <property name="backgroundImage">NoImage</property>
+            <property name="backgroundRepeat">no-repeat</property>
+            <property name="fontFamily">"Ubuntu"</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">medium</property>
+            <property name="showHeaderOnFirst">true</property>
+            <property name="headerHeight">62px</property>
+            <property name="footerHeight">1in</property>
+            <page-header>
+                <grid id="4370">
+                    <column id="4371"/>
+                    <row id="4372">
+                        <cell id="4373">
+                            <image id="4374">
+                                <property name="marginTop">0pt</property>
+                                <property name="marginLeft">20pt</property>
+                                <property name="marginRight">20pt</property>
+                                <property name="height">23px</property>
+                                <property name="width">84px</property>
+                                <property name="source">file</property>
+                                <expression name="uri" type="constant">report-footerlogo.png</expression>
+                            </image>
+                        </cell>
+                    </row>
+                    <row id="4932">
+                        <cell id="4933">
+                            <label id="4779">
+                                <property name="fontSize">11pt</property>
+                                <property name="fontWeight">normal</property>
+                                <property name="color">#A1A0A1</property>
+                                <property name="marginLeft">20pt</property>
+                                <property name="paddingTop">0pt</property>
+                                <property name="paddingLeft">0pt</property>
+                                <text-property name="text">PQ Report</text-property>
+                            </label>
+                        </cell>
+                    </row>
+                    <row id="4375">
+                        <cell id="4376">
+                            <data id="4377">
+                                <property name="backgroundColor">#DFDEDE</property>
+                                <property name="fontSize">8pt</property>
+                                <property name="fontWeight">bold</property>
+                                <property name="borderBottomColor">#283F78</property>
+                                <property name="borderBottomStyle">inset</property>
+                                <property name="borderBottomWidth">1px</property>
+                                <property name="borderTopColor">#FFFFFF</property>
+                                <property name="borderTopStyle">inset</property>
+                                <property name="borderTopWidth">0.5px</property>
+                                <property name="marginLeft">20pt</property>
+                                <property name="marginRight">20pt</property>
+                                <property name="textAlign">right</property>
+                                <property name="dataSet">HeaderLogoDST</property>
+                                <list-property name="boundDataColumns">
+                                    <structure>
+                                        <property name="name">date</property>
+                                        <text-property name="displayName" key="date">date</text-property>
+                                        <expression name="expression" type="javascript">dataSetRow["date"]</expression>
+                                        <property name="dataType">string</property>
+                                        <property name="allowExport">true</property>
+                                    </structure>
+                                </list-property>
+                                <property name="resultSetColumn">date</property>
+                            </data>
+                        </cell>
+                    </row>
+                </grid>
+            </page-header>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <text-data id="4934">
+            <property name="fontSize">8pt</property>
+            <property name="marginLeft">25pt</property>
+            <property name="marginRight">25pt</property>
+            <property name="textAlign">right</property>
+            <property name="dataSet">SoftwareDetailDST</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">softwareName</property>
+                    <text-property name="displayName" key="softwareName">softwareName</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["softwareName"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">softwareVersion</property>
+                    <text-property name="displayName" key="softwareVersion">softwareVersion</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["softwareVersion"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <expression name="valueExpr" type="javascript">"Report generated by "+ row["softwareVersion"] +" version " +row["softwareName"] +" Software"</expression>
+            <property name="contentType">html</property>
+        </text-data>
+        <label id="24">
+            <property name="style">backgroundColor</property>
+            <property name="fontSize">10pt</property>
+            <property name="fontWeight">bold</property>
+            <property name="color">white</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">medium</property>
+            <property name="marginLeft">20pt</property>
+            <property name="marginRight">20pt</property>
+            <property name="paddingLeft">8pt</property>
+            <property name="textAlign">left</property>
+            <property name="verticalAlign">middle</property>
+            <property name="display">block</property>
+            <property name="height">25px</property>
+            <text-property name="text">Instrument Information</text-property>
+        </label>
+        <grid id="3285">
+            <property name="marginLeft">25pt</property>
+            <property name="marginRight">25pt</property>
+            <property name="width">7.760416666666667in</property>
+            <property name="dataSet">InstrumentInfoDST</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">oTInstrumentName</property>
+                    <text-property name="displayName" key="oTInstrumentName">oTInstrumentName</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["oTInstrumentName"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">oTInstrumentSerialNumber</property>
+                    <text-property name="displayName" key="oTInstrumentSerialNumber">oTInstrumentSerialNumber</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["oTInstrumentSerialNumber"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">pgmInstrumentName</property>
+                    <text-property name="displayName" key="pgmInstrumentName">pgmInstrumentName</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["pgmInstrumentName"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">pgmInstrumentSerialNumber</property>
+                    <text-property name="displayName" key="pgmInstrumentSerialNumber">pgmInstrumentSerialNumber</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["pgmInstrumentSerialNumber"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <column id="3286">
+                <property name="width">1.96875in</property>
+            </column>
+            <column id="3287">
+                <property name="width">5.791666666666667in</property>
+            </column>
+            <row id="3288">
+                <list-property name="visibility">
+                    <structure>
+                        <property name="format">all</property>
+                        <expression name="valueExpr" type="javascript">!isSystemRun</expression>
+                    </structure>
+                </list-property>
+                <cell id="3289">
+                    <label id="3300">
+                        <property name="fontSize">8pt</property>
+                        <text-property name="text">OT Instrument Name:</text-property>
+                    </label>
+                </cell>
+                <cell id="3290">
+                    <data id="3305">
+                        <property name="fontSize">8pt</property>
+                        <property name="dataSet">InstrumentInfoDST</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">oTInstrumentName</property>
+                                <text-property name="displayName" key="oTInstrumentName">oTInstrumentName</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["oTInstrumentName"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">oTInstrumentName</property>
+                    </data>
+                </cell>
+            </row>
+            <row id="3291">
+                <list-property name="visibility">
+                    <structure>
+                        <property name="format">all</property>
+                        <expression name="valueExpr" type="javascript">!isSystemRun</expression>
+                    </structure>
+                </list-property>
+                <cell id="3292">
+                    <label id="3301">
+                        <property name="fontSize">8pt</property>
+                        <text-property name="text">OT Instrument serial Number:</text-property>
+                    </label>
+                </cell>
+                <cell id="3293">
+                    <data id="3306">
+                        <property name="fontSize">8pt</property>
+                        <property name="dataSet">InstrumentInfoDST</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">oTInstrumentSerialNumber</property>
+                                <text-property name="displayName" key="oTInstrumentSerialNumber">oTInstrumentSerialNumber</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["oTInstrumentSerialNumber"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">oTInstrumentSerialNumber</property>
+                    </data>
+                </cell>
+            </row>
+            <row id="3294">
+                <cell id="3295">
+                    <label id="3302">
+                        <property name="fontSize">8pt</property>
+                        <text-property name="text">PGM Instrument Name:</text-property>
+                    </label>
+                </cell>
+                <cell id="3296">
+                    <data id="3307">
+                        <property name="fontSize">8pt</property>
+                        <property name="dataSet">InstrumentInfoDST</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">pgmInstrumentName</property>
+                                <text-property name="displayName" key="pgmInstrumentName">pgmInstrumentName</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["pgmInstrumentName"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">pgmInstrumentName</property>
+                    </data>
+                </cell>
+            </row>
+            <row id="3297">
+                <cell id="3298">
+                    <label id="3303">
+                        <property name="fontSize">8pt</property>
+                        <text-property name="text">PGM Instrument serial Number:</text-property>
+                    </label>
+                </cell>
+                <cell id="3299">
+                    <data id="3308">
+                        <property name="fontSize">8pt</property>
+                        <property name="dataSet">InstrumentInfoDST</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">pgmInstrumentSerialNumber</property>
+                                <text-property name="displayName" key="pgmInstrumentSerialNumber">pgmInstrumentSerialNumber</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["pgmInstrumentSerialNumber"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">pgmInstrumentSerialNumber</property>
+                    </data>
+                </cell>
+            </row>
+        </grid>
+        <label id="930">
+            <property name="marginLeft">25pt</property>
+            <property name="marginRight">25pt</property>
+            <property name="pageBreakBefore">auto</property>
+        </label>
+        <grid id="932">
+            <property name="marginLeft">25pt</property>
+            <property name="marginRight">25pt</property>
+            <property name="dataSet">LibraryPreparationDST</property>
+            <list-property name="visibility">
+                <structure>
+                    <property name="format">all</property>
+                    <expression name="valueExpr" type="javascript">!isSystemRun</expression>
+                </structure>
+            </list-property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">kitname</property>
+                    <text-property name="displayName" key="kitname">kitname</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["kitname"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">kitbarcode</property>
+                    <text-property name="displayName" key="kitbarcode">kitbarcode</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["kitbarcode"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">partnumber</property>
+                    <text-property name="displayName" key="partnumber">partnumber</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["partnumber"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">lotnumber</property>
+                    <text-property name="displayName" key="lotnumber">lotnumber</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["lotnumber"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">expirationDate</property>
+                    <text-property name="displayName" key="expirationDate">expirationDate</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["expirationDate"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <column id="933"/>
+            <row id="935">
+                <cell id="936">
+                    <label id="939">
+                        <property name="style">backgroundColor</property>
+                        <property name="fontSize">10pt</property>
+                        <property name="fontWeight">bold</property>
+                        <property name="color">white</property>
+                        <property name="marginLeft">0pt</property>
+                        <property name="marginRight">0pt</property>
+                        <property name="paddingLeft">8pt</property>
+                        <property name="textAlign">left</property>
+                        <property name="verticalAlign">middle</property>
+                        <property name="display">block</property>
+                        <property name="height">25px</property>
+                        <text-property name="text">Template Preparation</text-property>
+                    </label>
+                </cell>
+            </row>
+            <row id="940">
+                <cell id="941">
+                    <grid id="3208">
+                        <property name="marginLeft">8pt</property>
+                        <column id="3209">
+                            <property name="width">1.8125in</property>
+                        </column>
+                        <column id="3210"/>
+                        <row id="3211">
+                            <cell id="3212"/>
+                            <cell id="3213"/>
+                        </row>
+                        <row id="3214">
+                            <cell id="3215">
+                                <label id="3216">
+                                    <property name="fontSize">8pt</property>
+                                    <text-property name="text">Start Date:</text-property>
+                                </label>
+                            </cell>
+                            <cell id="3217">
+                                <data id="3218">
+                                    <property name="fontSize">8pt</property>
+                                    <property name="dataSet">TemplatePreKitDST</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">startdate</property>
+                                            <text-property name="displayName" key="startdate">startdate</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["startdate"]</expression>
+                                            <property name="dataType">string</property>
+                                            <property name="allowExport">true</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">startdate</property>
+                                </data>
+                            </cell>
+                        </row>
+                        <row id="3219">
+                            <cell id="3220">
+                                <label id="3221">
+                                    <property name="fontSize">8pt</property>
+                                    <text-property name="text">Completion Date:</text-property>
+                                </label>
+                            </cell>
+                            <cell id="3222">
+                                <data id="4407">
+                                    <property name="fontSize">8pt</property>
+                                    <property name="dataSet">TemplatePreKitDST</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">endDate</property>
+                                            <text-property name="displayName" key="endDate">endDate</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["endDate"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">endDate</property>
+                                </data>
+                            </cell>
+                        </row>
+                        <row id="3223">
+                            <cell id="3224">
+                                <label id="3225">
+                                    <property name="fontSize">8pt</property>
+                                    <text-property name="text">Operator:</text-property>
+                                </label>
+                            </cell>
+                            <cell id="3226">
+                                <data id="3227">
+                                    <property name="fontSize">8pt</property>
+                                    <property name="dataSet">TemplatePreKitDST</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">operator</property>
+                                            <text-property name="displayName" key="operator">operator</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["operator"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">operator</property>
+                                </data>
+                            </cell>
+                        </row>
+                        <row id="3228">
+                            <cell id="3229">
+                                <label id="3230">
+                                    <property name="fontSize">8pt</property>
+                                    <text-property name="text">Kit Name:</text-property>
+                                </label>
+                            </cell>
+                            <cell id="3231">
+                                <data id="3232">
+                                    <property name="fontSize">8pt</property>
+                                    <property name="dataSet">TemplatePreKitDST</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">kitname</property>
+                                            <text-property name="displayName" key="kitname">kitname</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["kitname"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">kitname</property>
+                                </data>
+                            </cell>
+                        </row>
+                        <row id="3233">
+                            <property name="fontSize">8pt</property>
+                            <cell id="3234">
+                                <label id="3235">
+                                    <property name="fontSize">8pt</property>
+                                    <text-property name="text">OT Instrument Serial No:</text-property>
+                                </label>
+                            </cell>
+                            <cell id="3236">
+                                <data id="4409">
+                                    <property name="dataSet">TemplatePreKitDST</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">serialNumber</property>
+                                            <text-property name="displayName" key="serialNumber">serialNumber</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["serialNumber"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">serialNumber</property>
+                                </data>
+                            </cell>
+                        </row>
+                        <row id="3237">
+                            <cell id="3238">
+                                <label id="3239">
+                                    <property name="fontSize">8pt</property>
+                                    <text-property name="text">Kit Barcode:</text-property>
+                                </label>
+                            </cell>
+                            <cell id="3240">
+                                <data id="3241">
+                                    <property name="fontSize">8pt</property>
+                                    <property name="dataSet">TemplatePreKitDST</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">kitbarcode</property>
+                                            <text-property name="displayName" key="kitbarcode">kitbarcode</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["kitbarcode"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">kitbarcode</property>
+                                </data>
+                            </cell>
+                        </row>
+                        <row id="3242">
+                            <cell id="3243">
+                                <label id="3244">
+                                    <property name="fontSize">8pt</property>
+                                    <text-property name="text">Part Number:</text-property>
+                                </label>
+                            </cell>
+                            <cell id="3245">
+                                <data id="3246">
+                                    <property name="fontSize">8pt</property>
+                                    <property name="dataSet">TemplatePreKitDST</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">partnumber</property>
+                                            <text-property name="displayName" key="partnumber">partnumber</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["partnumber"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">partnumber</property>
+                                </data>
+                            </cell>
+                        </row>
+                        <row id="3247">
+                            <property name="fontSize">8pt</property>
+                            <cell id="3248">
+                                <label id="3249">
+                                    <property name="fontSize">8pt</property>
+                                    <text-property name="text">Expiration Date:</text-property>
+                                </label>
+                            </cell>
+                            <cell id="3250">
+                                <data id="4408">
+                                    <property name="dataSet">TemplatePreKitDST</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">expirationDate</property>
+                                            <text-property name="displayName" key="expirationDate">expirationDate</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["expirationDate"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">expirationDate</property>
+                                </data>
+                            </cell>
+                        </row>
+                        <row id="3251">
+                            <cell id="3252">
+                                <label id="3253">
+                                    <property name="fontSize">8pt</property>
+                                    <text-property name="text">Lot Number:</text-property>
+                                </label>
+                            </cell>
+                            <cell id="3254">
+                                <data id="3255">
+                                    <property name="fontSize">8pt</property>
+                                    <property name="dataSet">TemplatePreKitDST</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">lotnumber</property>
+                                            <text-property name="displayName" key="lotnumber">lotnumber</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["lotnumber"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">lotnumber</property>
+                                </data>
+                            </cell>
+                        </row>
+                    </grid>
+                </cell>
+            </row>
+        </grid>
+        <label id="1078">
+            <property name="marginLeft">25pt</property>
+            <property name="marginRight">25pt</property>
+            <property name="pageBreakBefore">auto</property>
+        </label>
+        <grid id="1005">
+            <property name="marginLeft">25pt</property>
+            <property name="marginRight">25pt</property>
+            <property name="width">7.760416666666667in</property>
+            <column id="1006">
+                <property name="width">4.34375in</property>
+            </column>
+            <column id="1007">
+                <property name="width">3.4166666666666665in</property>
+            </column>
+            <row id="1008">
+                <cell id="1009">
+                    <label id="1010">
+                        <property name="style">backgroundColor</property>
+                        <property name="fontSize">10pt</property>
+                        <property name="fontWeight">bold</property>
+                        <property name="color">white</property>
+                        <property name="marginLeft">0pt</property>
+                        <property name="marginRight">0pt</property>
+                        <property name="paddingLeft">8pt</property>
+                        <property name="textAlign">left</property>
+                        <property name="verticalAlign">middle</property>
+                        <property name="display">block</property>
+                        <property name="height">25px</property>
+                        <text-property name="text">Sequencing</text-property>
+                    </label>
+                </cell>
+                <cell id="1011">
+                    <label id="1012">
+                        <property name="style">backgroundColor</property>
+                        <property name="fontSize">10pt</property>
+                        <property name="fontWeight">bold</property>
+                        <property name="color">white</property>
+                        <property name="marginLeft">0pt</property>
+                        <property name="marginRight">0pt</property>
+                        <property name="paddingLeft">8pt</property>
+                        <property name="textAlign">left</property>
+                        <property name="verticalAlign">middle</property>
+                        <property name="display">block</property>
+                        <property name="height">25px</property>
+                        <text-property name="text">Analysis</text-property>
+                    </label>
+                </cell>
+            </row>
+            <row id="1013">
+                <cell id="1014">
+                    <grid id="1015">
+                        <property name="marginLeft">8pt</property>
+                        <property name="width">4.166666666666667in</property>
+                        <column id="1016">
+                            <property name="width">1.4166666666666667in</property>
+                        </column>
+                        <column id="1017">
+                            <property name="width">2.75in</property>
+                        </column>
+                        <row id="2576">
+                            <cell id="2577"/>
+                            <cell id="2578"/>
+                        </row>
+                        <row id="1018">
+                            <cell id="1019">
+                                <label id="1020">
+                                    <property name="fontSize">8pt</property>
+                                    <text-property name="text">Start Date:</text-property>
+                                </label>
+                            </cell>
+                            <cell id="1021">
+                                <data id="2268">
+                                    <property name="fontSize">8pt</property>
+                                    <property name="dataSet">SequencingSectionDST</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">startDate</property>
+                                            <text-property name="displayName" key="startDate">startDate</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["startDate"]</expression>
+                                            <property name="dataType">string</property>
+                                            <property name="allowExport">true</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">startDate</property>
+                                </data>
+                            </cell>
+                        </row>
+                        <row id="1022">
+                            <cell id="1023">
+                                <label id="1024">
+                                    <property name="fontSize">8pt</property>
+                                    <text-property name="text">Completion Date:</text-property>
+                                </label>
+                            </cell>
+                            <cell id="1025">
+                                <data id="2269">
+                                    <property name="fontSize">8pt</property>
+                                    <property name="dataSet">SequencingSectionDST</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">completionDate</property>
+                                            <text-property name="displayName" key="completionDate">completionDate</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["completionDate"]</expression>
+                                            <property name="dataType">string</property>
+                                            <property name="allowExport">true</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">completionDate</property>
+                                </data>
+                            </cell>
+                        </row>
+                        <row id="1026">
+                            <cell id="1027">
+                                <label id="1028">
+                                    <property name="fontSize">8pt</property>
+                                    <text-property name="text">Operator:</text-property>
+                                </label>
+                            </cell>
+                            <cell id="1029">
+                                <data id="2266">
+                                    <property name="fontSize">8pt</property>
+                                    <property name="dataSet">SequencingSectionDST</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">operator</property>
+                                            <text-property name="displayName" key="operator">operator</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["operator"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">operator</property>
+                                </data>
+                            </cell>
+                        </row>
+                        <row id="1030">
+                            <cell id="1031">
+                                <label id="1032">
+                                    <property name="fontSize">8pt</property>
+                                    <text-property name="text">Kit Name:</text-property>
+                                </label>
+                            </cell>
+                            <cell id="1033">
+                                <data id="2277">
+                                    <property name="fontSize">8pt</property>
+                                    <property name="dataSet">SequencingSectionDST</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">kitname</property>
+                                            <text-property name="displayName" key="kitname">kitname</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["kitname"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">kitname</property>
+                                </data>
+                            </cell>
+                        </row>
+                        <row id="1034">
+                            <property name="fontSize">8pt</property>
+                            <cell id="1035">
+                                <label id="1036">
+                                    <property name="fontSize">8pt</property>
+                                    <text-property name="text">PGM Instrument Serial No:</text-property>
+                                </label>
+                            </cell>
+                            <cell id="1037">
+                                <data id="4410">
+                                    <property name="dataSet">SequencingSectionDST</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">serialNumber</property>
+                                            <text-property name="displayName" key="serialNumber">serialNumber</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["serialNumber"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">serialNumber</property>
+                                </data>
+                            </cell>
+                        </row>
+                    </grid>
+                </cell>
+                <cell id="1038">
+                    <grid id="1039">
+                        <property name="marginLeft">8pt</property>
+                        <column id="1040"/>
+                        <column id="1041"/>
+                        <row id="2579">
+                            <cell id="2580"/>
+                            <cell id="2581"/>
+                        </row>
+                        <row id="1042">
+                            <cell id="1043">
+                                <label id="1044">
+                                    <property name="fontSize">8pt</property>
+                                    <text-property name="text">Date:</text-property>
+                                </label>
+                            </cell>
+                            <cell id="1045">
+                                <data id="2835">
+                                    <property name="fontSize">8pt</property>
+                                    <property name="dataSet">AnalysisDataSectionDST</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">createdOn</property>
+                                            <text-property name="displayName" key="createdOn">createdOn</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["createdOn"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">createdOn</property>
+                                </data>
+                            </cell>
+                        </row>
+                        <row id="1046">
+                            <cell id="1047">
+                                <label id="1048">
+                                    <property name="fontSize">8pt</property>
+                                    <text-property name="text">Operator:</text-property>
+                                </label>
+                            </cell>
+                            <cell id="1049">
+                                <data id="2836">
+                                    <property name="fontSize">8pt</property>
+                                    <property name="dataSet">AnalysisDataSectionDST</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">operator</property>
+                                            <text-property name="displayName" key="operator">operator</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["operator"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">operator</property>
+                                </data>
+                            </cell>
+                        </row>
+                    </grid>
+                </cell>
+            </row>
+        </grid>
+        <grid id="1085">
+            <property name="marginLeft">39pt</property>
+            <property name="marginRight">0pt</property>
+            <property name="width">7.5625in</property>
+            <column id="1086">
+                <property name="width">1.3541666666666667in</property>
+            </column>
+            <column id="1087">
+                <property name="width">6.208333333333333in</property>
+            </column>
+            <row id="1088">
+                <cell id="1089">
+                    <label id="1100">
+                        <property name="fontSize">8pt</property>
+                        <text-property name="text">Kit Barcode:</text-property>
+                    </label>
+                </cell>
+                <cell id="1090">
+                    <data id="2264">
+                        <property name="fontSize">8pt</property>
+                        <property name="dataSet">SequencingSectionDST</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">kitbarcode</property>
+                                <text-property name="displayName" key="kitbarcode">kitbarcode</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["kitbarcode"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">kitbarcode</property>
+                    </data>
+                </cell>
+            </row>
+            <row id="1091">
+                <cell id="1092">
+                    <label id="1101">
+                        <property name="fontSize">8pt</property>
+                        <text-property name="text">Part Number:</text-property>
+                    </label>
+                </cell>
+                <cell id="1093">
+                    <data id="2265">
+                        <property name="fontSize">8pt</property>
+                        <property name="dataSet">SequencingSectionDST</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">partnumber</property>
+                                <text-property name="displayName" key="partnumber">partnumber</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["partnumber"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">partnumber</property>
+                    </data>
+                </cell>
+            </row>
+            <row id="1094">
+                <cell id="1095">
+                    <label id="1102">
+                        <property name="fontSize">8pt</property>
+                        <text-property name="text">Expiration Date:</text-property>
+                    </label>
+                </cell>
+                <cell id="1096">
+                    <data id="2267">
+                        <property name="fontSize">8pt</property>
+                        <property name="dataSet">SequencingSectionDST</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">expirationDate</property>
+                                <text-property name="displayName" key="expirationDate">expirationDate</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["expirationDate"]</expression>
+                                <property name="dataType">string</property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">expirationDate</property>
+                    </data>
+                </cell>
+            </row>
+            <row id="1097">
+                <cell id="1098">
+                    <label id="1103">
+                        <property name="fontSize">8pt</property>
+                        <text-property name="text">Lot Number:</text-property>
+                    </label>
+                </cell>
+                <cell id="1099">
+                    <data id="2270">
+                        <property name="fontSize">8pt</property>
+                        <property name="dataSet">SequencingSectionDST</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">lotNumber</property>
+                                <text-property name="displayName" key="lotNumber">lotNumber</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["lotNumber"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">lotNumber</property>
+                    </data>
+                </cell>
+            </row>
+        </grid>
+        <grid id="1104">
+            <property name="marginLeft">25pt</property>
+            <property name="width">4.270833333333333in</property>
+            <column id="1105">
+                <property name="width">1.5520833333333333in</property>
+            </column>
+            <column id="1106">
+                <property name="width">2.71875in</property>
+            </column>
+            <row id="1107">
+                <cell id="1108">
+                    <label id="1110">
+                        <property name="fontSize">8pt</property>
+                        <text-property name="text">   Chip:</text-property>
+                    </label>
+                </cell>
+                <cell id="1109">
+                    <data id="2271">
+                        <property name="fontSize">8pt</property>
+                        <property name="dataSet">SequencingSectionDST</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">chip</property>
+                                <text-property name="displayName" key="chip">chip</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["chip"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">chip</property>
+                    </data>
+                </cell>
+            </row>
+        </grid>
+        <grid id="1114">
+            <property name="style">clinicalSummaryColour</property>
+            <property name="marginLeft">39pt</property>
+            <property name="canShrink">true</property>
+            <property name="width">4.083333333333333in</property>
+            <column id="1115">
+                <property name="width">1.6041666666666667in</property>
+            </column>
+            <column id="1116">
+                <property name="width">2.4791666666666665in</property>
+            </column>
+            <row id="1117">
+                <cell id="1118">
+                    <label id="1136">
+                        <property name="fontSize">8pt</property>
+                        <text-property name="text">Chip Manufacture code(Bottom):</text-property>
+                    </label>
+                </cell>
+                <cell id="1119">
+                    <data id="2272">
+                        <property name="fontSize">8pt</property>
+                        <property name="dataSet">SequencingSectionDST</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">manufactureCode</property>
+                                <text-property name="displayName" key="manufactureCode">manufactureCode</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["manufactureCode"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">manufactureCode</property>
+                    </data>
+                </cell>
+            </row>
+            <row id="1120">
+                <cell id="1121">
+                    <label id="1137">
+                        <property name="fontSize">8pt</property>
+                        <text-property name="text">Chip Barcode(Top):</text-property>
+                    </label>
+                </cell>
+                <cell id="1122">
+                    <data id="2273">
+                        <property name="fontSize">8pt</property>
+                        <property name="dataSet">SequencingSectionDST</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">chipBarcode</property>
+                                <text-property name="displayName" key="chipBarcode">chipBarcode</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["chipBarcode"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">chipBarcode</property>
+                    </data>
+                </cell>
+            </row>
+            <row id="1123">
+                <cell id="1124">
+                    <label id="1138">
+                        <property name="fontSize">8pt</property>
+                        <text-property name="text">Chip Manufacturing Date:</text-property>
+                    </label>
+                </cell>
+                <cell id="1125">
+                    <data id="2274">
+                        <property name="fontSize">8pt</property>
+                        <property name="dataSet">SequencingSectionDST</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">chipManufacturingDate</property>
+                                <text-property name="displayName" key="chipManufacturingDate">chipManufacturingDate</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["chipManufacturingDate"]</expression>
+                                <property name="dataType">string</property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">chipManufacturingDate</property>
+                    </data>
+                </cell>
+            </row>
+            <row id="1126">
+                <cell id="1127">
+                    <label id="1139">
+                        <property name="fontSize">8pt</property>
+                        <text-property name="text">Chip Serial Number:</text-property>
+                    </label>
+                </cell>
+                <cell id="1128">
+                    <data id="2275">
+                        <property name="fontSize">8pt</property>
+                        <property name="dataSet">SequencingSectionDST</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">chipSerialNumber</property>
+                                <text-property name="displayName" key="chipSerialNumber">chipSerialNumber</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["chipSerialNumber"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">chipSerialNumber</property>
+                    </data>
+                </cell>
+            </row>
+            <row id="1129">
+                <cell id="1130">
+                    <label id="1140">
+                        <property name="fontSize">8pt</property>
+                        <text-property name="text">Chip Manufacturer Number:</text-property>
+                    </label>
+                </cell>
+                <cell id="1131">
+                    <data id="2276">
+                        <property name="fontSize">8pt</property>
+                        <property name="dataSet">SequencingSectionDST</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">chipManufactureNumber</property>
+                                <text-property name="displayName" key="chipManufactureNumber">chipManufactureNumber</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["chipManufactureNumber"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">chipManufactureNumber</property>
+                    </data>
+                </cell>
+            </row>
+        </grid>
+        <label id="1141">
+            <property name="marginLeft">25pt</property>
+            <property name="marginRight">25pt</property>
+            <property name="pageBreakBefore">auto</property>
+        </label>
+        <label id="1198">
+            <property name="fontSize">8pt</property>
+            <property name="fontWeight">bold</property>
+            <property name="marginLeft">25pt</property>
+            <property name="marginRight">25pt</property>
+            <text-property name="text"></text-property>
+        </label>
+        <label id="2582">
+            <property name="fontSize">8pt</property>
+            <property name="fontWeight">bold</property>
+            <property name="marginLeft">25pt</property>
+            <property name="marginRight">25pt</property>
+            <text-property name="text">Ion Dx CB-1</text-property>
+        </label>
+        <table id="3257">
+            <property name="marginLeft">25pt</property>
+            <property name="marginRight">25pt</property>
+            <property name="dataSet">RunTemplateQcIonDxCF1DST</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">metricName</property>
+                    <text-property name="displayName" key="metricName">metricName</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["metricName"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">value</property>
+                    <text-property name="displayName" key="value">value</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["value"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">referenceRange</property>
+                    <text-property name="displayName" key="referenceRange">referenceRange</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["referenceRange"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">qCStatus</property>
+                    <text-property name="displayName" key="qCStatus">qCStatus</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["qCStatus"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <column id="3281"/>
+            <column id="3282"/>
+            <column id="3283"/>
+            <column id="3284"/>
+            <header>
+                <row id="3258">
+                    <property name="style">tableHeader</property>
+                    <cell id="3259">
+                        <label id="3260">
+                            <property name="fontSize">8pt</property>
+                            <property name="textAlign">left</property>
+                            <text-property name="text">Metric Name</text-property>
+                        </label>
+                    </cell>
+                    <cell id="3261">
+                        <label id="3262">
+                            <property name="fontSize">8pt</property>
+                            <property name="textAlign">left</property>
+                            <text-property name="text">Value</text-property>
+                        </label>
+                    </cell>
+                    <cell id="3263">
+                        <label id="3264">
+                            <property name="fontSize">8pt</property>
+                            <property name="textAlign">left</property>
+                            <text-property name="text">Reference Range</text-property>
+                        </label>
+                    </cell>
+                    <cell id="3265">
+                        <label id="3266">
+                            <property name="fontSize">8pt</property>
+                            <property name="textAlign">left</property>
+                            <text-property name="text">QC Status</text-property>
+                        </label>
+                    </cell>
+                </row>
+            </header>
+            <detail>
+                <row id="3267">
+                    <cell id="3268">
+                        <data id="3269">
+                            <property name="fontSize">8pt</property>
+                            <property name="textAlign">left</property>
+                            <property name="resultSetColumn">metricName</property>
+                        </data>
+                    </cell>
+                    <cell id="3270">
+                        <data id="3271">
+                            <property name="fontSize">8pt</property>
+                            <property name="textAlign">left</property>
+                            <property name="resultSetColumn">value</property>
+                        </data>
+                    </cell>
+                    <cell id="3272">
+                        <data id="3273">
+                            <property name="fontSize">8pt</property>
+                            <property name="textAlign">left</property>
+                            <property name="resultSetColumn">referenceRange</property>
+                        </data>
+                    </cell>
+                    <cell id="3274">
+                        <data id="3275">
+                            <property name="fontSize">8pt</property>
+                            <property name="textAlign">left</property>
+                            <property name="resultSetColumn">qCStatus</property>
+                        </data>
+                    </cell>
+                </row>
+            </detail>
+            <footer>
+                <row id="3276">
+                    <cell id="3277"/>
+                    <cell id="3278"/>
+                    <cell id="3279"/>
+                    <cell id="3280"/>
+                </row>
+            </footer>
+        </table>
+        <label id="1224">
+            <property name="marginLeft">25pt</property>
+            <property name="marginRight">25pt</property>
+            <property name="pageBreakBefore">auto</property>
+        </label>
+        <label id="3256">
+            <property name="fontSize">8pt</property>
+            <property name="fontWeight">bold</property>
+            <property name="marginLeft">25pt</property>
+            <property name="marginRight">25pt</property>
+            <list-property name="visibility">
+                <structure>
+                    <property name="format">all</property>
+                    <expression name="valueExpr" type="javascript">!isSystemRun</expression>
+                </structure>
+            </list-property>
+            <text-property name="text">Ion Dx CF-1</text-property>
+        </label>
+        <table id="1200">
+            <property name="marginLeft">25pt</property>
+            <property name="marginRight">25pt</property>
+            <property name="dataSet">RunTemplateQcIonDxCB1DST</property>
+            <list-property name="visibility">
+                <structure>
+                    <property name="format">all</property>
+                    <expression name="valueExpr" type="javascript">!isSystemRun</expression>
+                </structure>
+            </list-property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">metricName</property>
+                    <text-property name="displayName" key="metricName">metricName</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["metricName"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">value</property>
+                    <text-property name="displayName" key="value">value</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["value"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">referenceRange</property>
+                    <text-property name="displayName" key="referenceRange">referenceRange</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["referenceRange"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">qCStatus</property>
+                    <text-property name="displayName" key="qCStatus">qCStatus</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["qCStatus"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <column id="1216"/>
+            <column id="1217"/>
+            <column id="1218"/>
+            <column id="1219"/>
+            <header>
+                <row id="1201">
+                    <property name="style">tableHeader</property>
+                    <cell id="1202">
+                        <label id="1220">
+                            <property name="fontSize">8pt</property>
+                            <property name="textAlign">left</property>
+                            <text-property name="text">Metric Name</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1203">
+                        <label id="1221">
+                            <property name="fontSize">8pt</property>
+                            <property name="textAlign">left</property>
+                            <text-property name="text">Value</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1204">
+                        <label id="1222">
+                            <property name="fontSize">8pt</property>
+                            <property name="textAlign">left</property>
+                            <text-property name="text">Reference Range</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1205">
+                        <label id="1223">
+                            <property name="fontSize">8pt</property>
+                            <property name="textAlign">left</property>
+                            <text-property name="text">QC Status</text-property>
+                        </label>
+                    </cell>
+                </row>
+            </header>
+            <detail>
+                <row id="1206">
+                    <cell id="1207">
+                        <data id="2688">
+                            <property name="fontSize">8pt</property>
+                            <property name="textAlign">left</property>
+                            <property name="resultSetColumn">metricName</property>
+                        </data>
+                    </cell>
+                    <cell id="1208">
+                        <data id="2689">
+                            <property name="fontSize">8pt</property>
+                            <property name="textAlign">left</property>
+                            <property name="resultSetColumn">value</property>
+                        </data>
+                    </cell>
+                    <cell id="1209">
+                        <data id="2690">
+                            <property name="fontSize">8pt</property>
+                            <property name="textAlign">left</property>
+                            <property name="resultSetColumn">referenceRange</property>
+                        </data>
+                    </cell>
+                    <cell id="1210">
+                        <data id="2691">
+                            <property name="fontSize">8pt</property>
+                            <property name="textAlign">left</property>
+                            <property name="resultSetColumn">qCStatus</property>
+                        </data>
+                    </cell>
+                </row>
+            </detail>
+            <footer>
+                <row id="1211">
+                    <cell id="1212"/>
+                    <cell id="1213"/>
+                    <cell id="1214"/>
+                    <cell id="1215"/>
+                </row>
+            </footer>
+        </table>
+        <label id="2594"/>
+        <label id="2286">
+            <property name="style">backgroundColor</property>
+            <property name="fontSize">10pt</property>
+            <property name="fontWeight">bold</property>
+            <property name="color">white</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">thin</property>
+            <property name="marginLeft">20pt</property>
+            <property name="marginRight">20pt</property>
+            <property name="paddingLeft">8pt</property>
+            <property name="textAlign">left</property>
+            <property name="verticalAlign">middle</property>
+            <property name="display">block</property>
+            <property name="pageBreakAfter">avoid</property>
+            <property name="pageBreakBefore">auto</property>
+            <property name="height">25px</property>
+            <text-property name="text">Assay Details</text-property>
+        </label>
+        <grid id="3575">
+            <property name="marginLeft">25pt</property>
+            <property name="marginRight">25pt</property>
+            <property name="width">7.760416666666667in</property>
+            <column id="3576">
+                <property name="width">6.760416666666667in</property>
+            </column>
+            <column id="3577">
+                <property name="width">1in</property>
+            </column>
+            <row id="3583">
+                <cell id="3584">
+                    <grid id="3585">
+                        <property name="marginLeft">8pt</property>
+                        <property name="width">6.583333333333333in</property>
+                        <property name="dataSet">AssayDetailsDST</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">templatingKit</property>
+                                <text-property name="displayName" key="templatingKit">templatingKit</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["templatingKit"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">control</property>
+                                <text-property name="displayName" key="control">control</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["control"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">sequenceingKit</property>
+                                <text-property name="displayName" key="sequenceingKit">sequenceingKit</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["sequenceingKit"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">chip</property>
+                                <text-property name="displayName" key="chip">chip</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["chip"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">flow</property>
+                                <text-property name="displayName" key="flow">flow</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["flow"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <column id="3586">
+                            <property name="width">1.8541666666666667in</property>
+                        </column>
+                        <column id="3587">
+                            <property name="width">4.729166666666667in</property>
+                        </column>
+                        <row id="3588">
+                            <property name="pageBreakAfter">avoid</property>
+                            <list-property name="visibility">
+                                <structure>
+                                    <property name="format">all</property>
+                                    <expression name="valueExpr" type="javascript">!isSystemRun</expression>
+                                </structure>
+                            </list-property>
+                            <cell id="3589">
+                                <label id="3703">
+                                    <property name="fontSize">8pt</property>
+                                    <property name="fontWeight">bold</property>
+                                    <text-property name="text">OneTouch Prep</text-property>
+                                </label>
+                            </cell>
+                            <cell id="3590"/>
+                        </row>
+                        <row id="3591">
+                            <list-property name="visibility">
+                                <structure>
+                                    <property name="format">all</property>
+                                    <expression name="valueExpr" type="javascript">!isSystemRun</expression>
+                                </structure>
+                            </list-property>
+                            <cell id="3592">
+                                <label id="3593">
+                                    <property name="fontSize">8pt</property>
+                                    <text-property name="text">Templating Kit:</text-property>
+                                </label>
+                            </cell>
+                            <cell id="3594">
+                                <data id="3711">
+                                    <property name="fontSize">8pt</property>
+                                    <property name="resultSetColumn">templatingKit</property>
+                                </data>
+                            </cell>
+                        </row>
+                        <row id="3704">
+                            <list-property name="visibility">
+                                <structure>
+                                    <property name="format">all</property>
+                                    <expression name="valueExpr" type="javascript">!isSystemRun</expression>
+                                </structure>
+                            </list-property>
+                            <cell id="3705"/>
+                            <cell id="3706"/>
+                        </row>
+                        <row id="3707">
+                            <property name="pageBreakAfter">avoid</property>
+                            <cell id="3708">
+                                <label id="3710">
+                                    <property name="fontSize">8pt</property>
+                                    <property name="fontWeight">bold</property>
+                                    <text-property name="text">PGM Sequencing</text-property>
+                                </label>
+                            </cell>
+                            <cell id="3709"/>
+                        </row>
+                        <row id="3596">
+                            <cell id="3597">
+                                <label id="3598">
+                                    <property name="fontSize">8pt</property>
+                                    <text-property name="text">Sequencing Kit:</text-property>
+                                </label>
+                            </cell>
+                            <cell id="3599">
+                                <data id="3712">
+                                    <property name="fontSize">8pt</property>
+                                    <property name="resultSetColumn">sequenceingKit</property>
+                                </data>
+                            </cell>
+                        </row>
+                        <row id="3601">
+                            <cell id="3602">
+                                <label id="3603">
+                                    <property name="fontSize">8pt</property>
+                                    <text-property name="text">Control:</text-property>
+                                </label>
+                            </cell>
+                            <cell id="3604">
+                                <data id="3713">
+                                    <property name="fontSize">8pt</property>
+                                    <property name="resultSetColumn">control</property>
+                                </data>
+                            </cell>
+                        </row>
+                        <row id="3606">
+                            <cell id="3607">
+                                <label id="3608">
+                                    <property name="fontSize">8pt</property>
+                                    <text-property name="text">Chip:</text-property>
+                                </label>
+                            </cell>
+                            <cell id="3609">
+                                <data id="3714">
+                                    <property name="fontSize">8pt</property>
+                                    <property name="resultSetColumn">chip</property>
+                                </data>
+                            </cell>
+                        </row>
+                        <row id="3611">
+                            <cell id="3612">
+                                <label id="3613">
+                                    <property name="fontSize">8pt</property>
+                                    <text-property name="text">Flow:</text-property>
+                                </label>
+                            </cell>
+                            <cell id="3614">
+                                <data id="3715">
+                                    <property name="fontSize">8pt</property>
+                                    <property name="resultSetColumn">flow</property>
+                                </data>
+                            </cell>
+                        </row>
+                    </grid>
+                </cell>
+                <cell id="3615"/>
+            </row>
+        </grid>
+        <label id="2513">
+            <property name="marginLeft">25pt</property>
+            <property name="marginRight">25pt</property>
+        </label>
+        <label id="2549">
+            <property name="style">backgroundColor</property>
+            <property name="fontSize">8pt</property>
+            <property name="fontWeight">bold</property>
+            <property name="color">white</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">medium</property>
+            <property name="marginLeft">20pt</property>
+            <property name="marginRight">20pt</property>
+            <property name="paddingLeft">8pt</property>
+            <property name="textAlign">left</property>
+            <property name="verticalAlign">middle</property>
+            <property name="display">block</property>
+            <property name="height">23px</property>
+            <text-property name="text">Sign Off Details</text-property>
+        </label>
+        <label id="2714">
+            <property name="marginLeft">25pt</property>
+            <property name="marginRight">25pt</property>
+            <property name="pageBreakBefore">auto</property>
+        </label>
+        <table id="2798">
+            <property name="marginLeft">25pt</property>
+            <property name="textAlign">left</property>
+            <property name="width">7.76in</property>
+            <property name="dataSet">SignOffDetailsDST</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">signBy</property>
+                    <text-property name="displayName" key="signBy">signBy</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["signBy"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">signOfDate</property>
+                    <text-property name="displayName" key="signOfDate">signOfDate</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["signOfDate"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">ipAddress</property>
+                    <text-property name="displayName" key="ipAddress">ipAddress</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["ipAddress"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">signOffComments</property>
+                    <text-property name="displayName" key="signOffComments">signOffComments</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["signOffComments"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">meaningofSignature</property>
+                    <text-property name="displayName" key="meaningofSignature">meaningofSignature</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["meaningofSignature"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <column id="2817"/>
+            <column id="2818"/>
+            <column id="2819"/>
+            <column id="2820"/>
+            <column id="2821"/>
+            <header>
+                <row id="2799">
+                    <property name="style">tableHeader</property>
+                    <cell id="2800">
+                        <label id="2822">
+                            <property name="fontSize">8pt</property>
+                            <property name="fontWeight">bold</property>
+                            <property name="textAlign">left</property>
+                            <text-property name="text">Signed By</text-property>
+                        </label>
+                    </cell>
+                    <cell id="2801">
+                        <label id="2823">
+                            <property name="fontSize">8pt</property>
+                            <property name="fontWeight">bold</property>
+                            <property name="textAlign">left</property>
+                            <text-property name="text">Signed On</text-property>
+                        </label>
+                    </cell>
+                    <cell id="2802">
+                        <label id="2824">
+                            <property name="fontSize">8pt</property>
+                            <property name="fontWeight">bold</property>
+                            <property name="textAlign">left</property>
+                            <text-property name="text">IP Address</text-property>
+                        </label>
+                    </cell>
+                    <cell id="2803">
+                        <label id="2825">
+                            <property name="fontSize">8pt</property>
+                            <property name="fontWeight">bold</property>
+                            <property name="textAlign">left</property>
+                            <text-property name="text">Meaning Of Signature</text-property>
+                        </label>
+                    </cell>
+                    <cell id="2804">
+                        <label id="2826">
+                            <property name="fontSize">8pt</property>
+                            <property name="fontWeight">bold</property>
+                            <property name="textAlign">left</property>
+                            <text-property name="text">SignOff Comments</text-property>
+                        </label>
+                    </cell>
+                </row>
+            </header>
+            <detail>
+                <row id="2805">
+                    <cell id="2806">
+                        <data id="2827">
+                            <property name="fontSize">8pt</property>
+                            <property name="marginRight">25pt</property>
+                            <property name="resultSetColumn">signBy</property>
+                        </data>
+                    </cell>
+                    <cell id="2807">
+                        <data id="2828">
+                            <property name="fontSize">8pt</property>
+                            <property name="resultSetColumn">signOfDate</property>
+                        </data>
+                    </cell>
+                    <cell id="2808">
+                        <data id="2829">
+                            <property name="fontSize">8pt</property>
+                            <property name="resultSetColumn">ipAddress</property>
+                        </data>
+                    </cell>
+                    <cell id="2809">
+                        <data id="2830">
+                            <property name="fontSize">8pt</property>
+                            <property name="resultSetColumn">meaningofSignature</property>
+                        </data>
+                    </cell>
+                    <cell id="2810">
+                        <data id="2831">
+                            <property name="fontSize">8pt</property>
+                            <property name="resultSetColumn">signOffComments</property>
+                        </data>
+                    </cell>
+                </row>
+            </detail>
+            <footer>
+                <row id="2811">
+                    <cell id="2812"/>
+                    <cell id="2813"/>
+                    <cell id="2814"/>
+                    <cell id="2815"/>
+                    <cell id="2816"/>
+                </row>
+            </footer>
+        </table>
+        <label id="2832">
+            <property name="marginLeft">25pt</property>
+            <property name="marginRight">25pt</property>
+            <property name="textAlign">right</property>
+        </label>
+    </body>
+</report>

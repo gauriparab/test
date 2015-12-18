@@ -1,0 +1,18 @@
+<div class="row-fluid">
+    <p class="context-help pull-left">{{t 'sample.define.manual.attributes.help'}}</p>
+    <div class="btn-group pull-right" id="add-attribute">
+        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+            {{t 'sample.define.manual.add.attribute'}}
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            {{#each attributesCollection}}
+            <li {{#if hidden}}style="display:none"{{/if}}><a href="#" data-id="{{id}}">{{name}}</a></li>
+            {{/each}}
+        </ul>
+    </div>
+</div>
+<br>
+<div class="row-fluid">
+    <div id="samples-grid"></div>
+</div>

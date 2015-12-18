@@ -1,0 +1,10 @@
+{{#ifCond state '===' 'Locked'}}
+<div style="display:inline-block;">
+	<i class="icon-lock" title="{{t 'grid.column.locked'}}"></i>
+</div>
+{{/ifCond}}
+{{#ifCond state '===' 'Draft'}}
+<div style="display:inline-block;">
+	<i class="icon-file" title="{{t 'grid.column.draft'}}"></i>
+</div>
+{{/ifCond}}

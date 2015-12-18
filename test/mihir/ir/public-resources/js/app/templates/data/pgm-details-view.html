@@ -1,0 +1,108 @@
+    <div class="row-fluid">
+        <div class="span12">
+		    <table style="width: 100%">
+		        <tr>
+		            <td valign="top" class="summary-item" style="padding-left:0px" width="165">{{t 'data.results.plannedName'}}:</td>
+		            <td>
+			            {{#if model.planRunName}}
+			            {{model.planRunName}}
+			            {{/if}}
+		            </td>
+		        </tr>
+		         <tr>
+		            <td valign="top" class="summary-item" style="padding-left:0px" width="165">{{t 'data.results.instrumentName'}}:</td>
+		            <td>
+			            {{#if model.pgmStartDate}}
+			            {{model.instrumentName}}
+			            {{/if}}
+		            </td>
+		        </tr>
+		        <tr>
+		            <td valign="top" class="summary-item" style="padding-left:0px" width="165">{{t 'data.results.pgmStartDate'}}:</td>
+		            <td>
+			            {{#if model.pgmStartDate}}
+			            {{model.pgmStartDate}}
+			            {{/if}}
+		            </td>
+		        </tr>
+		        <tr>
+		            <td valign="top" class="summary-item" style="padding-left:0px" width="165">{{t 'data.results.pgmCompletionDate'}}:</td>
+		            <td>
+			            {{#if model.pgmEndDate}}
+			            {{model.pgmEndDate}}
+			            {{/if}}
+		            </td>
+		        </tr>		     
+		        <tr>
+		            <td valign="top" class="summary-item"  style="padding-left:0px" width="165">{{t 'data.results.pgmOperator'}}:</td>
+		            <td>
+			            {{#if model.operator}}
+			            {{model.operator}}
+			            {{/if}}
+		            </td>
+		        </tr>
+		        <tr>
+		            <td valign="top" colspan="2" style="padding-left:0px"><strong>{{t 'data.results.sequencingRea'}}</strong></td>
+		        </tr>
+		        <tr>
+		            <td valign="top" class="summary-item"  style="padding-left:0px" width="165">{{t 'planned.runs.barcode'}}:</td>
+		            <td>
+			            {{#if model.barcode}}
+			            {{model.barcode}}
+			            {{/if}}
+		            </td>
+		        </tr>
+		        <tr>
+		            <td valign="top" class="summary-item"  style="padding-left:0px" width="165">{{t 'data.results.partNumber'}}:</td>
+		            <td>
+			            {{#if model.partNumber}}
+			            {{model.partNumber}}
+			            {{/if}}
+		            </td>
+		        </tr>
+		        <tr>
+		            <td valign="top" class="summary-item"  style="padding-left:0px" width="165">{{t 'data.results.expDate'}}:</td>
+		            <td>
+			            {{#if model.expirationDate}}
+			            {{model.expirationDate}}
+			            {{/if}}
+		            </td>
+		        </tr>
+		        <tr>
+		            <td valign="top" class="summary-item"  style="padding-left:0px" width="165">{{t 'data.results.lot'}}:</td>
+		            <td>
+			            {{#if model.lotNumber}}
+			            {{model.lotNumber}}
+			            {{/if}}
+		            </td>
+		        </tr>
+		        <tr>
+		            <td valign="top" colspan="2" style="padding-left:0px"><strong>{{t 'data.results.chip'}}</strong></td>
+		        </tr>
+		        <tr>
+		            <td valign="top" class="summary-item"  style="padding-left:0px" width="165">{{t 'data.results.bottomBarcode'}}:</td>
+		            <td>
+			             {{#if model.bottomBarcode}}
+			             {{model.bottomBarcode}}
+			             {{/if}}
+		            </td>
+		        </tr>
+		        <tr>
+		            <td valign="top" class="summary-item"  style="padding-left:0px" width="165">{{t 'data.results.topBarcode'}}:</td>
+		            <td>
+			            {{#if model.topBarcode}}
+			            {{model.topBarcode}}
+			            {{/if}}
+		            </td>
+		        </tr>
+		        <tr>
+		            <td valign="top" class="summary-item"  style="padding-left:0px" width="165">{{t 'data.results.manufactureDate'}}:</td>
+		            <td>
+			            {{#if model.manufacturingDate}}
+			            {{model.manufacturingDate}}
+			            {{/if}}
+		            </td>
+		        </tr>
+		    </table>
+        </div>
+    </div>

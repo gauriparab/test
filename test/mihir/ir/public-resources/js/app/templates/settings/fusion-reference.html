@@ -1,0 +1,17 @@
+<div class="row-fluid">
+	<div class="pull-left">
+		<h1>{{t 'settings.label.fusionReference'}}</h1>
+	</div>
+	<div class="pull-right">
+		<form class="form-search pull-right btn-toolbar">
+			{{#if canAddFusionReference}}
+			<a href="javascript:void(0)" id="addFusionReference" class="btn btn-primary">{{t 'createassay.label'}}</a>
+			{{/if}}
+		</form>
+	</div>
+</div>
+
+<div class="row-fluid">
+	<div class="span12" id="fusion-reference-grid"></div>
+</div>
+<div class="modal hide fade" id="addFusionReferenceModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>

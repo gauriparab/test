@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:substituteby="layout.html :: headerFragment"></head>
+<body>
+<div class="wrapper">
+    <div class="header" th:substituteby="layout.html :: bodyHeaderFragment"></div>
+
+    <div class="sub-nav" th:substituteby="layout.html :: bodySubNavFragment"></div>
+
+    <div class="main">
+        <div class="main-content clearfix">
+            <!-- templates/settings/reference-overview-page.html -->
+        </div>
+    </div>
+
+    <footer class="footer" th:substituteby="layout.html::bodyFooter"></footer>
+</div>
+<script th:substituteby="layout.html::irHeaderModals"></script>
+
+<script type="text/javascript" th:inline="javascript">
+/*<![CDATA[*/
+    requireInit(['views/settings/referenceOverView'], function(View) {
+        var view = new View({
+            el: '.main-content',
+            canAddReference: /*[[${#authorization.expression("hasPermission('ROLE_ORGADMIN', 'Add Reference Permission')")}]]*/ false,
+            canAddGeneList: /*[[${#authorization.expression("hasPermission('ROLE_ORGADMIN', 'Add Gene List Permission')")}]]*/ false,
+            canAddPrimer: /*[[${#authorization.expression("hasPermission('ROLE_ORGADMIN', 'Add Primer Permission')")}]]*/ false,
+            showPrimer: /*[[${#authorization.expression("hasPermission('ROLE_ORGADMIN', 'Show Primer Permission')")}]]*/ false,
+            canAddFusionReference: /*[[${#authorization.expression("hasPermission('ROLE_ORGADMIN', 'Add Fusion Reference Permission')")}]]*/ false,
+            canAddFusionPanel: /*[[${#authorization.expression("hasPermission('ROLE_ORGADMIN', 'Add Fusion Panel Permission')")}]]*/ false
+        });
+        view.render();
+    });
+/*]]>*/
+</script>
+</body>
+</html>

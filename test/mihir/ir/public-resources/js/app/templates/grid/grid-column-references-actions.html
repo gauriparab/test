@@ -1,0 +1,15 @@
+<div>
+	{{#ifCond factoryProvided '===' false}}
+		{{#ifCond state '!==' 'Error'}}
+			{{#ifCond status '!==' "Obsolete"}}
+				<b><a href='javascript:void(0)' data-action='obsolete'>{{t 'grid.column.obsolete'}}</a></b>
+			{{else}}
+				<b><a href='javascript:void(0)' data-action='reactivate'>{{t 'action.REACTIVATE'}}</a></b>
+			{{/ifCond}}
+		 	| 
+		{{/ifCond}} 
+	{{/ifCond}}
+	{{#ifCond state '!==' 'Error'}}
+	 	<b><a href='javascript:void(0)' data-action='export'>{{t 'actions.EXPORT'}}</a></b>
+	{{/ifCond}}
+</div>

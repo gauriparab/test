@@ -1,0 +1,131 @@
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="accordion" id="accordion2">			
+			<div class="tile selectedTile" id="DNA_0" data-sel="0" data-filter="all">
+				
+					
+						
+							<div class="row-fluid">
+								<div class="span12">
+									<span class="selected-samples pull-left span3" style="font-size: 48px;padding-left:10px;line-height:40px;">143</span>
+									<img id="flask" class="pull-right" style="margin-right:20px" src="/ir/resources/img/icon-samples-all-selected.png">
+									<div style="padding: 75px 15px 0px">
+										<div style="font-size:18px">
+										  <div>New Samples Added <img id="arrow" src="/ir/resources/img/Icon-Arrow-White.png" class="pull-right" style="-webkit-transform: rotate(90deg);"></div>
+										</div>
+									</div>
+								</div>								
+							</div>
+						
+					
+				
+			</div>	
+			<div class="tile" id="DNA_0" data-sel="1" data-filter="toBeExtracted">
+				
+							<div class="row-fluid">
+								<div class="span12">
+									<span class="selected-samples pull-left span3" style="font-size: 48px;padding-left:10px;line-height:40px;">128</span>
+									<img id="flask" class="pull-right" style="margin-right:20px" src="/ir/resources//img/icon-samples-toBeExtracted.png">
+									<div style="padding: 75px 15px 0px">
+										<div style="font-size:18px">
+										  <div>Samples to be extracted <img id="arrow" src="/ir/resources/img/Icon-Arrow-White.png" class="pull-right" style="-webkit-transform: rotate(90deg); display:none"></div>
+										</div>
+									</div>
+								</div>								
+							</div>
+			</div>	
+			<div class="tile" id="DNA_0" data-sel="2" data-filter="toBeProcessed">
+				
+							<div class="row-fluid">
+								<div class="span12">
+									<span class="selected-samples pull-left span3" style="font-size: 48px;padding-left:10px;line-height:40px;">13</span>
+									<img id="flask" class="pull-right" style="margin-right:20px" src="/ir/resources//img/icon-samples-toBeProcessed.png">
+									<div style="padding: 75px 15px 0px">
+										<div style="font-size:18px">
+										  <div>Samples to be prepared <img id="arrow" src="/ir/resources/img/Icon-Arrow-White.png" class="pull-right" style="-webkit-transform: rotate(90deg); display:none"></div>
+										</div>
+									</div>
+								</div>								
+							</div>
+			</div>	
+			<!-- <div class="tile" id="DNA_0" data-sel="3" style="margin-right:0px">
+				
+							<div class="row-fluid">
+								<div class="span12">
+									<span class="selected-samples pull-left span3" style="font-size: 48px;padding-left:10px;line-height:40px;color:#6d848b">43</span>
+									<img class="pull-right" style="margin-right:20px" src="/ir/resources//img/Icon-Progress-Grey.png">
+									<div style="padding: 75px 15px 0px">
+										<div style="font-size:18px">
+										  <div style="color:#777777">Samples in progress</div>
+										</div>
+									</div>
+								</div>								
+							</div>
+			</div>	 -->	
+		</div>
+	</div>
+	<div class="row-fluid">
+		<div style="border: 1px solid #D8D8D8;min-height:600px">
+			<div class="actionSearch" style="border-bottom:1px solid #D8D8D8">
+					<div class="pull-left span7">
+						<!--<label class="span3" style="font-family: robotomedium;color: #777777;font-size: 18px;line-height: 25px;">
+							Sample Listing
+						</label>
+						<span class="span9" style="color: #777777;text-shadow: 0 1px 0 #ffffff;margin:0">Showing &nbsp;
+							<select style="width:150px;margin:0"></select>
+						</span>			-->		
+						<button id="btnAddSpecimen" class="btn btn-primary">
+								{{t 'addSample.button.label'}} <i class="icon-plus" style="background-image: url('../resources/img/glyphicons-halflings-white.png');"></i>
+						</button>						
+					</div>
+					<div class="span5">
+						<form id="query-form" class="form-search form-inline pull-right" style="margin:0">
+							<!-- templates/common/search.html -->
+						</form>
+						<div style="color: #777777;text-shadow: 0 1px 0 #ffffff;">
+							
+						</div>
+					</div>
+			</div>
+			<div class="row-fluid">
+				<div id="specimen-grid" class="span12" style="min-width: 1060px; border-right: 1px solid #d8d8d8;">
+					<!-- views/samples/sampleGridView.js -->
+				</div>
+				<div id="grid-actions-panel" class="span2" style="margin-left:25px;width:230px; display:none">
+					<div style="font-family:robotomedium; color:#777777;font-size: 24px; margin: 15px 0px 15px;">{{t 'specimen.manage.label.selected.specimens'}}</div>	
+					
+					<div class="selected-samples" id="manageSpecimenCount" style="font-family:robotomedium;color:#ff5c5c; font-size: 48px;margin: 10px 0px;padding: 10px 0;">{{t 'manage.sample.selectedcount'}}</div>
+					<p style="font-family:robotomedium;color:#777777;font-size:14px;margin:10px 0px 15px">You can now take either of the following actions at a time</p>	
+					<div style="padding: 15px 0px 15px;width: 200px">
+						<button class="btn btn-primary" style="margin-bottom:5px; width: 80%; text-align:left" id="extract" disabled>{{t 'actions.EXTRACT'}} <span class="pull-right"><i class="icon-share-alt"></i></span></button>
+						<button class="btn btn-primary" style="margin-bottom:5px; width: 80%; text-align:left" id="prepareLibraryBatchBtn" style= "background: rgb(113, 113, 113);color: white;" disabled >Prepare Batch <span class="pull-right"><i class="icon-tasks"></i></span></button>
+						<button class="btn btn-primary" style="margin-bottom:5px; width: 80%; text-align:left"id="manageSpecimenExport" disabled>Export to Excel <span class="pull-right"><i class="icon-share"></i></span>
+						</button>
+						<button class="btn btn-primary"  style="margin-bottom:5px; width: 80%; text-align:left" id="manageSpecimenDelete" disabled>Delete <span class="pull-right"><i class="icon-trash"></i></span>
+						</button>	
+						<hr style="border-color:#adadad"/>	
+						<div class="span2"><img src="/ir/resources/img/Icon-Learn-More.png"></div>
+						<div class="span9" style="color:#0088d3;">
+							<ul style="list-style: none;margin: 0;font-size:14px;font-family:robotomedium">
+								<li style="color: #777777;">Learn more about:</li>
+								<li>Extracting Samples</li>
+								<li>Prepare Batch Libraries</li>
+								<li>Export To Excel</li>
+								<li>Add New Sample</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal hide fade" id="addEditSpecimen" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>
+	<div class="modal hide fade" id="addNotes" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>
+	<div class="modal hide fade" id="viewNotes" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>
+	<div class="modal hide fade" id="addLibrary" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>
+	<div class="modal hide fade" id="auditTrailModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>
+	<div class="modal hide fade" id="auditTrailDetailsModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>
+	<div class="modal hide fade" id="viewSpecimen" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>
+	<div class="modal hide fade" id="extraction" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>
+	<div class="modal hide fade" id="prepareLibraryBatch" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>
+</div>

@@ -1,0 +1,18 @@
+<div id="logModal" class="modal hide fade in" >
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"> x </button>
+        <h3 class="breakall">{{t headerKey}}</h3>
+    </div>
+    <div class="modal-body">
+        {{#ifNotUndefined bodyTemplate}}
+            {{sub bodyTemplate bodyCtx}}
+        {{else}}
+            <p>{{t bodyKey}}</p>
+        {{/ifNotUndefined}}
+    </div>
+    <div id="modalFooter" class="modal-footer">
+    
+    </div>
+
+</div>

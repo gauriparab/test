@@ -1,0 +1,10 @@
+<div>
+      <label for="chromosomes-filter"><b>{{t 'analysis.variant.chromosome.filter.label'}}</b></label>
+      <select id="chromsomes-filter" name="chromsomes-filter" data-width="185px" class="input-large">
+      		{{#if chromosomes}}
+      		{{#each chromosomes}}
+    				<option value='{{name}}' {{#ifCond name "===" ../selectedChromosome}}selected="selected"{{/ifCond}}>{{name}}</option>
+			{{/each}}
+			{{/if}}
+      </select>
+</div>

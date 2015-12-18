@@ -1,0 +1,32 @@
+<div class="span12">
+    <h5>{{t 'annotation.set.label.settings'}}</h5>
+
+    <div class="settings-table">
+        <table class="table">
+			<thead>
+				<tr>
+					<th width="65%">{{t 'annotation.set.label.name'}}</th>
+					<th>{{t 'annotation.set.label.version'}}</th>
+				</tr>
+			</thead>
+	        <tbody>
+	        {{#each sources }}
+                
+	        <!--{{@index}} Template setting row used by the JavaScript to clone new rows-->
+	            <tr class="workflow-setting">
+	                <td class="input-cell">
+	                    <div class="layout-setting setting-value">
+	                        {{name}}
+	                    </div>
+	                </td>
+	                 <td class="input-cell">
+	                    <div class="layout-setting setting-value">
+	                        {{version}}
+	                    </div>
+	                </td>
+	            </tr>
+	        {{/each}}
+	        </tbody>
+        </table>
+    </div>
+</div>

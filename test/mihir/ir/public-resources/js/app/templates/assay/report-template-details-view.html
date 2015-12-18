@@ -1,0 +1,128 @@
+<div class="modal-scroll details-section">
+	<div class="row-fluid">
+		<div>
+				<div>
+					<span class="lead">{{model.name}}</span>
+				</div>
+				<div>
+					<img src="/analysis/reports/images/{{model.organizationLogoFileName}}">
+				</div>
+				<div>
+					<div class="summary-item span4" style="padding-left: 0;">{{t 'planned.runs.assay'}}:</div>
+					<div class="span6">{{model.assayName}}</div>
+				</div>
+		</div>
+	</div>
+	<hr style="margin:10px 0;border:1px solid" />
+	<div class="row-fluid">
+		<div class="span6">
+			<div style="width: 100%">
+				<div class="summary-body-header">
+					<h5>{{t 'report.template.summaryreport'}}</h5>
+				</div>
+				<div style="padding-left: 20px;">
+					<label id="includeAnalyticalSummarySection" class="checkbox" style="font-size: 12px">
+						<input id="includeAnalyticalSummary" type="checkbox" disabled {{#if model.requiredAnalyticalSummary}}checked="checked"{{/if}}>{{t 'report.template.analyticasummary'}}
+					</label>
+				</div>
+				<div class="summary-body-header">
+						<h5>{{t 'settings.configurationPage.tabs.lab'}}</h5>
+				</div>
+				<div>
+					<div class="summary-item span6">{{t 'report.template.label.organization.name'}}: </div>
+					<div class="span6">{{model.organizationName}}</div>
+				</div>
+				<div>
+					<div class="summary-item span6">{{t 'report.template.label.organization.address'}}: </div>
+					<div class="span6">{{model.organizationAddr}}</div>
+				</div>
+				<div>
+					<div class="summary-item span6">{{t 'report.template.telephone'}}: </div>
+					<div class="span6">{{model.telephone}}</div>
+				</div>
+				<div>
+					<div class="summary-item">{{t 'report.template.fax'}}: </div>
+					<div class="controls">{{model.fax}}</div>
+				</div>
+				<div>
+					<div class="summary-item span6">{{t 'report.template.website'}}: </div>
+					<div class="span6">{{model.website}}</div>
+				</div>
+				<div>
+					<div class="summary-item span6">{{t 'report.template.email'}}: </div>
+					<div class="span6">{{model.email}}</div>
+				</div>
+				<div>
+					<div class="summary-item span6">{{t 'report.template.label.labdirector.name'}}: </div>
+					<div class="span6">{{model.labDirectorName}}</div>
+				</div>
+				<div>
+					<div class="summary-item span6">{{t 'report.template.clipnumber'}}: </div>
+					<div class="span6">{{model.cliaNumber}}</div>
+				</div>
+				
+				<div class="span12 summary-body-header" style="margin-left:0; min-height:0">
+					<h5>{{t 'report.template.specimendetails'}}</h5>
+				</div>
+				<div class="summary-item" style="color:#000">
+					<div class="row-fluid">
+						<div class="span12">
+							<div class="span4" style="margin-left: 0;">
+								<h6>{{t 'finalReportTemplate.columns.one'}}</h6>
+								<div>
+									<ul id="default1" class="unstyled">
+										{{#each model.columnOneList}} 
+											<li name="id" disabled>{{attributeName}}</li> 
+										{{/each}}
+									</ul>
+								</div>
+							</div>
+							<div class="span4">
+								<h6>{{t 'finalReportTemplate.columns.two'}}</h6>
+								<div>
+									<ul id="default2" class="unstyled"
+										style="min-height: 60px">
+										{{#each model.columnTwoList}} 
+											<li name="id" disabled>{{attributeName}}</li> 
+										{{/each}}
+									</ul>
+								</div>
+							</div>
+							<div class="span4">
+								<h6>{{t 'finalReportTemplate.columns.three'}}</h6>
+								<div>
+									<ul id="default3" class="unstyled"
+										style="min-height: 60px">
+										{{#each model.columnThreeList}} 
+											<li name="id" disabled>{{attributeName}}</li> 
+										{{/each}}
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="span6">
+			<div style="width: 100%">
+					<div class="summary-body-header">
+						<h5>{{t 'finalReportTemplate.test.description'}}</h5>
+					</div>
+					<div class="summary-item" style="color:#000">
+						{{model.description}}
+					</div>
+			</div>
+		</div>
+		<div class="span12" style="margin-left:0;">
+			<div style="width: 100%">
+				<div class="summary-body-header">
+					<h5>{{t 'finalReportSection.CommentsSection'}}</h5>
+				</div>
+				<div class="summary-item" style="color:#000; padding-left: 20px;">
+					{{model.appendix}}
+				</div>				
+			</div>
+		</div>
+	</div>
+</div>

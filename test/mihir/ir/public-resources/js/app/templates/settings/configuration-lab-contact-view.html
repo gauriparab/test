@@ -1,0 +1,31 @@
+<div style="width:100%;">
+	<h6>{{t 'settings.configurationPage.labInfoTab.labContact'}}</h6>
+	<div>
+		<span>{{t 'settings.configurationPage.labInfoTab.labContactMessage'}}</span>
+	</div>
+</div>
+
+<div style="width:100%; margin-top:20px;">
+	<div>
+		<div>
+			<div class="span2"><b>{{t 'settings.configurationPage.labInfoTab.name'}} :</b></div>
+			<div class="span2"><b>{{t 'settings.configurationPage.labInfoTab.email'}} : </b></div>
+			<div class="span2"><b>{{t 'settings.configurationPage.labInfoTab.phone'}} : </b></div>
+			<div class="span6"></div>
+		</div>
+		<div>
+			<form class="form-horizontal">
+				<div class="control-group lab-inputs">
+					<div class="span2"><input id="lab-name" class="span12 reset" type="text" disabled value="{{info.0.contactInfoDto.name}}"/></div>
+					<div class="span2"><input id="lab-email" class="span12" type="text" disabled value="{{info.0.contactInfoDto.email}}"/></div>
+					<div class="span2"><input id="lab-phone" class="span12 reset" type="text" disabled value="{{info.0.contactInfoDto.phone}}"/></div>
+					<div class="span2">
+						<a href="#" class="btn" id="lab-save" style="display:none;">{{t 'settings.configurationPage.labInfoTab.save'}}</a>
+						<a href="#" class="btn" id="lab-edit">{{t 'settings.configurationPage.labInfoTab.edit'}}</a>
+						<a href="#" class="btn" id="lab-reset">{{t 'settings.configurationPage.labInfoTab.reset'}}</a>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

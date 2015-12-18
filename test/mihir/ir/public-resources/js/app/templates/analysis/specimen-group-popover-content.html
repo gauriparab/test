@@ -1,0 +1,25 @@
+
+<ul>
+    {{#if specimenGroup}}
+            {{#each specimenGroup.members}}
+                <li>{{this.specimen.name}}</li>
+            {{/each}}
+    {{/if}}
+    {{#if specimenGroups}}
+        {{#each specimenGroups}}
+            {{#if this.name}}
+                <li>{{this.name}}
+                    <ul>
+            {{/if}}
+
+            {{#each this.members}}
+                <li>{{#ifCond role '!==' 'NONE'}}<strong>{{tMultiOptions 'specimen.role.' ../../../workflow.applicationType '.' role defaultTemplate='specimen.role.' defaultLabel=role}}:</strong>{{/ifCond}} {{this.specimen.name}}</li>
+            {{/each}}
+
+            {{#if this.name}}
+                    </ul>
+                </li>
+            {{/if}}
+        {{/each}}
+    {{/if}}
+</ul>

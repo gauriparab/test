@@ -1,0 +1,38 @@
+<h5>{{t 'analysis.launch.plugins.inAnalysis.header'}}</h5>
+{{#each inAnalysisPlugins}}
+<div class="row-fluid">
+    <div class="span12">
+        <div id="{{identifier}}" class="action plugin"
+             data-id="{{id}}">
+            <div class="row-fluid">
+                <div class="span1 pluginLogo"><img src="{{iconUrl}}"/></div>
+                <div class="span11">
+                    <div class="name">{{name}}</div>
+                    <div class="description">{{{description}}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{/each}}
+<br/>
+<h5>{{t 'analysis.launch.plugins.postAnalysis.header'}}</h5>
+<div class="alert alert-info">{{t 'analysis.launch.plugins.postAnalysis.warning'}}</div>
+{{#each postAnalysisPlugins}}
+<div class="row-fluid">
+    <div class="span12">
+        <div id="{{identifier}}" class="action plugin action-disabled"
+             data-id="{{id}}">
+            <div class="row-fluid">
+                <div class="span1 pluginLogo"><img src="{{iconUrl}}"/></div>
+                <div class="span11">
+                    <div class="name">{{name}}</div>
+                    <div class="description">{{{description}}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{/each}}
+
+

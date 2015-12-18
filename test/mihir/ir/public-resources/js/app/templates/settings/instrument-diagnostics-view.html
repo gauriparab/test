@@ -1,0 +1,41 @@
+<div>
+	<p>
+		{{t 'about.instrumentDiagnostics.whatLinksDo'}}:<br> 
+		<b>[{{t 'about.instrumentDiagnostics.download'}}]</b> {{t 'about.instrumentDiagnostics.downloadMessage'}}<br> 
+		<b>[{{t 'about.instrumentDiagnostics.viewLog'}}]</b> {{t 'about.instrumentDiagnostics.viewLogMessage'}}<br> 
+		<b>[{{t 'about.instrumentDiagnostics.pdf'}}]</b> {{t 'about.instrumentDiagnostics.pdfMessage'}}
+	</p>
+</div>
+<div>
+	<p>{{t 'about.instrumentDiagnostics.location'}}: {{t 'about.instrumentDiagnostics.home'}}</p>
+	<div id="qcAccordian" style="margin-bottom:10px; margin-bottom:0;" class="span8">
+		<div class="accordion" id="accordion">
+			{{#each data}}
+	  			<div class="accordion-group">
+					<div class="accordion-heading">
+				      <a id="accordion-heading" class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseInstr-{{rigName}}" style="font-weight: bold; color: black;">
+				        <i id="toggle-intrument" class="icon-plus-sign"></i>{{rigName}}
+				      </a>
+			    	</div>
+					<div id="collapseInstr-{{rigName}}" class="accordion-body collapse">
+					    <div class="accordion-inner">
+					    	{{t 'data.results.passed'}}:
+					    	<ul>
+					    		{{#each passed}}
+					    			<li>{{name}} <a id="passedDownload" alt="{{folderPath}},{{name}}" href="javascript: void(0)">[{{t 'about.instrumentDiagnostics.download'}}]</a> <a id="passedViewLog" alt="{{folderPath}},{{name}}" href="javascript: void(0)">[{{t 'about.instrumentDiagnostics.viewLog'}}]</a></li>
+					    		{{/each}}
+					    	</ul>
+					    	{{t 'data.results.failed'}}:
+					    	<ul>
+					    		{{#each failed}}
+					    			<li>{{name}} <a id="failedDownload" alt="{{folderPath}},{{name}}" href="javascript: void(0)">[{{t 'about.instrumentDiagnostics.download'}}]</a> <a id="failedViewLog" alt="{{folderPath}},{{name}}" href="javascript: void(0)">[{{t 'about.instrumentDiagnostics.viewLog'}}]</a></li>
+					    		{{/each}}
+					    	</ul>
+					    </div>
+					</div>
+				</div>
+			{{/each}}
+		</div>
+    </div>
+</div>
+<div class="modal hide fade" id="logView" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>

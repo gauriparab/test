@@ -1,0 +1,5 @@
+<!--<div class="input-append control-group">-->
+    <input type="text" class="input-xlarge" maxlength="256"/>
+    <button type="submit" class="btn">{{t 'search.button.label'}}</button>
+    <button type="reset" class="btn">{{t 'reset.button.label'}}</button>
+<!--</div>-->

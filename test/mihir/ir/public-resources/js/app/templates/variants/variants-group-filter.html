@@ -1,0 +1,11 @@
+{{#ifCond currentGroup '==' group}}
+    <span class='current-group'><b>{{t 'VariantGroup.' group}} {{#if groupTotal}}({{groupTotal}}){{/if}}</b></span>
+{{else}}
+    {{#ifCond displayLink '===' true}}
+        <a href='#' role='{{group}}'>
+    {{/ifCond}}
+    {{t 'VariantGroup.' group}} {{#if groupTotal}}({{groupTotal}}){{/if}}
+    {{#ifCond displayLink '===' true}}
+        </a>
+    {{/ifCond}}
+{{/ifCond}}

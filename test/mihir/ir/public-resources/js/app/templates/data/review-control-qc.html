@@ -1,0 +1,27 @@
+<div class="span12">	
+	{{#each controlQcs}}
+	<div class="report-header">{{name}}</div>
+	<div class="report-body">
+		<table style="width: 100%">
+			<thead>
+				<tr>
+					<th class="text-left">{{t 'data.report.metricName'}}</th>
+					<th class="text-left">{{t 'data.report.value'}}</th>
+					<th class="text-left">{{t 'data.report.refRange'}}</th>
+					<th class="text-left">{{t 'cnv.baseline.selectSamples.grid.title.qc'}}</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{#each internalControlList}}
+				<tr>
+					<td>{{metricName}}</td>
+					<td style="background-color:transparent;" {{#ifCond qCStatus '===' "Failed"}}class="alert-error"{{else}}class="alert-success"{{/ifCond}}>{{value}}</td>
+					<td>>= {{referenceRange}}</td>
+					<td style="background-color:transparent;" {{#ifCond qCStatus '===' "Failed"}}class="alert-error"{{else}}class="alert-success"{{/ifCond}}>{{qCStatus}}</td>
+				</tr>
+				{{/each}}
+			</tbody>
+		</table>
+	</div>
+	{{/each}}
+</div>

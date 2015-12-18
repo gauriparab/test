@@ -1,0 +1,51 @@
+<!-- configuration-software-view.html -->
+{{#each dets}}
+<div class="row-fluid">
+	<div class="instument-select" style="width: auto; padding: 10px 5px; margin: 0px 0px 10px 0px;">
+		<div>
+			<b>{{suiteName}} - {{suiteVersion}}</b>
+		</div>
+	</div>
+<div class="accordion span6" id="accordion{{trim suiteName}}">
+        {{#each componentList}}
+        <div class="accordion-group">
+                <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion{{trim ../suiteName}}" href="#collapse{{@key}}_{{componentKey}}"> {{componentName}} - {{componentVersion}}</a>
+                </div>
+                <div id="collapse{{@key}}_{{componentKey}}" class="accordion-body collapse">
+                        <div class="accordion-inner">
+                                <ul style="list-style-type:none;">
+                                        {{#each packageList}}
+						<li>
+							<span>{{packageName}}</span>
+							<span class="pull-right">{{version}}</span>
+						</li>
+
+						{{/each}}
+                                </ul>
+                        </div>
+                </div>
+        </div>
+        {{/each}}
+</div>
+</div>
+{{/each}}
+<div class="span6"></div>
+
+<div class="span11" style="margin:-40px 0px 0px 0px;" id="showUpdates">
+
+</div>
+
+<div class="span11" style="margin:0px;">
+	<label class="checkbox">
+    <input type="checkbox" disabled checked> {{t 'settings.configurationPage.softwareTab.usbUpdate.title'}}
+    </label>
+    <button type="submit" class="btn" id="checkForUpdates">
+    	{{t 'settings.configurationPage.softwareTab.usbUpdate.check'}}
+    </button>
+
+    <button type="submit" class="btn btn-primary" id="installUpdates" style="display:none;">
+    	{{t 'settings.label.softwareUpdates.download'}} & {{t 'settings.label.softwareUpdates.update'}}
+    </button>
+
+</div>

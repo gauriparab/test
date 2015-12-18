@@ -1,0 +1,20 @@
+{{#each libraries}}
+	{{#if hasNotes}}
+		<div><a data-action="view_notes" alt={{id}} class="column-notes"><img src="/ir/resources/img/note.jpg"></a></div>
+	{{else}}
+		{{#ifCond libraryType '===' 'DNA'}}
+    			<div data-action="add_notes" alt="{{id}}" data-toggle="tooltip" title="{{t 'grid.column.note.dna'}}">
+					<a href="#">
+						<img src="/ir/resources/img/add-DNA-RNA.png" />
+					</a>
+				</div>
+    			{{/ifCond}}
+    			{{#ifCond libraryType '===' 'RNA'}}
+    			<div data-action="add_notes" alt="{{id}}" data-toggle="tooltip" title="{{t 'grid.column.note.rna'}}">
+					<a href="#">
+						<img src="/ir/resources/img/add-DNA-RNA.png" />
+					</a>
+				</div>
+    	{{/ifCond}}
+	{{/if}}
+{{/each}}

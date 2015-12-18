@@ -1,0 +1,7 @@
+{{#if header}}
+<span data-toggle="tooltip" data-placement="bottom" title="{{t 'grid.header.selectAll'}}" data-container=".main-content">
+{{/if}}
+<input type="checkbox" data-id="{{#if id}}{{id}}{{else}}_all_{{/if}}"/>
+{{#if header}}
+</span>
+{{/if}}

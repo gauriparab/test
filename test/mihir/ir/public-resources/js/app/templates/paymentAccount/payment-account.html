@@ -1,0 +1,21 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+    <h3 class="title"><span class="modalAction">{{t 'payment.label.link'}}</span> {{t 'payment.label.payments.account'}}</h3>
+</div>
+<div class="modal-body" style="overflow: auto; max-height: 344px;">
+    <div id="errors"></div>
+    <fieldset>
+    <span class="help-block">Lifetechnologies.com {{t 'payment.label.account'}}</span>
+    <label for="payment-account-username">{{t 'payment.label.username'}}</label>
+    <input id="payment-account-username" class="payment-account-input" type="text" size="20" title="Name"
+           required="required" value="" maxlength="255"/>
+    <label for="payment-account-password">{{t 'payment.label.password]'}}</label>
+    <input id="payment-account-password" class="payment-account-input input-xlarge" type="password" title="Description"
+           value="" maxlength="255"/>
+    <div class="row-fluid"><br /></div>
+    </fieldset>
+</div>
+<div class="modal-footer">
+    <button id="payment-account-btn-cancel" type="button" class="btn btn-secondary" data-dismiss="modal">{{t 'payment.label.cancel'}}</button>
+    <button id="payment-account-btn-save" type="button" class="btn btn-primary">{{t 'payment.label.save'}}</button>
+</div>

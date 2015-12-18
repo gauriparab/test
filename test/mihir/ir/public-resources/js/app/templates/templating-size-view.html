@@ -1,0 +1,10 @@
+<div>
+	<span>{{t 'assay.views.sequencing.kit.template.size'}}: </span>
+	<div style="display:inline-block;">
+		<select id="{{idKey}}" class="input-small" style="margin-bottom: 0px;">
+			{{#each collection}}
+				<option value={{this.value}}>{{this.value}}</option>
+			{{/each}}
+		</select>
+	</div>	
+</div>

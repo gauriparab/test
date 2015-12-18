@@ -1,0 +1,11 @@
+{{#if this}}
+    {{#if value.first}}
+        <div {{#ifCond applicationType '!==' 'ANNOTATE_VARIANTS'}} title="{{t 'analysis.locus.tooltip.message'}}" {{/ifCond}}>
+            <a href='#' class='locus' data-locus='{{value.first.value}},{{value.second.value}}'>{{value.first.value}} -<br/> {{value.second.value}}</a>
+        </div>
+    {{else}}
+    <div {{#ifCond applicationType '!==' 'ANNOTATE_VARIANTS'}} title="{{t 'analysis.locus.tooltip.message'}}" {{/ifCond}}>
+        <a href='#' class='locus' data-locus='{{value.value}}'>{{value.value}}</a>
+    </div>
+    {{/if}}
+{{/if}}

@@ -1,0 +1,66 @@
+<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal">x</button>
+	<h3>View Assay</h3>
+</div>
+<div class="modal-body">
+	<div class="row-fluid">
+		<div class="span5">
+			<table style="width: 100%">
+				<!-- {{#if templatingKit}}
+				<tr>
+					<td colspan="2">
+						<h5>{{t 'install.template.onetouchprep'}}</h5>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" class="summary-item" width="100">{{t 'assay.template.label'}}:</td>
+					<td>{{templatingKit}}</td>
+				</tr>
+				{{/if}} -->
+				<tr>
+					<td colspan="2">
+						<h5>{{t 'install.template.pgmsequencing'}}</h5>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" class="summary-item" width="100">{{t 'assay.summary.sequencingKit'}}:</td>
+					<td>{{sequencingKit}}</td>
+				</tr>
+				<tr>
+					<td valign="top" class="summary-item" width="100">{{t 'specimen.role.CONTROL'}}:</td>
+					<td>{{control}}</td>
+				</tr>
+				<tr>
+					<td valign="top" class="summary-item" width="100">{{t 'data.results.chip'}}:</td>
+					<td>{{chip}}</td>
+				</tr>
+				<tr>
+					<td valign="top" class="summary-item" width="100">{{t 'assay.details.flow'}}:</td>
+					<td>{{flow}}</td>
+				</tr>
+			</table>
+		</div>
+		<div class="span7">
+			<table style="width: 100%">
+				<tr>
+					<td colspan="3"><h5>{{t	'assay.qcsequence.controlqc'}}</h5>
+				</tr>
+
+				{{#each controlQcs}}
+				<tr>
+					{{#ifCond seqName '===' "Ion Dx CB-1"}}
+					<td valign="top" class="summary-item">{{seqName}}</td>
+					<td>{{qcName}}: </td>
+					<td>>= {{threshold}}</td>
+					{{/ifCond}}
+				</tr>
+				{{/each}}
+
+			</table>
+		</div>
+	</div>
+</div>
+<div class="modal-footer">
+	<a id="closeTemplateDetailsBtn" href="#" data-dismiss="modal"
+		class="btn btn-secondary">{{t 'assay.details.closeBtn'}}</a>
+</div>

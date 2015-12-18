@@ -1,0 +1,262 @@
+@baseFontSize: 12px;
+
+.gradient(@startColor, @endColor, @startColorStop: 0%, @endColorStop: 100%) {
+    background: @startColor;
+    background-image: -moz-linear-gradient(top, @startColor @startColorStop, @endColor @endColorStop);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(@startColorStop, @startColor), color-stop(@endColorStop, @endColor));
+    background-image: -webkit-linear-gradient(top, @startColor @startColorStop, @endColor @endColorStop);
+    background-image: -o-linear-gradient(top, @startColor @startColorStop, @endColor @endColorStop);
+    background-image: -ms-linear-gradient(top, @startColor @startColorStop, @endColor @endColorStop);
+    background-image: linear-gradient(top, @startColor @startColorStop, @endColor @endColorStop);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@{startColor}', endColorstr='@{endColor}', GradientType=0); /* IE6-9 */
+}
+
+.k-widget {
+	border: 0;
+}
+.k-grid {
+
+    .k-pager {
+        float: right;
+    }
+    .k-pager-wrap {
+        padding: 7px 0 4px;
+        font-size: 12px;
+    }
+    .k-grid-header {
+    	border-top: 1px solid #D8D8D8;
+    	border-left: 1px solid #D8D8D8;
+    	border-right: 1px solid #D8D8D8;
+        th {
+        	.gradient(#ffffff, #e8e8e8);
+            border-left-width: 0px;
+            border-right-width: 0px;
+            padding: 2px 4px;
+            overflow: hidden;
+            font-size: 12px;
+            font-weight: bold;
+            line-height: 20px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+
+  			a.k-link:link, a.k-link:visited, a.k-link:hover {
+  				color: #000;
+			}
+        }
+        .k-header {
+            /*http://www.kendoui.com/forums/ui/grid/header-wrapping-height.aspx*/
+            white-space: normal;
+            border-bottom: 3px solid #555555;
+
+            padding: 0.7em 0.6em;
+            .k-link {
+                /*http://www.kendoui.com/forums/ui/grid/header-wrapping-height.aspx*/
+                text-overflow: ellipsis;
+                font-size: 12px;
+                color: #0088cc;
+            }
+        }
+    }
+
+    .k-selectable {
+    	border: 1px solid #D8D8D8;
+    }
+
+    td {
+        text-overflow: ellipsis;
+        font-size: @baseFontSize;
+	    padding: 0.4em 0.5em;
+	    border-left-width: 0px;
+	    border-right-width: 0px;
+	    border-top: 1px solid #D8D8D8;
+        word-break: break-all;
+
+        div.progress {
+            margin-bottom: 0;
+        }
+
+        &.dropdown-col {
+            overflow: visible; //Allow the dropdown-menu to appear
+            .dropdown-toggle img {
+                height: 12px;
+                width: 12px;
+                margin-right: 4px;
+            }
+        }
+
+        &.vertical-align-top {
+            vertical-align:top
+        }
+    }
+  	tr:hover {
+  		cursor: hand;
+  	}
+    tr.k-state-selected {
+
+        i.icon-exclamation-sign {
+            background-image: url("../img/glyphicons-halflings-white.png");
+        }
+        td {
+            .dropdown {
+                a.dropdown-toggle {
+                    color: white;
+                }
+                li {
+                    a {
+                        color: #333333;
+                    }
+                }
+            }
+            div.popover {
+                color: #333333;
+            }
+        }
+
+    }
+}
+
+#sample-files-grid table {
+	border: 1px solid #D8D8D8;
+}
+
+.k-grid-header {
+	padding: 0 !important;
+	width: 100%;
+}
+
+.k-grid-content {
+    overflow-y: hidden;
+	border-bottom: 1px solid #D8D8D8;
+	border-left: 1px solid #D8D8D8;
+	border-right: 1px solid #D8D8D8;
+}
+
+.k-state-selected, .k-button:active, .k-draghandle.k-state-selected:hover {
+	background-color: #1480d2;
+}
+
+.k-pager-numbers {
+	.k-link {
+	    background: none repeat scroll 0 0 transparent;
+	    border: 1px solid #BBBBBB;
+	    border-radius: 0;
+	    color: #3688D2;
+	    display: block;
+		margin-right: 4px;
+	    font-weight: normal;
+	    padding: 2px 10px;
+	}
+	.k-link:hover {
+		background-image: none;
+		border: 1px solid #3688D2;
+		padding: 2px 10px;
+		color: #3688D2;
+	}
+	.k-state-selected {
+	    background: none repeat scroll 0 0 #3688D2;
+	    border: 1px solid #3688D2;
+	    border-radius: 0;
+	    box-shadow: none;
+	    color: #FFFFFF;
+	    padding: 2px 10px;
+	    margin-right: 4px;
+	    line-height: 20px;
+	}
+}
+.k-pager-wrap > .k-link {
+	border-radius: 0;
+	margin-right: 4px;
+	padding: 1px 5px;
+	line-height: 20px;
+}
+.k-pager-wrap {
+	background-image: none;
+	background-color: transparent;
+
+	.k-link:hover {
+		border: 1px solid #3688D2;
+		line-height: 20px;
+	}
+
+	.k-widget {
+		margin: 0 5px 0 0;
+	}
+
+	.k-header, .k-dropdown-wrap, .k-link:hover {
+		background-image: none;
+		background-color: transparent;
+	}
+
+	.k-dropdown-wrap.k-state-hover {
+		border: 1px solid #3688D2;
+	}
+}
+.k-pager-info {
+	padding: 0;
+}
+
+.popover {
+    width: auto;
+}
+.popover-content{
+    font-size: 12px;
+    word-break: normal;
+}
+
+.modal-body .popover-content {
+    max-height: 250px;
+    overflow-y:scroll;
+}
+
+.modal-body{overflow:visible;}
+
+.panel .edit-filter label {
+    margin-top: 0;
+}
+
+.edit-filter legend {
+    margin-bottom: 5px;
+    margin-top: 5px;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.edit-filter .control-group {
+    margin-bottom: 3px;
+    margin-top: 0;
+}
+
+#filter-chain-edit-filter .form-search {
+    margin-bottom: 10px;
+}
+
+.useChoiceBtn {
+	float: right;
+}
+
+.qcsummary-PASS {
+    color: green;
+}
+.qcsummary-FAIL {
+    color: red;
+}
+.qcsummary-OTHER {
+}
+.variants-heading-item {
+    display:inline;
+}
+.variants-heading-item-value {
+    display:inline-block;
+    max-width: 300px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    vertical-align: top;
+    margin-right: 20px;
+}
+.variants-heading-item .tooltip-inner {
+    max-width:600px;
+    word-break: break-all;
+    text-align: left;
+}
+@import "browser-warning";

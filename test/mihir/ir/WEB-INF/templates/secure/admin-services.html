@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:substituteby="layout.html :: headerFragment"></head>
+<body>
+<div class="wrapper">
+    <div class="header" th:substituteby="layout.html :: bodyHeaderFragment"></div>
+
+    <div class="sub-nav" th:substituteby="layout.html :: bodySubNavFragment"></div>
+
+    <div class="main">
+        <div class="main-content clearfix">
+            <div id="main-services" class="container-fluid"></div>
+        </div>
+    </div>
+    
+    <footer class="footer" th:substituteby="layout.html::bodyFooter"></footer>
+</div>
+
+<script th:substituteby="layout.html::irHeaderModals"></script>
+
+<script type="text/javascript">
+/*<![CDATA[*/
+    requireInit(["app/views/admin/irServicesOverviewPageView"], function(View) {
+        new View({
+            el: '#main-services'
+        }).render();
+    });
+/*]]>*/
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<div class="action">
+    <div class="row-fluid">
+        <div class="span2 icon">
+            {{#ifCond this '===' 'WHOLEGENOME_LOWCOVERAGE'}}
+            <img src="{{img 'analysis-dna-whole-genome.png'}}" />
+            {{/ifCond}}
+            {{#ifCond this '===' 'AMPLISEQ'}}
+            <img src="{{img 'analysis-dna-ampliseq.png'}}" />
+            {{/ifCond}}
+            {{#ifCond this '===' 'AMPLISEQ_EXOME'}}
+            <img src="{{img 'analysis-dna-ampliseq.png'}}" />
+            {{/ifCond}}
+            {{#ifCond this '===' 'TARGETSEQ_EXOME'}}
+            <img src="{{img 'analysis-dna-targetseq.png'}}" />
+            {{/ifCond}}
+        </div>    
+        <div class="span10 name">
+            <div id="{{this}}" class="name">{{t 'CNVBaselineType.' this}}</div>
+            <div class="description">{{t 'CNVBaselineTypeDesc.' this}}</div>            
+        </div>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+<h2>{{t 'final.report.notes.header'}}</h2>
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        {{#ifCond status '===' 'DRAFT_PREVIEW'}}
+        <th>Include</th>
+        {{/ifCond}}
+        <th>User Name</th>
+        <th>Notes</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each comments}}
+    <tr>
+        {{#ifCond ../status '===' 'DRAFT_PREVIEW'}}
+        <td><input type="checkbox" 
+                   data-variant-id="{{../../id}}"
+                   data-is-variant-comment="true"
+                   data-variant-comment-id="{{id}}"
+                   {{#if included}}checked="checked"{{/if}}></td>
+        {{/ifCond}}
+        <td>{{createdBy.firstName}} {{createdBy.lastName}}</td>
+        <td>{{message}}</td>
+    </tr>
+    {{/each}}
+    
+    </tbody>
+</table>
+<br/>

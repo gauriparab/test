@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<!--<head th:substituteBy="public-layout.html :: headerFragment"></head>-->
+<head th:substituteBy="public-layout.html :: headerFragment"></head>
+<body>
+  <div class="wrapper">
+    <!--<div class="header" layout:include="public-layout.html :: publicBodyHeader">-->
+    <div class="header">
+      <div class="header" >
+        <div class="container" style="width:90%;">
+          <div style="float: right;">
+            <div id="secure" class="row-fluid error" th:attrappend="class=${loginError} ? ' error' : ''">
+              <div id="custom-login" th:if="${#strings.startsWith(loginUsage,'login')}">
+                <div>
+                  <div>
+              </div>
+              <form th:action="@{/j_spring_security_check}" method="post" id="customerLogin" style="margin: 0px">
+                <input type="hidden" name="X-IonReporter-CSRF-Token" th:value="${session.csrfSessionToken}" />
+                <input type="hidden" name="mode" id="mode"/>
+                <table class="input-noMargin login-table login-control">
+                  <tr th:if="${loginError}">
+		            <td>
+                      	<select id="languageSelect" style="width:120px">
+                      		<option th:each="l : *{languages}" th:value="*{l.get('i18nName')}" th:text="*{l.get('displayName')}"></option>
+                      	</select>
+                    </td>
+                    <td>
+                      <input type="text" id="j_username" class="form-control input-xlarge test-error" name="j_username" maxlength="255" th:placeholder="#{settings.configurationPage.networkTab.placeholder.username}" th:value="${user}"/>
+                    </td>
+                    <td>
+                      <input type="password" id="j_password" class="form-control input-xlarge test-error" name="j_password" th:placeholder="#{settings.configurationPage.networkTab.placeholder.password}"/>
+                    </td>
+                    <td>
+                      <span class="input-group-btn">
+                        <button style="min-width:75px;" id="signIn" class="btn btn-primary" th:text="#{button.sign.in}">Sign in</button>
+                      </span>
+                    </td>
+                  </tr>
+                  <tr th:unless="${loginError}">
+		            <td>
+                      <select id="languageSelect" style="width:120px">
+	               		<option th:each="l : *{languages}" th:value="*{l.get('i18nName')}" th:text="*{l.get('displayName')}"></option>
+                      </select>
+                    </td>
+                    <td>
+                      <input type="text" id="j_username" class="form-control input-xlarge" name="j_username" maxlength="255" th:placeholder="#{settings.configurationPage.networkTab.placeholder.username}" th:value="${user}"/>
+                    </td>
+                    <td>
+                      <input type="password" id="j_password" class="form-control input-xlarge" name="j_password" th:placeholder="#{settings.configurationPage.networkTab.placeholder.password}"/>
+                    </td>
+                    <td>
+                      <span class="input-group-btn">
+                        <button style="min-width:75px;" id="signIn" class="btn btn-primary" th:text="#{button.sign.in}">Sign in</button>
+                      </span>
+                    </td>
+                  </tr>
+		          <tr>
+                      <td colspan="3">
+                        <div class="forgot-password-custom text-right">
+                          <a id="forgotPassword" href="#">
+                            <span th:text="#{user.forgot.password.error.message}"></span>
+                          </a>
+                        </div>
+                      </td>
+		              <td></td>
+                  </tr>
+                </table>
+                </form>
+                <script th:inline="javascript">
+                	(function(){
+                		var defaultLanguage = [[${cookieLanguage}]];
+                		$('#languageSelect').val(defaultLanguage);
+                	})();
+                </script>
+                <table class="login-table">
+                  <tr th:if="${modeSwitch}">
+                    <td>
+                      <div style="margin: 0px;" class="custom-error-message custom-error">
+                        <span th:text="#{mode.switch.inProgress}">Mode Switch is in progress.</span>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr th:if="${modeSwitchErrorMessage}">
+                    <td>
+                      <div style="margin: 0px;" class="custom-error-message custom-error" th:text="#{${modeSwitchErrorMessage}}"></div>
+                    </td>
+                  </tr>
+                  <tr th:if="${loginError}">
+                    <td>
+                      <div style="margin: 0px;" class="custom-error-message custom-error">
+                        <span th:utext="#{${userManagementErrorMessage}}"></span>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr th:if="${FSEAuthenticationError}">
+                    <td>
+                      <div style="margin: 0px;" class="custom-error-message custom-error">
+                        <span th:utext="#{${FSEAuthenticationErrorMessage}}"></span>
+                      </div>
+                    </td>
+                  </tr>
+                  <!-- Previous place for forgot password link -->
+
+                  <tr th:if="${status != null}">
+                    <td>
+                      <div style="margin: 0px;" class="custom-success-message custom-error" th:if="${status != null}" th:text="#{status.idleLogout}">
+                        <span th:text="#{status.idleLogout}"></span>
+                        <!-- Email sent! Please check your email account for a message containing your account password reset instructions.-->
+                      </div>
+                    </td>
+                  </tr>
+                  <tr th:if="${successUserActivate}">
+                    <td>
+                      <div style="margin: 0px;" class="custom-success-message custom-error" th:text="#{user.activate.successful}">
+                        <span th:text="#{user.activate.successful}"></span>
+                        <!--  You have successfully set your password! Please login with your new password. -->
+                      </div>
+                    </td>
+                  </tr>
+                  <tr id='resetSuccess' style="display: none">
+                    <td>
+                      <div style="margin: 0px;" class="custom-success-message custom-error" th:text="#{user.activate.successful}">
+                      </div>
+                    </td>
+                  </tr>
+                   <tr id='adminCreated' style="display: none">
+                    <td>
+                      <div style="margin: 0px;" class="custom-success-message custom-error" th:text="#{admin.creation.successful}">
+                      </div>
+                    </td>
+                  </tr>
+                  <tr th:if="${servletError}">
+                    <td>
+                      <div class="row-fluid custom-error">
+                        <div style="margin: 0px;" class="custom-error-message">
+                          <span th:text="${servletError.message}">
+                            <!--  Showing error message. -->
+                          </span>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+
+</div>
+<div id="forgot-password" style="display:none;">
+    <div class="form-inline login-margin">
+      <input type="text" id="forgotPasswordUsername" class="form-control input-xlarge" name="username" maxlength="255" placeholder="Username" th:value="${user}" />
+      <span class="input-group-btn">
+        <input type="submit" id="changePassword" class="btn btn-primary" th:value="#{dialog.changePassword.title}" />
+      </span>
+      <span class="input-group-btn">
+        <button id="fpCancel" type="submit" class="btn btn-primary" th:text="#{button.cancel}"></button>
+      </span>
+    </div>
+    <div class="custom-success-message custom-error" th:if="${status}">
+
+      <span th:text="${status}">
+      </span>
+      <!-- Email sent! Please check your email account for change password link. -->
+    </div>
+    <div id="changePasswordError" class="custom-error-message"></div>
+    <div id="changePasswordSuccess" class="custom-success-message"></div>
+</div>
+<script>
+var that = this;
+$('#forgotPassword').on('click',function(e){
+  $('.login-control').css('display','none');
+  $('.custom-error').css('display','none');
+  $(this).css('display', 'none');
+  $('#forgot-password').css('display', 'block');
+  return false;
+});
+$('#signIn').on('click',function(e){
+  e.preventDefault();
+  var mode = $('#mode-switch-form').serializeArray();
+  mode = mode[0].value;
+  $('#mode').val(mode);
+  $('#customerLogin').submit();
+});
+
+function doLogin(){
+  var mode = $('#mode-switch-form').serializeArray();
+  mode = mode[0].value;
+  $('#mode').val(mode);
+  $('#customerLogin').submit();
+}
+
+</script>
+</div>
+</div>
+
+</div>
+<div class="login-margin">
+  <div sec:authorize="${@utilService.isDx()}"><img src="../../public-resources/img/Dx_logo.png" th:src="@{/resources/img/Dx_logo.png}" alt="Ion Reporter&trade; Logo"/></div>
+  <div sec:authorize="${@utilService.isAssayDev()}"><img src="../../public-resources/img/AssayDev_logo.png" th:src="@{/resources/img/AssayDev_logo.png}" alt="Ion Reporter&trade; Logo"/></div>
+</div>
+</div>
+</div>
+</div>
+<div class="banner">
+  <!--<div class="container" layout:include="public-layout.html :: banner">-->
+  <div class="container">
+    <!--<div class="row-fluid" layout:fragment="bannerContent">-->
+    <div class="row-fluid">
+      <div class="lp_main">
+        <div class="lp_splash_wrapper">
+          <div class="lp_splash-workflow" th:classappend="${cookieLanguage}">
+            <div class="lp_login-sample" data-select="#plan" data-href="#"></div>
+            <div class="lp_login-sequence" data-select="#monitor" data-href="#"></div>
+            <div class="lp_login-report" data-select="#data" data-href="#"></div>
+            <div class="lp_login-plugin" data-select="#export" data-href="#"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container" style="width:90%;">
+  <div id="mode-switch">
+    <div class="row" style="margin:0px;">
+      <div style="margin-left: 15px;">
+        <div>
+          <h3 th:text="#{mode.switch.title}">Switch Mode</h3>
+        </div>
+        <div>
+          <form class="form-horizontal" id="mode-switch-form">
+            <div class="control-group">
+              <div class="controls" style="margin:0px;">
+                <input id="ad" type="radio" name="mode-switch" value="AssayDev" th:checked="${@utilService.isAssayDev()}"/>
+                <span class="radioText" th:text="#{mode.assaydev}">Assay Development Mode</span>
+              </div>
+              <div class="controls" style="margin:0px;">
+                <input id="dx" type="radio" name="mode-switch" value="dx" th:checked="${@utilService.isDx()}" />
+                <span class="radioText" th:text="#{mode.dx}">IVD Mode</span>
+              </div>
+
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- script type="text/javascript">
+  $('#ad').prop('checked',true);
+</script> -->
+</div>
+
+
+<!--<div class="container marketing" th:substituteBy="public-layout.html :: learnMore"></div>-->
+<footer th:fragment="bodyFooter" style="margin: 0px;height:150px;position: absolute;bottom: 0;background: #d8d8d8;width: 100%;">
+  <div>
+    <div class="row-fluid" style="margin:0px;">
+      <div>
+        <div class="pull-left">
+          <img src="../../public-resources/img/iontorrent-logo-footer.png" th:src="@{/resources/img/iontorrent-logo-footer.png}" alt="" class="iontorrent-logo-footer" style="padding-right:10px;" />
+        </div>
+        <div class="copyright">
+          <p th:text="#{'footer.disclaimer.'+${@assayUIController.getDefaultLabel()}}"></p>
+          <p th:text="#{footer.copyright}"></p>
+          <p class="browser-support" th:text="#{login.browser.support}"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<!--<footer th:substituteBy="public-layout.html :: bodyFooter"></footer>-->
+
+</div>
+
+<script>
+function attachEvents(){
+  //$('#languageSelect td.en-US input').prop('checked',true);
+  //$('input[name=language][value=' + $.cookie('i18next') + ']').prop('checked',true)
+  $('#languageSelect').on('change',function(){
+    var lng = $(this).val();
+    $.cookie('i18next',lng);
+    location.reload();
+  });
+}
+ function initializeLanguageSelectBox(){
+  attachEvents();
+  //setLanguage();
+}
+
+function setLanguage(){
+  var lang = $.cookie('i18next');
+  $('#languageSelect').val(lang);
+}
+
+</script>
+
+<script th:if="${#strings.startsWith(loginUsage,'login')}" th:inline="javascript">
+/*<![CDATA[*/
+requireInit(['login', 'models/eulaLicenseModel',  'views/common/eulaLicenseView', 'views/modeSwitchView'],
+function(module, EulaModel, EulaView, ModeSwitchView) {
+  /*var languageData = [[${languages}]];
+  this.defaultLanguage = languageData.defaultLanguage;
+
+  this.languages = JSON.parse(languageData.languages);*/
+  module.initialize();
+  /*(function(){
+	var lang = $.cookie('i18next');
+	var localClass = "lp_splash-workflow_"+lang;
+	$('#localizeImage').addClass(localClass);
+	  
+	  })();*/
+  window.currentMode=[[${@utilService.getServerMode()}]];
+  window.switchView = ModeSwitchView;
+  var isEulaError = /*[[${eulaError}]]*/ false;
+  if (isEulaError) {
+    // create Eula Popup view
+    var eulaPopup = new EulaView({
+      model: new EulaModel(),
+      hosted: /*[[${hosted}]]*/false
+    });
+  }
+  var isModeSwitchInProgress = [[${modeSwitch}]];
+  var mode= [[${mode}]];
+  var switchMode = function(){
+
+    var modeSwitchInProgressView = new ModeSwitchView({
+      done:true,
+      message:$.t('mode.switch.inProgress')
+    });
+    modeSwitchInProgressView.showPopup(function(){});
+    $.ajax({
+      url: '/ir/modeSwitch?mode='+mode,
+      type: 'GET'
+    });
+    setTimeout(function(){
+      window.location='/';
+    },2000);
+  }
+
+  if(isModeSwitchInProgress) {
+    var modeSwitchView = new ModeSwitchView({
+      done:false,
+      message:$.t('mode.switch.confirm')
+    });
+    modeSwitchView.showPopup(switchMode);
+  }
+  /*(function(){
+    var languageDropDown = $('#languageSelect');
+    for(var language in this.languages){
+      var current = this.languages[language];
+      var option = $('<option/>',{text:current.displayName,value:current.i18nName});
+      languageDropDown.append(option);
+
+    }
+    languageDropDown.val($.cookie('i18next') || this.defaultLanguage);
+  })();*/
+  initializeLanguageSelectBox();
+});
+/*]]>*/
+</script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+<div class="dropdown pull-right">
+    <a data-target="#" id="temp" role="button" class="dropdown-toggle btn" data-toggle="dropdown"><i class="icon-action"></i></a>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="temp">
+        <li role="presentation" data-action="view_details"><a role="menuitem" tabindex="-1" href="#">View Details</a></li>
+        <li role="presentation" data-action="edit"><a role="menuitem" tabindex="-1" href="#">Edit</a></li>
+        <li role="presentation" data-action="audit_trial"><a role="menuitem" tabindex="-1" href="#">Audit Trial</a></li>
+    </ul>
+</div>
+
+

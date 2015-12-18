@@ -1,0 +1,42 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="pull-left">
+            <h1><img src="{{img 'dash-analysis.png'}}" width="40" /> {{t 'analysis.auditLog.title'}}</h1>
+        </div>
+        <div class="btn-toolbar pull-right">
+            <div class="btn-group">
+                <a class="btn btn-primary" href="{{surl 'analyses.html'}}" id="topBackLinkId">{{t 'analysis.auditLog.actions.back'}}</a>
+            </div>
+            <div class="btn-group">
+                <a class="btn dropdown-toggle" data-toggle="dropdown">
+                    {{t 'analysis.auditLog.actions.export.label'}} <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu pull-right">
+                    <li><a href="javascript:void(0)" data-action="download_audit_log">{{t 'analysis.auditLog.actions.export.pdf'}}</a><li>
+                </ul>
+            </div>
+            <div id="analysisAuditLogSwitchTo" class="btn-group">
+                <a class="btn dropdown-toggle {{#if analysis.aborted}}disabled{{/if}}" data-toggle="dropdown" href="#">
+                    {{t 'analysis.switchto.actions.switchTo'}}
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-scrolling pull-right" id="switchToMenuLinks">
+                    <li><a href="{{surl 'analyses/' analysis.id '/view_qc_report'}}">{{t 'analysis.switchto.actions.qcReport'}}</a></li>
+                    {{#ifCond analysis.stage '===' 'REPORT_PUBLISHED'}}
+                    <li><a href="{{surl 'analyses/' analysis.id '/view_final_report.html'}}">{{t 'analysis.switchto.actions.finalReport'}}</a></li>
+                    {{/ifCond}}
+                </ul>
+             </div>
+         </div>
+    </div>
+
+    {{sub analysisSampleHeader}}
+
+    <div class="row-fluid">
+        <div class="report-header">{{t 'analysis.auditLog.log.title'}}</div>
+        <div class="report-body">
+            <p>{{t 'analysis.auditLog.log.info'}}</p>
+            <div id="auditLogEventContainer"></div> 
+        </div>
+    </div>
+</div>

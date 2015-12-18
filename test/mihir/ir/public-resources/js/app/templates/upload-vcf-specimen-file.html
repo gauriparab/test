@@ -1,0 +1,33 @@
+<form id="vcfSpecimenFileUpload" action="/ir/secure/api/v40/samples/upload/file" method="POST" enctype="multipart/form-data">
+    <div class="row-fluid">
+        <div>
+            <div class="fileupload fileupload-new" data-provides="fileupload">
+                <div class="input-append">
+                    <div class="uneditable-input span3">
+                        <i class="icon-file fileupload-exists"></i>
+                        <span class="fileupload-preview"></span>
+                    </div>
+                    <span class="btn btn-file">
+                        <span class="fileupload-new">{{t 'upload.selectFile'}}</span>
+                        <span class="fileupload-exists">{{t 'upload.change'}}</span>
+                        <input type="file" name="fileData" id="specimen-file-data" accept=".VCF,.BCF,.GZ">
+                    </span>
+                    <a href="#" id="removeFile" class="btn fileupload-exists" data-dismiss="fileupload">{{t 'upload.remove'}}</a>
+                    &nbsp;&nbsp;
+                    <a id="upload" style="margin-left: 10px;" class="btn fileupload-exists"
+                           href="#">{{t 'upload.label_vcf'}}</a>
+                    &nbsp;&nbsp;
+                 </div>
+                 <div id="progressBar" class="progress hide" style="width : 400px">
+                            <div class="bar" style="width: 0%;"></div>
+                 </div>
+                 <div><span class="upload-message"></span></div>
+                 <div id="validationProgressMessage" class="hide">{{t 'upload.validating'}}</div>
+                 <div id="validationTimeout" class="hide">{{t 'upload.validation.timeout'}}</div>
+                        
+            </div>
+            <p>{{t 'sample.vcf.upload.supportedTypes'}}</p>
+        </div>
+    </div>
+
+</form>

@@ -1,0 +1,104 @@
+
+<div class="modal-header">
+	<!-- <div class="row-fluid"> -->
+		<button id="policiesDismiss" type="button" class="close">x</button>
+		<h4 id="createUserModalLabel">{{t 'createUser.label.header'}}</h4>
+	<!-- </div> -->
+</div>
+<div class="modal-body"> 
+	<div id="errors"></div>
+	<form id="createAdminUserForm" class="form-horizontal">
+		<div class="control-group">
+			<label class="control-label" for="userName">{{t 'user.profile.page.userName.label'}}</label>
+			<div class="controls">
+				<input name="userName" type="text" id="userName"
+					required="required" value="{{model.userName}}" maxlength="60" />
+					<span class="text-error requires-asterisk">*</span>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="userFirstName">{{t 'user.profile.page.firstName.label'}}</label>
+			<div class="controls">
+				<input name="firstName" type="text" id="firstName"
+					required="required" value="{{model.firstName}}" maxlength="60" />
+					<span class="text-error requires-asterisk">*</span>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<label class="control-label" for="userLastName">{{t 'user.profile.page.lastName.label'}}</label>
+			<div class="controls">
+				<input name="lastName" type="text" id="lastName"
+					required="required" value="{{model.lastName}}" maxlength="60" />
+					<span class="text-error requires-asterisk">*</span>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<label class="control-label" for="userEmail">{{t 'user.profile.page.email.label'}}</label>
+			<div class="controls">
+				<input name="email" type="email" id="userEmail"
+					value="{{model.email}}" maxlength="100" {{#ifCond manageAction '===
+					' 'Edit'}} disabled="disabled"
+					{{/ifCond}}
+                        {{#ifCond manageAction '===
+					' 'Accept'}} disabled="disabled" {{/ifCond}}/>
+					<span class="text-error requires-asterisk">*</span>
+			</div>
+		</div>
+
+
+		<div class="control-group">
+                    <label class="control-label" for="commentsLabel">{{t 'createUser.label.comments'}}</label>
+                    <div class="controls"><textarea name="comments" id="comments" 
+                            value="{{model.comments}}" rows="4"  maxlength="256"></textarea></div>
+        </div>
+                
+		<div class="control-group">
+                    <label class="control-label" id="electronicSignatureLabel">{{t 'createUser.label.esign'}}</label>
+                    <div id="userElectronicSignature" class="controls" aria-labelledby="signatureLabel" for="userElectronicSignature">
+                        <label class="checkbox"><input name="electronicSignature" type="checkbox" id="electronicSignature" checked="checked" disabled="disabled" value="ENABLED"/></label>
+                    </div>
+         </div>
+                <div class="control-group">
+                    <label class="control-label" id="rolesLabel">{{t 'createUser.label.roles'}}</label>
+                    <div class="controls">
+	                    <select class="input-medium" id="roles" name="userRoles" disabled="disabled">
+	                    	{{#each roles}}
+	                    	{{#ifCond roleName '===' "ADMINISTRATOR"}}
+							<option value="{{roleId}}" selected="selected">{{roleName}}</option>
+							{{/ifCond}}
+							{{/each}}
+	                    </select>
+                    </div>
+                </div>
+		
+
+	</form>
+<!-- </div>
+<div> -->
+	<form id="userPassword" class="form-horizontal">
+		<div class="control-group">
+			<label class="control-label" for="newPassword">{{t 'createUser.label.newPassword'}}</label>
+
+			<div class="controls">
+				<input type="password" id="newPassword" name="newPassword"
+					value="{{model.newPassword}}" /><span class="text-error requires-asterisk">*</span>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<label class="control-label" for="retypedNewPassword">{{t 'createUser.label.confirmPass'}}</label>
+
+			<div class="controls">
+				<input type="password" id="retypedNewPassword"
+					name="retypedNewPassword" value="{{model.retypedNewPasswor}}" /><span class="text-error requires-asterisk">*</span>
+			</div>
+		</div>
+	</form>
+</div>
+<div class="modal-footer">
+	<button id="createUserCancelButton" type="button"
+		class="btn btn-secondary">{{t 'dialog.cancel'}}</button>
+	<button id="createUserSaveButton" type="button" class="btn btn-primary">{{t 'button.save'}}</button>
+</div>

@@ -1,0 +1,20 @@
+<div class="row-fluid">
+	<table cellpadding="2">
+		<tr>
+			<td valign="top" width="130"><strong>{{t labelKey}}: </strong></td>
+			<td>
+				<div class="row-fluid custom-region-container">
+					<select id="{{idKey}}" class="input-xlarge">
+					{{#ifCond collection.length '>' 0}}
+						{{#each collection}}
+						<option value={{this.id}}>{{this.name}}</option>
+						{{/each}}
+					{{else}}
+						<option value="-1">- {{t 'assay.chevron.panels.noFusionPanels'}} -</option>
+					{{/ifCond}}
+					</select>
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>

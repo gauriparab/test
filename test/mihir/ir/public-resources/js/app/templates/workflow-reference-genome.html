@@ -1,0 +1,9 @@
+{{#ifCond references.length '<=' 1}}
+    <div id="reference">{{firstValue references 'name'}}</div>
+{{else}}
+<select id="reference" class="input-xxlarge" size="5" multiple>
+    {{#each references}}
+    <option value={{this.id}}>{{this.name}}</option>
+    {{/each}}
+</select>
+{{/ifCond}}

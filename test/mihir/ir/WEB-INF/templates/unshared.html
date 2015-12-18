@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head th:substituteBy="public-layout.html :: headerFragment">
+</head>
+<body>
+<div class="wrapper">
+    <!--header-->
+    <div class="header" layout:include="public-layout.html :: publicBodyHeader">
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="logo pull-left">
+                    <img src="../../public-resources/img/life-logo.png" alt="" class="rightSeparator"/>
+                    <img src="../../public-resources/img/ir-logo.png" alt=""/>
+                </div>
+            </div>
+        </div>
+        <div class="bg-line">
+            <img src="../../public-resources/img/header-line-bg.png" alt=""/>
+        </div>
+    </div>
+    <!--//header-->
+    <div class="main">
+
+        <div class="main-content clearfix center">
+            <div class='hero-unit'>
+                <h1>We're sorry.</h1>
+                <p>This data is no longer shared with you. Please contact your collaborator</p>
+            </div>
+        </div>
+    </div>
+</div>
+<footer th:substituteBy="layout.html :: bodyFooter"></footer>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<div class="alert alert-info">
+    {{t 'ampliseq.import.message.ready'}} {{t 'ampliseq.import.message.creation'}}
+</div>
+<div class="control-group">
+    <label class="control-label" for="fixedPanelsList">{{t 'ampliseq.label.fixed.panels'}}</label>
+    <div class="controls">
+        <select id="fixedPanelsList">
+            {{#each fixedDesignPanels}}
+            <option value="{{this.ampliseqId}}">{{this.name}}</option>
+            {{/each}}
+        </select>
+    </div>
+</div>

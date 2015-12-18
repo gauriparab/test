@@ -1,0 +1,95 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="pull-left">
+            <h1><img src="{{img 'dash-analysis.png'}}" width="40" /> {{t 'variant.label.analysisVisual'}}</h1>
+        </div>
+        <div class="pull-right btn-toolbar">
+            <a class="btn" href="{{surl 'analyses.html'}}" id="topBackLinkId">{{t 'variant.label.back'}}</a>
+            <a class="btn hide" href="{{surl 'analyses/' id '/edit_variants'}}" id="topHideLinkId">{{t 'variant.label.back'}}</a>
+            <div id="download-menu"></div>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div id="variants-heading" class="pull-left">
+            <!-- variants/variants-heading.html -->
+        </div>
+        <div class="pull-right">{{t 'variant.review.help'}}</div>
+    </div>
+    <div id="variant-pane">
+        <div class="row-fluid">
+            <div class="report-permanent-section">
+                <div class="row-fluid">
+                    <div id="report-main-column" class="span9">
+                        <div class="row-fluid">
+                            <div id="analyses-variants-tabs" class="pull-left span12">
+                                <!--  variants/analyses-variants-tabs.html -->
+                            </div>
+                        </div>
+                        <div class="row-fluid">
+                            <form id="variant-query-form" class="form-search form-inline pull-right"></form>
+                        </div>
+                        <div id="analyses-variants-main" class="row-fluid"></div>
+                    </div>
+
+                     <div id="report-settings-sidebar-column" class="summary-section report-settings-sidebar-open span3">                    
+                        <div class="report-settings-sidebar-collapsed-content">
+                            <a href="#" id="report-settings-sidebar-expand" class="report-settings-sidebar-expand">
+                                {{t 'variant.label.filterOptions'}}
+                                <i class="icon-arrow-up"></i>
+                            </a>
+                        </div>
+                        <div class="report-settings-sidebar-expanded-content row-fluid">
+                            <h4 style="clear:both">
+                                {{t 'variant.label.filterOptions'}}
+                                <a href="#" id="report-settings-sidebar-collapse" class="close-box pull-right">&times;</a>
+                            </h4>
+                            <hr class="summary"/>
+                        </div>
+                        <div id="chart-options" class="report-settings-sidebar report-settings-sidebar-expanded-content row-fluid">
+                            <div class="report-settings-sidebar-titlebar">
+                             <h5><span class="pull-left">{{t 'variant.label.chartOptions'}}</span></h5>
+                            </div>
+                            <div id="analyses-variants-plugin-control">
+                             <!-- visualization plugin control -->
+                            </div>
+                            <hr class="filter"/>
+                        </div>
+                        <div id="variantsSummary" class="report-settings-sidebar report-settings-sidebar-expanded-content row-fluid">
+                            <div class="report-settings-sidebar-titlebar">
+                                <h5><span class="pull-left">{{t 'variant.label.title'}}</span></h5>
+                            </div>                        
+                            <div id="variants-group-filters">                            
+                                <!-- variants/variants-group-filters.html -->
+                            </div>
+                            <hr class="filter"/>
+                        </div>
+
+                        <div class="report-settings-sidebar report-settings-sidebar-expanded-content row-fluid">
+                            <div class="report-settings-sidebar-titlebar">
+                                <h5 class="pull-left">{{t 'variant.label.samples'}}</h5>
+                            </div>
+                            <div id="samples-container"></div>  
+
+                            <div id="chromosomes-container" style="clear:both">
+                                <!-- variants/variants-chromosomes-filtering.html -->
+                            </div>                            
+                        </div>
+                        <hr class="filter"/>
+                        
+                         <div class="report-settings-sidebar report-settings-sidebar-expanded-content row-fluid">
+                            <div class="report-settings-sidebar-titlebar">
+                                <h5><span class="pull-left">{{t 'variant.label.filterChains'}}</span></h5>
+                            </div>
+                            <div id="filter-chains-container"></div>
+                        </div>
+                        <br/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br/>
+    </div>
+
+    <!-- div for details modal -->
+    <div class="modal hide fade modal-overflow" id="variant-details-dialog" tabindex="-1" role="dialog"></div>
+</div>

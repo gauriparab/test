@@ -1,0 +1,10 @@
+<div class="report-header">{{t 'final.report.comments.header'}}</div>
+<div class="report-body">
+	<div class="normal-images">
+		{{#ifCond status '===' 'DRAFT_PREVIEW'}}
+		<textarea id="finalReportComment" rows="5" style="width:99%; resize:none;">{{commentsSection.comment}}</textarea>
+		{{else}}
+		  <p>{{commentsSection.comment}}</p>
+		{{/ifCond}}		
+	</div>
+ </div>

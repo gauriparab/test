@@ -1,0 +1,63 @@
+<div class="container-fluid">
+    <!-- div class="row-fluid">
+        <div class="pull-left">
+            <h1><img src="{{img 'dash-samples.png'}}" width="40" /> {{t 'import.samples.title'}}</h1>
+        </div>
+    </div -->
+    <div class="row-fluid">
+	<div id="success-banner"></div>
+    </div>
+<!-- /ir/secure/api/v40/targetregions/upload/file -->
+<!-- secure/api/samplemanagement/samples/uploadFile -->
+    <div class="row-fluid">
+        <div class="span8">
+    	<form id="regionFileUpload" action="/ir/secure/api/specimen/upload/file" method="POST" enctype="multipart/form-data">
+    <div class="row-fluid">
+        <div>
+            <div class="fileupload fileupload-new" data-provides="fileupload">
+                <div class="input-append">
+                    <div class="uneditable-input span3">
+                        <i class="icon-file fileupload-exists"></i>
+                        <span class="fileupload-preview"></span>
+                    </div>
+                    <span class="btn btn-file">
+                        <span class="fileupload-new">{{t 'upload.browse'}}</span>
+                        <span class="fileupload-exists">{{t 'upload.change'}}</span>
+                        <input type="file" name="fileData" id="file-data-input">
+                    </span>
+                    <a href="#" id="removeFile" class="btn fileupload-exists" data-dismiss="fileupload">{{t 'upload.remove'}}</a>
+                    &nbsp;&nbsp;
+                    <a id="upload" style="margin-left: 10px;" class="btn fileupload-exists"
+                           href="#">{{t 'user.role.ROLE_IMPORT'}}</a>
+                    &nbsp;&nbsp;
+                 </div>
+                 <div style="margin-top:-8px;color:#B1B1AC">({{t 'specimens.upload.instructions.formats'}}:.txt, .xls, .xlsx or .csv)</div>
+                 <div id="progressBar" class="progress hide" style="width : 400px">
+                            <div class="bar" style="width: 0%;"></div>
+                 </div>
+                 <div><span class="upload-message"></span></div>
+                 <div id="validationProgressMessage" class="hide">{{t 'specimenFile.upload.validating'}}</div>
+                 <div id="validationTimeout" class="hide">{{t 'specimenFile.upload.validation.timeout'}}</div>
+            </div>
+            
+        </div>
+    </div>
+	<strong ><a  id="download_farmate" href="#">{{t 'specimens.upload.instructions.click'}}</a></strong> {{t 'specimens.upload.instructions.toUpload'}}
+</form>
+    </div>
+    <!-- <div class="span4">
+     <ul><h4>Import Instructions</h4><hr>
+      <li>{{t 'specimens.upload.instructions.formats'}}:.txt, .xls, .xlsx or .csv </li>
+      <li>{{t 'specimens.upload.instructions.download'}}</li>
+      <li>{{t 'specimens.upload.instructions.fill'}}</li> 
+      <li>{{t 'specimens.upload.instructions.mandatory'}}</li>
+      <li>{{t 'specimens.upload.instructions.constraints'}}</li>
+      <li>{{t 'specimens.upload.instructions.save'}}</li> 
+      <li>{{t 'specimens.upload.instructions.clickSelect'}}</li>
+      <li>{{t 'specimens.upload.instructions.clickUpload'}}</li> 
+      <li>{{t 'specimens.upload.instructions.reason'}}</li> 
+    </ul>
+     <strong ><a  id="download_farmate" href="#">{{t 'specimens.upload.instructions.click'}}</a> {{t 'specimens.upload.instructions.toUpload'}}<strong>
+</div> -->
+    </div>
+</div>

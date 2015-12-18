@@ -1,0 +1,9 @@
+{{#if libraries}}
+	{{#each libraries}}
+		<div><a data-toggle="popover" style="cursor:pointer;" data-placement="left" data-trigger="hover" data-content='<div><table><tr><td class="summary-item" width="140px">{{t "specimen.add.extractionKitBarcode.label"}}</td>{{#if ../extractionKitBarcode}}<td>{{../../extractionKitBarcode}}</td>{{else}}<td>{{t "grid.column.na"}}</td>{{/if}}</tr><tr><td class="summary-item" width="140px">{{t "library.label.libraryKitBarcode"}}</td><td>{{libraryKitBarcode}}</td></tr><tr><td class="summary-item" width="140px" style="border-bottom: 1px solid #D8D8D8;">{{t "grid.column.inputQuantity"}}</td><td style="border-bottom: 1px solid #D8D8D8;">{{quantity}}</td></tr></table></div>'><b>{{libraryName}}</b></a></div>
+	{{/each}}
+{{else}}
+	{{#ifCond specimenName '!==' "NA"}}
+		<input class="input-medium" style="margin-bottom: 0;" data-ide="{{@key}}" name="libraryName" type="text" value="{{libraryName}}" maxlength="50"/> <span class="text-error requires-asterisk ">*</span>
+	{{/ifCond}}
+{{/if}}

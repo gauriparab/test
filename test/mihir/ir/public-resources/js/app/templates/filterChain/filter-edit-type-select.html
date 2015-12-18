@@ -1,0 +1,28 @@
+<!-- Single Select Filter -->
+{{#if isGroup}}
+<legend>{{filter.attributes.name}}</legend>
+<label class="checkbox">
+    <input id="filter-select-enabled" class="filter-input" type="checkbox" value="true"
+    {{#if filter.attributes.enabled}}checked="checked"{{/if}}>{{t 'filterChains.edit.attributes.enabled'}}
+</label>
+{{/if}}
+<div class='control-group'>
+	<label for='filter-select-canonical' class='control-label'>{{t 'filterChains.edit.value'}}</label>
+	<div class='controls'>
+		<select id='filter-select-canonical' class='filter-input'>
+		    {{#each filter.attributes.canonical}}
+		    <option value='{{this}}'>{{this}}</option>
+		    {{/each}}
+		</select>
+	</div>
+</div>
+{{#if filter.attributes.handleMissing}}
+<div class="control-group">
+    <div class="controls">
+        <label class="checkbox">
+            <input id="rangefilter-includeUnannotated" class="filter-input" type="checkbox" value="true"
+            {{#if filter.attributes.configuredIncludeMissing}}checked="checked"{{/if}}>{{t 'filterChains.edit.include.unannotatedVariants'}}
+        </label>
+    </div>
+</div>
+{{/if}}

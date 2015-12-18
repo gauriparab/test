@@ -1,0 +1,15 @@
+
+		<div class="form-horizontal modal-scroll row-fluid">
+		
+			<div class="span12">
+				{{#each model}}
+				{{#if this.name}}
+				<div class="control-group">
+					<label class="control-label">{{t key}}</label>
+					<div class="controls" style="padding-top:5px">{{this.value}}</div>
+				</div>
+				{{/if}}
+                {{/each}}
+			</div>
+	    </div>
+		

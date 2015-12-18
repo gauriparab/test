@@ -1,0 +1,33 @@
+<div class="summary-section">
+    <h4>{{t 'ts.samples.specimens.summary.header'}}</h4>
+    <hr class="summary">
+    <table cellpadding="4">
+        <tbody>
+        <tr>
+            <td><strong>{{t "ts.samples.specimens.server.name"}}:</strong></td>
+            <td id="tsSamplesServerName">{{linkedAccount.name}}</td>
+        </tr>
+        <tr>
+            <td class="nowrap"><strong>{{t "ts.samples.specimens.server.username"}}:</strong></td>
+            <td id="tsSamplesUserName">{{linkedAccount.username}}</td>
+        </tr>
+        {{#if daterange}}
+        <tr>
+            <td class="nowrap"><strong>{{t "ts.samples.specimens.daterange"}}:</strong></td>
+            <td id="tsSamplesDateRange">{{daterange}}</td>
+        </tr>
+        {{/if}}
+        {{#if specimens}}
+        <tr>
+            <td><strong>{{t "ts.samples.specimens.samples"}}:</strong></td>
+            <td id="specimens">
+                <a class="specimens" data-original-title="{{t 'analysis.summary.your.selections'}}"
+                   href="javascript:void(0)">
+                    {{specimens.length}} Sample{{#ifCond specimens.length '>' 1}}s{{/ifCond}}
+                </a>
+            </td>
+        </tr>
+        {{/if}}
+        </tbody>
+    </table>
+</div>

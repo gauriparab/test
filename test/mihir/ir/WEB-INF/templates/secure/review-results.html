@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:substituteby="layout.html :: headerFragment"></head>
+<body>
+<div class="wrapper">
+    <div class="header" th:substituteby="layout.html :: bodyHeaderFragment"></div>
+
+    <div class="sub-nav" th:substituteby="layout.html :: bodySubNavFragment"></div>
+
+    <div class="main">
+        <div class="main-content clearfix">
+        </div>
+    </div>
+
+    <footer class="footer" th:substituteby="layout.html::bodyFooter"></footer>
+</div>
+<script th:substituteby="layout.html::irHeaderModals"></script>
+
+<script type="text/javascript" th:inline="javascript">
+/*<![CDATA[*/
+    requireInit(['views/data/reviewResultsOverView','models/configuration'], function(View,Configuration) {
+    	var auditConfig = _.object(_.map(Configuration.get('auditConfig'), function(item) {
+   			return [item.objectName, item]
+		}));
+        var view = new View({
+            el: '.main-content',
+            reportName: [[${reportName}]],
+            assay: [[${assay}]],
+            assayId: [[${assayId}]],
+            libraryPrepId: [[${libraryPrepId}]],
+            libraryName: [[${libraryName}]],
+            sampleType:[[${sampleType}]],
+            specimenId:[[${specimenId}]],
+            libraryNames:[[${libraryNames}]],
+            plannedRun: [[${plannedRun}]],
+            resultId: [[${resultId}]],
+            isCandidate: [[${isCandidate}]],
+            isReportCreated: [[${isReportCreated}]],
+            isFusion: [[${isFusion}]],
+            tabConfigs:[[${tabConfigs}]],
+            isQCPassed:[[${isQCPassed}]],
+            isAnalysisComplete:[[${isAnalysisComplete}]],
+            isSignOff:[[${isSignOff}]],
+            showClassification:/*[[${#authorization.expression("hasPermission('ROLE_ORGADMIN', 'View Classification Column Permission')")}]]*/ false,
+            canExport:/*[[${#authorization.expression("hasPermission('ROLE_ORGADMIN', 'Export Variants Data Permission')")}]]*/ false,
+            showFilterChain:/*[[${#authorization.expression("hasPermission('ROLE_ORGADMIN', 'View Filter Chain Permission')")}]]*/ false,
+            planId:[[${plannedRunId}]],
+	        isPluginsEnabled:[[${isPluginsEnabled}]],
+	        qcValue:[[${qcValue}]],
+	        tabData:[[${tabMessages}]],
+	        genericWorkflow:[[${genericWorkflow}]],
+	        auditConfig:auditConfig,
+	        applicationMode:[[${session.applicationType}]],
+	        showDownload:[[${showDownload}]]
+        });
+        view.render();
+    });
+/*]]>*/
+</script>
+</body>
+</html>

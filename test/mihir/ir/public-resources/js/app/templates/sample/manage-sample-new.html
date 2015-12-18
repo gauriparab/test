@@ -1,0 +1,87 @@
+        <div class="modal-header">
+            <button id="createUserDismiss" type="button" class="close" data-dismiss="modal">x</button>
+            <h4 id="createUserModalLabel">{{t 'manage.sample.new.title'}}</h4>
+        </div>
+        <div class="modal-body">
+            <div id="errors"></div>
+            <form id="addSampleForm" class="form-horizontal">
+                <div class="control-group">
+                    <label class="control-label" for="manageSampleID">{{t 'manage.sample.id'}}</label>
+                    <div class="controls"><input name="sampleID" type="text" id="manageSampleID" required="required" 
+                            value="{{model.sampleID}}" maxlength="20"/><span class="text-error requires-asterisk">*</span> </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="manageSampleName">{{t 'manage.sample.name'}}</label>
+                    <div class="controls"><input name="sampleName" type="text" id="manageSampleName" 
+                            value="{{model.sampleName}}" maxlength="50"/></div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="libraryKitName">{{t 'manage.sample.librarykit'}}</label>
+                    <div class="controls"><input name="libraryKitName" type="text" id="libraryKitName"
+                            value="{{model.libraryKitName}}" maxlength="80"/> </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="manageSampleBarcode">{{t 'manage.sample.barcode'}}</label>
+                    <div class="controls">
+	                    <select class="input-medium" id="manageSampleBarcode" name="manageSampleBarcode">
+	                    	{{#each barcodes}}
+				<option value="{{id}}">{{idStr}}</option>
+				{{/each}}
+	                    </select>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label class="control-label" for="manageSampleType">{{t 'manage.sample.sampleType'}}</label>
+                    <div class="controls">
+                        <select class="input-medium" id="manageSampleType" name="manageSampleType">
+                            {{#each sampleTypes}}
+                            <option value="{{value}}">{{value}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="manageCancerType">{{t 'manage.sample.cancerType'}}</label>
+                    <div class="controls">
+                        <select class="input-medium" id="manageCancerType" name="manageCancerType">
+                            {{#each cancerType}}
+                            <option value="{{value}}">{{value}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="manageSampleGender">{{t 'manage.sample.gender'}}</label>
+                    <div class="controls">
+                        <select class="input-medium" id="manageSampleGender" name="manageSampleGender">
+                            {{#each genders}}
+                            <option value="{{value}}">{{value}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                </div>
+                
+                {{#each sampleAttributes}}
+                {{#ifCond dataType '===' 'Multiple'}}
+				{{else}}
+		          <div class="control-group">
+                    <label class="control-label" for="{{attributeName}}">{{attributeName}}</label>
+                    <div class="controls">
+			             <input name="{{attributeUIName}}" maxlength="256" type="text"  {{#if isMandatory}} required="required" {{/if}}/>
+			             {{#if isMandatory}}<span class="text-error requires-asterisk">*</span>{{/if}}
+		             </div>
+                </div>
+			{{/ifCond}}
+		{{/each}}
+                <div class="control-group">
+                    <label class="control-label" for="manageSampleDescription">{{t 'manage.sample.description'}}</label>
+                    <div class="controls"><textarea name="manageSampleDescription" id="manageSampleDescription" 
+                            value="{{model.manageSampleDescription}}" rows="4"  maxlength="256"></textarea></div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">            
+            <a href="#" data-dismiss="modal" aria-hidden="true" class="btn btn-secondary">{{t 'manage.sample.cancel'}}</a>
+	    <button id="createUserSaveButton" type="button" class="btn btn-primary">{{t 'manage.sample.save'}}</button>
+        </div>

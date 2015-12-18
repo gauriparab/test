@@ -1,0 +1,11 @@
+<h5>{{name}}</h5>
+<span class="parameter-help">{{description}}</span>
+<br>
+<div class="control-group">
+    <label class="radio inline">
+        <input type="radio" name="{{_key}}" data-key="{{key}}" value="{{#if isNumericValue}}1{{else}}true{{/if}}" {{#unless isEditable}}disabled {{/unless}} {{#if boolValue}}checked{{/if}}> True
+    </label>
+    <label class="radio inline">
+        <input type="radio" name="{{_key}}" data-key="{{key}}" value="{{#if isNumericValue}}0{{else}}false{{/if}}" {{#unless isEditable}}disabled {{/unless}} {{#unless boolValue}}checked{{/unless}}> False
+    </label>
+</div>

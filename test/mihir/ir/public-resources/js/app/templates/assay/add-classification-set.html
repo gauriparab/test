@@ -1,0 +1,25 @@
+
+<form class="form-horizontal">
+	<div class="row-fluid">
+		<div class="span4">
+			<div class="control-group">
+                <label class="control-label" for="classification-set-name">{{t 'classification.set.name.label'}}: <span class="text-error requires-asterisk ">*</span></label>
+                <input id="classificationSetName" type="text" maxlength="50">
+            </div>
+        </div>
+       <div class="span8">
+            <div class="control-group">
+                <label class="control-label" for="classification-set-description">{{t 'sample.planARun.addNote'}}:</label>
+                <input id="classificationSetDescription" type="text" style="width: 540px;" maxlength="256">
+            </div>
+       </div>
+	</div>
+    <div class="control-group">
+		<label class="control-label" for="classificationList">{{t 'classification.set.classificationList.label'}}: <span class="text-error requires-asterisk ">*</span></label>
+		<textarea name="classificationList" id="classificationList" maxlength="256" rows="4" style="width: 680px;"></textarea>
+	</div>
+	 <div class="control-group">
+	 	<span class="info-label">{{t 'classification.set.classificationList.instruction'}}</span>
+	 </div>
+</form>
+

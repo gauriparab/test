@@ -1,0 +1,24 @@
+<div class="k-grid-header" style="border:1px solid #d8d8d8;border-bottom: 3px solid;">
+	<div style="width:15%; display:inline-block;"></div>
+	<div style="width:16%; display:inline-block;"></div>
+	<div style="width:68%; display:inline-block;">
+		<table class="table" style="width:100%; margin: 0px;border:none;">
+			<thead>
+				<tr>
+					<td style="width: 25%; border:none;"><b>{{t 'monitor.run.metricName'}}</b></td>
+					<td style="width: 25%;"><b>{{t 'monitor.run.value'}}</b></td>
+					<td style="width: 25%;"><b>{{t 'monitor.run.referenceRange'}}</b></td>
+					<td style="width: 25%;"><b>{{t 'monitor.run.qcStatus'}}</b></td>
+				</tr>
+			</thead>
+		</table>
+	</div>
+</div>
+{{#if template}}
+	<div id="internalControlQc" style="border:1px solid #d8d8d8;"></div>
+{{else}}
+	<div id="runQc" style="border:1px solid #d8d8d8; border-bottom:none"></div>
+	<div id="sampleQc" style="border:1px solid #d8d8d8; border-bottom:none"></div>
+	<div id="controlQc" style="border:1px solid #d8d8d8;"></div>
+{{/if}}
+					

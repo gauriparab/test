@@ -1,0 +1,33 @@
+<a href="javascript:void(0)" data-is-workflow="true" data-toggle="popover" data-content="
+    <ul>
+        <li>
+            <strong>Description:</strong> {{workflow.description}}
+        </li>
+        <li>
+            <strong>{{t "workflow.summary.application"}}:</strong> {{t workflow.applicationType}}
+        </li>
+        <li>
+            <strong>{{t "workflow.summary.sample.group"}}:</strong> {{t workflow.groupingType}}
+        </li>
+        {{#if workflow.annotationSet}}
+        <li>
+            <strong>{{t "workflow.summary.annotation"}}:</strong>{{workflow.annotationSet.name}}
+        </li>
+        {{/if}}
+        {{#if workflow.filterChain}}
+        <li>
+            <strong>{{t "workflow.summary.filter.chains"}}:</strong>{{workflow.filterChain.name}}
+        </li>
+        {{/if}}
+        {{#if workflow.baseline}}
+        <li>
+            <strong>{{t "workflow.summary.baseline"}}:</strong>{{workflow.baseline.name}}
+        </li>
+        {{/if}}
+        {{#if workflow.reportTemplate}}
+        <li>
+            <strong>{{t "workflow.summary.reportTemplate"}}:</strong>{{workflow.reportTemplate.name}}
+        </li>
+        {{/if}}
+    </ul>
+">{{workflow.name}}</a>

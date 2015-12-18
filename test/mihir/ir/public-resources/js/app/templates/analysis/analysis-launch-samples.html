@@ -1,0 +1,20 @@
+<p class="context-help">{{t 'analysis.launch.samples.' workflow.groupingType '.help'}}</p>
+
+{{#if infoBanner}}
+<div class="row-fluid">
+    <div class="span12 alert alert-warning">{{t infoBanner}}</div>
+</div>
+{{/if}}
+
+<div class="row-fluid">
+    <div class="span12">
+        <select id="flag-filters" class="pull-left show-tick show-menu-arrow" data-width="175px">
+            <!-- templates/common/filter.html -->
+        </select>
+        <form id="query-form" class="form-search form-inline pull-right"></form>
+    </div>
+</div>
+
+<div class="row-fluid">
+    <div class="span12" id="samples-grid"></div>
+</div>

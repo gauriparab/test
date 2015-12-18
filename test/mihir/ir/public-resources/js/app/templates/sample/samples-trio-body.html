@@ -1,0 +1,39 @@
+<ul class="box-inr">
+    <li class="span5">
+
+        <div class="{{#if MOTHER}}pink{{else}}dotted{{/if}} box mother" data-value="MOTHER">
+            <h3>Mother:</h3>
+
+            <p>{{#if MOTHER}}{{MOTHER.name}}{{else}}Empty{{/if}}</p>
+            {{#if MOTHER}}
+            <input class="cross pull-right" type="button" value=""/>
+            {{/if}}
+        </div>
+        <div class="{{#if FATHER}}blue{{else}}dotted{{/if}} box father" data-value="FATHER">
+            <h3>Father:</h3>
+
+            <p>{{#if FATHER}}{{FATHER.name}}{{else}}dotted-box{{/if}}</p>
+            {{#if FATHER}}
+            <input class="cross pull-right" type="button" value=""/>
+            {{/if}}
+        </div>
+    </li>
+    <li class="span2"><div class="single"><a href="#" class="swap"><img src="{{img 'swap.gif'}}" alt="swap"/></a></div></li>
+    <li class="span5">
+        <div class="{{#if CHILD}} {{#ifCond CHILD.gender '===' 'Male'}} blue {{else}} pink {{/ifCond}} {{else}} dotted {{/if}} box child single"
+                data-value="CHILD">
+            <h3>{{#if CHILD}}
+                    {{#ifCond CHILD.gender '===' 'Male'}} 
+                        Son: 
+                    {{else}} 
+                        Daughter:
+                    {{/ifCond}}
+                {{else}} 
+                    Empty
+                {{/if}}
+            </h3>
+            <p>{{#if CHILD}}{{CHILD.name}}{{else}}Empty{{/if}}</p>
+            {{#if CHILD}}<input class="cross pull-right" type="button" value=""/>{{/if}}
+        </div>
+    </li>
+</ul>

@@ -1,0 +1,20 @@
+{{#unless this}}
+    <i class="icon-loader"></i>
+{{/unless}}
+{{#if this}}
+    {{#if success}}
+        <i class="icon-check"></i>
+    {{/if}}
+    {{#unless success}}
+        <i class="icon-error"></i>
+        <span class="errors">
+        {{#if errorMsgs}}
+        <ul>
+        {{#each errorMsgs}}
+        <li>{{t this}}</li>
+        {{/each}}
+        </ul>
+        {{/if}}
+        </span>
+    {{/unless}}
+{{/if}}

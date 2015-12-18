@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en"><head><!-- saved from url=(0014)about:internet -->
+<meta charset="utf-8" /><meta name="viewport" content="width=device-width" /><meta content="(C) Copyright 2005" name="copyright" /><meta content="(C) Copyright 2005" name="DC.rights.owner" /><meta content="concept" name="DC.Type" /><meta content="Variant Quality Score" name="DC.Title" /><meta content="GUID-528399C1-2D6D-441C-8153-A2A1DD2F7B6C.html" name="DC.Relation" scheme="URI" /><meta content="XHTML" name="DC.Format" /><meta content="GUID-FAC8E45A-B12B-4093-AABB-B23FDF33C2F9" name="DC.Identifier" /><meta content="en" name="DC.Language" /><title>Variant Quality Score</title><link rel="prev" href="GUID-B3C55A95-949E-4F16-BDD2-C3E3C0FCDD23.html" /><link rel="next" href="GUID-98E69C88-0170-4857-9AB0-3D9023D895C1.html" /><link href="static/screen.css?vYqzNzBe" rel="stylesheet" /><link href="static/print.css?Of1595s7" media="print" rel="stylesheet" /><link href="static/help.ico" rel="shortcut icon" /><script src="static/head.js?qUF72lF0"></script></head><body id="GUID-FAC8E45A-B12B-4093-AABB-B23FDF33C2F9" data-approot=""><header><a href="index.html" id="logo-link"><img class="logo" src="GUID-E9DF9DD7-2132-4F7C-93DE-CF7D25CD9CB9-screen.svg" alt="Logo"/></a><h1>Torrent Suite™ Assay Development Software Help 
+	 </h1></header><section id="center"><article><noscript><p>JavaScript must be enabled in order to use this site.</p><p>Please enable JavaScript in your browser and refresh the page.</p></noscript><div id="thumbnailDialog"></div><a name="GUID-FAC8E45A-B12B-4093-AABB-B23FDF33C2F9"></a>
+
+<h1 class="title topictitle1">Variant Quality Score</h1>
+<div class="body conbody"> 
+	 <p class="p">The variant Quality Score is a measure of how strong the evidence is for the variant call. The preceding statistical model (page 
+		<a class="xref page" href="GUID-B3C55A95-949E-4F16-BDD2-C3E3C0FCDD23.html">c_Variant score definition</a>) provides a posterior distribution for allele frequency given the observations (and latent variables). This posterior observation is translated into a variant Quality Score (the 
+		<strong class="ph b" id="GUID-FAC8E45A-B12B-4093-AABB-B23FDF33C2F9__GUID-D5A673BC-B728-4EC8-95B7-F5E9B7540731"><a name="GUID-FAC8E45A-B12B-4093-AABB-B23FDF33C2F9__GUID-D5A673BC-B728-4EC8-95B7-F5E9B7540731"></a>QUAL</strong> field score according to the VCF standard), which is the Phred-scaled (‑10*log10) relative probability under whatever statistical model that the assertion made about the variant is incorrect. 
+	 </p>
+ 
+	 <p class="p">In our case, the assertion made is that the sample variant allele frequency is greater than the specified min-allele-frequency for a non-reference call, or that the sample variant frequency is less than the specified min-allele frequency for a reference call. This posterior probability is computed by integrating out the posterior likelihood obtained from the observed reads over the two intervals [0,threshold), [threshold,1], and includes sampling variability. 
+	 </p>
+ 
+	 <p class="p">Typically this value is very large for reads strongly distinguishing variants with good depth (i.e., under the model assumed, evidence is overwhelming for the variant or for the reference). The variant Quality Scores are capped at 100. Marginal values in this field can mean either that the reads do not distinguish between alleles well or there is insufficient depth of coverage, or the observed frequency is near the cutoff. 
+	 </p>
+ 
+	 <div class="p">As with all variant callers, filters are used to determine cases in which the assumptions behind the statistical model do not match the observed data, and therefore may make no-calls even in the case when there is apparently large statistical support in the reads. Filters used within the variant caller are: 
+	 <a name="GUID-FAC8E45A-B12B-4093-AABB-B23FDF33C2F9__UL_C5E5E58E7A81408EADB124FD7BCBFB90"></a><ul class="ul" id="GUID-FAC8E45A-B12B-4093-AABB-B23FDF33C2F9__UL_C5E5E58E7A81408EADB124FD7BCBFB90"> 
+		<li class="li" id="GUID-FAC8E45A-B12B-4093-AABB-B23FDF33C2F9__LI_F034F96C278E4E1EBD57763D3BEB151E"><a name="GUID-FAC8E45A-B12B-4093-AABB-B23FDF33C2F9__LI_F034F96C278E4E1EBD57763D3BEB151E"></a> 
+		  <p class="p">Reference 
+		  </p>
+ 
+		</li>
+ 
+		<li class="li" id="GUID-FAC8E45A-B12B-4093-AABB-B23FDF33C2F9__LI_1A2C82B8BC894F4591FC694DDE5A0944"><a name="GUID-FAC8E45A-B12B-4093-AABB-B23FDF33C2F9__LI_1A2C82B8BC894F4591FC694DDE5A0944"></a> 
+		  <p class="p"> SSE 
+		  </p>
+ 
+		</li>
+ 
+		<li class="li" id="GUID-FAC8E45A-B12B-4093-AABB-B23FDF33C2F9__LI_117BD58742A847E491B6859E67308C4F"><a name="GUID-FAC8E45A-B12B-4093-AABB-B23FDF33C2F9__LI_117BD58742A847E491B6859E67308C4F"></a> 
+		  <p class="p">Strand bias 
+		  </p>
+ 
+		</li>
+ 
+		<li class="li" id="GUID-FAC8E45A-B12B-4093-AABB-B23FDF33C2F9__LI_6CD041D8C9284DB1AC612B03AB593BE0"><a name="GUID-FAC8E45A-B12B-4093-AABB-B23FDF33C2F9__LI_6CD041D8C9284DB1AC612B03AB593BE0"></a> 
+		  <p class="p"> Stringency 
+		  </p>
+ 
+		</li>
+ 
+		<li class="li" id="GUID-FAC8E45A-B12B-4093-AABB-B23FDF33C2F9__LI_06849A05D7DC402CA17B95D1E767D94B"><a name="GUID-FAC8E45A-B12B-4093-AABB-B23FDF33C2F9__LI_06849A05D7DC402CA17B95D1E767D94B"></a> 
+		  <p class="p">Cross Bias 
+		  </p>
+ 
+		</li>
+ 
+		<li class="li" id="GUID-FAC8E45A-B12B-4093-AABB-B23FDF33C2F9__LI_6F92CC2CD02B4C3682A8A83DE1B2AD60"><a name="GUID-FAC8E45A-B12B-4093-AABB-B23FDF33C2F9__LI_6F92CC2CD02B4C3682A8A83DE1B2AD60"></a> 
+		  <p class="p"> Coverage 
+		  </p>
+ 
+		</li>
+ 
+		<li class="li" id="GUID-FAC8E45A-B12B-4093-AABB-B23FDF33C2F9__LI_30ADEC89CC8B4431B0D205D0F260A2C9"><a name="GUID-FAC8E45A-B12B-4093-AABB-B23FDF33C2F9__LI_30ADEC89CC8B4431B0D205D0F260A2C9"></a> 
+		  <p class="p">Prediction shift 
+		  </p>
+ 
+		</li>
+ 
+		<li class="li" id="GUID-FAC8E45A-B12B-4093-AABB-B23FDF33C2F9__LI_E031CF606D9D44F2969EBF44FBFF1BE5"><a name="GUID-FAC8E45A-B12B-4093-AABB-B23FDF33C2F9__LI_E031CF606D9D44F2969EBF44FBFF1BE5"></a> 
+		  <p class="p"> Prediction hypershift 
+		  </p>
+ 
+		</li>
+ 
+		<li class="li" id="GUID-FAC8E45A-B12B-4093-AABB-B23FDF33C2F9__LI_6417FA00952A4AB28E4DE724A3033817"><a name="GUID-FAC8E45A-B12B-4093-AABB-B23FDF33C2F9__LI_6417FA00952A4AB28E4DE724A3033817"></a> 
+		  <p class="p">Hplen 
+		  </p>
+ 
+		</li>
+ 
+	 </ul>
+ 
+	 </div>
+ 
+  </div>
+<div class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="GUID-528399C1-2D6D-441C-8153-A2A1DD2F7B6C.html">Variant Quality Score definition</a></div>
+</div>
+</div>
+</article><nav id="topnav"><div id="breadcrumbs"></div><div id="topbuttons"><a id="button-hide-navigation" href="#" title="Hide navigation"><span>Hide navigation</span></a><a id="button-print" href="#" title="Print"><span>Print</span></a><a id="button-print-all" title="Print All"><span>Print All</span></a></div></nav></section><div id="leftbar"><ul class="tabs"><li class="currentli"><a class="current toc" href="#"><span>Contents</span></a></li><li><a class="glossary" href="#"><span>Glossary</span></a></li><li><a class="search" href="#"><span>Search</span></a></li></ul><nav class="toc current"><div class="loader"><img src="static/loader.gif" alt="Loading" /></div></nav><nav class="glossary"></nav><nav class="search"><div class="results"><span>No search has been performed.</span></div></nav></div><form id="searchform"><input class="search" type="search" placeholder="Search" /><input class="submit" type="submit" value="Go" /></form><script src="static/body.js?TC2GotM2"></script><footer><table xmlns:suite="http://www.suite-sol.com/lifetech"><tr><td class="col2"><p> 
+			  For Research Use Only. Not for use in diagnostic procedures.</p><p> 
+		  </p></td><td class="col3"><p class="col3a"> 
+		</p><p class="col3b">2015.10.28 09:20:64</p></td><td class="col4"><a href="legal.html"><img src="static/logo.png" class="corplogo"/></a></td></tr></table></footer></body></html>

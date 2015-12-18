@@ -1,0 +1,22 @@
+<div class="row-fluid">
+    <div class="settings-selector-box" style="margin-right: 5px">
+        <select id="filter-chain-selection" data-width="185px" class="input-large">
+            <option value="">No Filter</option>
+            {{#each filterChains}}
+            <option value="{{id}}">{{name}}</option>
+            {{/each}}
+        </select>
+    </div>
+    <div class="settings-new-box">
+        <a id="create-new-filter-chain" href="#" data-toggle="tooltip"
+           data-container="body" data-original-title="New"><i
+                class="icon-file"></i></a>
+    </div>
+</div>
+<div id="filter-summaries" class="row-fluid">
+    <!--  variants-summaries.html -->
+</div>
+<div class="settings-table-actions pull-right">
+    <button id="save-filter-changes" type="button" class="btn disabled">{{t 'variant.label.saveFilterChain'}}</button>
+</div>
+<div class="modal hide fade modal-overflow" id="filterChain-dialog" tabindex="-1" role="dialog"></div>

@@ -1,0 +1,19 @@
+<div class="row-fluid">
+    <table cellpadding="5">
+        <tr>
+            <td valign="top" width="150"><strong>Application Version :</strong></td>
+            <td><div class="versions"
+            class="row-fluid input-xlarge custom-region-container">
+            {{#ifCond versions.length '<=' 1}}
+                <div id="version">{{firstValue versions 'value'}}</div>
+            {{else}} 
+                <select id="version" class="input-xlarge"> 
+                {{#each versions}}
+                    <option value={{this.id}}>{{this.value}}</option> 
+                {{/each}}
+                </select> 
+            {{/ifCond}}
+        </div></td>
+        </tr>
+    </table>
+</div>

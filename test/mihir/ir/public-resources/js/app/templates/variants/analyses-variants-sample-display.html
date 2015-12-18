@@ -1,0 +1,13 @@
+{{#if analyses}}
+    <ul>
+        {{#each analyses}}
+            {{#if specimenGroup}}
+                {{#each specimenGroup}}
+                    <li><b>{{t 'specimen.role.' role }}</b> in {{../analysisName}}: {{specimen.name}}</li>
+                {{/each}}
+            {{/if}}
+        {{/each}}
+    </ul>
+{{else}}
+    <p>No samples selected</p>
+{{/if}}

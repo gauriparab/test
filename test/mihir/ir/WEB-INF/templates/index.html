@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head th:substituteBy="public-layout.html :: headerFragment"></head>
+<body>
+<div class="wrapper">
+    <div class="header" layout:include="public-layout.html :: publicBodyHeader"></div>    
+    <div class="banner">
+        <div class="container" layout:include="public-layout.html :: banner">
+            <div class="row-fluid" layout:fragment="bannerContent">
+                <div class="span5 logo">                
+                    <div class="row">      
+                        <img src="../../public-resources/img/ir-logo.png" th:src="@{/resources/img/ir-software.png}" alt="Ion Reporter&trade; Software"/>                 
+                    </div>
+                    <div class="row">                       
+                        <p>A secure, hosted data analysis tool to simplify<br/> the informatics associated with routine assays<br/> around DNA variation.</p>
+                    </div>
+                    <div class="row actions">     
+                        <p><a id="signInButton" href="login.html" class="btn btn-large btn-primary" th:text="#{button.sign.in}">Sign in</a>
+                        <span th:if="${hosted}"> &nbsp;or&nbsp;
+                        <button id="request-account" type="button" class="btn btn-large" th:text="#{button.request.account}">Register for new account</button>
+                        </span></p>                                                                      
+                    </div>
+                    <div class="row" th:unless="${#strings.isEmpty(beans.applicationProps['ir.1x.url'])}">
+                        <p>
+                            <a id="ionReporter1xLink"
+                               href="http://www.example.com"
+                               th:href="${beans.applicationProps['ir.1x.url']}">Access Ion Reporter 1.6</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="span7 features">
+                    <div class="row-fluid">
+                        <div class="span6">
+                            <span>
+                                <img src="../../public-resources/img/ion-analyze.png" th:src="@{/resources/img/ion-analyze.png}" alt=""/>                                
+                                <h5>ANALYZE</h5>
+                                <center><hr/></center>
+                                <p>Automated analysis of 1, 2 or 3 samples.</p>
+                            </span>
+                        </div>
+                        <div class="span6">
+                            <span>
+                                <img src="../../public-resources/img/ion-annotate.png" th:src="@{/resources/img/ion-annotate.png}" alt=""/>
+                                <h5>ANNOTATE</h5>
+                                <center><hr/></center>
+                                <p>Richly annotate your variants from a wide range of public or custom annotations.</p>
+                            </span>
+                        </div>                        
+                    </div>
+                    <div class="row-fluid">
+                        <div class="span6">
+                            <span>
+                                <img src="../../public-resources/img/ion-filter.png" th:src="@{/resources/img/ion-filter.png}" alt=""/>
+                                <h5>FILTER</h5>
+                                <center><hr/></center>
+                                <p>Rapidly filter variants to identify those that are biologically relevant.</p>
+                            </span>
+                        </div>
+                        <div class="span6">
+                            <span>
+                                <img src="../../public-resources/img/ion-report.png" th:src="@{/resources/img/ion-report.png}" alt=""/>
+                                <h5>REPORT &amp; EXPORT</h5>
+                                <center><hr/></center>
+                                <p>Simplified reporting and exporting of variants and data.</p>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+    <div class="container marketing" th:substituteBy="public-layout.html :: learnMore"></div>
+    <footer th:substituteBy="public-layout.html :: bodyFooter"></footer>
+</div>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+        requireInit(['views/requestAccountView', 'utils/ajaxSendCsrfHandler'],
+            function (RequestAccountView, ajaxSendCsrfHandler) {
+
+            $(document).ajaxSend(ajaxSendCsrfHandler.ajaxSendCsrfHandler);
+
+            $('#request-account').on('click', function() {
+                    new RequestAccountView().render();
+                });
+            });
+    /*]]>*/
+</script>
+</body>
+</html>

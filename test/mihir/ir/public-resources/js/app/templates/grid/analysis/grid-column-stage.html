@@ -1,0 +1,13 @@
+{{#if stage}}
+{{#ifCond applicationType '===' 'METAGENOMICS'}}
+{{#ifCond stage '===' 'VARIANT_REVIEW'}}
+{{t 'AnalysisStage.METAGENOMICS_REVIEW'}}
+{{else}}
+{{t 'AnalysisStage.' stage}}
+{{/ifCond}}
+{{else}}
+{{t 'AnalysisStage.' stage}}
+{{/ifCond}}
+{{else}}
+{{t 'grid.analysis.stage.none'}}
+{{/if}}

@@ -1,0 +1,29 @@
+<div id="grid-view" style="display:block;">
+<div class="row-fluid">
+	<div class="pull-left">
+		<h1>{{t 'workflow.presets.baseline.label'}}</h1>
+	</div>
+	<div class="pull-right">
+		<form class="form-search pull-right btn-toolbar">
+			{{#if canImportCNVBaseline}}
+			<a href="javascript:void(0)" id="importCnvBaseline" class="btn btn-primary">{{t 'cnv.baseline.import'}}</a>
+			{{/if}}
+			{{#if canAddCNVBaseline}}
+			<a href="create-cnv-baseline.html" id="addCnvBaseline" class="btn btn-primary">{{t 'cnv.baseline.createNew'}}</a>
+			{{/if}}
+		</form>
+	</div>
+</div>
+<div class="row-fluid">
+	<div class="span12" id="copy-number-baseline-grid"></div>
+</div>
+</div>
+
+<div id="import-view" style="display:none;">
+	<!-- templates/assay/cnv-import-view.html -->
+</div>
+
+<div class="modal hide fade" id="viewCNVDetails" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>
+<div class="modal hide fade" id="viewCNVLogs" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>
+<div class="modal hide fade" id="addCNVNotes" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>
+<div class="modal hide fade" id="viewNotes" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>

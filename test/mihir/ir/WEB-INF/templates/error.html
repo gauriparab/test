@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head th:substituteBy="public-layout.html :: headerFragment"></head>
+<body>
+<style type="text/css">
+.fourofour {
+    color: #007ED5;
+    font-size: 120px;
+    line-height: 1em;
+}
+.beaker {
+    text-align: right;
+    vertical-align: bottom;
+} 
+.login-container {
+    background: #fff;
+}
+h1 {
+    margin-bottom: 30px;
+}
+p.big {
+    display: block;
+    font-size: 16px;
+    margin: 20px 0;
+}
+</style>
+<div class="wrapper">
+    <div class="header" layout:fragment="publicBodyHeader">
+        <div class="container">
+            <div class="row">                    
+                <img src="../../public-resources/img/ion-logo.png" th:src="@{/resources/img/ion-logo.png}" alt="" class="ion-logo" />                                    
+            </div>
+        </div>
+    </div>            
+    <div class="banner">
+        <div class="container" layout:include="public-layout.html :: banner">
+            <div class="row-fluid" layout:fragment="bannerContent">
+                <div class="span12 login-container">
+                    <div class="row-fluid">
+                        <div class="span8">
+                            <h1>System Error</h1>
+                                                        
+                            <div class="row-fluid">
+                                <div class="span4">
+                                    <b class="fourofour" th:if="${errorCode}" th:text="${errorCode}">500</b>
+                                </div>
+                                <div class="span8">
+                                    <h2 style="margin-top:13px">
+                                        <span th:if="${servletError}" ><span th:utext="${servletError.message}">Showing error message.</span> (<span id="servlet-error-hash" th:text="${servletError.hash}">abcdef0123456789ab</span>)</span>
+                                        <span th:unless="${servletError}" th:utext="#{exception.msg.public.default}">We're sorry, something went wrong.</span>
+                                    </h2>
+                                    <p><b>Please <a href="mailto:ionreporter@lifetech.com">let us know</a> and we will get it fixed.</b></p>                        
+                                </div>                                                
+                            </div>
+                            
+                            <p class="muted big">Please try the links below:</p>
+                            
+                            <ul class="unstyled">
+                                <li><a href="/ir/index.html">Return to Ion Reporter landing page</a></li>
+                                <li><a href="#" onclick="if(document.referrer) {window.open(document.referrer,'_self');} else {history.go(-1);} return false;">Go back to previous page</a></li>
+                            </ul>
+                        </div>                    
+
+                        <div class="span4 beaker">
+                            <img src="../../public-resources/img/404_beaker.jpg" th:src="@{/resources/img/404_beaker.jpg}" alt="" class="ion-logo" />
+                        </div>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>
+       
+    <footer th:substituteBy="public-layout.html :: bodyFooter"></footer>
+</div>
+
+</body>
+</html>

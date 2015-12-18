@@ -1,0 +1,38 @@
+<table cellpadding="5">
+	<tbody>
+		<tr>
+			<td><strong>{{t 'data.signoff.username'}}:</strong></td>
+			<td>{{model.userName}}</td>
+		</tr>
+	
+		<tr>
+			<td><strong>{{t 'user.profile.page.firstName.label'}}:</strong></td>
+			<td>{{model.firstName}}</td>
+		</tr>
+		<tr>
+			<td><strong>{{t 'user.profile.page.lastName.label'}}:</strong></td>
+			<td>{{model.lastName}}</td>
+		</tr>
+		<tr>
+			<td><strong>{{t 'user.profile.page.email.label'}}:</strong></td>
+			<td><input name="email" type="email" id="userEmail" value="{{model.email}}" maxlength="100"/></td>
+		</tr>
+		<tr>
+			<td><strong>{{t 'user.profile.page.status.label'}}:</strong></td>
+			<td>{{model.state}}</td>
+		</tr>
+		<tr>
+			<td><strong>{{t 'user.profile.page.createdOn.label'}}:</strong></td>
+			<td>{{model.createdOn}}</td>
+		</tr>
+		<tr>
+			<td><strong>{{t 'user.profile.page.lastLogin.label'}}:</strong></td>
+			<td>{{model.lastLoginDate}}</td>
+		</tr>
+		<tr>
+			<td><strong>{{t 'user.profile.page.role.label'}}:</strong></td>
+			<td>{{model.roleDto.roleName}}</td>
+		</tr>
+	</tbody>
+</table>
+

@@ -1,0 +1,31 @@
+<div>
+    <table cellpadding="5">
+        <tbody>
+        <tr>
+            <td colspan="2">
+                <span id="defaultDetail" class="details-icons">
+                    {{sub sub.provided}}
+                </span>
+            </td>
+        </tr>           
+        <tr>
+            <td colspan="2">
+                <span class="breakall"><strong>{{name}}</strong></span><br/>
+                {{description}}
+            </td>
+        </tr>
+        <tr>
+            <td><strong>{{t "version.label"}}:</strong></td>
+            <td id="hotspotVersionId">{{applicationVersion.name}}</td>
+        </tr>
+        <tr>
+            <td><strong>{{t 'hotspotregion.details.createdBy'}}:</strong></td>
+            <td>{{createdBy.firstName}}&nbsp;{{createdBy.lastName}}</td>
+        </tr>
+        <tr>
+            <td><strong>{{t 'hotspotregion.details.createdOn'}}:</strong></td>
+            <td>{{createdOn}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

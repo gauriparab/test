@@ -1,0 +1,75 @@
+<!-- <form class="form-horizontal" id="referenceFileUpload"
+					action="/ir/secure/api/settings/genomeUpload" method="POST"
+					enctype="multipart/form-data" style="margin: 0"> -->
+<div>
+	<form id="referenceSequenceAttribute" class="form-horizontal" style="margin: 0">
+	<div class="control-group">
+		<label class="control-label" for="descriptiveName">{{t 'settings.label.descriptiveName'}}: <span class="text-error requires-asterisk ">*</span></label>
+		<div class="controls">
+			<input name="descriptiveName" type="text" id="descriptiveName" required="required" maxlength="50"/>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="shortName">{{t 'settings.label.shortName'}}: <span class="text-error requires-asterisk ">*</span></label>
+		<div class="controls">
+			<input name="shortName" type="text" id="shortName" required="required" maxlength="50"/>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="genomeVersion">{{t 'settings.label.genomeVersion'}}: <span class="text-error requires-asterisk ">*</span></label>
+		<div class="controls">
+			<input name="genomeVersion" type="text" id="genomeVersion" required="required" maxlength="50"/>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="sampleSize">{{t 'settings.label.sampleSize'}}: </label>
+		<div class="controls">
+			<input name="sampleSize" type="text" id="sampleSize" maxlength="50"/>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="notes">{{t 'settings.label.notes'}}: </label>
+		<div class="controls">
+			<textarea name="notes" id="notes" maxlength="256" rows="3"></textarea>
+		</div>
+	</div>
+	</form>
+	<form id="referenceFileUpload" class="form-horizontal"
+				action="/ir/secure/api/settings/genomeUpload" method="POST"
+				enctype="multipart/form-data" style="margin: 0">
+	<div class="control-group">
+		<label class="control-label" for="notes">
+			{{t 'settings.label.upload'}} FASTA {{t 'settings.label.file'}}:
+			<span class="text-error requires-asterisk">*</span>
+		</label>
+		<div class="controls">
+				<div class="row-fluid">
+					<div>
+						<div class="fileupload fileupload-new" data-provides="fileupload">
+							<div class="input-append">
+								<div class="uneditable-input span3 adjust-width">
+									<i class="icon-file fileupload-exists"></i>
+									<span class="fileupload-preview"></span>
+								</div>
+								<span class="btn btn-file">
+									<span class="fileupload-new">{{t 'upload.selectFile'}}</span>
+									<span class="fileupload-exists">{{t 'upload.change'}}</span>
+									<input type="file" name="file" id="file">
+								</span>
+							</div>
+							<div id="progressBar" class="progress hide" style="width: 350px">
+								<div class="bar" style="width: 0%;"></div>
+							</div>
+							<div>
+								<span class="upload-message"></span>
+							</div>
+							<div id="validationProgressMessage" class="hide">{{t 'specimenFile.upload.validating'}}</div>
+							<div id="validationTimeout" class="hide">{{t 'specimenFile.upload.validation.timeout'}}</div>
+						</div>
+					</div>
+				</div>
+		 </div>
+	</div>
+	</form>
+</div>
+<!-- </form> -->

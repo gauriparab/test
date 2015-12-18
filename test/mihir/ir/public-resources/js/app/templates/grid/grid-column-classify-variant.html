@@ -1,0 +1,8 @@
+<select name="classification" class="classification" data-id="{{id}}" 
+    {{#unlessCond actions 'contains' 'CLASSIFY'}} disabled {{/unlessCond}}>
+    {{#each classifications}}
+    <option value="{{this}}" {{#ifCond ../classification '===' this}}selected{{/ifCond}}>
+        {{t 'analysis.variant.classification.' this}}
+    </option>
+    {{/each}}
+</select>

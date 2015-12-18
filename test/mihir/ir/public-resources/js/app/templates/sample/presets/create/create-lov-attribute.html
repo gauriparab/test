@@ -1,0 +1,35 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+        <form class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">{{t 'attribute.create.name.label'}}:</label>
+                <div class="controls">
+                    <input id="name-text" type="text" name="name" class="span12" placeholder="Add preset name (required)" value="{{name}}" maxlength="255" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">{{t 'attribute.create.description.label'}}:</label>
+                <div class="controls">
+                    <textarea id="description-text" name="description" class="span12" placeholder="Add preset description (optional)">{{description}}</textarea>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">{{t 'attribute.create.encrypted.label'}}:</label>
+                <div class="controls">
+                    <select id="encryption-value" name="valueGarbled">
+                        <option value="false" {{#unless valueGarbled}}selected{{/unless}}>No</option>
+                        <option value="true" {{#if valueGarbled}}selected{{/if}}>Yes</option>
+                    </select>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">{{t 'attribute.create.lov.label'}}:</label>
+                <div class="controls">
+                    <div id="vocab-terms"></div>
+                    <input id="term-text" type="text" class="input-large" placeholder="Add term" />
+                    <button id="btn-add-term" type="button" class="btn btn-primary pull-right">Add</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

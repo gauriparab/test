@@ -1,0 +1,12 @@
+{{#if headerRow}}
+<span data-toggle="tooltip" title="{{t 'grid.column.header.desc.checkbox'}}" data-container=".main-content">
+{{/if}}
+<input id="chk_{{#if id}}{{id}}{{else}}all{{/if}}"
+       data-id="{{#if id}}{{id}}{{else}}_all_{{/if}}"
+       type="checkbox"
+       value="{{#if uid}}{{uid}}{{else}}all{{/if}}"
+       {{#if checked}}checked{{/if}}
+/>
+{{#if headerRow}}
+    </span>
+{{/if}}

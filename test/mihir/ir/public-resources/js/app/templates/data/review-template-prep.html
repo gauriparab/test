@@ -1,0 +1,70 @@
+<div class="span12">
+	{{#if isSequencing}}
+	<div class="report-header">{{t 'assay.sequencing.label'}}</div>
+	{{else}}
+	<div class="report-header">{{t 'data.verificationruns.templatePrep'}}</div>
+	{{/if}}
+	<div class="report-body">
+		<table style="width: 100%">
+			<tr>
+				<td valign="top" class="summary-item" style="padding-left: 0px"
+					width="200">{{t 'data.verificationruns.startdate'}}:</td>
+				<td>{{startDate}}</td>
+			</tr>
+			<tr>
+				<td valign="top" class="summary-item" style="padding-left: 0px">{{t 'data.verificationruns.completiondate'}}:</td>
+				<td>{{endDate}}</td>
+			</tr>
+			<tr>
+				<td valign="top" class="summary-item" style="padding-left: 0px">{{t 'data.verificationruns.operator'}}:</td>
+				<td>{{operator}}</td>
+			</tr>
+			<tr>
+				<td valign="top" class="summary-item" style="padding-left: 0px">{{t 'review.templateprep.kit'}}:</td>
+				<td>{{kitname}}</td>
+			</tr>
+			<tr>
+				<td valign="top" class="summary-item" style="padding-left: 10px">{{t 'review.templateprep.barcode'}}:</td>
+				<td>{{kitbarcode}}</td>
+			</tr>
+			<tr>
+				<td valign="top" class="summary-item" style="padding-left: 10px">{{t 'data.results.partNumber'}}:</td>
+				<td>{{partnumber}}</td>
+			</tr>
+			<tr>
+				<td valign="top" class="summary-item" style="padding-left: 10px">{{t 'data.results.expDate'}}:</td>
+				<td>{{expirationDate}}</td>
+			</tr>
+			<tr>
+				<td valign="top" class="summary-item" style="padding-left: 10px">{{t 'review.templateprep.lot'}}:</td>
+				<td>{{lotNumber}}</td>
+			</tr>
+			{{#if isSequencing}}
+			<tr>
+				<td valign="top" class="summary-item" style="padding-left: 0px">{{t 'data.results.chip'}}:</td>
+				<td>{{chip}}</td>
+			</tr>
+			<tr>
+				<td valign="top" class="summary-item" style="padding-left: 10px">{{t 'review.templateprep.chipmfgcode'}}:</td>
+				<td>{{manufactureCode}}</td>
+			</tr>
+			<tr>
+				<td valign="top" class="summary-item" style="padding-left: 10px">{{t 'review.templateprep.chipbarcode'}}:</td>
+				<td>{{chipBarcode}}</td>
+			</tr>
+			<tr>
+				<td valign="top" class="summary-item" style="padding-left: 10px">{{t 'review.templateprep.chipmfgdate'}}:</td>
+				<td>{{chipManufacturingDate}}</td>
+			</tr>
+			<tr>
+				<td valign="top" class="summary-item" style="padding-left: 10px">{{t 'review.templateprep.chipserial'}}:</td>
+				<td>{{chipSerialNumber}}</td>
+			</tr>
+			<tr>
+				<td valign="top" class="summary-item" style="padding-left: 10px">{{t 'review.templateprep.chipnumber'}}:</td>
+				<td>{{chipManufactureNumber}}</td>
+			</tr>
+			{{/if}}
+		</table>
+	</div>
+</div>

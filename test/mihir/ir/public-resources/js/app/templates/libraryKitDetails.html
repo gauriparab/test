@@ -1,0 +1,28 @@
+<div class="row-fluid">
+            <h4>{{t 'assay.detail.label'}} ({{libraryKitType.name}})</h4>
+            <div id="kitDetailsDiv">
+                <div id="kitDetailsGrid" class="span12 k-grid k-widget">
+                        <table class="table">
+                        <thead class="k-grid-header">
+                        <tr>
+                            <th class="k-header">
+                                {{t 'annotation.set.lable.name'}}
+                            </th>
+                            <th class="k-header">
+                                {{t 'annotation.set.lable.value'}}
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                    {{#each libraryKitType.details}}
+                    <tr>
+                        <td>{{name}}</td>
+                        <td>{{value}}</td>
+                    </tr>
+                    {{/each}}
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+

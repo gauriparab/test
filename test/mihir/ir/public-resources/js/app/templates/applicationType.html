@@ -1,0 +1,29 @@
+{{#each applications}}
+<div class="action application" id="{{identifier}}_{{@index}}" data-sel="{{@index}}" style="margin: 10px 20px;height:200px;width:200px;display:inline-block;">
+    <div class=" _toggler" style="background:none;">
+		<a class="" data-toggle="collapse" data-parent="#accordion2" href="#collapse{{identifier}}_{{@index}}">
+			<div>
+				<div class="row-fluid">
+					<div class="icon" style="  margin: 0px 0px 15px 0px;">
+            <img src="{{img image}}"/>
+          </div>
+					<div style="text-align: center">
+						<div class="name" style="margin: 5px 0px;height:60px;">
+              <div>{{name}}</div>
+            </div>
+            <i style="margin: 0px 0px 5px 0px;" data-placement="bottom" class="icon-info-sign" data-toggle="tooltip" title="{{description}}" ></i>
+            <div class="" style="text-align:center;">
+        			{{t 'assay.application.types.select.version'}}:
+        			<select style="width:125px;">
+        				{{#each versions}}
+        				<option value="{{id}}">{{value}}</option>
+        				{{/each}}
+        			</select>
+        		</div>
+					</div>
+				</div>
+			</div>
+		</a>
+    </div>
+</div>
+{{/each}}

@@ -1,0 +1,51 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">x</button>
+    <h3>{{t 'manageSample.details.header'}}</h3>
+</div>
+<div class="modal-body">
+    <div class="row-fluid">
+        <div id="errors"></div>
+        <div class="span12">
+		    <table style="width: 100%">
+		        <tr>
+		            <td valign="top" colspan="2" style="padding-left:0px"><h5><strong>{{sampleName}}</strong></h5></td> 
+		        </tr>
+		        <tr>
+		            <td valign="top" colspan="2" style="padding-left:0px">{{note}}</td>
+		        </tr>
+		        <tr>
+		            <td valign="top" class="summary-item" style="padding-left:0px" width="165">{{t 'manage.sample.id'}}:</td>
+		            <td>{{sampeId}}</td>
+		        </tr>
+		        <tr>
+		            <td valign="top" class="summary-item" style="padding-left:0px" width="165">{{t 'data.results.libraryBarcode'}}:</td>
+		            <td>{{libraryBarcode}}</td>
+		        </tr>		     
+		        <tr>
+		            <td valign="top" class="summary-item"  style="padding-left:0px" width="165">{{t 'grid.column.createdBy'}}:</td>
+		            <td>{{createdBy}}</td>
+		        </tr>
+		        <tr>
+		            <td valign="top" class="summary-item"  style="padding-left:0px" width="165">{{t 'sample.gender'}}</td>
+		            <td>{{gender}}</td>
+		        </tr>
+		        <tr>
+		            <td valign="top" class="summary-item"  style="padding-left:0px" width="165">{{t 'grid.column.createdOn'}}:</td>
+		            <td>{{formatDate createdDate}}</td>
+		        </tr>
+		        <tr>
+		            <td valign="top" class="summary-item"  style="padding-left:0px" width="165">{{t 'data.results.lastUpdatedBy'}}:</td>
+		            <td>{{lastUpdatedBy}}</td>
+		        </tr>
+		        <tr>
+		            <td valign="top" class="summary-item"  style="padding-left:0px" width="165">{{t 'data.results.lastUpdatedOn'}}:</td>
+		            <td>{{formatDate lastUpdatedDate}}</td>
+		        </tr>
+		    </table>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <a id="closeAssayDetailsBtn" href="#" data-dismiss="modal" class="btn btn-secondary">{{t 'assay.details.closeBtn'}}</a>
+    <button  type="button" class="btn btn-primary">{{t 'actions.PRINT'}}</button>
+</div>

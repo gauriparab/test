@@ -1,0 +1,16 @@
+<h5>{{t 'analysis.results.plugins.header'}}</h5>
+{{#each plugins}}
+<div class="row-fluid">
+    <div class="span12">
+        <div data-plugin-id="{{id}}" class="plugin">
+            <div class="row-fluid">
+                <div class="span1 pluginLogo"><img src="{{iconUrl}}"/></div>
+                <div class="span11">
+                    <div class="name">{{name}}</div>
+                    <div class="description">{{{description}}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{/each}}    

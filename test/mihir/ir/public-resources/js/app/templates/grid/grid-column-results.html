@@ -1,0 +1,5 @@
+<a href="#" {{#ifCond result '!==' null}} id="{{result.id}}" {{else}} id="0" {{/ifCond}} data-action="view_results">{{#ifCond result '!==' null}} {{result.value}} {{/ifCond}}
+</a>
+{{#if isReportCreated}}
+	<i class="icon-lock" title="{{t 'grid.column.locked'}}"></i>
+{{/if}}

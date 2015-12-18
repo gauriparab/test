@@ -1,0 +1,28 @@
+<div class="row_fluid audit-conf-table">
+	<div>
+		<table class="table">
+			<thead>
+				<tr class="success">
+					<td>
+						<b>{{t 'settings.label.dataObjectName'}}</b>
+					</td>
+					<td>
+						<b>{{t 'settings.label.requiresReason'}}</b>
+					</td>
+				</tr>
+			</thead>
+			<tbody id="boxes">
+				{{#each configs}}
+					{{#isObject this}}
+					<tr class="info">
+						<td>{{objectName}}</td>
+						<td>
+							<input type="checkbox" id="{{id}}" {{#if needsReason}} checked {{/if}} />
+						</td>
+					</tr>
+					{{/isObject}}
+				{{/each}}
+			</tbody>
+		</table>
+	</div>
+</div>

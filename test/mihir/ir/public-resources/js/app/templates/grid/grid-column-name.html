@@ -1,0 +1,15 @@
+{{#if primaryAction}}
+    <div>
+    	<b><a href="javascript:void(0)" data-action="{{toLower primaryAction}}">{{name}}</a></b>
+    </div>
+    <div class="entity-links">
+		<a href="javascript:void(0)" data-action="edit">{{t 'actions.EDIT'}}</a> | 
+		<a href="javascript:void(0)" data-action="audit_trail">{{t 'actions.AUDIT'}}</a></span>
+	</div>
+{{else}}
+	{{#if name.roleName}}
+    	{{name.roleName}}
+	{{else}}
+		{{name}}
+	{{/if}}
+{{/if}}

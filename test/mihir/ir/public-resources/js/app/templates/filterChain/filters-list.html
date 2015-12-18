@@ -1,0 +1,19 @@
+<p>{{t 'filterChains.edit.order.label'}}</p>
+<table class="filterChains table table-striped table-condensed">
+    <tbody>
+    {{#each filters}}
+    <tr id="{{id}}" data-filter-type="{{type}}" class="workflow-setting">
+    <td>{{displayValue}}</td>
+    {{! A Logical Filter Group contains multiple filters that could have unannotated variants included.}}
+    <td>
+        <div class="pull-right right-buffer filter">
+            {{#ifCond handleMissing '&&' includeMissing}}
+            <i class="icon-plus has-title-tooltip" data-toggle="tooltip" data-html="true" data-placement="left"
+               title="{{#ifCond type '===' '.filter.LogicalFilterGroup'}} {{t 'filter.logical.include.missing'}} {{else}} {{t 'filter.other.include.missing'}} {{/ifCond}}"></i>
+            {{/ifCond}}
+        </div>
+    </td>
+    </tr>
+    {{/each}}
+    </tbody>
+</table>

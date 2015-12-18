@@ -1,0 +1,35 @@
+{{#if isGroup}}
+<legend>{{filter.attributes.name}}</legend>
+<label class="checkbox">
+    <input id="rangefilter-enabled" class="filter-input" type="checkbox" value="true"
+    {{#if filter.attributes.enabled}}checked="checked"{{/if}}>{{t 'filterChains.edit.attributes.enabled'}}
+</label>
+{{/if}}
+<div class="control-group">
+    <div class="controls" id="rangefilter-canonical">
+        <label class="control-label" >{{t 'filter.label.canonical.range'}}:
+        {{filter.attributes.canonical.from}} &larr; &rarr; {{filter.attributes.canonical.to}}
+        </label>
+    </div>
+</div>
+<div class="control-group">
+    <label class="control-label" for="rangefilter-high">{{t 'filterChains.edit.attributes.high'}}</label>
+    <div class="controls">
+        <input id="rangefilter-high" class="filter-input" type="text"
+               size="20" required="required" value="{{filter.attributes.configuredHigh}}" maxlength="20">
+    </div>
+</div>
+<div class="control-group">
+    <div class="controls">
+        <label class="checkbox">
+            <input id="rangefilter-inclusive" class="filter-input" type="checkbox" value="true"
+            {{#if filter.attributes.configuredInclusive}}checked="checked"{{/if}}>{{t 'filterChains.edit.attributes.inclusive'}}
+        </label>
+        {{#if filter.attributes.handleMissing}}
+        <label class="checkbox">
+            <input id="rangefilter-includeUnannotated" class="filter-input" type="checkbox" value="true"
+            {{#if filter.attributes.configuredIncludeMissing}}checked="checked"{{/if}}>{{t 'filterChains.edit.include.unannotatedVariants'}}
+        </label>
+        {{/if}}
+    </div>
+</div>

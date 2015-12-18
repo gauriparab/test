@@ -1,0 +1,52 @@
+<div class="container-fluid">
+			<div class="row-fluid">
+				<div class="pull-left">
+					<h1>{{t 'workflow.presets.baselineImport.label'}}</h1>
+				</div>
+				<div class="pull-right">
+					<form class="form-search pull-right btn-toolbar">
+						<a href="javascript:void(0)" id="showCnvBaselines" class="btn btn-primary"> < {{t 'button.back.label'}}</a>
+					</form>
+				</div>
+			</div>
+
+			<div class="row-fluid">
+				<div id="success-banner"></div>
+	    </div>
+
+	    <div class="row-fluid">
+	        <div class="span8">
+		    	<form id="cnvFileUpload" action="/ir/secure/api/cnv/upload/file" method="POST" enctype="multipart/form-data">
+				    <div class="row-fluid">
+				        <div>
+				            <div class="fileupload fileupload-new" data-provides="fileupload">
+				                <div class="input-append">
+				                    <div class="uneditable-input span3">
+				                        <i class="icon-file fileupload-exists"></i>
+				                        <span class="fileupload-preview"></span>
+				                    </div>
+				                    <span class="btn btn-file">
+				                        <span class="fileupload-new">{{t 'upload.browse'}}</span>
+				                        <span class="fileupload-exists">{{t 'upload.change'}}</span>
+				                        <input type="file" name="fileData" id="file-data-input">
+				                    </span>
+				                    <a href="#" id="removeFile" class="btn fileupload-exists" data-dismiss="fileupload">{{t 'upload.remove'}}</a>
+				                    &nbsp;&nbsp;
+				                    <a id="upload" style="margin-left: 10px;" class="btn fileupload-exists"
+				                           href="#">{{t 'cnv.baseline.import'}}</a>
+				                    &nbsp;&nbsp;
+				                 </div>
+				                 <div style="margin-top:-8px;color:#B1B1AC">({{t 'specimens.upload.instructions.formats'}}: .zip)</div>
+				                 <div id="progressBar" class="progress hide" style="width : 400px">
+				                            <div class="bar" style="width: 0%;"></div>
+				                 </div>
+				                 <div><span class="upload-message"></span></div>
+				                 <div id="validationProgressMessage" class="hide">{{t 'specimenFile.upload.validating'}}</div>
+				                 <div id="validationTimeout" class="hide">{{t 'specimenFile.upload.validation.timeout'}}</div>
+				            </div>
+				        </div>
+				    </div>
+				</form>
+	    	</div>
+	    </div>
+	</div>

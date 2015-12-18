@@ -1,0 +1,17 @@
+ <div>
+	{{#ifCond name.length '>=' 23 }}
+		<b><a href='javascript:void(0)' data-toggle="tooltip" title="{{name}}" data-action='view_details'>{{truncate name 24}}</a></b>
+	{{else}}
+		<b><a href='javascript:void(0)' data-action='view_details'>{{truncate name 24}}</a></b>
+	{{/ifCond}}
+	 <div class="entity-links">
+	 		{{#ifCond state '===' 'Draft'}}
+	 			{{#ifCond status '===' 'Failed'}}
+	 				 <span><a href="javascript:void(0)" data-action="edit">{{t 'actions.EDIT'}}</a></span> |
+	 			{{/ifCond}}
+	 			{{#ifCond status '===' 'Active'}}
+	 				 <span><a href="javascript:void(0)" data-action="edit">{{t 'actions.EDIT'}}</a></span>
+	 			{{/ifCond}}
+	 		{{/ifCond}}
+	 </div>
+</div>

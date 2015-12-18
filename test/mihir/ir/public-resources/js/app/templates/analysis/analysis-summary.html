@@ -1,0 +1,78 @@
+<div class="summary-section">
+    <h4>{{t 'analysis.summary.header'}}</h4>
+    <hr class="summary">
+    <table cellpadding="4">
+        <tbody>
+            <tr>
+                <td><strong>{{t "analysis.summary.application"}}:</strong></td>
+                <td id="workflowApplicationId">{{t workflow.applicationType}}</td>
+            </tr>
+            <tr>
+                <td><strong>{{t "analysis.summary.workflow"}}:</strong></td>
+                <td id="workflowNameId">{{workflow.name}}</td>
+            </tr>
+            {{#if groupingType}}
+            <tr>
+                <td><strong>{{t "analysis.summary.group"}}:</strong></td>
+                <td id="summaryGroupingTypeId">{{t groupingType}}</td>
+            </tr>
+            {{/if}}
+            {{#if reference}}
+            <tr>
+                <td><strong>{{t "analysis.summary.reference"}}:</strong></td>
+                <td id="summaryReferenceNameId">{{reference.name}}</td>
+            </tr>
+            {{/if}}
+            {{#if targetRegion}}
+            <tr>
+                <td class="nowrap">{{t "analysis.summary.target.region"}}:</td>
+                <td id="summaryTargetRegionId">{{targetRegion.name}}</td>
+            </tr>
+            {{/if}}
+            {{#if hotspotRegion}}
+            <tr>
+                <td class="nowrap"><strong>{{t "analysis.summary.hotspot.region"}}:</strong></td>
+                <td id="summaryHotspotRegionId">{{hotspotRegion.name}}</td>
+            </tr>
+            {{/if}}
+            {{#if annotationSet}}
+            <tr>
+                <td><strong>{{t "analysis.summary.annotations"}}:</strong></td>
+                <td id="summaryAnnotationSetId">{{annotationSet.name}}</td>
+            </tr>
+            {{/if}}
+            {{#if filterChain}}
+            <tr>
+                <td><strong>{{t "analysis.summary.filters"}}:</strong></td>
+                <td id="summaryFilterChainsId">{{filterChain.name}}</td>
+            </tr>
+            {{/if}}  
+            <tr>
+                <td><strong>{{t "analysis.summary.samples"}}:</strong></td>
+                <td id="workflowSamplesId">
+                    <a id="specimenGroups" data-original-title="{{t 'analysis.summary.your.selections'}}"
+                       href="javascript:void(0)">
+                        {{specimenCount}} {{t 'analysis.summary.specimengrouptype.' workflow.groupingType}}{{#ifCond specimenCount "!==" 1}}s{{/ifCond}}
+                    </a>
+                </td>
+            </tr>
+            {{#if plugins}}
+            <tr>
+                <td><strong>{{t "analysis.summary.plugins"}}:</strong></td>
+                <td id="plugins">
+                    <a id="selectedPlugins" data-original-title="{{t 'analysis.summary.your.selections'}}"
+                       href="javascript:void(0)">
+                        {{plugins.length}} Plugin{{#ifCond plugins.length ">" 1}}s{{/ifCond}}
+                    </a>
+                </td>
+            </tr>   
+            {{/if}}
+            {{#if invoice}}
+            <tr>
+                <td><strong>{{t "analysis.summary.price"}}:</strong></td>
+                <td id="analysisPrice">{{invoice.invoiceTotal}} {{invoice.currency}}</td>
+            </tr>
+            {{/if}}
+        </tbody>
+    </table>
+</div>

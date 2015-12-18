@@ -1,0 +1,23 @@
+<div class="report-header">{{t 'final.report.signOff.header'}}</div>
+<div class="report-body">
+	<div class="normal-images">
+		<div class="row-fluid">
+			<div class="signature-area">
+				<ul class="researchers-list clearfix">
+					{{#each signOffSection.template.authors}}
+					<li class="researcher">
+						<strong>{{name}}</strong><br/>
+						{{qualification}}
+					</li>
+					{{/each}}
+				</ul>
+				<table style="width:40%">
+					<tr>
+						<td class="nowrap">{{t 'final.report.signature'}}&nbsp;</td>
+						<td class="signature-region">&nbsp;</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

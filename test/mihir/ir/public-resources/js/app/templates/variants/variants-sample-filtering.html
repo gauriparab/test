@@ -1,0 +1,16 @@
+{{#if specimenGroup}}
+      {{#each specimenGroup.members}}
+        <div class="checkbox">
+          <p>
+            <input type="checkbox" value="{{role}}" />
+              <b>{{tMultiOptions 'specimen.role.' ../applicationType '.' role defaultTemplate='specimen.role.' defaultLabel=role}}:</b> {{specimen.name}}
+          </p>
+        </div>
+      {{/each}}
+      <div class="settings-table-actions">
+          <button id="filter-variants-by-sample" type="button" class="btn pull-right">{{t 'variant.label.filterSamples'}}</button>
+      </div>
+      <div style="clear:both"></div>
+  {{else}}
+    <p>{{t 'variant.label.noSamplesSelected'}}</p>
+{{/if}}

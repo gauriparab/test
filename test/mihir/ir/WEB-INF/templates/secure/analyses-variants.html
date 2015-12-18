@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:substituteby="layout.html :: headerFragment"></head>
+<body>
+
+    <div class="wrapper">
+        <div class="header" th:substituteby="layout.html :: bodyHeaderFragment"></div>
+
+        <div class="sub-nav" th:substituteby="layout.html :: bodySubNavFragment"></div>
+
+        <div class="main">
+            <div id="analyses-variants-overview" class="main-content clearfix">
+                <!-- analyses-variants-overview-page.html -->
+            </div>
+        </div>
+    
+        <footer th:substituteby="layout.html::bodyFooter"></footer>
+    </div>
+
+    <script th:substituteby="layout.html::irHeaderModals"></script>
+
+    <script type="text/javascript" json:stringify="javascript">
+        /*<![CDATA[*/
+        requireInit(["views/variants/analysesVariantsOverviewPageView"], function(View) {
+            var analysisIds = /*[[${analysisIds}]]*/;
+            var view = new View({
+                el: '#analyses-variants-overview',
+                analysisIds: analysisIds.split(','),
+                myVariantsStates: /*[[${myVariantsStates}]]*/ []
+            });
+            view.render();
+        });
+        /*]]>*/
+    </script>
+</body>
+</html>

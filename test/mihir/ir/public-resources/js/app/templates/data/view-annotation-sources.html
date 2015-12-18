@@ -1,0 +1,19 @@
+{{#ifCond mode '!==' 'dx'}}
+<div style="margin: -15px 0px 10px;">
+	<h6><a data-action="view:igv" class="view-igv" style="cursor: pointer;">{{t 'igv.view.title'}}</a></h6>
+</div>
+{{/ifCond}}
+<div class="modal-scroll">
+<table style="word-wrap:break-word;table-layout:fixed;width:500px;">
+	{{#each model.annotationSourceFields}}
+		 <tr class="info-label">
+			<td style="width:160px;">
+				{{@key}}:
+			</td>
+			<td>
+				{{this}}
+			</td>
+		</tr>
+	{{/each}}
+</table>
+</div>

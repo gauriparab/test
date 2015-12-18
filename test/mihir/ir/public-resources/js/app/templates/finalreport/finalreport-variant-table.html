@@ -1,0 +1,42 @@
+<table class="table table-bordered">
+    <colgroup>
+        <col class="variant-classifier"/>
+        <col/>
+        <col/>
+    </colgroup>
+    <thead>
+        <tr>
+            <th colspan="2">{{t 'final.report.variant.locus'}}</th>
+            <th>{{t 'final.report.variant.gene'}}</th>
+            <th>{{t 'final.report.variant.mutation'}}</th>
+            <th>{{t 'final.report.variant.classification'}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each reportedVariantsSection.reportedVariants}}
+        <tr class="{{t 'finalReport.variantClassification.cssClass.' classification}}">
+            <td class="variant-classifier">&nbsp;</td>
+            <td>  <!-- Locus -->
+            {{#if locus}}
+                 {{sub ../../variantValueTemplate locus}}
+            {{/if}}
+            </td>
+            <td> <!-- Gene -->
+            {{#if gene}}
+                 {{sub ../../variantGenesTemplate gene ../.. "geneDisplayCount"}}
+            {{/if}}
+            </td>
+            <td><!-- Mutation/Coding -->
+            {{#if coding}}
+                 {{sub ../../variantValueTemplate coding}}
+            {{/if}}
+            </td> 
+            <td> <!-- Classification -->
+            {{#if classification}} 
+                {{t 'analysis.variant.classification.' classification}}
+            {{/if}}
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

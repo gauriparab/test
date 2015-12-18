@@ -1,0 +1,5 @@
+<select class="input-medium" id="classifications" name="classifications">
+	{{#each classifications}}
+	<option  value="{{this}}" {{#ifCond this "===" ../selectedClassification}}selected="selected"{{/ifCond}} data-action="classificationsChanged">{{this}}</option>
+	{{/each}}
+</select>

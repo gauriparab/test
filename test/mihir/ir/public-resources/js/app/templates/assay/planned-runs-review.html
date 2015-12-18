@@ -1,0 +1,443 @@
+{{#if isEdit}}
+<div class="row-fluid">
+	<div class="modal-scroll">
+		<table style="width: 100%">
+			<tr>
+				<td valign="top" class="info-label" width="130">{{t 'planned.runs.planName'}}: <span class="text-error requires-asterisk">*</span></td>
+				<td>
+				<input type="text" value="{{model.planName}}" name="planName" id="planName" maxlength="50" required/>
+				</td>
+			</tr>
+	 <!--   <tr>
+				<td valign="top" class="info-label" width="130">{{t 'planned.runs.notes'}}:</td>
+				<td><textarea maxlength="256" name="notes" id="notes" value="{{model.notes}}" rows="3">{{model.notes}}</textarea></td>
+			</tr> -->
+			<tr>
+				<td valign="top" class="info-label" width="130">{{t 'planned.runs.assay'}}:</td>
+				<td>{{model.assayName}}</td>
+			</tr>
+			{{#if model.reportTemplateName}}
+			<tr>
+				<td valign="top" class="info-label" width="130">{{t 'assay.summary.reportTemplate'}}:</td>
+				<td>{{model.reportTemplateName}}</td>
+			</tr>
+			{{/if}}
+			<!-- <tr>
+			<td valign="top" class="info-label" width="130">{{t 'planned.runs.runShortCode'}}:</td>
+			<td>{{model.planShortId}}</td>
+			</tr>	   -->
+			<tr>
+				<td valign="top"  class="info-label" width="130">{{t 'planned.runs.runShortCode'}}/ {{t 'planned.runs.barcode'}}:</td>
+				<td>
+				<div style="width:220px" id="barcodeLable">
+					{{model.planShortId}}
+				</div></td>
+			</tr>
+			{{#unless model.verificationRuns}}
+			<tr>
+				<td valign="top" class="info-label"  width="130">{{t 'planned.runs.tubeLabel'}}: <span class="text-error requires-asterisk">*</span></td>
+				<td>
+				<input type="text" value="{{model.tubeLabel}}" name="tubeLabel" id="tubeLabel" maxlength="10" required/>
+				</td>
+			</tr>
+			{{/unless}}
+			{{#ifCond model.templateType '===' "install_pgm"}}
+			{{else}}
+			{{#if model.templatKitBarcode}}
+				{{#unless model.chefFlag}}
+				<tr>
+					<td valign="top" class="info-label"  width="180">{{t 'planned.runs.templatePrepKit'}}: <span class="text-error requires-asterisk">*</span></td>
+					<td>
+					<input type="text" value="{{model.templatKitBarcode}}" name="templatePrepKit" id="templatePrepKit" maxlength="80" required/>
+					</td>
+				</tr>
+				{{/unless}}
+			{{/if}}
+			{{/ifCond}}
+		</table>
+		<br/>
+		{{#unless model.verificationRuns}}
+		<div class="form-small-text">
+			<label>{{t 'planned.grid.noOfSampleLibraries'}}: <b id="noOfLibraries">{{model.noOfLibraries}}</b></label>
+		</div>		
+		<div id="viewPlanRunLibrariesSamples-grid"></div>
+	</div>
+	<br/>
+	<div class="pull-left">
+		<a href="javascript:void(0)" id="removeLibrary"><i class="icon-trash"></i> {{t 'planned.runs.remove'}}</a>
+	</div>
+	<div class="pull-right">
+		<a href="javascript:void(0)" id="addLibrary"><i class="icon-plus-sign"></i> {{t 'planned.runs.add'}}</a>
+	</div>
+	{{/unless}}
+</div>
+{{else}}
+<div class="row-fluid">
+	<div class="modal-scroll">
+		<table style="width: 100%" id="tbl-plan-run-detail">
+			<tr>
+				<td colspan="2">
+					<h4 style="margin:0">
+						<span id="plan_name">{{model.planName}}</span>
+						<label class="info-label">
+							{{model.notes}}
+						</label>
+					</h4>
+				</td>
+			</tr>
+			<tr>
+				<td valign="top" class="info-label" width="130"
+					>{{t 'planned.runs.assay'}}:
+				</td>
+				<td>
+					<span id="plan_assay_name">{{model.assayName}}</span>
+				</td>
+			</tr>
+			{{#if model.reportTemplateName}}
+			<tr>
+				<td valign="top" class="info-label" width="130">{{t 'assay.summary.reportTemplate'}}:</td>
+				<td>{{model.reportTemplateName}}</td>
+			</tr>
+			{{/if}}
+			<tr>
+				<td valign="top"  class="info-label" width="130">
+					{{t 'planned.runs.runShortCode'}}/ {{t 'planned.runs.barcode'}}:
+				</td>
+				<td>
+					<div style="width:220px" id="barcodeLable">
+						{{model.planShortId}}
+					</div>
+				</td>
+			</tr>
+			{{#ifCond model.templateType '===' "install_ws"}}
+			{{else}}
+				{{#unless model.verificationRuns}}
+				<tr>
+					<td valign="top" class="info-label"  width="130">
+						{{t 'planned.runs.tubeLabel'}}: 
+						{{#if isExecute}}
+							<span class="text-error requires-asterisk">*</span>
+						{{/if}}
+					</td>
+					<td>
+						{{#if isExecute}}
+							<input type="text" value="{{model.tubeLabel}}" name="tubeLabel" id="tubeLabel" maxlength="10" required/>
+						{{else}}
+							<span id="plan_tube_label">{{model.tubeLabel}}</span>
+						{{/if}}
+					</td>
+				</tr>
+				{{/unless}}
+			{{/ifCond}}
+			{{#ifCond model.templateType '===' "install_pgm"}}
+			{{else}}
+				{{#unless model.chefFlag}}
+				<tr>
+					<td valign="top" class="info-label"  width="180">
+						{{t 'planned.runs.templatePrepKit'}}:
+						{{#if isExecute}}
+							<span class="text-error requires-asterisk">*</span>
+						{{/if}}
+					</td>
+					<td>
+						{{#if isExecute}}
+							<input type="text" value="{{model.templatKitBarcode}}" name="templatePrepKit" id="templatePrepKit" maxlength="80" required/>
+						{{else}}
+							<span id="plan_template_barcode">{{model.templatKitBarcode}}</span>
+						{{/if}}
+					</td>
+				</tr>
+				{{/unless}}
+			{{/ifCond}}
+		</table>
+		{{#unless isExecute}}
+		<div class="tabbable">
+		<hr/>
+			<ul class="nav nav-tabs" style="margin-bottom:0px">
+				<li class="active">
+					<a href="#templating-tab" data-toggle="tab">{{t 'monitor.run.templating.label'}}</a>
+				</li>
+				<li class="">
+					<a href="#sequencing-tab" data-toggle="tab">{{t 'monitor.run.sequencing.label'}}</a>
+				</li>
+				<li class="">
+					<a href="#analysis-tab" data-toggle="tab">{{t 'grid.column.runstatus.analysis'}}</a>
+				</li>
+			</ul>
+			<div class="tab-content" id="module-tab-content" style="border: 1px solid #D3D3D3; border-top:none">
+				<div class="tab-pane active"  id="templating-tab" style="margin:10px">
+				    <div class="row-fluid">
+				        <div class="span12">
+				        <table style="width: 100%">
+				        	{{#if model.oneTouchDto}}
+				        		<tr>
+						            <td valign="top" class="summary-item" style="padding-left:0px" width="165">{{t 'data.results.instrumentType'}}:</td>
+						             <td>
+							             {{#if model.oneTouchDto.instrumentType}}
+					                        {{model.oneTouchDto.instrumentType}}
+					                     {{else}}
+					                        {{t 'data.results.notAvailable'}}
+					                     {{/if}}
+				                    </td>
+						        </tr>
+						        <tr>
+						            <td valign="top" class="summary-item" style="padding-left:0px" width="165">{{t 'data.results.instrumentName'}}:</td>
+						             <td>
+							             {{#if model.oneTouchDto.instumentName}}
+					                        {{model.oneTouchDto.instumentName}}
+					                     {{else}}
+					                        {{t 'data.results.notAvailable'}}
+					                     {{/if}}
+				                    </td>
+						        </tr>
+						        <tr>
+						            <td valign="top" class="summary-item" style="padding-left:0px" width="165">{{t 'data.results.otStartDate'}}:</td>
+						            <td>
+							              {{#if model.oneTouchDto.oneTouchStartDate}}
+					                        {{model.oneTouchDto.oneTouchStartDate}}
+					                      {{else}}
+					                        {{t 'data.results.notAvailable'}}
+					                     {{/if}}
+				                    </td>
+						        </tr>
+						        <tr>
+						            <td valign="top" class="summary-item" style="padding-left:0px" width="165">{{t 'data.results.otCompletionDate'}}:</td>
+						            <td>
+						              {{#if model.oneTouchDto.oneTouchEndDate}}
+				                        {{model.oneTouchDto.oneTouchEndDate}}
+				                      {{else}}
+					                        {{t 'data.results.notAvailable'}}
+				                      {{/if}}
+				                    </td>
+						        </tr>		     
+						        <tr>
+						            <td valign="top" class="summary-item"  style="padding-left:0px" width="165">{{t 'data.results.otOperator'}}:</td>
+						            <td>
+						                 {{#if model.oneTouchDto.oneTouchOperator}}
+				                            {{model.oneTouchDto.oneTouchOperator}}
+				                         {{else}}
+					                        {{t 'data.results.notAvailable'}}
+				                        {{/if}}
+				                     </td>
+						        </tr>
+						        <tr>
+						            <td valign="top" colspan="2" style="padding-left:0px"><strong>{{t 'data.results.templatePrep'}}</strong></td>
+						        </tr>
+						        <tr>
+						            <td valign="top" class="summary-item"  style="padding-left:0px" width="165">{{t 'planned.runs.barcode'}}:</td>
+						            <td>
+							            {{#if model.oneTouchDto.barcode}}
+					                        {{model.oneTouchDto.barcode}}
+					                    {{else}}
+					                        {{t 'data.results.notAvailable'}}
+					                    {{/if}}
+				                     </td>
+						        </tr>
+						        <tr>
+						            <td valign="top" class="summary-item"  style="padding-left:0px" width="165">{{t 'data.results.partNumber'}}:</td>
+						            <td>
+							            {{#if model.oneTouchDto.partNumber}}
+					                        {{model.oneTouchDto.partNumber}}
+					                    {{else}}
+					                        {{t 'data.results.notAvailable'}}
+					                    {{/if}}
+				                     </td>
+						        </tr>
+						        <tr>
+						            <td valign="top" class="summary-item"  style="padding-left:0px" width="165">{{t 'data.results.expDate'}}:</td>
+						            <td>
+							              {{#if model.oneTouchDto.expirationDate}}
+					                        {{model.oneTouchDto.expirationDate}}
+					                      {{else}}
+					                        {{t 'data.results.notAvailable'}}
+					                     {{/if}}
+				                     </td>
+						        </tr>
+						        <tr>
+						            <td valign="top" class="summary-item"  style="padding-left:0px" width="165">{{t 'data.results.lot'}}:</td>
+							        <td>    
+							            {{#if model.oneTouchDto.lotNumber}}
+					                        {{model.oneTouchDto.lotNumber}}
+					                    {{else}}
+					                        {{t 'data.results.notAvailable'}}
+					                    {{/if}}
+					                </td>
+						        </tr>
+						    {{else}}
+						        <tr>
+						            <td valign="top" class="summary-item" style="padding-left:0px" width="165">{{t 'data.results.notStarted'}}</td>
+						        </tr>
+						    {{/if}}
+						    </table>
+				        </div>
+				    </div>
+				</div>
+				<div class="tab-pane"  id="sequencing-tab" style="margin:10px">
+					<div class="row-fluid">
+				        <div class="span12">
+				    	<table style="width: 100%">
+				        {{#if model.pgmDetailDto}}
+						         <tr>
+						            <td valign="top" class="summary-item" style="padding-left:0px" width="165">{{t 'data.results.instrumentName'}}:</td>
+						            <td>
+							            {{#if model.pgmDetailDto.pgmStartDate}}
+							            	{{model.pgmDetailDto.instrumentName}}
+							           	{{else}}
+					                        {{t 'data.results.notAvailable'}}
+							            {{/if}}
+						            </td>
+						        </tr>
+						        <tr>
+						            <td valign="top" class="summary-item" style="padding-left:0px" width="165">{{t 'data.results.pgmStartDate'}}:</td>
+						            <td>
+							            {{#if model.pgmDetailDto.pgmStartDate}}
+							            	{{model.pgmDetailDto.pgmStartDate}}
+							            {{else}}
+					                        {{t 'data.results.notAvailable'}}
+							            {{/if}}
+						            </td>
+						        </tr>
+						        <tr>
+						            <td valign="top" class="summary-item" style="padding-left:0px" width="165">{{t 'data.results.pgmCompletionDate'}}:</td>
+						            <td>
+							            {{#if model.pgmDetailDto.pgmEndDate}}
+							            	{{model.pgmDetailDto.pgmEndDate}}
+							           	{{else}}
+					                        {{t 'data.results.notAvailable'}}
+							            {{/if}}
+						            </td>
+						        </tr>		     
+						        <tr>
+						            <td valign="top" class="summary-item"  style="padding-left:0px" width="165">{{t 'data.results.pgmOperator'}}:</td>
+						            <td>
+							            {{#if model.pgmDetailDto.operator}}
+							            	{{model.pgmDetailDto.operator}}
+							            {{else}}
+					                        {{t 'data.results.notAvailable'}}
+							            {{/if}}
+						            </td>
+						        </tr>
+						        <tr>
+						            <td valign="top" colspan="2" style="padding-left:0px"><strong>{{t 'data.results.sequencingRea'}}</strong></td>
+						        </tr>
+						        <tr>
+						            <td valign="top" class="summary-item"  style="padding-left:0px" width="165">{{t 'planned.runs.barcode'}}:</td>
+						            <td>
+							            {{#if model.pgmDetailDto.barcode}}
+							            	{{model.pgmDetailDto.barcode}}
+							           	{{else}}
+					                        {{t 'data.results.notAvailable'}}
+							            {{/if}}
+						            </td>
+						        </tr>
+						        <tr>
+						            <td valign="top" class="summary-item"  style="padding-left:0px" width="165">{{t 'data.results.partNumber'}}:</td>
+						            <td>
+							            {{#if model.pgmDetailDto.partNumber}}
+							            	{{model.pgmDetailDto.partNumber}}
+							            {{else}}
+					                        {{t 'data.results.notAvailable'}}
+							            {{/if}}
+						            </td>
+						        </tr>
+						        <tr>
+						            <td valign="top" class="summary-item"  style="padding-left:0px" width="165">{{t 'data.results.expDate'}}:</td>
+						            <td>
+							            {{#if model.pgmDetailDto.expirationDate}}
+							            	{{model.pgmDetailDto.expirationDate}}
+							            {{else}}
+					                        {{t 'data.results.notAvailable'}}
+							            {{/if}}
+						            </td>
+						        </tr>
+						        <tr>
+						            <td valign="top" class="summary-item"  style="padding-left:0px" width="165">{{t 'data.results.lot'}}:</td>
+						            <td>
+							            {{#if model.pgmDetailDto.lotNumber}}
+							            	{{model.pgmDetailDto.lotNumber}}
+							            {{else}}
+					                        {{t 'data.results.notAvailable'}}
+							            {{/if}}
+						            </td>
+						        </tr>
+						        <tr>
+						            <td valign="top" colspan="2" style="padding-left:0px"><strong>{{t 'data.results.chip'}}</strong></td>
+						        </tr>
+						        <tr>
+						            <td valign="top" class="summary-item"  style="padding-left:0px" width="165">{{t 'data.results.bottomBarcode'}}:</td>
+						            <td>
+							             {{#if model.pgmDetailDto.bottomBarcode}}
+							             	{{model.pgmDetailDto.bottomBarcode}}
+							             {{else}}
+					                        {{t 'data.results.notAvailable'}}
+							             {{/if}}
+						            </td>
+						        </tr>
+						        <tr>
+						            <td valign="top" class="summary-item"  style="padding-left:0px" width="165">{{t 'data.results.topBarcode'}}:</td>
+						            <td>
+							            {{#if model.pgmDetailDto.topBarcode}}
+							            	{{model.pgmDetailDto.topBarcode}}
+							            {{else}}
+					                        {{t 'data.results.notAvailable'}}
+							            {{/if}}
+						            </td>
+						        </tr>
+						        <tr>
+						            <td valign="top" class="summary-item"  style="padding-left:0px" width="165">{{t 'data.results.manufactureDate'}}:</td>
+						            <td>
+							            {{#if model.pgmDetailDto.manufacturingDate}}
+							            	{{model.pgmDetailDto.manufacturingDate}}
+							            {{else}}
+					                        {{t 'data.results.notAvailable'}}
+							            {{/if}}
+						            </td>
+						        </tr>
+						    {{else}}
+						        <tr>
+						            <td valign="top" class="summary-item" style="padding-left:0px" width="165">{{t 'data.results.notStarted'}}</td>
+						        </tr>
+						    {{/if}}
+						     </table>
+				        </div>
+				    </div>
+				</div>
+				<div class="tab-pane"  id="analysis-tab" style="margin:10px">
+					<div class="row-fluid">
+				        <div class="span12">
+				        <table style="width: 100%">
+					        {{#if model.analysisDto}}
+						         <tr>
+						            <td valign="top" class="summary-item" style="padding-left:0px" width="165">{{t 'data.verification.analysisCompletion'}}:</td>
+						            <td>
+							            {{#if model.analysisDto.date}}
+							            	{{model.analysisDto.date}}
+							            {{else}}
+					                        {{t 'data.results.notAvailable'}}
+							            {{/if}}
+						            </td>
+						        </tr>
+							{{else}}
+						        <tr>
+						            <td valign="top" class="summary-item" style="padding-left:0px" width="165">{{t 'data.results.notStarted'}}</td>
+						        </tr>
+							{{/if}}
+						 </table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{{/unless}}
+		<br/>		
+		{{#unless model.verificationRuns}}
+		{{#ifCond model.templateType '!==' "install_ws"}}
+		<div class="form-small-text">
+			<label>{{t 'planned.grid.noOfSampleLibraries'}}: <b id="noOfLibraries">{{model.noOfLibraries}}</b></label>
+		</div>
+		{{/ifCond}}
+		<div id="viewPlanRunLibrariesSamples-grid"></div>
+		{{/unless}}
+	</div>
+</div>
+{{/if}}

@@ -1,0 +1,85 @@
+<table cellpadding="5">
+    <tr>
+        <td colspan="2">
+            <!--<span class="details-icons">-->
+                <!--{{#if flagged}}-->
+                <!--<i class="icon-flag"></i>-->
+                <!--{{else}}-->
+                <!--<i class="icon-flag icon-flag-disabled"></i>-->
+                <!--{{/if}}            -->
+            <!--</span>-->
+            {{#if analyzed}}
+            <span class="details-icons">
+                <i class="icon-eye-open has-title-tooltip" title="Sample has been analyzed"></i>
+            </span>
+            {{/if}}
+            {{#if isLocked}}
+            <span class="details-icons">                                        
+                <i class="lock-sign icon-lock icon-tips has-title-tooltip" data-original-title="Sample is locked"></i>
+            </span>
+            {{/if}}                                  
+        </td>
+    </tr>
+    {{#if name}}
+    <tr>
+        <td colspan="2" class="breakall"><strong>{{name}}</strong></td>
+    </tr>
+    {{/if}}        
+    {{#if gender}}
+    <tr>
+        <td valign="top"><strong>Gender:</strong></td>
+        <td>{{#if gender}}{{gender}}{{else}}Unknown{{/if}}</td>
+    </tr>
+    {{/if}}
+    {{#if role}}
+    <tr>
+        <td valign="top"><strong>Role:</strong></td>
+        <td>{{#if role}}{{toLower role}}{{else}}Unknown{{/if}}</td>
+    </tr>
+    {{/if}}
+    {{#if files}}
+    <tr>
+        <td valign="top"><strong>Files:</strong></td>
+        <td>
+            <a id="specimenGroup" data-original-title="Files" href="javascript:void(0)">
+                {{files.length}} File{{#ifCond files.length ">" 1}}s{{/ifCond}}</a>
+        </td>        
+    </tr>
+    {{/if}}
+    {{#if createdBy}}
+    <tr>
+        <td valign="top"><strong>Imported By:</strong></td>
+        <td>{{createdBy}}</td>
+    </tr>
+    {{/if}}
+    {{#if createdOn}}
+    <tr>
+        <td valign="top"><strong>Imported On:</strong></td>
+        <td>{{createdOn}}</td>
+    </tr>
+    {{/if}}
+    {{#each customFields}}
+    <tr>
+        <td valign="top"><strong>{{label}}:</strong></td>
+        <td>{{value}}</td>
+    </tr>
+    {{/each}}
+    {{#each meta}}
+    <tr>
+        <td valign="top"><strong>{{label}}:</strong></td>
+        <td>{{value}}</td>
+    </tr>
+    {{/each}}
+    {{#if reportFiles}}
+    <tr>
+        <td valign="top"><strong>Run Report:</strong></td>
+        <td>
+            <div class="attached">
+            {{#foreach reportFiles}}
+            <a href="{{surl 'api/v40/samples/' ../id '/reportFile/' id}}">{{name}}</a>{{#unless $isLast}},&nbsp;{{/unless}}
+            {{/foreach}}
+            </div>
+        </td>
+    </tr>
+    {{/if}}
+</table>

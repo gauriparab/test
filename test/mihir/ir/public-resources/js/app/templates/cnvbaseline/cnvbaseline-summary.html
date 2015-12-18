@@ -1,0 +1,34 @@
+<div class="summary-section">
+    <h4>{{t 'baseline.summary.header'}}</h4>
+    <hr class="summary">
+    <table cellpadding="4">
+        <tbody>
+            <tr>
+                <td><strong>{{t "cnvbaseline.baselineType.label"}}:</strong></td>
+                <td>
+                    <div id="summaryBaselineType" class="layout-setting setting-value">{{#if type}}{{t
+                        "CNVBaselineType."
+                        type}}{{/if}}</div>
+                </td>
+            </tr>
+            {{#ifCond type '!==' 'WHOLEGENOME_LOWCOVERAGE'}}
+            <tr>
+                <td class="nowrap"><strong>{{t "cnvbaseline.settings.targetRegion.label"}}:</strong></td>
+                <td id="summaryTargetRegionId">{{#if targetRegion}}{{targetRegion.name}}{{/if}}</td>
+            </tr>
+            {{/ifCond}}
+            {{#if specimens}}
+            <tr>
+                <td><strong>{{t "analysis.summary.samples"}}:</strong></td>
+                <td id="specimens">
+                    <a class="specimens" data-original-title="{{t 'analysis.summary.your.selections'}}"
+                       href="javascript:void(0)">
+                        {{specimens.length}} Sample{{#ifCond specimens.length '>' 1}}s{{/ifCond}}
+                    </a>
+                </td>
+            </tr>
+            {{/if}}
+        </tbody>
+    </table>
+</div>    
+

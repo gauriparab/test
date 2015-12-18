@@ -1,0 +1,83 @@
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="pull-left">
+			<h1><img src="{{img 'dash-workflows.png'}}" width="40" /> {{t 'workflows.label.title'}}</h1>
+		</div>
+		<div class="pull-right">
+			<form class="form-search pull-right">
+
+                {{#if false}}
+				<div class="btn-group" style="margin-right:25px;">
+					<a class="btn dropdown-toggle" data-toggle="dropdown">
+					  Print &amp; {{t 'audit.trail.export'}}	<span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu pull-right">
+						<li><a href="#">{{t 'audit.trail.print'}}</a></li>
+						<li><a href="#">{{t 'final.report.export'}}</a></li>
+						<li><a href="#">{{t 'final.report.exportXls'}}</a></li>
+					</ul>
+				</div>
+                {{/if}}
+
+                {{#if canCreateWorkflow}}
+				    <a  href="workflow.html" class="btn btn-primary">{{t 'workflows.label.createWorkflow'}}</a>
+                {{/if}}
+
+			</form>
+		</div>
+	</div>
+
+	<div class="row-fluid">
+		<div class="span8">
+            <select id="type-filters" class="pull-left show-tick show-menu-arrow" title="Filter Application" data-width="135px"></select>
+            <select id="flag-filters" class="pull-left show-tick show-menu-arrow" title="Filter Workflow" data-width="135px"></select>
+            <select id="technique-filters" class="pull-left show-tick show-menu-arrow" title="Filter Target" data-width="125px"></select>
+            <select id="group-filters" class="pull-left show-tick show-menu-arrow" title="Filter Group" data-width="125px"></select>
+            <select id="version-filters" class="pull-left show-tick show-menu-arrow" title="Filter Version" data-width="125px"></select>
+            <form id="query-form" class="form-search form-inline pull-right"></form>
+		</div>
+	</div>
+
+	<div class="row-fluid">
+		<div class="span8" id="viewworkflows-grid">
+		</div>
+		<div class="span4">
+			<div class="summary-section">
+                <div id="batch-summary-section" class="hide">
+                    <h4>
+                        <span>{{t 'batch.workflows.details.header'}}</span>
+                        <div id="batch-details-options-menu" class="pull-right" role="actions">
+                            <!-- templates/common/actions-menu.html -->
+                        </div>
+                    </h4>
+                    <hr class="summary" />
+                    <div id="batch-summary-section-content">
+                    </div>
+                    <br/>
+                </div>
+                <div id="summary-section">
+                    <h4><span>{{t 'workflow.details.header'}}</span>
+                        <div id="details-options-menu" class="pull-right" role="actions">
+                            <!-- templates/common/actions-menu.html -->
+                        </div>
+                        {{#if false}}
+                        <div class="dropdown pull-right right-buffer hide" role="reports">
+                            <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-target="#" href="">
+                                <i class="icon-book"></i><b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-with-headers" role="menu">
+                            </ul>
+                        </div>
+                        {{/if}}
+                    </h4>
+                    <hr class="summary"/>
+                    <div id="summary-section-content">
+                    </div>
+                    <div class='details-help-section'>
+                        <p>{{t 'workflow.details.no.record.selected'}}</p>
+                    </div>
+                </div>
+			</div>
+		</div>
+	</div>
+</div>

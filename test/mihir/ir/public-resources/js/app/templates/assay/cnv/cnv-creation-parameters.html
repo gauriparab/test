@@ -1,0 +1,26 @@
+{{#data}}
+	<form class="form-horizontal">
+		<table>
+			<tbody>
+				{{#each parameters}}
+					{{#ifCond rule._type '!==' 'BooleanParameterRule'}}
+					<tr>
+						<td style="padding:0px 0px 10px 0px;">{{description}}:</td>
+						<td style="padding:0px 0px 10px 10px;"><input data-index="{{@index}}" type="text" value="{{value}}"/></td>
+					</tr>
+					{{else}}
+						<td style="padding:0px 0px 10px 0px;">{{description}}:</label></td>
+						<td style="padding:0px 0px 10px 10px;">
+							<div class="controls" style="margin-left:330px;">
+								<input type="radio" name="median" value="yes" {{#ifCond value '===' 'true'}} checked {{/ifCond}} />
+								<span class="radioText">{{t 'cnv.baseline.creation.yes'}}</span>
+								<input type="radio" name="median" value="no"  {{#ifCond value '===' 'false'}} checked {{/ifCond}} />
+								<span class="radioText">{{t 'cnv.baseline.creation.no'}}<span>
+							</div>
+						</td>
+					{{/ifCond}}
+				{{/each}}
+			</tbody>
+		</table>
+	</form>
+{{/data}}

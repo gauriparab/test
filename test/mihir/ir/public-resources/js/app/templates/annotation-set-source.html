@@ -1,0 +1,83 @@
+  <div id="annotation-set-source-types" class="controls">
+      <!-- templates/annotation-set-source-types.html -->
+  </div>
+</div>
+
+      <div class="workflow-setting-configure">
+
+        <ul class="nav nav-tabs" id="annotation-set-source-tabs" >
+          <li class="active"><a href="#annotation-set-source-table" data-toggle="tab">{{t 'annotation.set.option.choose.existing'}}</a></li>
+          <li id="annotation-set-source-tab-create" ><a href="#annotation-set-source-edit" data-toggle="tab">{{t 'annotation.set.label.create.new'}}</a></li>
+        </ul>
+
+        <div class="tab-content">
+
+          <!-- show this div if there is at least one source for the selected type -->
+          <div id="annotation-set-source-table" class="active tab-pane choose-existing" >
+          {{#if sources}}
+              <table id="annotationInstanceDefaults" class="table table-condensed">
+                  <thead><tr><th>{{t 'annotation.set.label.name'}}</th><th>{{t 'annotation.set.label.version'}}</th><th></th></tr></thead>
+                  <tbody>
+
+                  <!-- iterate sources for this type -->
+                  {{#each sources}}
+                  <tr>
+                    <td>{{this.attributes.name}}</td>
+                    <td>{{this.attributes.version}}</td>
+                    <td><a data-id="{{id}}" href="#" class="{{#unless this.usable}}disabled{{/unless}} btn useChoiceBtn">{{t 'annotation.set.label.use'}}</a></td></tr>
+                  {{/each}}
+
+                  </tbody>
+              </table>
+          {{/if}}
+          </div>
+
+          <!-- only show this div if the type is mutable: {{type}} -->
+          <div id="annotation-set-source-edit" class="tab-pane add-new">
+          {{#if mutable}}
+              <div class="layout-setting form-horizontal">
+                  <span id="annotationInstanceCreateFields">
+                      
+                      <div class="control-group"><label for="name_field">{{t 'annotation.set.label.name'}}</label><input type="text" id="name_field" class="annotation-source-input" maxlength="255" 
+                          placeholder="Required" required="required"></div>
+                      <div class="control-group"><label for="version_field">{{t 'annotation.set.label.version'}}</label><input type="text" id="version_field" class="annotation-source-input" maxlength="255" 
+                        placeholder="Required" required="required"></div>
+
+                      <!-- only if type is file based -->
+                      {{#if fileBased}}
+                      <div>
+                        <label for="sourceFile_field">{{t 'annotation.set.label.source.file'}}</label>
+                        <div class="fileupload fileupload-new" data-provides="fileupload" id="sourceFile_field">
+                           <div class="input-append">
+                              <div class="uneditable-input span3">
+                                  <i class="icon-file fileupload-exists"></i>
+                                  <span class="fileupload-preview"></span>
+                              </div>
+                              <span class="btn btn-file">
+                                  <span class="fileupload-new">{{t 'annotation.set.label.select.file'}}</span>
+                                  <span class="fileupload-exists">{{t 'annotation.set.label.change'}}</span>
+                                  <input type="file" name="fileData" id="real_deal" accept=".TXT,.BED,.VCF,.BCF,.GZ,.CSV,.TSV">
+                              </span>
+                              <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">{{t 'annotation.set.label.remove'}}</a>
+                          </div>
+                          <div id="invalid-filetype-message" style="display:none" class="alert alert-error file-type-error">
+                              {{t 'upload.invalid.fileType'}}
+                          </div>
+                          <p>{{t supportedTypesMsgKey}}</p>
+                        </div>
+                       </div>
+                      {{/if}}
+                  </span>
+              </div>
+
+              <!-- only show this div if the type is mutable -->
+              <div class="pull-right">
+                  <br>
+                  <a id="annotationInstanceUpdateBtn" href="#" class="btn">{{t 'annotation.set.label.upload'}}</a>
+              </div>
+             
+          {{/if}}
+          </div>
+
+        </div>
+

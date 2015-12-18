@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:substituteby="layout.html :: headerFragment"></head>
+<body>
+<div class="wrapper">
+	<div class="header" th:substituteby="layout.html :: bodyHeaderFragment"></div>
+
+    <div class="sub-nav" th:substituteby="layout.html :: bodySubNavFragment"></div>
+
+	<div class="main">
+		<div class="main-content clearfix">
+            <!-- templates/workflow/workflow-overview-page.html -->
+		</div>
+	</div>
+</div>
+
+<footer class="footer" th:substituteby="layout.html::bodyFooter"></footer>
+
+<script th:substituteby="layout.html::irHeaderModals"></script>
+
+<script id="ApplicationColumnTemplate" type="text/x-kendo-template">
+# if (data.applicationType) { #
+	# if (data.applicationType === 'DNA') { #
+	<img src="../../../public-resources/img/analysis-dna.png" th:src="@{/resources/img/analysis-dna.png}" style="width:20px;"/> <span th:text="#{DNA}"></span>
+	# } else if (data.applicationType === 'ANNOTATE_VARIANTS') { #
+	<img src="../../../public-resources/img/analysis-annotation.png" th:src="@{/resources/img/analysis-annotation.png}" style="width:20px;"/> <span th:text="#{ANNOTATE_VARIANTS}"></span>
+	# } else if (data.applicationType ===  'ANEUPLOIDY') { #
+	<img src="../../../public-resources/img/analysis-aneuploidy.png" th:src="@{/resources/img/analysis-aneuploidy.png}" style="width:20px;"/> <span th:text="#{ANEUPLOIDY}"></span>
+	# } else if (data.applicationType ===  'METAGENOMICS') { #
+	<img src="../../../public-resources/img/analysis-metagenomics.png" th:src="@{/resources/img/analysis-metagenomics.png}" style="width:20px;"/> <span th:text="#{METAGENOMICS}"></span>
+	# } else { #
+	<i>#= $.t(data.applicationType) #</i>
+	# } #
+# } #
+</script>
+
+<script id="FavoriteColumnTemplate" type="text/x-kendo-template">
+# if (data.favorite) { #
+<i class="icon-flag" data-original-title="Unflag this workflow"></i>
+{{else}}
+<i class="icon-flag icon-flag-disabled" data-original-title="Unflag this workflow"></i>
+# } #
+</script>
+<script id="LockedColumnTemplate" type="text/x-kendo-template">
+# if (data.status === 'LOCKED') { #
+<i class="lock-sign icon-lock icon-tips has-title-tooltip" data-original-title="Workflow is locked"></i>
+# } #
+</script>
+<script id="ProvidedColumnTemplate" type="text/x-kendo-template">
+# if (data.factoryProvided) { #
+<i class="ion-default" title="Workflow is provided by Ion"></i>
+# } #
+</script>
+<script id="WorkflowColumnTemplate" type="text/x-kendo-template">
+<div>#=data.name#</div>
+</script>
+
+<script type="text/javascript" th:inline="javascript">
+/*<![CDATA[*/
+	requireInit(['views/workflows/workflowOverviewPageView'], function(View) {
+        var view = new View({
+            el: '.main-content',
+            savedWorkflowName: /*[[${savedWorkflowName}]]*/ null,
+            saved: /*[[${saved}]]*/ null,
+            canCreateWorkflow: /*[[${#authorization.expression("hasRole('ROLE_ANALYZE')")}]]*/ false,
+            canPerformBatchActions: /*[[${#authorization.expression('hasAnyRole("ROLE_ANALYZE", "ROLE_ORGADMIN")')}]]*/ false
+        });
+        view.render();
+    });
+/*]]>*/
+</script>
+</body>
+</html>
+
+

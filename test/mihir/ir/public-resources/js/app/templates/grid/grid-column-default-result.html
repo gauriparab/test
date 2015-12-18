@@ -1,0 +1,11 @@
+{{#if isReportCreated}}
+    <input type="radio" data-action="make_candidate" name="defaultResult" value="" checked disabled>
+{{else}}
+	{{#if isValidResult}}
+	    {{#if isCandidateReport}}
+	        <input type="radio" data-action="make_candidate" name="defaultResult" id="defaultResult" value="" checked>
+	    {{else}}
+	        <input type="radio" data-action="make_candidate" name="defaultResult" id="defaultResult" value="">
+	    {{/if}}
+	{{/if}}
+{{/if}}

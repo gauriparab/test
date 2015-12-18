@@ -1,0 +1,10 @@
+<div class="dropdown pull-right">
+    <a data-target="#" id="temp" role="button" class="dropdown-toggle btn" data-toggle="dropdown"><i class="icon-action"></i></a>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="temp">
+        <li role="presentation" data-action="view_csa"><a role="menuitem" tabindex="-1" href="#">{{t 'verification.run.csa'}}</a></li>
+        {{#if isReanalysisAssay}}
+        {{else}}
+        <li role="presentation" data-action="view_reanalyze"><a role="menuitem" tabindex="-1" href="#">{{t 'data.results.reanalyze'}}</a></li>
+        {{/if}}
+    </ul>
+</div>

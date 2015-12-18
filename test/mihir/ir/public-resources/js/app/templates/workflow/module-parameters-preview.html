@@ -1,0 +1,16 @@
+<div class="row-fluid">
+    <div id="modules" class="span3">
+        <ul class="nav nav-list parameters-sidebar">
+            {{#each modules}}
+            <li class="" >
+                <a href="#dropdowns" data-cid="{{_cid}}">
+                    <i class="icon-chevron-right"></i>
+                    {{toTitleCase name}}
+                </a>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+    <div id="parameters" class="span9">
+    </div>
+</div>

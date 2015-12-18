@@ -1,0 +1,19 @@
+<h5>Settings</h5>
+
+{{#if filters.length}}
+<p>{{t 'workflow.message.filters.applied.display'}} </p>
+{{else}}
+<p>{{t 'workflow.message.filters.applied.none'}}</p>
+{{/if}}
+
+<div class="workflow-settings-editor workflow-settings-editor-inactive">
+    <table class="filterChains table table-simple">
+        <tbody>
+        {{#each filters}}
+        <tr id="{{id}}" data-filter-type="{{type}}" class="workflow-setting">
+            <td>{{displayValue}}</td>
+        </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>

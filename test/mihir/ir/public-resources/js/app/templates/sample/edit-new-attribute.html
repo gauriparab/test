@@ -1,0 +1,40 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">x</button>
+    <h3 id="editAttributeLabel">{{t 'edit.attribute.title'}}</h3>
+</div>
+<div class="modal-body">
+    <div class="form-horizontal">
+        <div id="errors"></div>
+        <form id="manageUserForm" class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label" for="attributeName">{{t 'add.attribute.name'}}</label>
+                <div class="controls"><input name="attributeName" type="text" id="editAttributeName" required="required" 
+                        value="{{attribute.attributeName}}" maxlength="20"/><span class="text-error requires-asterisk ">*</span> </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="dataTypes">{{t 'add.attribute.datatype'}}</label>
+                <div class="controls">
+					<select id="editDataTypes">
+						{{#each dataTypes}}
+						<option value="{{attributeTypeID}}">{{dataType}}</option>
+						{{/each}}
+					</select>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="isMandatory">{{t 'add.attribute.required'}}</label>
+                <div class="controls">
+		{{#if attribute.isMandatory}}
+                	<input name="isMandatory" type="checkbox" id="editIsMandatory" checked="checked"/>
+		{{else}}
+		       <input name="isMandatory" type="checkbox" id="editIsMandatory"/>
+		{{/if}}
+		</div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="modal-footer">
+    <a href="#" data-dismiss="modal" aria-hidden="true" class="btn btn-secondary">{{t 'add.attribute.cancel'}}</a>
+    <a id="editAttributeBtn" href="#" class="btn btn-primary">{{t 'add.attribute.add'}}</a>
+</div>

@@ -1,0 +1,15 @@
+<div class="row-fluid">
+	<div class="pull-left">
+		<h1>{{t 'settings.label.primers'}}</h1>
+	</div>
+	<div class="pull-right">
+		<form class="form-search pull-right btn-toolbar">
+			{{#if canAddPrimer}}<a href="javascript:void(0)" id="addPrimer" class="btn btn-primary">{{t 'createassay.label'}}</a>{{/if}}
+		</form>
+	</div>
+</div>
+
+<div class="row-fluid">
+	<div class="span12" id="primer-grid"></div>
+</div>
+<div class="modal hide fade" id="addPrimerModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>

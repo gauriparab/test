@@ -1,0 +1,32 @@
+<table class="table no-border" style="margin:0px;">
+	<tbody>
+		<tr style="border: 1px solid #d8d8d8;">
+			<td style="width: 15%; border:none;"><b>
+				{{t 'data.report.filteringMetrics'}}
+			</b></td>
+			{{#if filteringMetrics}}
+			<td style="padding:0px;">
+				<div>
+					<table style="width:100%;" class="inner_1">
+						<tbody class="inner_table">
+						{{#each filteringMetrics}}
+							<tr>
+								<td class="tr-bg" style="width:20%;">{{this.name}}</td>
+								<td class="tr-bg" style="width:20%;">{{this.count}}</td>
+								{{#if this.percentage}}
+									<td class="tr-bg" style="width:20%;">{{this.percentage}} %</td>
+								{{else}}
+									<td class="tr-bg" style="width:20%;">0.0 %</td>
+								{{/if}}
+							</tr>
+						{{/each}}
+						</tbody>
+					</table>
+				</div>
+			</td>
+			{{else}}
+			<td style="width: 84%; border:none;">{{t 'data.filteringmetric.notfound'}}</td>
+			{{/if}}
+		</tr>
+	</tbody>
+</table>

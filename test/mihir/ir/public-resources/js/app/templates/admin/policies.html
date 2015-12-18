@@ -1,0 +1,101 @@
+<form id="policiesForm" class="form-horizontal modal-scroll">
+    	<div>
+    		<h5 class="greyHeading" style="margin-top: 0px">{{t 'policies.label.suspensionPolicies'}}</h5>
+       		<p>{{t 'policies.label.suspensionMsg'}}</p>
+       	</div>
+		<div class="control-group">
+               <label class="control-label" for="failedLoginAttempts">{{t 'policies.label.noOfLoginAttempts'}}:</label>
+               <div class="controls">
+                   <select class="input-medium" id="failedLoginAttempts" name="failedLoginAttempts">
+                       <option value="3"  {{#ifCond '3' "===" model.failed_login_attempts}}selected="true"{{/ifCond}}>3</option>
+                       <option value="5" {{#ifCond '5' "===" model.failed_login_attempts}}selected="true"{{/ifCond}}>5</option>
+                       <option value="7" {{#ifCond '7' "===" model.failed_login_attempts}}selected="true"{{/ifCond}}>7</option>
+                       <option value="10" {{#ifCond '10' "===" model.failed_login_attempts}}selected="true"{{/ifCond}}>10</option>
+                   </select>
+               </div>
+           </div>
+           <div class="control-group">
+               <label class="control-label" for="within">{{t 'policies.label.withinMins'}}:</label>
+               <div class="controls">
+                   <select class="input-medium" id="within" name="within">
+                       <option value="5" {{#ifCond '5' "===" model.attempt_interval}}selected="true"{{/ifCond}}>5</option>
+                       <option value="10" {{#ifCond '10' "===" model.attempt_interval}}selected="true"{{/ifCond}}>10</option>
+                       <option value="15" {{#ifCond '15' "===" model.attempt_interval}}selected="true"{{/ifCond}}>15</option>
+                       <option value="20" {{#ifCond '20' "===" model.attempt_interval}}selected="true"{{/ifCond}}>20</option>
+                   </select>
+               </div>
+           </div>
+           
+           <div class="control-group">
+               <label class="control-label" for="suspensionPeriod">{{t 'policies.label.suspensionPeriodHours'}}:</label>
+               <div class="controls">
+                   <select class="input-medium" id="suspensionPeriod" name="suspensionPeriod">
+                       <option value="1" {{#ifCond '1' "===" model.account_suspension_hours}}selected="true"{{/ifCond}}>1</option>
+                       <option value="3" {{#ifCond '3' "===" model.account_suspension_hours}}selected="true"{{/ifCond}}>3</option>
+                       <option value="6" {{#ifCond '6' "===" model.account_suspension_hours}}selected="true"{{/ifCond}}>6</option>
+                       <option value="12" {{#ifCond '12' "===" model.account_suspension_hours}}selected="true"{{/ifCond}}>12</option>
+                       <option value="24" {{#ifCond '24' "===" model.account_suspension_hours}}selected="true"{{/ifCond}}>24</option>
+                       <option value="48" {{#ifCond '48' "===" model.account_suspension_hours}}selected="true"{{/ifCond}}>48</option>
+                   </select>
+               </div>
+           </div>
+           <div>
+       		<h5 class="greyHeading">{{t 'policies.label.passwordPolicies'}}</h5>
+       	</div>
+		<div class="control-group">
+               <label class="control-label" for="passwordLifetime">{{t 'policies.label.passwordLifetimeMonths'}}:</label>
+               <div class="controls">
+                   <select class="input-medium" id="passwordLifetime" name="passwordLifetime">
+                       <option value="6" {{#ifCond '6' "===" model.password_lifetime}}selected="true"{{/ifCond}}>6</option>
+                       <option value="12" {{#ifCond '12' "===" model.password_lifetime}}selected="true"{{/ifCond}}>12</option>
+                       <option value="18" {{#ifCond '18' "===" model.password_lifetime}}selected="true"{{/ifCond}}>18</option>
+                       <option value="24" {{#ifCond '24' "===" model.password_lifetime}}selected="true"{{/ifCond}}>24</option>
+                       <option value="NoExpiration" {{#ifCond 'NoExpiration' "===" model.password_lifetime}}selected="true"{{/ifCond}}>No Expiration</option>
+                   </select>
+               </div>
+           </div>
+           
+           <div class="control-group">
+               <label class="control-label" for="notifyUser">{{t 'policies.label.notifyUserWeeks'}}:</label>
+               <div class="controls" id="notifyUserSelect" {{#ifCond 'NoExpiration' "===" model.password_lifetime}} style="display:none;"{{/ifCond}}>
+               <select class="input-medium" id="notifyUser" name="notifyUser">
+                   <option value="2" {{#ifCond '2' "===" model.password_notification_period}}selected="true"{{/ifCond}}>2</option>
+                   <option value="4" {{#ifCond '4' "===" model.password_notification_period}}selected="true"{{/ifCond}}>4</option>
+                   <option value="6" {{#ifCond '6' "===" model.password_notification_period}}selected="true"{{/ifCond}}>6</option>
+                   <option value="8" {{#ifCond '8' "===" model.password_notification_period}}selected="true"{{/ifCond}}>8</option>
+               </select>{{t 'policies.label.passwordExpiresMsg'}}
+           </div>
+           <div class="controls" id="notifyUserNA" {{#ifCond 'NoExpiration' "!==" model.password_lifetime}} style="display:none;"{{/ifCond}}><label>{{t 'grid.column.na'}}</label></div>
+           
+       </div>
+       <div>
+   			<h5 class="greyHeading">{{t 'policies.session.label.header'}}</h5>
+   		</div>
+       
+       <div class="control-group">
+           <label class="control-label" id="enabledLabel">{{t 'policies.session.label.enabled'}}</label>
+           <div id="policiesEnabled" class="controls" aria-labelledby="rolesLabel" for="policiesEnabled">
+               <label class="checkbox"><input name="enabled" type="checkbox" id="enabled" {{#ifCond model.session_policies_enabled "!==" false}} checked="checked"{{/ifCond}}/></label>
+           </div>
+       </div>
+      
+       <div class="control-group">
+           <label class="control-label" for="timeoutPeriod">{{t 'policies.session.label.sessionTimoutPeriod'}}:</label>
+           <div class="controls">
+               <select class="input-medium" id="timeoutPeriod" name="timeoutPeriod" {{#ifCond false "===" model.session_policies_enabled}} disabled="disabled"{{/ifCond}}>
+                   <option value="1" {{#ifCond '1' "===" model.session_timeout}}selected="true"{{/ifCond}}>1</option>
+                   <option value="2" {{#ifCond '2' "===" model.session_timeout}}selected="true"{{/ifCond}}>2</option>
+                   <option value="3" {{#ifCond '3' "===" model.session_timeout}}selected="true"{{/ifCond}}>3</option>
+                   <option value="4" {{#ifCond '4' "===" model.session_timeout}}selected="true"{{/ifCond}}>4</option>
+                   <option value="5" {{#ifCond '5' "===" model.session_timeout}}selected="true"{{/ifCond}}>5</option>
+                   <option value="6" {{#ifCond '6' "===" model.session_timeout}}selected="true"{{/ifCond}}>6</option>
+                   <option value="7" {{#ifCond '7' "===" model.session_timeout}}selected="true"{{/ifCond}}>7</option>
+                   <option value="8" {{#ifCond '8' "===" model.session_timeout}}selected="true"{{/ifCond}}>8</option>
+                   <option value="9" {{#ifCond '9' "===" model.session_timeout}}selected="true"{{/ifCond}}>9</option>
+                   <option value="10" {{#ifCond '10' "===" model.session_timeout}}selected="true"{{/ifCond}}>10</option>
+               </select>
+           </div>
+       </div>
+        
+
+   </form>

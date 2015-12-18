@@ -1,0 +1,62 @@
+<div class="modal-scroll">
+	<h5>{{model.CnvBaselinePanelDto.displayname}}</h5>
+	<table>
+		<tr>
+			<td>{{t 'cnv.baseline.detail.createdBy'}}</td>
+			<td>{{model.createdBy}}</td>
+		</tr>
+		<tr>
+			<td>{{t 'cnv.baseline.detail.createdOn'}}</td>
+			<td>{{model.createdDate}}</td>
+		</tr>
+		<tr>
+			<td>{{t 'cnv.baseline.detail.normalSamples'}}</td>
+			<td>{{model.numberOfNormalSamples}}</td>
+		</tr>
+		<tr>
+			<td>{{t 'grid.label.gender'}}</td>
+			<td>{{model.gender}}</td>
+		</tr>
+		<tr>
+			<td>{{t 'cnv.baseline.detail.totalSamples'}}</td>
+			<td>{{model.numberOfSamples}}</td>
+		</tr>
+		
+		<tr>
+			<td>{{t 'cnv.baseline.detail.panelName'}}</td>
+			<td>{{model.cnvBaselinePanelDto.panelFile.name}}</td>
+		</tr>
+		
+		<tr>
+			<td>{{t 'cnv.baseline.detail.referenceFileName'}}</td>
+			<td>{{#if model.cnvBaselinePanelDto.referenceCnvBaseline}} {{model.cnvBaselinePanelDto.referenceCnvBaseline.value}} {{else}} {{t 'grid.column.na'}} {{/if}}</td>
+		</tr>
+		
+		<tr>
+			<td><h5>{{t 'cnv.baseline.detail.creationParameters'}}</h5></td>
+			<td></td>
+		</tr>
+
+		{{#each model.createBaselineParametersDto.parameters}}
+		<tr>
+			<td>{{name}}</td>
+			<td>{{value}}</td>
+		</tr>
+		{{/each}}
+		
+		{{#if model.setFilterDto.evaluationQCDtoList}}
+			<tr>
+				<td><h5>{{t 'cnv.baseline.detail.filters'}}</h5></td>
+				<td></td>
+			</tr>	
+				
+			{{#each model.setFilterDto.evaluationQCDtoList}}
+			<tr>
+				<td>{{qcName}}</td>
+				<td>{{defaultThreshold}}</td>
+			</tr>
+			{{/each}}
+		{{/if}}
+
+	</table>
+</div>

@@ -1,0 +1,7 @@
+{{#if isCustom}}
+	{{#if isObsolete}}
+		<b><a data-toggle="tooltip" title="{{attributeName}}"  href='javascript:void(0)' data-action='shuffleState'>{{t 'action.REACTIVATE'}}</a></b>
+	{{else}}
+		<b><a data-toggle="tooltip" title="{{attributeName}}"  href='javascript:void(0)' data-action='shuffleState'>{{t 'grid.column.obsolete'}}</a></b>
+	{{/if}}
+{{/if}}

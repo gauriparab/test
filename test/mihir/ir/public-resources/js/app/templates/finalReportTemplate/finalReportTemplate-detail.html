@@ -1,0 +1,39 @@
+<div>
+    <table cellpadding="5">
+        <tbody>
+        <tr>
+            <td colspan="2">
+                <span id="lockedDetail" class="details-icons">
+                    {{sub sub.locked}}
+                </span>
+                <span id="defaultDetail" class="details-icons">
+                    {{sub sub.provided}}
+                </span>
+            </td>
+        </tr>         
+        <tr>
+            <td class=""nameCol" colspan="2">
+                <span id="nameDetail" class="breakall"><strong>{{name}}</strong></span><br/>
+                <span id="descriptionDetail" class="descriptionCol">{{description}}</span>
+            </td>
+        </tr>
+        <tr>
+            <td><strong>{{t "version.label"}}:</strong></td>
+            <td id="versionDetail">{{applicationVersion.name}}</td>
+        </tr>
+        <tr>
+            <td><strong>{{t 'grid.column.createdBy'}}:</strong></td>
+            <td id="createdByDetail" class="descriptionCol">{{creator}}</td>
+        </tr>
+        <tr>
+            <td><strong>{{t 'grid.column.createdOn'}}:</strong></td>
+            <td id="createdOnDetail" class="descriptionCol">{{createdOn}}</td>
+        </tr>
+        <tr>
+            <td colspan="2"><strong>{{t 'final.report.template.detail.sections'}}:</strong></td>
+        </tr>
+        </tbody>
+    </table>
+    <!--  sections list -->
+    {{sub sub.sectionsList}}
+</div>

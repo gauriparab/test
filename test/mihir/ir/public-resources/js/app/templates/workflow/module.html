@@ -1,0 +1,10 @@
+<div class="tabbable"> <!-- Only required for left/right tabs -->
+	<ul class="nav nav-tabs">
+		{{#each sections}}
+			<li class=""><a href="#module-tab-{{name}}" data-toggle="tab">{{toTitleCase name}}</a></li>
+		{{/each}}
+	</ul>
+	<div class="tab-content" id="module-tab-content">
+		{{! see views/workflow/moduleParameters  (ie, ModuleParametersView) }}
+	</div>
+</div>

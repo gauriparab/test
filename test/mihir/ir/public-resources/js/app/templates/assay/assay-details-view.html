@@ -1,0 +1,347 @@
+<div class="modal-scroll details-section">
+	<div class="row-fluid">
+		<div>
+			<table style="width: 100%">
+				<tr>
+					<td colspan="2"><span class="lead">{{model.assaySaveDto.assayDisplayedName}}</span> {{#ifCond model.rdxAllowedState.value '===' 'Locked'}} <i class="icon-lock" title="Locked"></i> {{/ifCond}}</td>
+				</tr>
+				<tr>
+					<td colspan="2" valign="top" class="summary-item" style="padding-left:0px">{{model.description}}</td>
+				</tr>
+				<tr>
+					<td valign="top" class="summary-item" style="padding-left:0px" width="100">{{t 'analysis.auditLog.analysis.workflow.applicationType'}}:</td>
+					<td><i class="icon-{{toLower model.applicationType}}" title="{{model.applicationType}}" style="margin:0"></i>{{model.application}} {{t 'version.label'}} {{model.version}}</td>
+				</tr>
+				<tr>
+					<td valign="top" class="summary-item" style="padding-left:0px">{{t 'assay.details.createdBy'}}:</td>
+					<td>{{model.createdBy}}</td>
+				</tr>
+				<tr>
+					<td valign="top" class="summary-item" style="padding-left:0px">{{t 'assay.details.createdOn'}}:</td>
+					<td>{{formatDate model.createdDate}}</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<hr style="margin:10px 0;border:1px solid" />
+	<div class="row-fluid">
+		<div class="span6">
+			<table style="width: 100%">
+				{{#if model.panelDto}}
+				<tr class="summary-body-header">
+					<td colspan="2"><h5>{{t 'assay.panel.label'}}</h5></td>
+				</tr>
+				{{#if model.panelDto.genomeReference}}
+				<tr>
+					<td valign="top" class="summary-item" width="130">{{t 'assay.details.genomeRef'}}:</td>
+					<td>{{model.panelDto.genomeReference.name}}</td>
+				</tr>
+				{{/if}}
+				{{#if model.panelDto.panelBedFile}}
+				<tr>
+					<td valign="top" class="summary-item">{{t 'assay.panel.label'}}:</td>
+					<td>{{model.panelDto.panelBedFile.name}}</td>
+				</tr>
+				{{/if}}
+				{{#if model.panelDto.hotspotBedFile}}
+				<tr>
+					<td valign="top" class="summary-item">{{t "assay.variantDetection.hotspots"}}:</td>
+					<td>{{model.panelDto.hotspotBedFile.name}}</td>
+				</tr>
+				{{/if}}
+				{{#if model.panelDto.fusionReference}}
+					<tr>
+						<td valign="top" class="summary-item">{{t "workflow.fusion.reference.label"}}:</td>
+						<td>{{model.panelDto.fusionReference.name}}</td>
+					</tr>
+				{{/if}}
+				{{#if model.panelDto.fusionBedFile}}
+					<tr>
+						<td valign="top" class="summary-item">{{t "workflow.fusion.panel.label"}}:</td>
+						<td>{{model.panelDto.fusionBedFile.name}}</td>
+					</tr>
+				{{/if}}
+				<tr>
+					<td valign="top" class="summary-item">{{t 'assay.summary.summaryreport'}}:</td>
+					<td>{{#if model.panelDto.subSetReport}}{{t 'confirm.yes'}}{{else}}{{t 'confirm.no'}}{{/if}}</td>
+				</tr>
+				{{#if model.panelDto.subSetReport}}
+					<tr>
+						<td valign="top" class="summary-item">{{t "assay.chevron.panelTab.genesToReport"}}:</td>
+						<td>{{model.panelDto.geneFileName}}</td>
+					</tr>
+				{{/if}}
+				{{/if}}
+				{{#if model.metagenomicsRefLib}}
+				<tr class="summary-body-header">
+						<td colspan="2"><h5>{{t "assay.chevron.tabs.reference"}}</h5></td>
+					</tr>
+					<tr>
+						<td colspan="2" class="summary-item">
+						<ul>
+						{{#each model.metagenomicsRefLib}}
+							<li>{{name}}</li>
+						{{/each}}
+						</ul>
+						</td>
+					</tr>
+				{{/if}}
+				<tr class="summary-body-header">
+					<td colspan="2"><h5>{{t "assay.summary.reagent"}}</h5></td>
+				</tr>
+				
+				{{#ifCond model.applicationType '!==' 'DNA'}}
+					{{#if model.reagentDto.extractionKit}}
+				<tr>
+						<td valign="top" class="summary-item">{{t "assay.summary.extractionKit"}}:</td>
+						<td>{{model.reagentDto.extractionKit.name}}</td>
+				</tr>
+				
+					{{/if}}
+				{{/ifCond}}
+				<tr>
+					<td valign="top" class="summary-item">{{t "assay.summary.libraryKitType"}}:</td>
+					<td>{{model.reagentDto.rdxKitinfoByLibrarykitId.name}}</td>
+				</tr>
+				<tr>
+					<td valign="top" class="summary-item">{{t "assay.summary.templatingKit"}}:</td>
+					<td>{{model.reagentDto.rdxKitinfoByTemplatekitId.name}}</td>
+				</tr>
+				<tr>
+					<td valign="top" class="summary-item">{{t "assay.views.sequencing.kit.template.size"}}:</td>
+					<td>{{model.reagentDto.rdxKitinfoByTemplatekitId.selectedTemplateSize.value}}</td>
+				</tr>
+				<tr>
+					<td valign="top" class="summary-item">{{t "assay.summary.barcodeKit"}}:</td>
+					<td>{{model.reagentDto.rdxKitinfoByBarcodingkitId.name}}</td>
+				</tr>
+				<tr>
+					<td valign="top" class="summary-item">{{t "assay.summary.sequencingKit"}}:</td>
+					<td>{{model.reagentDto.rdxKitinfoBySequencingkitId.name}}</td>
+				</tr>
+				<tr>
+					<td valign="top" class="summary-item">{{t "assay.summary.sequencingChip"}}:</td>
+					<td>{{model.reagentDto.rdxKitinfoByChipkitId.name}}</td>
+				</tr>
+				{{#if model.reagentDto.controlKit}}
+				<tr>
+					<td valign="top" class="summary-item">{{t "assay.summary.controlKit"}}:</td>
+					<td>{{model.reagentDto.controlKit.name}}</td>
+				</tr>
+				{{/if}}
+				{{#if model.reagentDto.panelKit}}
+				<tr>
+					<td valign="top" class="summary-item">{{t "assay.summary.panelKit"}}:</td>
+					<td>{{model.reagentDto.panelKit.name}}</td>
+				</tr>
+				{{/if}}
+				<tr>
+					<td valign="top" class="summary-item">{{t "assay.summary.flows"}}:</td>
+					<td>{{model.reagentDto.flows}}</td>
+				</tr>
+				{{#if model.metagenomicsPrimers}}
+					<tr class="summary-body-header">
+						<td colspan="2"><h5>{{t 'assay.summary.primers'}}</h5>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="summary-item">
+						<ul>
+						{{#each model.metagenomicsPrimers}}
+							<li>{{name}}</li>
+						{{/each}}
+						</ul>
+						</td>
+					</tr>
+				{{/if}}
+				{{#if model.qcDto.rdxRuntemplateqcs}}
+					<tr class="summary-body-header">
+						<td colspan="2"><h5>{{t 'assay.summary.qc'}}</h5></td>
+					</tr>
+					{{#if model.qcDto.rdxRuntemplateqcs.[Run QC]}}
+						<tr>
+							<td colspan="2"><strong>{{t 'assay.qcsequence.runqc'}}</strong></td>
+						</tr>
+						{{#each model.qcDto.rdxRuntemplateqcs.[Run QC]}}
+							<tr>
+								<td valign="top" class="summary-item">{{qcName}}:</td>
+								<td>
+									{{#ifCond threshold '!==' -1}}
+										{{threshold}} {{t 'assay.page.min'}} 
+									{{/ifCond}}
+									{{#ifCond upperThreshold '!==' -1}}
+										{{upperThreshold}} {{t 'assay.page.max'}}
+									{{/ifCond}}
+								</td>
+							</tr>
+						{{/each}}
+					{{/if}}
+					{{#if model.qcDto.rdxRuntemplateqcs.[Sample QC]}}
+						<tr>
+							<td colspan="2"><strong>{{t 'data.report.libraryQcMetrics'}}</strong></td>
+						</tr>
+						{{#ifCond model.application '!==' 'RNA'}}
+						<tr>
+							<td colspan="2" style="padding-left: 5%; font-weight:600">{{t 'specimen.role.DNA_FUSION'}}</td>
+						</tr>
+						{{/ifCond}}
+						{{#each model.qcDto.rdxRuntemplateqcs.[Sample QC]}}
+							{{#ifCond libraryType '===' 'DNA'}}
+								<tr>
+									<td valign="top" class="summary-item" width="190">{{qcName}}:</td>
+									<td>
+										{{#ifCond threshold '!==' -1}}
+											{{threshold}} {{t 'assay.page.min'}} 
+										{{/ifCond}}
+										{{#ifCond upperThreshold '!==' -1}}
+											{{upperThreshold}} {{t 'assay.page.max'}}
+										{{/ifCond}}
+									</td>
+								</tr>
+							{{/ifCond}}
+						{{/each}}
+						{{#ifCond model.application '!==' 'DNA'}}
+						<tr>
+							<td colspan="2" style="padding-left: 5%; font-weight:600">{{t 'specimen.role.RNA_FUSION'}}</td>
+						</tr>
+						{{/ifCond}}
+						{{#each model.qcDto.rdxRuntemplateqcs.[Sample QC]}}
+							{{#ifCond libraryType '===' 'RNA'}}
+								<tr>
+									<td valign="top" class="summary-item" width="190">{{qcName}}:</td>
+									<td>
+										{{#ifCond threshold '!==' -1}}
+											{{threshold}} {{t 'assay.page.min'}} 
+										{{/ifCond}}
+										{{#ifCond upperThreshold '!==' -1}}
+											{{upperThreshold}} {{t 'assay.page.max'}}
+										{{/ifCond}}
+									</td>
+								</tr>
+							{{/ifCond}}
+						{{/each}}
+					{{/if}}
+				{{/if}}
+			</table>
+		</div>
+		<div class="span6">
+			<table style="width: 100%">
+				{{#if model.controlDto.assayControlDtos}}
+					<tr class="summary-body-header">
+						<td colspan="2"><h5>{{t 'assay.summary.controls'}}</h5></td>
+					</tr>
+					{{#each model.controlDto.assayControlDtos}}
+						<tr>
+							<td colspan="2"><strong>{{name}}</strong></td>
+						</tr>
+						{{#each runtemplateqcDtos}}
+							<tr>
+								<td valign="top" class="summary-item" width="190">{{qcName}}:</td>
+								<td>
+									{{#ifCond threshold '!==' -1}}
+										{{threshold}} {{t 'assay.page.min'}} 
+									{{/ifCond}}
+									{{#ifCond upperThreshold '!==' -1}}
+										{{upperThreshold}} {{t 'assay.page.max'}}
+									{{/ifCond}}
+								</td>
+							</tr>
+						{{/each}}
+					{{/each}}
+				{{/if}}
+				{{#if model.presetDto.presetDataAvailable}}
+					<tr class="summary-body-header">
+						<td colspan="2"><h5>{{t 'assay.summary.presets'}}</h5></td>
+					</tr>
+					{{#if model.presetDto.filterChain}}
+						<tr>
+							<td valign="top" class="summary-item">{{t "assay.summary.filterChain"}}:</td>
+							<td>{{model.presetDto.filterChain.name}}</td>
+						</tr>
+					{{/if}}
+					{{#if model.presetDto.annotationSet}}
+						<tr>
+							<td valign="top" class="summary-item">{{t 'assay.summary.annotation'}}:</td>
+							<td>{{model.presetDto.annotationSet.name}}</td>
+						</tr>
+					{{/if}}
+					{{#if model.presetDto.classificationSet}}
+						<tr>
+							<td valign="top" class="summary-item">{{t 'assay.summary.classificationSet.label'}}:</td>
+							<td>{{model.presetDto.classificationSet.name}}</td>
+						</tr>
+					{{/if}}
+					{{#if model.presetDto.reportTemplate}}
+						<tr>
+							<td valign="top" class="summary-item">{{t 'assay.summary.reportTemplate'}}:</td>
+							<td>{{model.presetDto.reportTemplate.name}}</td>
+						</tr>
+					{{/if}}
+				{{/if}}
+				{{#if model.assayCnvBaselineDto}}
+					<tr class="summary-body-header">
+						<td colspan="2"><h5>{{t 'assay.chevron.tabs.cnv'}}</h5></td>
+					</tr>
+					<tr>
+						<td valign="top" class="summary-item">{{t "assay.views.cnv.run.algo"}}:</td>
+						<td>{{#if model.assayCnvBaselineDto.runCnvAlgo}}{{t 'confirm.yes'}}{{else}}{{t 'confirm.no'}}{{/if}}</td>
+					</tr>
+					{{#if model.assayCnvBaselineDto.runCnvAlgo}}
+						<tr>
+							<td valign="top" class="summary-item">{{t 'cnv.baseline.panel.name'}}:</td>
+							<td>{{model.cnvBaselineName}}</td>
+						</tr>
+						<tr>
+							<td valign="top" class="summary-item">{{t 'cnv.apply.cnvAdjustment'}}:</td>
+							<td>{{#if model.assayCnvBaselineDto.cellularityFlag}}{{t 'confirm.yes'}}{{else}}{{t 'confirm.no'}}{{/if}}</td>
+						</tr>
+						{{#if model.assayCnvBaselineDto.cellularityFlag}}
+							<tr>
+								<td valign="top" class="summary-item">{{t 'cnv.sample.percentCellularity'}}:</td>
+								<td>{{model.assayCnvBaselineDto.percentCellularity}}</td>
+							</tr>
+						{{/if}}
+					{{/if}}
+				{{/if}}
+				{{#if model.pluginsDto}}
+					<tr class="summary-body-header">
+						<td colspan="2"><h5>{{t 'assay.details.plugins'}}</h5>
+						</td>
+					</tr>
+					{{#if model.pluginsDto.warning}}
+                    	<tr><td valign="top" class="summary-item" colspan="2">{{model.pluginsDto.warning}}</td></tr>
+                    {{else}}
+                        {{#each model.pluginsDto}}
+                        	{{#if isSelected}}
+                            	<tr>
+                                	<td valign="top" class="summary-item">{{name}}</td>
+                                    <td id="type">{{t 'confirm.yes'}}</td>
+                                </tr>
+                            {{/if}}
+                        {{/each}}
+                    {{/if}}
+				{{/if}}
+			</table>
+		</div>
+		{{#if model.assayParameterDto}}
+		<div>
+			<table style="width: 100%">
+				<tr class="summary-body-header">
+					<td><h5>{{t 'assay.summary.variantFindingParameters'}}</h5></td>
+				</tr>				
+			</table>
+			<br/>
+			<ul class="nav nav-tabs" id="parametersTab">
+				{{#each model.assayParameterDto.modules}}
+					{{#unless hidden}}
+			    		<li><a href="javascript:void(0)" data-toggle="tab">{{name}}</a></li>
+			    	{{/unless}}
+			    {{/each}}
+			</ul>			 
+			<div class="tab-content" id="parametersView">
+				
+			</div>			
+		</div>
+		{{/if}}
+	</div>
+</div>

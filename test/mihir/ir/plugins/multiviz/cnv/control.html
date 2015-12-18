@@ -1,0 +1,103 @@
+
+<!-- =========================================================================
+      CHART CONTROL SECTION 
+      this is placed in the div with the id container-geneffects-control
+========================================================================= -->
+<div id="order" class="summary-section" style="z-index: 10">
+
+	<div class="btn-group bootstrap-select pull-left show-tick show-menu-arrow" style="width: 184px; margin-left: -15px;">
+		<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" data-id="filters-pane">
+			<div class="filter-option pull-left">Scoring Function (ploidy)</div>
+			&nbsp;<div class="caret"></div>
+		</button>
+		<div class="dropdown-menu open"	style="max-height: 184px; overflow: hidden; min-height: 30px;">
+			<ul id="score" class="dropdown-menu inner" style="max-height: 172px; overflow-y: auto;">
+			<li class="selected"><a  value="ploidy"  class="score" style=""><span
+					title="use ploidy value for coloring"	class="text">Ploidy</span><i class="icon-ok check-mark"></i></a></li>
+				<li><a  value="confidence"  style="visibility: hidden" class="confidence" style=""><span
+						title="use confidence for coloring" class="text">Confidence</span><i class="icon-ok check-mark"></i></a></li>				
+			</ul>
+		</div>
+	</div><br>
+	<div class="btn-group bootstrap-select pull-left show-tick show-menu-arrow" style="width: 184px; margin-left: -15px;">
+		<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" data-id="filters-pane">
+			<div  id="geneorder" class="filter-option pull-left">Gene Order (position)</div>
+			&nbsp;<div class="caret"></div>
+		</button>
+		<div class="dropdown-menu open"	style="max-height: 184px; overflow: hidden; min-height: 30px;">
+			<ul  id="ordery" class="dropdown-menu inner"	style="max-height: 172px; overflow-y: auto;">
+				<li title="ordered by both chromosome and position" class="selected">
+				<a value="position" class="ordery" style="">
+					<span title="order genes by chromosome and location" class="text">Position</span><i class="icon-ok check-mark "></i></a></li>
+				<li><a value="name" class="ordery" style="">
+					<span  title="order genes by gene name" class="text">Name</span><i class="icon-ok check-mark "></i></a></li>
+					
+			</ul>
+		</div>
+	</div><br>
+	<div class="btn-group bootstrap-select pull-left show-tick show-menu-arrow" style="width: 184px; margin-left: -15px;">
+		<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" data-id="filters-pane">
+			<div  id="sampleorder" class="filter-option pull-left">Sample Order (distance)</div>
+			&nbsp;<div class="caret"></div>
+		</button>
+		<div class="dropdown-menu open"
+			style="max-height: 184px; overflow: hidden; min-height: 30px;">
+			<ul  id="orderx"  class="dropdown-menu inner"style="max-height: 172px; overflow-y: auto;">				
+				<li ><a class="orderx"  value="name"  style=""><span
+					title="order samples by sample name"	class="text">Name</span><i class="icon-ok check-mark"></i></a></li>
+				<!-- <li ><a class="orderx" value="date" style=""><span
+					title="order samples by create date" class="text">date</span><i class="icon-ok check-mark"></i></a></li>
+						 -->
+				<li class="selected"><a  class="orderx" value="distance" style=""><span
+						title="order samples by how similar the CNV patterns are" class="text">Similarity</span><i class="icon-ok check-mark"></i></a></li>
+			    <li ><a class="orderx"  value="reversedistance" style=""><span
+						title="order samples by how similar the CNV patterns are (left right reversed)" class="text">Similarity (left/right reversed)</span><i class="icon-ok check-mark"></i></a></li>
+			   <li ><a value="analysis" class="orderx" style="" >
+					<span title="order samples by analysis name" class="text">Analysis</span><i class="icon-ok check-mark"></i></a></li>				
+			</ul>
+		</div>
+	</div>
+
+
+<div class="btn-group bootstrap-select pull-left show-tick show-menu-arrow" style="width: 184px; margin-left: -15px;">
+		<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" data-id="filters-pane">
+			<div class="filter-option pull-left">Color Scale (red-blue)</div>
+			&nbsp;<div class="caret"></div>
+		</button>
+		<div class="dropdown-menu open"
+			style="max-height: 184px; overflow: hidden; min-height: 30px;">
+			<ul  id="orderx"  class="dropdown-menu inner"style="max-height: 172px; overflow-y: auto;">
+				<li class="selected"><a  class="scale" value="redblue" style=""><span
+						class="text">red-blue</span><i class="icon-ok check-mark"></i></a></li>
+			<li ><a class="scale"  value="thermoblue"  style=""><span
+						class="text">White-blue</span><i class="icon-ok check-mark"></i></a></li>
+			<li class=""><a class="scale"  value="thermopurple"  style=""><span
+						class="text">Blue-white-purple</span><i class="icon-ok check-mark"></i></a></li>
+			<li class=""><a class="scale"  value="thermogreenred"  style=""><span
+						class="text">Green-yellow-red</span><i class="icon-ok check-mark"></i></a></li>
+			
+			<li class=""><a class="scale"  value="bluered"  style=""><span
+						class="text">Blue-white-red</span><i class="icon-ok check-mark"></i></a></li>
+			
+				<li ><a class="scale" value="gray" style=""><span
+						class="text">White-gray-black</span><i class="icon-ok check-mark"></i></a></li>
+						  		
+			</ul>
+		</div>
+	</div><br>
+
+<div class="btn-group bootstrap-select pull-left show-tick show-menu-arrow" style="width: 184px; margin-left: -15px;">
+		<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" data-id="filters-pane">
+			<div id="colorscale"  class="filter-option pull-left">Export Heatmap</div>
+			&nbsp;<div class="caret"></div>
+		</button>
+		<div class="dropdown-menu open"
+			style="max-height: 184px; overflow: hidden; min-height: 30px;">
+			<ul  id="export"  class="dropdown-menu inner"style="max-height: 172px; overflow-y: auto;">
+			<li><a title="Save heat map as PNG. Note, this may not always work for large heat maps" id="exportImage">Image (PNG)</a></li>
+	  	 	<li><a title="scalable vector graphics format that you can open in programs like Inkscape" id="exportSVG">Scalable Vector Graphics (SVG)</a></li>
+	  	 	<li><a title="save data that is in the heat map in .csv format" id="exportCSV">Excel (CSV)</a></li>	  	 	  	 		
+			</ul>
+		</div>
+	</div>
+</div>

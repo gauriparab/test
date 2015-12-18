@@ -1,0 +1,141 @@
+/*global define:false*/
+define([
+    'views/common/grid/kendoGridView',
+    'collections/sampleAttributes',
+    'models/sample/library',
+    'hb!templates/grid/grid-library-action.html',
+    'hb!templates/grid/grid-libraryColumn-notes.html',
+    'hb!templates/grid/grid-column-libraryName.html',
+    'hb!templates/grid/grid-column-libraryGridType.html',
+    'hb!templates/grid/grid-column-libraryDetails.html',
+    'hb!templates/grid/grid-column-librarybarcode.html',
+    'hb!templates/grid/grid-column-libraryBatchId.html',
+    'hb!templates/grid/grid-column-libraryPrepId.html'
+].concat(
+    'utils/templateFunctions',
+    'views/common/grid/plugins/rowSelectionGridPlugin',
+    'views/common/grid/plugins/actionsGridPlugin',
+    'views/common/grid/plugins/multiSelectionGridPlugin'),
+
+ function(KendoGridView,
+         SampleAttributes,
+         Library,
+         actionTemplate,
+         notesColumnTemplate,
+         libraryNameTemplate,
+         libraryTypeTemplate,
+         libraryDetailsTemplate,
+         libraryBarcodeTemplate,
+         libraryBatchIdTemplate,
+         libraryPrepIdTemplate) {
+
+        'use strict';
+
+        /**
+         * A re-usable sample grid view
+         *
+         * @type {*}
+         */
+        var libraryGridView = KendoGridView.extend({
+
+            _url: '/ir/secure/api/library',
+
+            _model: Library,
+
+            _sort: [{
+                field: 'id',
+                dir: 'desc'
+            }],
+
+            initialize: function(options) {
+                KendoGridView.prototype.initialize.apply(this, arguments);
+                this.loadPlugin('actions');
+                this.loadPlugin('multiSelection');
+            },
+            
+            _onGridDataBound: function() {
+                this.trigger(Event.DATA_BOUND);
+                
+                _.each(this.$el.find("div.dropdown"), function(div) {
+                    $(div).parent().css("overflow", "visible");
+                });
+                
+                $(function () { $("[data-toggle='popover']").popover({html:"true"}); });
+                
+                _.each(this._loadedPlugins, function(plugin) {
+                    plugin.onGridDataBound();
+                });
+            },
+	
+            _columns: function() {
+            	var columns = [];
+            	
+                var libraryPrepIdColumn = this.cb()
+                    .field('id')
+                    .title($.t('grid.column.libraryPrepId'))
+                    .width("125px")
+                    //.template(libraryPrepIdTemplate)
+                    .build();
+                
+                var libraryBatchIdColumn = this.cb()
+	                .field('batchId')
+	                .title($.t('grid.column.libraryBatchId'))
+	                .template(libraryBatchIdTemplate)
+	                .build();
+				
+                var assayNameColumn = this.cb()
+	                .field('assayName')
+	                .title($.t('assay.name'))
+	                .build();
+                
+                var specimenIdColumn = this.cb()
+                    .field('specimenId')
+                    .title($.t('grid.column.specimenId'))
+                    .build();
+					
+                var libraryNameColumn = this.cb()
+                    .title($.t('grid.column.libraryName'))
+                    .template(libraryNameTemplate)
+                    .build();
+                
+                var libraryTypeColumn = this.cb()
+	                .title($.t('grid.column.libraryType'))
+	                .template(libraryTypeTemplate)
+	                .build();
+				
+                var barcodeColumn = this.cb()
+                    .title($.t('specimens.library.barcode.id'))
+                    .template(libraryBarcodeTemplate)
+                    .build();
+
+                var notesColumn = this.cb()
+	                .title($.t('planned.grid.notes'))
+	                .width("70px")
+	                .template(notesColumnTemplate)
+	                .build();
+                
+                var actionsColumn = this.cb()
+	    		    .title($.t('actions.dropdown.label'))
+	    		    .template(actionTemplate)
+	    		    .width("8%")
+	    		    .build();
+                
+				columns.push(libraryPrepIdColumn);
+				columns.push(libraryBatchIdColumn);
+				columns.push(assayNameColumn);
+				columns.push(specimenIdColumn);
+				columns.push(libraryNameColumn);
+				columns.push(libraryTypeColumn);
+				columns.push(barcodeColumn);
+				columns.push(notesColumn);
+				//columns.push(actionsColumn);		
+
+                return columns;
+            }
+
+        });
+
+        return libraryGridView;
+
+    }
+);

@@ -1,0 +1,9 @@
+<a href="#" class="btn dropdown-toggle" data-toggle="dropdown">
+    {{label}}
+    <span class="caret"></span>
+</a>
+<ul class="dropdown-menu pull-right">
+    {{#each items}}
+        <li><a id="{{this.id}}" {{#if this.tooltip}}data-toggle="tooltip" title="{{this.tooltip}}"{{/if}}>{{this.label}}</a></li>
+    {{/each}}
+</ul>

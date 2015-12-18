@@ -1,0 +1,59 @@
+        <div class="modal-header">
+            <button id="editSampleDismiss" type="button" class="close" data-dismiss="modal">x</button>
+            <h4 id="editSampleModalLabel">{{t 'audit.trail.details'}}</h4>
+        </div>
+        <div class="modal-body">
+            <div id="errors"></div>
+	    <div>
+		<form class="form-horizontal">
+                <div>
+                    <ul class="unstyled">
+		    <li>{{t 'audit.trail.user'}} : {{user}}</li>
+		    </ul>
+                </div>
+		 <div>
+                    <ul class="unstyled">
+                    <li>{{t 'audit.trail.name'}} : {{name}}</li>
+                    </ul>
+                </div>
+		 <div>
+                    <ul class="unstyled">
+                    <li>{{t 'audit.trail.dataobjname'}} : {{dataObjectName}}</li>
+                    </ul>
+                </div>
+		<div>
+                    <ul class="unstyled">
+                    <li>{{t 'audit.trail.action'}} : {{actionPerformed}}</li>
+                    </ul>
+                </div>
+		<div>
+                    <ul class="unstyled">
+                    <li>{{t 'audit.trail.timestamp'}} : {{timeStamp}}</li>
+                    </ul>
+                </div>
+
+		{{#if oldValue}}
+		<div>
+                    <ul class="unstyled">
+                    <li> {{t 'audit.trail.oldvalue'}} : {{oldValue}}</li>
+                    </ul>
+                </div>
+		{{/if}}
+
+		{{#if newValue}}
+		<div>
+                    <ul class="unstyled">
+                    <li> {{t 'audit.trail.newvalue'}} : {{newValue}}</li>
+                    </ul>
+                </div>
+                {{/if}}
+            </form>	
+	    </div>
+        </div>
+                
+        <div class="modal-footer">           
+	     <button id="editSampleSaveButton" type="button" class="btn btn-primary">{{t 'audit.trail.print'}}</button>
+	     <button id="editSampleSaveButton" type="button" class="btn btn-primary">{{t 'audit.trail.export'}}</button> 
+            <button data-dismiss="modal" id="editSampleCancelButton" type="button" class="btn btn-secondary">{{t 'dialog.cancel'}}</button>
+        </div>
+

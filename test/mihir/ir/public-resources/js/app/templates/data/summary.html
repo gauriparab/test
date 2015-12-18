@@ -1,0 +1,66 @@
+{{#ifCond type '===' 'runConfiguration'}}
+<table class="table no-border data-summary" style="margin:0px;border-top:1px solid #d8d8d8;">
+{{else}}
+<table class="table no-border data-summary" style="margin:0px;">
+{{/ifCond}}
+	<tbody>
+		<tr style="">
+			<td style="width: 15%;border:none;border-right:1px solid #d8d8d8;"><b>
+				{{#ifCond type '===' 'runConfiguration'}}
+					{{t 'data.report.configSummary'}}
+				{{else}}
+					{{#ifCond type '===' 'target'}}
+						{{t 'data.report.targetSummary'}}
+					{{else}}
+						{{#ifCond type '===' 'variant'}}	
+							{{t 'data.report.variantSummary'}}
+						{{else}}
+							{{t 'data.report.instrumentSummary'}}
+						{{/ifCond}}
+					{{/ifCond}}
+				{{/ifCond}}
+			</b></td>
+			{{#if summary}}
+			<td style="padding:0px;">
+				<div>
+					<table class="table" style="margin: 0px;border:none;">
+						<!-- {{#ifCond type '===' 'variant'}}
+						<thead>
+							<tr>
+								<th style="border-left:none;"></th>
+								<th>{{t 'assay.variantDetection.hotspots'}}</th>
+							</tr>
+						</thead>
+						{{/ifCond}} -->
+						<tbody>
+							{{#each summary}}
+							<tr>
+								<td width=250 style="border:none;">{{key}}</td>
+								<td>{{value}}</td>
+							</tr>
+							{{/each}}
+						</tbody>
+					</table>
+				</div>
+			</td>
+			{{else}}
+			<td style="padding:0px; padding-left:5px;">
+				{{#ifCond type '===' 'runConfiguration'}}
+					{{t 'data.report.configSummary'}}
+				{{else}}
+					{{#ifCond type '===' 'target'}}
+						{{t 'data.report.targetSummary'}}
+					{{else}}
+						{{#ifCond type '===' 'variant'}}	
+							{{t 'data.report.variantSummary'}}
+						{{else}}
+							{{t 'data.report.instrumentSummary'}}
+						{{/ifCond}}
+					{{/ifCond}}
+				{{/ifCond}}
+				 {{t 'data.summary.notfound'}} 
+			</td>
+			{{/if}}
+		</tr>
+	</tbody>
+</table>

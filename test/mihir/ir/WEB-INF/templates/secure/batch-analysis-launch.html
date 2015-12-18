@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:substituteby="layout.html :: headerFragment"></head>
+<body>
+<div class="wrapper">
+    <div class="header" th:substituteby="layout.html :: bodyHeaderFragment"></div>
+
+    <div class="sub-nav" th:substituteby="layout.html :: bodySubNavFragment"></div>
+
+    <div class="main">
+        <div class="main-content clearfix">
+            <div id="batch-launch"></div>
+        </div>
+    </div>
+
+    <footer th:substituteby="layout.html::bodyFooter"></footer>
+</div>
+
+<script type="text/javascript" th:inline="javascript">
+    /*<![CDATA[*/
+    requireInit(['app/views/analysis/batchAnalysisLaunchPageView'], function(View) {
+        var view = new View({
+            el: '#batch-launch',
+            canLaunchAnalysis: /*[[${#authorization.expression('hasAnyRole("ROLE_IMPORT", "ROLE_ANALYZE")')} and ${canLaunchAnalysis}]]*/ false
+        });
+        view.render();
+    });
+    /*]]>*/
+</script>
+
+</body>
+</html>

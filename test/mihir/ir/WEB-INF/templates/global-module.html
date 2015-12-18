@@ -1,0 +1,10 @@
+<script type="text/javascript" json:stringify="javascript">
+    /*<![CDATA[*/
+    define('global', {
+            _version: /*[[${beans.versionProps['build.commit.abbrev']}]]*/ "fffffff",
+            rootcontext: /*[[${#httpServletRequest.contextPath + "/"}]]*/ "ir/",
+            resources: /*[[${#httpServletRequest.contextPath + "/resources/"}]]*/ "../../public-resources/",
+            csrfToken: /*[[${session != null ? session.csrfSessionToken : '' }]]*/ "fakeCsrfTokenValue"
+    });
+    /*]]>*/
+</script>

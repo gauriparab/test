@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head th:substituteby="layout.html :: headerFragment">    
+</head>
+<body>
+
+    <div class="wrapper">
+        <div class="header"
+            th:substituteby="layout.html :: bodyHeaderFragment">
+        </div>
+
+        <div class="sub-nav" th:substituteby="layout.html :: bodySubNavFragment"></div>
+
+        <div class="main">
+            <div th:if="${!canLaunchAnalysis}"
+                 sec:authorize="${hasAnyRole('ROLE_IMPORT', 'ROLE_ANALYZE')}"
+                 class="alert alert-block">
+                <span th:utext="#{space.warning.analysis}">May not launch an analysis</span>
+            </div>
+            <div class="main-content clearfix">
+                <!-- templates/analysis/analysis-overview-page.html -->
+            </div>
+        </div>
+
+        <footer th:substituteBy="layout.html :: bodyFooter"></footer>
+    </div>
+
+    <script th:substituteby="layout.html::irHeaderModals"></script>
+
+    <script type="text/javascript" th:inline="javascript">
+        /*<![CDATA[*/
+        requireInit(['views/analysis/analysisOverviewPageView'], function(View) {
+            // connect hashes to events
+            var router = new Backbone.Router({
+                routes: {
+                    '': 'default',
+                    'metagenomics(/:id)': 'metagenomics'
+                }
+            });
+
+            var flashMessage = /*[[${flashMessage}]]*/ null;
+            if (!flashMessage) {
+                flashMessage = sessionStorage.getItem('flashMessage');
+                sessionStorage.removeItem('flashMessage');
+            }
+
+            var view = new View({
+                el: '.main-content',
+                canSeeSharingDetails: [[${#authorization.expression("hasAnyRole('ROLE_REPORT', 'ROLE_ORGADMIN', 'ROLE_IMPORT', 'ROLE_ANALYZE')")}]],
+                canLaunchAnalysis: /*[[${#authorization.expression('hasAnyRole("ROLE_IMPORT", "ROLE_ANALYZE")')} and ${canLaunchAnalysis}]]*/ false,
+                savedAnalysisName: /*[[${savedAnalysisName}]]*/ null,
+                flashMessage: flashMessage,
+                router: router,
+                canPerformBatchActions: /*[[${#authorization.expression('hasAnyRole("ROLE_ANALYZE", "ROLE_REPORT")')}]]*/ false
+            });
+            view.render();
+
+            // activate router
+            Backbone.history.start();
+        });
+        /*]]>*/
+    </script>
+</body>
+</html>

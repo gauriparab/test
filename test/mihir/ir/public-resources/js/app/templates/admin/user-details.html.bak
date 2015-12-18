@@ -1,0 +1,61 @@
+<div class="modal-header">
+		<button id="createUserDismiss" type="button" class="close" data-dismiss="modal">x</button>
+        <h4 id="createUserModalLabel">User Details</h4>
+</div>
+<div class="modal-body">
+<div class="details">
+    <!-- {{#if user}} -->
+        <table cellpadding="5">
+            <tbody>
+                <tr>
+                    <td><strong>Name:</strong></td>
+                    <td>{{user.firstName}} {{user.lastName}}</td>
+                </tr>
+                <tr>
+                    <td><strong>Email:</strong></td>
+                    <td>{{user.email}}</td>
+                </tr>
+                <tr>
+                    <td><strong>Status:</strong></td>
+                    <td>{{user.state}}</td>
+                </tr>
+                <tr>
+                    <td><strong>Created On:</strong></td>
+                    <td>{{user.createdOn}}</td>
+                </tr>
+                <tr>
+                    <td><strong>Last Login:</strong></td>
+                    <td>{{user.lastLoginDate}}</td>
+                </tr>
+                <tr>
+                    <td><strong>Role:</strong></td>
+                    <td>{{user.roles}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- <table cellpadding="5" class="table table-condensed role-table">
+            <thead>
+                <tr>
+                    <th>Import</th>
+                    <th>Analyze</th>
+                    <th>Report</th>
+                    <th>Admin</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{#ifCond user.roles 'contains' 'ROLE_IMPORT'}}<i class="icon-ok"></i>{{/ifCond}}</td>
+                    <td>{{#ifCond user.roles 'contains' 'ROLE_ANALYZE'}}<i class="icon-ok"></i>{{/ifCond}}</td>
+                    <td>{{#ifCond user.roles 'contains' 'ROLE_REPORT'}}<i class="icon-ok"></i>{{/ifCond}}</td>
+                    <td>{{#ifCond user.roles 'contains' 'ROLE_ORGADMIN'}}<i class="icon-ok"></i>{{/ifCond}}</td>
+                </tr>
+            </tbody>
+        </table>
+    {{else}}
+        <p>{{t 'user.details.no.record.selected'}}</p>
+    {{/if}} -->
+</div>
+</div>
+<div class="modal-footer">            
+            <button id="userDetailsCancelButton" type="button" class="btn btn-secondary">Cancel</button>
+        </div>

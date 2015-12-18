@@ -1,0 +1,113 @@
+
+<div id="errors"></div>
+<div id="manageUserForm" class="form-horizontal modal-scroll">
+
+	{{#ifCond manageAction '===' 'Edit'}}
+	<div class="control-group">
+		<label class="control-label" style="width: 190px" for="userName">{{t 'user.profile.page.userName.label'}}</label>
+		<div class="controls">{{model.userName}}</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" style="width: 190px" for="password">{{t 'user.profile.page.password.label'}}</label>
+		<div class="controls">*************** &nbsp; <a href="#" id="resetPassword">{{t 'user.action.RESET_PASSWORD'}}</a>
+		</div>
+	</div>
+	{{else}}
+	<div class="control-group">
+		<label class="control-label" style="width: 190px" for="userName">{{t 'user.profile.page.userName.label'}}</label>
+		<div class="controls">
+			<input name="userName" type="text" id="userName" required="required"
+				value="{{model.userName}}" maxlength="12" /><span
+				class="text-error requires-asterisk">*</span>
+		</div>
+	</div>
+	{{/ifCond}}
+
+	<div>
+		<h5 class="greyHeading">{{t 'user.profile.page.accountInfomation.label'}}</h5>
+	</div>
+	<div class="control-group">
+		<label class="control-label" style="width: 190px" for="userFirstName">{{t 'user.profile.page.firstName.label'}}</label>
+		<div class="controls">
+			<input name="firstName" type="text" id="userFirstName"
+				required="required" value="{{model.firstName}}" maxlength="60" /><span
+				class="text-error requires-asterisk">*</span>
+		</div>
+	</div>
+
+	<div class="control-group">
+		<label class="control-label" style="width: 190px" for="userLastName">{{t 'user.profile.page.lastName.label'}}</label>
+		<div class="controls">
+			<input name="lastName" type="text" id="userLastName"
+				required="required" value="{{model.lastName}}" maxlength="60" /><span
+				class="text-error requires-asterisk">*</span>
+		</div>
+	</div>
+
+	<div class="control-group">
+		<label class="control-label" style="width: 190px" for="userEmail">{{t 'user.profile.page.emailAddress.label'}}</label>
+		<div class="controls">
+			<input name="email" type="email" id="userEmail"
+				value="{{model.email}}" maxlength="100"
+          {{#ifCond manageAction '=== ' 'Accept'}} disabled="disabled" {{/ifCond}}/><span class="text-error requires-asterisk">*</span>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" style="width: 190px" for="commentsLabel">{{t 'createUser.label.comments'}}</label>
+		<div class="controls">
+			<textarea name="comments" id="comments" value="{{model.comments}}"
+				rows="4" maxlength="256">{{model.comments}}</textarea>
+		</div>
+	</div>
+
+	<div class="control-group">
+		<label class="control-label" style="width: 190px"
+			id="electronicSignatureLabel">{{t 'createUser.label.esign'}}</label>
+		<div id="userElectronicSignature" class="controls" style="margin-left: 190px" aria-labelledby="signatureLabel" for="userElectronicSignature">
+			<label class="checkbox"><input name="electronicSignature"
+				type="checkbox" id="electronicSignature" value="true" {{#ifCond model.eSignature '===' true}}checked="checked" {{/ifCond}}/></label>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" style="width: 190px" id="rolesLabel">{{t 'user.profile.page.role.label'}}</label>
+		<div class="controls">
+			<select class="input-medium" id="roles" name="userRoles">
+				{{#each roles}}
+				<option value="{{roleId}}" {{#ifCond roleId "===" ../model.roleDto.roleId}}selected="selected"{{/ifCond}}>{{roleName}}</option>
+				{{/each}}
+			</select>
+		</div>
+	</div>
+
+	{{#ifCond manageAction '===' 'Edit'}}
+
+	<div class="control-group">
+		<label class="control-label" style="width: 190px" id="statusLabel">{{t 'user.profile.page.status.label'}}</label>
+		<div class="controls">
+			<select id=userStatus name="model.rdxState">
+				<option value="ACTIVE" {{#ifCond "ACTIVE" "===" model.rdxState}}selected="true"{{/ifCond}}>ACTIVE</option>
+				<option value="DISABLE" {{#ifCond "DISABLE" "===" model.rdxState}}selected="true"{{/ifCond}}>DISABLE</option>
+				<option value="SUSPENDED" {{#ifCond "SUSPENDED" "===" model.rdxState}}selected="true"{{/ifCond}}>SUSPENDED</option>
+			</select>
+		</div>
+	</div>
+
+
+
+	<div>
+		<h5 class="greyHeading">{{t 'admin.label.dates'}}</h5>
+	</div>
+
+	<div class="control-group">
+		<label class="control-label" style="width: 190px" for="createdOn">{{t 'createUser.label.lastLogOnDate'}}:</label>
+		<div class="controls">{{#if model.lastLoginDate}} {{formatDate model.lastLoginDate}} {{else}} {{t 'createUser.label.newUser'}} {{/if}}</div>
+	</div>
+
+	<div class="control-group">
+		<label class="control-label" style="width: 190px" for="createdOn">{{t 'createUser.label.accountCreationDate'}}:</label>
+		<div class="controls">{{formatDate model.createdOn}}</div>
+	</div>
+
+	{{/ifCond}}
+
+</div>

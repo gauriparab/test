@@ -1,0 +1,16 @@
+<table class="table">
+{{#each content}}
+	<tr>
+		{{#each columns}}
+		<th>{{this}}</th>
+		{{/each}}
+	</tr>	
+	{{#each values}}
+	<tr>
+		{{#each this}}
+			<td>{{this}}</td>
+		{{/each}}	
+	</tr>
+	{{/each}}
+{{/each}}
+</table>

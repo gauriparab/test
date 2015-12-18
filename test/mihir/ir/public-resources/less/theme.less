@@ -1,0 +1,206 @@
+@imagedir : "../img/";
+
+.gradient(@startColor, @endColor, @startColorStop: 0%, @endColorStop: 100%) {
+    background: @startColor;
+    background-image: -moz-linear-gradient(top, @startColor @startColorStop, @endColor @endColorStop);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(@startColorStop, @startColor), color-stop(@endColorStop, @endColor));
+    background-image: -webkit-linear-gradient(top, @startColor @startColorStop, @endColor @endColorStop);
+    background-image: -o-linear-gradient(top, @startColor @startColorStop, @endColor @endColorStop);
+    background-image: -ms-linear-gradient(top, @startColor @startColorStop, @endColor @endColorStop);
+    background-image: linear-gradient(top, @startColor @startColorStop, @endColor @endColorStop);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@{startColor}', endColorstr='@{endColor}', GradientType=0); /* IE6-9 */
+}
+
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+    background-color: #FFFFFF;
+    color: #333333;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    line-height: 20px;
+    margin: 0
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+h2 {
+	font-size: 18px;
+	line-height: 24px;
+}
+
+.wrapper {
+	min-height: 100%;
+}
+
+.header {
+	height: 88px;
+	background-color: #fff;
+
+	.ion-logo {
+		margin-top: 20px;
+	}	
+}
+
+.banner {
+	background: #000 url("@{imagedir}header-bg.png") center no-repeat;
+	height: 589px;
+}
+
+.logo {
+	margin-top: 90px;
+	
+	p {
+		color: #999;		
+		font-size: 14px;
+	}
+	.row {
+		margin-bottom: 20px;
+	}
+	.actions {
+		margin-top: 20px;
+	}
+}
+
+.features {
+	margin-top: 50px;
+	
+	.span6 {
+		background-color: #fff;
+		border-radius: 4px;
+		.gradient(#fff, #e0e0e0);
+		height: 210px;
+		margin-top: 10px;
+		padding: 30px 70px 0;
+		text-align: center;
+				
+		hr {
+			border: none;
+			height: 1px;
+			color: #ccc; 
+			background-color: #ccc; 
+			width: 50px;
+			margin: 15px 0;
+		}		
+	}
+	
+	h5, p {
+		color: #0285df
+	}
+	
+	h5 {
+		font-size: 14px;
+	}
+	
+	p {
+		font-size: 12px;
+		line-height: 14px;
+	}
+}
+
+.marketing {
+	margin-top: 60px;
+	
+	p {
+		color: #666;
+		font-size: 14px;
+	}
+	
+	.row {
+		margin-left: -40px;
+	}
+}
+
+footer {
+    background-color: #fff;
+    border-top: 1px solid #D8D8D8;
+	margin: 60px 0;
+	
+    .row-fluid {
+        margin-left: -30px;
+        
+        div {
+            padding-top: 20px;
+        }
+    }
+	
+	ul {
+		margin-bottom: 25px;
+	}
+
+    p {
+        font-size: 12px;
+        line-height: 12px;
+        padding-left: 3px;
+        color: #888;
+    }
+
+    a:link, a:visited {
+        padding: 0 3px;
+        color: #888;
+        font-size: 12px;
+    }
+
+    a:hover {
+        color: #555;
+    }
+}
+
+.contentinfo-legal {
+    clear: both;
+    margin-left: 0;
+    
+    li {
+	    border-right: 1px solid #D8D8D8;
+	    float: left;
+	    line-height: 12px;
+	    list-style-type: none;
+	    margin-bottom: 5px;
+	    margin-right: 10px;
+	    padding-right: 10px;
+	}
+	li.last-of-type {
+	    border-right: 0 none;
+	    padding-right: 0;
+	}	
+}
+
+.login-container {
+	background-color: #fff;
+	border-radius: 4px;
+	.gradient(#fff, #e0e0e0);
+	margin-top: 60px;
+	padding: 20px;
+}
+
+#customerLogin {
+	padding-left: 120px;
+	
+	input {
+		width: 350px;
+	}
+	
+	#forgotPassword {
+		margin-top: 15px;
+	}
+}
+
+.supported-browsers {
+	text-align: center;
+	font-size: 11px;
+	padding-top: 10px;
+
+	.browser {
+		font-size: 11px;
+	}
+}
+
+.text-small {
+    font-size: 12px;
+    font-weight: normal;
+}

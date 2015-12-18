@@ -1,0 +1,12 @@
+<div class="span4 text-right">
+    <label for="regionConfigurations">{{t 'targetRegionsFile.configuration.label' }}:</label>
+</div>
+<div class="span8">
+    <div id="regionConfigurationsDiv" class="input-xlarge custom-region-container" style="float: left">
+        <select id="regionConfigurations" class="input-xlarge">
+            {{#each configurations}}
+                <option value="{{name}}">{{t 'targetRegionsFile.configuration.option.' name}}</option>
+            {{/each}}
+        </select>
+    </div>
+</div>

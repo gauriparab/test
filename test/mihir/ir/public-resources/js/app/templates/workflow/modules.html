@@ -1,0 +1,12 @@
+<ul class="nav nav-list parameters-sidebar">
+	{{#each modules}}
+		{{#unless hidden}}
+			<li class="" > {{! View will set the active class during render() }}
+				<a href="#dropdowns" data-cid="{{_cid}}">
+					<i class="icon-chevron-right"></i>
+					{{toTitleCase name}}
+				</a>
+			</li>
+		{{/unless}}
+	{{/each}}
+</ul>

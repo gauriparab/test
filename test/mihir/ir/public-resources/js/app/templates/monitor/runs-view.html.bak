@@ -1,0 +1,52 @@
+<div class="container-fluid">
+        <div class="row-fluid">
+                <div class="pull-left">
+                        <h1><img src="{{img 'dash-analysis.png'}}" width="40" /> {{t 'monitor.run.view'}}</h1>
+                </div>
+                <div class="pull-right">
+                        <a id="refresh" href="/ir/secure/run.html" data-toggle="modal" title="Refresh" class="btn btn-primary">{{t 'monitor.refresh'}}</a>
+                </div>
+        </div>
+        <div class="row-fluid">
+                <div class="control-group">
+                        <div class="controls">
+                                <div class="pull-left">
+                                        <select class="input-medium" id="filterRuns" name="filterRuns">
+                                              	<option value="viewAll">View All</option>
+						{{#each runsList}}
+						 <option value="{{planId}}">{{planName}}</option>
+						{{/each}}
+                                        </select>
+                                </div>
+                                 <div class=" pull-right">
+                                         <select class="input-small" style="width:54px" id="paginateRuns">
+                                                <option value="20">20</option>
+                                                <option value="10">10</option>
+                                                <option value="5">5</option>
+                                         </select>
+                                         Items Per Page
+                                 </div>
+
+                        </div>
+                </div>
+        </div>
+
+	<div id="carousel" data-interval="false" class="carousel slide" style="line-height: 2">
+  	    <ol class="pager">
+    		<li data-target="#carousel" data-slide="prev"><a href="javascript:void(0)">&larr; Prev</a></li>
+    		<li data-target="#carousel" data-slide="next"><a href="javascript:void(0)">Next &rarr;</a></li>
+  	    </ol>
+  	    <div class="carousel-inner">
+		{{#each runs}}
+    		<div class="item">
+		    {{#each this}}
+		    <div class="row-fluid" style="padding-top: 15px">
+            		<div class="span12" id="{{planId}}">
+            		</div>
+        	    </div>
+		    {{/each}}
+		</div>
+		{{/each}}
+  	    </div>
+	</div>
+</div>

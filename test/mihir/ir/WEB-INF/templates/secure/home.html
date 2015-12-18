@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:substituteby="layout.html :: headerFragment"></head>
+<style type="text/css">
+<!-- temporary -->
+.action { text-align: middle; }
+</style>
+<body>
+<div class="wrapper">
+    <div class="header" th:substituteby="layout.html :: bodyHeaderFragment"></div>
+
+    <div class="sub-nav" th:substituteby="layout.html :: bodySubNavFragment"></div>
+
+    <div class="main">
+        <div class="main-content clearfix">
+            <div class="container-fluid">
+                <div th:if="${hosted}" class="row-fluid" >
+                	<div sec:authorize="${hasRole('ROLE_ORGADMIN')}" >
+	                    <div th:utext="#{admin.purchasing.payment.account.missing.admin.warningandlink(${beans.applicationProps['lifetechnologies.registration.host']}, @{/secure/admin-purchasing.html})}" id="unlinked-account-warning"
+	                         th:unless="${isPaymentAccountLinked}" class="alert">
+	                        <strong>Warning!</strong>&nbsp;You have not linked a payment account.
+	                    </div>
+                	</div>
+	                <div sec:authorize="${not hasRole('ROLE_ORGADMIN')}" >
+	                    <div th:utext="#{admin.purchasing.payment.account.missing.nonadmin.warning(${beans.applicationProps['lifetechnologies.registration.host']})}" id="unlinked-account-warning"
+	                         th:unless="${isPaymentAccountLinked}" class="alert">
+	                        <strong>Warning!</strong>&nbsp;You have not linked a payment account.
+	                    </div>
+	                </div>
+                </div>
+                <div class="row-fluid">
+                    <div class="span7">
+                        <div class="report-header">Quick links to get started</div>
+                        <div class="report-body getting-started">
+                            <div class="row-fluid quicklink" sec:authorize="${hasAnyRole('ROLE_ORGADMIN', 'ROLE_IMPORT', 'ROLE_ANALYZE')}"> 
+                                <div class="span2 quicklink-icon">
+                                    <img src="../../../public-resources/img/dash-samples.png" th:src="@{/resources/img/dash-samples.png}" width="75" />
+                                </div>
+                                <div class="span10">
+                                    <h4>Samples</h4>
+                                    <p class="context-help">Samples represent a collection of data (sequence reads) from one or more sequencing runs.</p>                                                                                                        
+                                    <a href="manage-samples.html" class="btn btn-small" sec:authorize="${hasAnyRole('ROLE_IMPORT', 'ROLE_ANALYZE')}">Define sample</a> <a href="manage-samples.html" class="btn btn-small">View samples</a>
+                                </div>
+                            </div>
+                            <div class="row-fluid quicklink" sec:authorize="${hasAnyRole('ROLE_ORGADMIN', 'ROLE_ANALYZE')}">
+                                <div class="span2 quicklink-icon">
+                                    <img src="../../../public-resources/img/dash-workflows.png" th:src="@{/resources/img/dash-workflows.png}" width="75" />
+                                </div>
+                                <div class="span10">
+                                    <h4>Workflows</h4>
+                                    <p class="context-help">Workflows are a set of analysis components that have been put together to automate the analysis of your data.</p>                                                                                                        
+                                    <a href="workflow.html" class="btn btn-small">Create workflow</a> <a href="workflows.html" class="btn btn-small">View workflows</a>
+                                </div>
+                            </div>
+                            <div class="row-fluid quicklink" sec:authorize="${hasAnyRole('ROLE_ORGADMIN', 'ROLE_IMPORT', 'ROLE_REPORT','ROLE_ANALYZE')}">
+                                <div class="span2 quicklink-icon">
+                                    <img src="../../../public-resources/img/dash-analysis.png" th:src="@{/resources/img/dash-analysis.png}" width="75" />
+                                </div>
+                                <div class="span10">
+                                    <h4>Analyses</h4>
+                                    <p class="context-help">Analyses represent workflows that have been executed on a set of samples.</p>                                                                                                        
+                                    <a th:if="${canLaunchAnalysis}" sec:authorize="${hasAnyRole('ROLE_IMPORT', 'ROLE_ANALYZE')}" href="analysis-launch.html" class="btn btn-small">Launch analysis</a> <a href="analyses.html" class="btn btn-small">View analyses</a>
+                                </div>
+                            </div>                                                                                                  
+                        </div>  
+                        <div class="report-header">Have questions?</div>    
+                        <div class="report-body have-questions">
+                            <div class="row-fluid">
+                                <p>If the <a href="index.html" th:href="@{/help/index.html}" target="_blank">help section</a> didn't answer your question, here are four options to get additional help with Ion Reporter&trade; Software:</p>
+                            </div>
+                            <div class="row-fluid">
+                                <div class="span6">
+                                    <ul>
+                                        <li><icon class="icon-ok-circle"></icon><a href="index.html#faq-feedback" th:href="@{/help/index.html#faq-feedback}" target="_blank">Send feedback</a> directly within Ion Reporter&trade; Software</li>
+                                        <li><icon class="icon-envelope"></icon>Send an email to <a href="mailto:ionreporter@lifetech.com">ionreporter@lifetech.com</a></li>
+                                    </ul>                                                            
+                                </div>
+                                <div class="span6">
+                                    <ul>
+                                        <li><icon class="icon-user"></icon>Post a question on the <a href="http://ioncommunity.lifetechnologies.com/community/products/ion_reporter" target="_blank">Ion Community</a></li>
+                                        <li><icon class="icon-headphones"></icon>Contact <a href="http://www.lifetechnologies.com/us/en/home/technical-resources/order-support.html" target="_blank">Web Support</a></li>
+                                    </ul>                            
+                                </div>
+                            </div> 
+                        </div>                        
+                    </div>
+                    <div class="span5">
+                        <div class="report-header">What's new in Ion Reporter 4.0</div>
+                        <div class="report-body feature-highlights">
+                            <p class="context-help">You asked, we listened. Based on user feedback Ion Reporter&trade; Software has undergone a major redesign to dramatically improve usability and intuitiveness.</p>
+
+                            <h4>Feature Highlights</h4> 
+                            <div class="row-fluid">                                                                    
+                                <p><icon class="icon-circle-arrow-right"></icon>&nbsp;<strong>Import Samples</strong><br/>Simple and rapid uploads from Torrent Suite&trade; Software using the Ion Reporter Uploader plugin.</p>    
+                                <p><icon class="icon-circle-arrow-right"></icon>&nbsp;<strong>Create Workflows</strong><br/>Streamlined wizard-driven workflows for a wide range of applications.</p>    
+                                <p><icon class="icon-circle-arrow-right"></icon>&nbsp;<strong>Launch Analysis</strong><br/>Streamlined wizard-driven analysis process to launch one or more single sample, paired sample or trio analyses.</p>    
+                                <p><icon class="icon-circle-arrow-right"></icon>&nbsp;<strong>Review Your Results</strong><br/>Variants are displayed/annotated with a wide range public/custom annotation sources. Powerful fitlering capability.</p>    
+                                <p><icon class="icon-circle-arrow-right"></icon>&nbsp;<strong>Report Key Variants</strong><br/>Simple framework to select, classify, and report variants.</p>                                    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer th:substituteby="layout.html::bodyFooter"></footer>
+</div>
+
+
+
+<script th:substituteby="layout.html::irHeaderModals"></script>
+
+<script type="text/javascript">
+/*<![CDATA[*/
+    /* Initialize RequireJS */
+    requireInit([], function(){
+    });
+/*]]>*/
+</script>
+</body>
+</html>

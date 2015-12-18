@@ -1,0 +1,11 @@
+{{#if libraries}}
+	{{#each libraries}}
+		<div>{{barcode.idStr}}</div>
+	{{/each}}
+{{else}}
+	<select class="input-medium" style="margin-bottom: 0;" id="barcodes" name="barcodes">
+	{{#each barcodes}}
+		<option  value="{{id}}" {{#ifCond id '==' ../barcodeId}}selected="selected" {{/ifCond}}>{{idStr}}</option>
+	{{/each}}
+	</select>
+{{/if}}

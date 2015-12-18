@@ -1,0 +1,7 @@
+<div>
+	{{#ifCond templateType '!==' "install_pgm"}}
+	{{#if needToExecute}}
+		<b><a href='javascript:void(0)' data-action='execute'>{{t 'actions.EXECUTE'}}</a></b>
+	{{/if}}	
+	{{/ifCond}}
+</div>

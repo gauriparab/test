@@ -1,0 +1,8 @@
+<div class='controls'>
+     <label class='radio'>
+         <input name='operator' type='radio' title='And' value='AND' {{#ifCond filter.attributes.operator '===' 'AND'}}checked{{/ifCond}}/>{{t 'filterChains.edit.and'}}
+     </label>
+     <label class='radio'>
+         <input name='operator' type='radio' title='And' value='OR' {{#ifCond filter.attributes.operator '===' 'OR'}}checked{{/ifCond}}/>{{t 'filterChains.edit.or'}}
+     </label>
+ </div>

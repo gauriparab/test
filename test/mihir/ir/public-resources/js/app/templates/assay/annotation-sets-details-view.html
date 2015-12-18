@@ -1,0 +1,82 @@
+{{#model}}
+
+<div><b>{{name}}</b></div>
+
+<table class="table">
+	<tbody>
+		<tr>
+			<td><b>{{t 'analysis.auditLog.analysis.annotations.sources.version'}}:</b></td>
+			<td>{{applicationVersion.name}}</td>
+		</tr>
+		<tr>
+			<td><b>{{t 'annotationSet.details.lastModifiedBy'}}:</b></td>
+			{{#if lastModifiedBy}}
+			<td>{{createdBy.firstName}} {{createdBy.lastName}}</td>
+			{{else}}
+			<td>{{t 'grid.column.na'}}</td>
+			{{/if}}
+		</tr>
+
+		<tr>
+			<td><b>{{t 'annotationSet.details.lastModifiedOn'}}:</b></td>
+			{{#if lastModifiedOn}}
+			<td>{{formatDate lastModifiedOn}}</td>
+			{{else}}
+			<td>{{t 'grid.column.na'}}</td>
+			{{/if}}
+		</tr>
+
+		<tr>
+			<td><b>{{t 'audit.trail.createdby'}}:</b></td>
+			<td>{{createdBy.firstName}} {{createdBy.lastName}}</td>
+		</tr>
+
+		<tr>
+			<td><b>{{t 'annotationSet.details.createdOn'}}:</b></td>
+			<td>{{formatDate createdOn}}</td>
+		</tr>
+
+		<tr>
+			<td><b>{{t 'grid.column.status'}}:</b></td>
+			<td>{{status}}</td>
+		</tr>
+
+		<tr>
+			<td><b>{{t 'workflow.reference.label'}}:</b></td>
+			{{#if reference}}
+			<td>{{reference.name}}</td>
+			{{else}}
+			<td>{{t 'grid.column.na'}}</td>
+			{{/if}}
+		</tr>
+
+	</tbody>
+</table>
+
+<div>
+	<span>
+		<b>{{t 'workflow.summary.annotation'}}:</b>
+	</span>
+</div>
+<!--class="span12 k-grid k-widget"
+class="k-grid-header"-->
+<div >
+	<table class="table">
+		<thead >
+			<tr>
+				<th><b>{{t 'analysis.auditLog.analysis.annotations.sources.name'}}</b></th>
+				<th><b>{{t 'analysis.auditLog.analysis.annotations.sources.version'}}</b></th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#each sources}}
+			<tr>
+				<td>{{name}}</td>
+				<td>{{version}}</td>
+			</tr>
+			{{/each}}
+		</tbody>
+	</table>
+</div>
+
+{{/model}}

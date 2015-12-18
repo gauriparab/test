@@ -1,0 +1,32 @@
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+        <h3 class="title">{{t "actions." action}} {{t 'annotation.set.label.title'}}</h3>
+    </div>
+    <div class="modal-body" style="overflow: auto; max-height: 344px;">
+        <div id="errors"></div>
+        <div class="row-fluid">
+            <div class="span4 control-group">
+                <label class="control-label" for="annotation-set-name">{{t 'annotation.set.label.name'}}</label>
+                <input id="annotation-set-name" class="annotation-set-input span12" type="text" maxlength="255"
+                       title="{{t 'annotation.set.label.name'}}" required="required" placeholder="{{t 'placeholder.required'}}" value="{{name}}">
+            </div>
+            <div class="span8">
+                <label class="control-label" for="annotation-set-desc">{{t 'annotation.set.label.description'}}</label>
+                <input id="annotation-set-desc" class="annotation-set-input span12" maxlength="255"
+                       type="text" title="{{t 'annotation.set.label.description'}}" placeholder="{{t 'placeholder.optional'}}" value="{{description}}">
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div id="annotation-set-source" class="span6">
+            <!-- templates/annotation-set-source.html -->
+            </div>
+
+            <div id="annotation-set-selected-sources" class="span6">
+              <!-- templates/annotation-set-selected-sources.html -->
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button id="annotation-set-btn-cancel" type="button" class="btn btn-secondary" data-dismiss="modal">{{t 'annotation.set.button.cancel'}}</button>
+        <button id="annotation-set-btn-save" type="button" class="btn btn-primary">{{t 'annotation.set.button.save'}}</button>
+    </div>

@@ -1,0 +1,41 @@
+ 
+<h1>{{t 'workflow.configured.label'}}</h1>
+<p class="context-help">{{t 'workflow.save.message'}}</p>
+<br/>
+
+<form class="form-horizontal">
+
+  <div class="control-group">
+    <label class="control-label inputWorkflow" for="workflow-name">{{t 'workflow.label.name'}}:</label>
+    <div class="controls">
+      <input type="text" id="workflow-name" name="name" value="{{name}}" maxlength="255"
+             placeholder="Required" class="input-xxlarge" />
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label inputWorkflow" for="workflow-desc">{{t 'workflow.label.description'}}:</label>
+    <div class="controls" >
+      <textarea id="workflow-desc" name="description" rows="2"
+                placeholder="Optional" class="input-xxlarge">{{description}}</textarea>
+    </div>
+  </div>
+
+  {{#if false}}
+  <div class="control-group">
+    <div class="controls" >
+      <label class="checkbox">
+        <input type="checkbox" id="lockWorkflow" name="lockWorkflow"> {{t 'workflow.label.lock'}}
+      </label>
+    </div>
+  </div>
+  {{/if}}
+
+  <div class="control-group">
+    <div class="controls" >
+      <a class="btn btn-primary" id="save-workflow" href="workflows.html">{{t 'workflow.label.save'}}</a>
+    </div>
+  </div>
+
+</form>
+

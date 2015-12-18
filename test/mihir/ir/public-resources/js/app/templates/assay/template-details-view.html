@@ -1,0 +1,64 @@
+<div class="row-fluid">
+	<div class="span5">
+		<table style="width: 100%">
+			{{#if model.templatingKit}}
+			<tr>
+				<td colspan="2">
+					<h5>{{t 'monitor.run.templating.label'}}</h5>
+				</td>
+			</tr>
+			<tr>
+				<td valign="top" class="info-label" width="100">{{t 'assay.summary.templatingKit'}}:</td>
+				<td>{{model.templatingKit}}</td>
+			</tr>
+			{{/if}}
+			<tr>
+				<td colspan="2">
+					<h5>{{t 'install.template.pgmsequencing'}}</h5>
+				</td>
+			</tr>
+			<!-- {{#if templatingKit}}
+				<tr>
+					<td valign="top" class="info-label" width="100">{{t 'assay.summary.templatingKit'}}:</td>
+					<td>{{templatingKit}}</td>
+				</tr>
+			{{/if}} -->
+			<tr>
+				<td valign="top" class="info-label" width="100">{{t 'assay.summary.sequencingKit'}}:</td>
+				<td>{{model.sequencingKit}}</td>
+			</tr>
+			<tr>
+				<td valign="top" class="info-label" width="100">{{t 'specimen.role.CONTROL'}}:</td>
+				<td>
+					{{#each model.control}}
+						{{this}}<br/>
+					{{/each}}
+				</td>
+			</tr>
+			<tr>
+				<td valign="top" class="info-label" width="100">{{t 'data.results.chip'}}:</td>
+				<td>{{model.chip}}</td>
+			</tr>
+			<tr>
+				<td valign="top" class="info-label" width="100">{{t 'assay.details.flow'}}:</td>
+				<td>{{model.flow}}</td>
+			</tr>
+		</table>
+	</div>
+	<div class="span7">
+		<table style="width: 100%">
+			<tr>
+				<td colspan="3"><h5>{{t	'assay.qcsequence.controlqc'}}</h5>
+			</tr>
+
+			{{#each model.controlQcs}}
+			<tr>
+				<td valign="top" class="info-label">{{seqName}}</td>
+				<td>{{qcName}}: </td>
+				<td>>= {{threshold}}</td>
+			</tr>
+			{{/each}}
+
+		</table>
+	</div>
+</div>

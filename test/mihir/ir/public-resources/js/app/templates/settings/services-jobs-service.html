@@ -1,0 +1,22 @@
+<table class="table table-hover table-bordered">
+	<thead style="background: #F3F3F5;">
+		<tr>
+			<td style="width: 20%;"><b>{{t 'settings.label.serviceName'}}</b></td>
+			<td style="width: 40%;"><b>{{t 'settings.label.desription'}}</b></td>
+			<td style="width: 20%;"><b>{{t 'settings.label.status'}}</b></td>
+			<td style="width: 20%;"><b>{{t 'settings.label.actions'}}</b></td>
+		</tr>
+	</thead>
+	<tbody>
+		{{#data}}
+			{{#each this}}
+			<tr class="jobs-service">
+				<td style="width: 20%;">{{serviceName}}</td>
+				<td style="width: 40%;">{{serviceDescription}}</td>
+				<td style="width: 20%;">{{status}}</td>
+				<td style="width: 20%;">{{#ifCond ../../userRole '===' 'ADMINISTRATOR'}}{{#ifCond action '===' 'NA'}}{{action}}{{else}}<a href="#" data-type="{{action}}" data-service="{{serviceName}}" style="text-transform: capitalize;">{{action}}</a>{{/ifCond}}{{/ifCond}}</td>
+			</tr>
+			{{/each}}
+		{{/data}}
+	</tbody>
+</table>

@@ -1,0 +1,32 @@
+<div class="row-fluid">
+	<table cellpadding="2">
+		<tr>
+			{{#ifCond collection.length '>=' 1}}
+			<td valign="top" width="130"><strong>{{t labelKey}}: </strong></td>
+			<td>
+				<div class="row-fluid custom-region-container">
+					<select id="{{idKey}}" class="input-xlarge">
+						{{#if canBeNone}}
+							<option value="-1">{{t 'common.label.none'}}</option>
+						{{/if}}
+						{{#each collection}}
+						<option value={{this.id}}>{{this.name}}</option>
+						{{/each}}
+					</select>	
+				</div>
+			</td>
+			{{else}}
+				{{#ifCond mode '===' 'dx'}}
+					<td valign="top" width="130"><strong>{{t labelKey}}: </strong></td>
+					<td>
+						<div class="row-fluid custom-region-container">
+							<select id="{{idKey}}" class="input-xlarge">
+								<option></option>
+							</select>	
+						</div>
+					</td>
+				{{/ifCond}}
+			{{/ifCond}}
+		</tr>
+	</table>
+</div>

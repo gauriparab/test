@@ -1,0 +1,132 @@
+<form class="form-horizontal modal-scroll">
+	<div class="control-group">
+		<label class="control-label" for="specimenId">{{t 'grid.label.specimenId'}}: <span class="text-error requires-asterisk ">*</span></label>
+		<div class="controls">
+			<input name="specimenId" type="text" id="specimenId" required="required"
+			value="{{model.specimenId}}" maxlength="50" {{#if model.specimenId}}disabled{{/if}}/>
+		</div>
+	</div>
+	{{#if hasViewPermission}} 
+		<div class="control-group">
+			<label class="control-label" for="patientId">{{t 'grid.label.patientId'}}: <span class="text-error requires-asterisk ">*</span></label>
+			<div class="controls">
+				<input name="patientId" type="text" id="patientId" required="required"
+				value="{{model.patientId}}" maxlength="50"/>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="dateOfBirth">{{t 'grid.label.dateOfBirth'}}: <span class="text-error requires-asterisk ">*</span></label>
+			<div class="controls">
+				<div class="input-append date">
+					<input name="dateOfBirth" type="text" id="dateOfBirth" value="{{model.dateOfBirth}}" disabled/>
+					<span class="add-on"><i class="icon-calendar"></i></span>
+				</div>			
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="orderingPhysician">{{t 'grid.label.orderingPhysician'}}: <span class="text-error requires-asterisk ">*</span></label>
+			<div class="controls">
+				<input name="orderingPhysician" type="text" id="orderingPhysician" required="required"
+				value="{{model.orderingPhysician}}" maxlength="50"/>
+			</div>
+		</div>
+	{{/if}}
+	
+	<div class="control-group">
+		<label class="control-label" for="collectionDate">{{t 'grid.label.collectionDate'}}: <span class="text-error requires-asterisk ">*</span></label>
+		<div class="controls">
+			<div class="input-append date">
+				<input name="collectionDate" type="text" id="collectionDate" value="{{model.collectionDate}}" disabled/>
+				<span class="add-on"><i class="icon-calendar"></i></span>
+			</div>			
+		</div>
+	</div>
+	<!--<div class="control-group">
+		<label class="control-label" for="receiveDate">Recieve Date: <span class="text-error requires-asterisk ">*</span></label>
+		<div class="controls">			
+			<div class="input-append date">
+				<input name="receiveDate" type="text" id="receiveDate" required="required" value="{{model.receiveDate}}" maxlength="20"/>
+				<span class="add-on"><i class="icon-calendar"></i></span>
+			</div>	
+		</div>
+	</div>-->
+	<div class="control-group">
+		<label class="control-label" for="specimenSource">{{t 'grid.label.specimenSource'}}: </label>
+		<div class="controls">
+			<input name="specimenSource" type="text" id="specimenSource" required="required" value="{{model.specimenSource}}" maxlength="50"/>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="specimenCondition">{{t 'grid.label.specimenCondition'}}: <span class="text-error requires-asterisk ">*</span></label>
+		<div class="controls">
+			<input name="specimenCondition" type="text" id="specimenCondition" required="required" value="{{model.specimenCondition}}" maxlength="50"/>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="sampleType">{{t 'grid.label.sampleType'}}: <span class="text-error requires-asterisk ">*</span></label>
+		<div class="controls">
+			<input name="sampleType" type="text" id="sampleType" required="required"
+			value="{{model.sampleType}}" maxlength="50"/>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="gender">{{t 'grid.label.gender'}}: <span class="text-error requires-asterisk ">*</span></label>
+		<div class="controls">
+			<input type="radio" name="gender" value="Male" {{#ifCond model.gender '===' 'Male'}} checked="checked" {{/ifCond}}/> <span class="radioText">{{t 'attribute.gender.MALE'}}</span>
+			<input type="radio" name="gender" value="Female" {{#ifCond model.gender '===' 'Female'}} checked="checked" {{/ifCond}}/> <span class="radioText">{{t 'attribute.gender.FEMALE'}}<span>
+			<input type="radio" name="gender" value="Unknown" {{#ifCond model.gender '===' 'Unknown'}} checked="checked" {{/ifCond}} {{#unless model.gender}}checked="checked"{{/unless}}/> <span class="radioText">{{t 'grid.column.message.unknown'}}<span>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="tumorCellularity ">{{t 'grid.label.percentCellularity'}}:</label>
+		<div class="controls">
+			<input name="tumorCellularity" type="text" id="tumorCellularity"
+			value="{{model.tumorCellularity}}" maxlength="50"/>
+		</div>
+	</div>
+	<!--<div class="control-group">
+		<label class="control-label" for="tumorSite ">{{t 'grid.label.tumorSite'}}:</label>
+		<div class="controls">
+			<input name="tumorSite" type="text" id="tumorSite"
+			value="{{model.tumorSite}}" maxlength="50"/>
+		</div>
+	</div>-->
+	<div class="control-group">
+		<label class="control-label" for="necrosis ">{{t 'grid.label.percentNecrosis'}}:</label>
+		<div class="controls">
+			<input name="necrosis" type="text" id="necrosis"
+			value="{{model.necrosis}}" maxlength="50"/>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="referenceInterval">{{t 'grid.label.referenceInterval'}}: </label>
+		<div class="controls">
+			<input name="referenceInterval" type="text" id="referenceInterval" value="{{model.referenceInterval}}" maxlength="50"/>
+		</div>
+	</div>
+	{{#if model.specimenId}}
+		<div class="control-group">
+			<label class="control-label" for="extractionKit">{{t 'specimen.add.extractionKitBarcode.label'}}: </label>
+			<div class="controls">
+				<input name="extractionKit" type="text" id="extractionKit" value="{{model.extractionKit}}" maxlength="80"/>
+			</div>
+		</div>
+	{{/if}}
+	{{#each model.specimenAttributes}}
+	<div class="control-group">
+		<label class="control-label" for="{{attributeName}}">{{attributeName}}: {{#if isMandatory}}<span class="text-error requires-asterisk ">*</span>{{/if}}</label>
+		<div class="controls">
+			<input name="{{attributeName}}" data-type="custom" type="text" id="{{attributeName}}" value="{{value}}" 
+			{{#if isMandatory}} required="required" {{/if}} maxlength="50"/>
+		</div>
+	</div>
+	{{/each}}
+	{{#unless model.specimenId}}
+	<div class="control-group">
+		<label class="control-label" for="notes">{{t 'sample.planARun.addNote'}}: </label>
+		<div class="controls">
+			<textarea name="notes" id="notes" maxlength="256" rows="3">{{model.notes}}</textarea>
+		</div>
+	</div>
+	{{/unless}}
+</form>

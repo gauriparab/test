@@ -1,0 +1,40 @@
+<div>
+	<div>
+		<b>			
+			<a href="#" id="log-settings-audit-trail">{{t 'audit.trail.title'}}</a>
+		</b>
+	</div>
+	<form class="form-horizontal">
+		<div class="control-group">
+			<label class="control-label" for="inputEmail">{{t 'settings.label.retentionPeriod'}}</label>
+			<div class="controls">
+				<div class="form-inline">
+				<select id="retention-period">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10</option>
+					<option value="11">11</option>
+					<option value="12">12</option>
+				</select>
+				<label>{{t 'months.label'}}</label>
+				</div>
+			</div>
+			
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="inputPassword">{{t 'settings.label.autoDelete'}}</label>
+			<div class="controls">
+				<input id="auto-delete" type="checkbox">
+			</div>
+		</div>
+	</form>
+</div>
+<div class="modal hide fade" id="log-settings-audit-modal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>
+<div class="modal hide fade" id="auditTrailDetailsModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>

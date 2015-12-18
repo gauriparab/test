@@ -1,0 +1,14 @@
+{{#data}} 
+<div class="row-fluid">
+	<table>
+		{{#each parameters}}
+		<tr>
+			<td>{{description}}</td>
+			<td style="  padding-left: 15px;">
+				<input data-index="{{@index}}" type="text" value="{{value}}"/>
+			</td>
+		</tr>
+		{{/each}}
+	</table>
+</div>
+{{/data}}

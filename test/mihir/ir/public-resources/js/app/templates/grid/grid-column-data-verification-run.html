@@ -1,0 +1,7 @@
+<div>
+	<b><a href="javascript:void(0)" data-action="view_plannedRun">{{plannedRun.value}}</a></b>
+</div>
+<div style="font-size:10px;font-weight:bold;">
+	<a href="javascript:void(0)" data-action="audit_trail">{{t 'actions.AUDIT'}}</a> {{#ifCond runStatus.value '===' 'Completed'}}| 
+	<a href="javascript:void(0)" data-action="view_csa">{{t 'actions.CSA'}}</a>{{/ifCond}}
+</div>

@@ -1,0 +1,67 @@
+<div class='summary-section'>
+	<div class='header'>
+		<h4><span class='detailsTitle'>{{t 'admin.label.details'}}</span></h4>
+		<hr class='summary'/>
+	</div>
+
+	{{#if this}}
+
+		<table cellpadding='5'>
+		    <tbody>
+			    <tr>
+			        <td valign="top"><strong>{{t 'admin.label.analysisName'}}:</strong></td>
+			        <td id="payment-details-purchaseName">{{purchaseName}}</td>
+			    </tr>
+          <tr>
+              <td valign="top"><strong>{{t 'admin.label.totalQuantity'}}:</strong></td>
+              <td id="payment-details-totalQty">{{totalQty}}</td>
+          </tr>
+			    <tr>
+			        <td valign="top"><strong>{{t 'admin.label.totalPrice'}}:</strong></td>
+			        <td id="payment-details-totalCurrency" >{{total}} {{currency}}</td>
+			    </tr>
+			    <tr>
+			        <td valign="top"><strong>{{t 'admin.label.launchedBy'}}:</strong></td>
+			        <td id="payment-details-purchaser">{{purchaser}}</td>
+			    </tr>
+			    <tr>    
+			        <td valign="top"><strong>{{t 'admin.label.launchedOn'}}:</strong></td>
+			        <td id="payment-details-purchaseDate">{{purchaseDate}}</td>
+			    </tr>
+			    <tr>
+			        <td valign="top"><strong>{{t 'admin.label.po'}}:</strong></td>
+			        <td id="payment-details-purchaseOrderNumber">{{purchaseOrder.number}}</td>
+			    </tr>
+          <tr>
+              <td valign="top"><span class="has-popover" data-toggle="popover" data-trigger="hover" data-placement="top" data-title="Description" data-content="Life Technologies eCommerce Account"><strong>{{t 'admin.label.account'}}:</strong></span></td>
+              <td id="payment-details-accountUsername">{{paymentAccountUsername}}</td>
+          </tr>
+          <tr>
+			        <td valign="top"><strong>{{t 'admin.label.skus'}}:</strong></td>
+			        <td></td>
+			    </tr>
+			</tbody>
+		</table>
+		{{#if items.length}}
+			<table id="payment-details-skuTable" class="filterChains table table-striped table-condensed" >
+				<thead>
+					<th>{{t 'admin.label.sku'}}</th>
+					<th>{{t 'admin.label.price'}}</th>
+					<th>{{t 'admin.label.qty'}}</th>
+				</thead>
+			    <tbody>
+					{{#each items}}
+				    <tr>
+				        <td><span class="has-popover" data-toggle="popover" data-trigger="hover" data-placement="top" data-title="Description" data-content="{{description}}">{{sku}}</span></td>
+				        <td>{{pricePerSKU}} {{currency}}</td>
+                <td>{{quantity}}</td>
+			        </tr>
+					{{/each}}
+			    </tbody>
+		    </table>
+		{{/if}}
+
+	{{else}}
+		<p>{{t 'no.record.selected'}}</p>
+	{{/if}}
+</div>

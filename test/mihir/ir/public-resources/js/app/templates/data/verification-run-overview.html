@@ -1,0 +1,32 @@
+<div class="container-fluid">
+    <div class="row-fluid" style="margin-bottom:10px">
+        <div>
+            <!-- <select id="flag-filters" class="pull-left show-tick show-menu-arrow" title="Filter Samples" data-width="175px">
+                templates/common/filter.html
+            </select> -->
+            <div id="details-options-menu" class="pull-left" role="actions">
+                  <!-- templates/common/actions-menu.html -->
+            </div>
+            <form id="query-form" class="form-search form-inline pull-right">
+                <!-- templates/common/search.html -->
+            </form>
+            <div class=" pull-right">
+                 <a id="refresh" href="/ir/secure/verification-run.html" data-toggle="modal" title="{{t 'monitor.refresh'}}" class="btn btn-primary">{{t 'monitor.refresh'}}</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div id="verification-runs-grid">
+            <!-- views/samples/manageTemplateGridView.js -->
+        </div>
+    </div>
+    <div class="modal hide fade" id="addSample" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+    <div class="modal hide fade" id="editSampleModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+    <div class="modal hide fade" id="planARunDetailsModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>
+    <div class="modal hide fade" id="auditTrailModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>
+    <div class="modal hide fade" id="auditTrailDetailsModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>
+    <div class="modal hide fade" id="otDetailsModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>
+    <div class="modal hide fade" id="pgmDetailsModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>
+    </div>
+</div>

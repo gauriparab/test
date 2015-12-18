@@ -1,0 +1,28 @@
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="pull-left">
+			<h1>
+				<img src="{{img 'data.png'}}" width="40" />{{t 'data.title'}}
+			</h1>
+		</div>
+		<div class="pull-right"> 
+			<a data-href="#" id="refreshResult" class="btn btn-primary">{{t 'monitor.refresh'}}</a>
+		</div>
+	</div>
+
+	<div class="row-fluid">
+		<div class="span12 actionSearch">
+			<form id="query-form" class="form-search form-inline pull-right"
+				style="display: inline-block">
+				<input type="text" class="input-xlarge" id="searchCondition" placeholder="Search by Sample Name" maxlength="256">
+				<button type="submit" class="btn">{{t 'assay.search'}}</button>
+				<button type="reset" class="btn">{{t 'assay.reset'}}</button>
+			</form>
+		</div>
+	</div>
+
+	<div class="row-fluid">
+		<div class="span12" id="result-grid"></div>
+	</div>
+	<div class="modal hide fade" id="planARunDetailsModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>
+</div>

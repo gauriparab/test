@@ -1,0 +1,9 @@
+{{#if specimenGroup}}
+    <ul>
+      {{#each specimenGroup.members}}
+            <li><b>{{tMultiOptions 'specimen.role.' ../applicationType '.' role defaultTemplate='specimen.role.' defaultLabel=role}}:</b> {{specimen.name}}</li>
+        {{/each}}
+    </ul>             
+  {{else}}
+    <p>No samples selected</p>
+{{/if}}

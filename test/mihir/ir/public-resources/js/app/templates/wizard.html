@@ -1,0 +1,27 @@
+<div id="errors"></div>
+<div class="row-fluid">
+	<div class="span8">
+		<div class="row-fluid chevrons workflow{{tabs.length}}">
+			<ul id="chevrons"></ul>
+		</div>
+		<!--<div  class="pull-right">
+			<a id="topCancel" href="{{cancelPath}}" class="btn" style="margin-right: 15px">Cancel</a>
+			<a id="topPreviousStep" href="#previous" class="btn btn-secondary" style="margin-right: 5px">&larr; Previous</a>
+			<a id="topNextStep" href="#next" class="btn btn-primary pull-right disabled">Next &rarr;</a>
+		</div>
+		<br/>
+		<hr class='summary'/>-->
+		<div id="detail" class="modal-scroll"></div>
+		<hr class='summary'/>
+		<div  class="pull-right">
+			<a id="cancel" href="{{cancelPath}}" class="btn" style="margin-right: 15px">{{t 'wizard.button.title.cancel'}}</a>
+			<a id="previousStep" href="#previous" class="btn btn-secondary" style="margin-right: 5px">&larr; {{t 'wizard.button.title.previous'}}</a>
+			<a id="nextStep" href="#next" class="btn btn-primary pull-right disabled">{{t 'wizard.button.title.next'}} &rarr;</a>
+			<a id="save-assay" class="btn btn-primary pull-right" style="display:none; margin-left: 15px">{{t 'wizard.button.title.save'}}</a>
+		</div>
+	</div>
+	<div id="sidebar" class="span4">
+
+	</div>
+</div>
+

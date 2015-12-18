@@ -1,0 +1,30 @@
+{{#if filtersMetrics.length}}
+    <ul id="filtersChain" class="settings-chain with-variant-count with-existing-gray-bg">
+        <li class="setting-item">
+            <div class="variants-genes-count row-fluid">
+                <div class="pull-left left-buffer">{{t 'filterChain.totalVariants'}}: <span class="genes-count">{{totalVariants}}</span></div>
+            </div>
+        {{#each filtersMetrics}}
+        <li class="setting-item filter-setting">
+            <div class="row-fluid layout-setting">
+            	<div class="span6 setting-type">{{filter.displayValue}}</div>
+                {{! A Logical Filter Group contains multiple filters that could have unannotated variants included.}}
+                <div class="pull-right right-buffer filter">
+                    {{#ifCond filter.handleMissing '&&' filter.includeMissing}}
+                    <i class="icon-plus has-title-tooltip filter" data-toggle="tooltip" data-html="true" data-placement="left"
+                       title="{{#ifCond filter.type '===' '.filter.LogicalFilterGroup'}} {{t 'filter.logical.include.missing'}} {{else}} {{t 'filter.other.include.missing'}} {{/ifCond}}"></i>
+                    {{/ifCond}}
+                </div>
+            </div>
+        </li>
+        <li class="setting-item">
+            <div class="variants-genes-count row-fluid">
+                <div class="pull-right right-buffer">Genes: <span class="genes-count">{{totalGenesPassed}}</span></div>
+                <div class="pull-right right-buffer">Variants: <span class="variants-count">{{totalVariantsPassed}}</span></div>
+            </div>
+        </li>
+        {{/each}}
+    </ul>
+{{/if}}
+
+

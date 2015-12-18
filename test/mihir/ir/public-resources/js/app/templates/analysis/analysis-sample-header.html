@@ -1,0 +1,304 @@
+<div class="row-fluid">
+    <h2>{{analysis.name}}</h2>
+</div>
+<div class="report-header">{{t 'analysis.label.analysisInformation'}}</div>
+<div class="report-body">
+    <div class="row-fluid analysis-report-iconset">
+        <div class="span3">
+            <ul class="unstyled">
+                <li>
+                    <div class="qc-info-cell">
+                        <img src="/ir/resources/img/reporter.png" alt="{{t 'report.irVersion'}}" width="36">
+                    </div>
+                    <strong>{{t 'report.irVersion'}}</strong><br>
+                    {{reportVersion}}
+                </li>
+            </ul>
+        </div>
+        {{#if analysis.importedby}}
+        <div class="span3">
+            <ul class="unstyled">
+                <li>
+                    <div class="qc-info-cell">
+                        <img src="/ir/resources/img/filepath.png" alt="{{t 'report.launchedBy'}}" width="36">
+                    </div>
+                </li>
+                <li>
+                    <strong>{{t 'report.launchedBy'}}</strong><br>
+                    {{analysis.importedby}}
+                </li>
+            </ul>
+        </div>
+        {{/if}}
+        {{#if analysis.analyzedby}}
+        <div class="span3">
+            <ul class="unstyled">
+                <li>
+                    <div class="qc-info-cell">
+                        <img src="/ir/resources/img/analyze.png" alt="{{t 'report.analyzedBy'}}" width="36">
+                    </div>
+                </li>
+                <li>
+                    <strong>{{t 'report.analyzedBy'}}</strong><br>
+                    {{analysis.analyzedby}}
+                </li>
+            </ul>
+        </div>
+        {{/if}}
+        {{#if analysis.date_imported}}
+        <div class="span3">
+            <ul class="unstyled">
+                <li>
+                    <div class="qc-info-cell">
+                        <img src="/ir/resources/img/cal.png" alt="{{t 'report.launchedDate'}}" width="36">
+                    </div>
+                </li>
+                <li>
+                    <strong>{{t 'report.launchedDate'}}</strong><br>
+                    {{analysis.date_imported}}
+                </li>
+            </ul>
+        </div>
+        {{/if}}
+    </div>
+    <div class="row-fluid analysis-report-iconset">
+        {{#if analysis.date_analyzed}}
+        <div class="span3">
+            <ul class="unstyled">
+                <li>
+                    <div class="qc-info-cell">
+                        <img src="/ir/resources/img/cal.png" alt="{{t 'report.analyzedDate'}}" width="36">
+                    </div>
+                </li>
+                <li>
+                    <strong>{{t 'report.analyzedDate'}}</strong><br>
+                    {{analysis.date_analyzed}}
+                </li>
+            </ul>
+        </div>
+        {{/if}}
+        {{#if analysis.workflow}}
+        <div class="span3">
+            <ul class="unstyled">
+                <li>
+                    <div class="qc-info-cell">
+                        <img src="/ir/resources/img/amplseq.png" alt="{{t 'report.workflow'}}" width="36">
+                    </div>
+                </li>
+                <li class="breakall">
+                    <strong>{{t 'report.workflow'}}</strong><br>
+                    <a id="workflow-details" href="javascript:void(0)">{{analysis.workflow.name}}</a>
+                </li>
+            </ul>
+        </div>
+        {{/if}}
+        {{#if analysis.annotations}}
+        <div class="span3">
+            <ul class="unstyled">
+                <li>
+                    <div class="qc-info-cell">
+                        <img src="/ir/resources/img/annotations.png" alt="{{t 'report.annotations'}}" width="36">
+                    </div>
+                </li>
+                <li>
+                    <strong>{{t 'report.annotations'}}</strong><br>
+                    <a id="annotation-details" href="javascript:void(0)">{{analysis.annotations.name}}</a>
+                </li>
+            </ul>
+        </div>
+        {{/if}}
+        {{#if analysis.references}}
+        <div class="span3">
+            <ul class="unstyled">
+                <li>
+                    <div class="qc-info-cell">
+                        <img src="/ir/resources/img/annotations.png" alt="{{t 'report.reference'}}" width="36">
+                    </div>
+                </li>
+                <li>
+                    <strong>{{t 'report.reference'}}</strong><br/>
+                    {{#ifCond analysis.references.length '===' 1}}
+                    {{#each analysis.references}}
+                    {{this.name}}
+                    {{/each}}
+                    {{else}}
+                    <ul>
+                        {{#each analysis.references}}
+                        <li>{{this.name}}</li>
+                        {{/each}}
+                    </ul>
+                    {{/ifCond}}
+                </li>
+            </ul>
+        </div>
+        {{/if}}
+        {{#if analysis.baseline}}
+        <div class="span3">
+            <ul class="unstyled">
+                <li>
+                    <div class="qc-info-cell">
+                        <img src="/ir/resources/img/baseline.png" alt="{{t 'report.baseline'}}" width="36" />
+                    </div>
+                </li>
+                <li>
+                    <strong>{{t 'report.baseline'}}</strong><br />
+                    <a href="javascript:void(0)" id="cnvBaseline">{{analysis.baseline.name}}</a>
+                </li>
+            </ul>
+        </div>
+        {{/if}}
+    </div>
+</div>
+
+<div class="report-header">{{t 'analysis.label.sampleInformation'}}</div>
+<div class="report-body" style="height: auto;">
+    <div class="row-fluid" id="sampleInformationPane">
+        {{#each specimens}}
+        <div class="row-fluid">
+            {{#if name}}
+            <div class="span3">
+                <ul class="unstyled">
+                    <li>
+                        <div class="qc-info-cell">
+                            <img src="/ir/resources/img/sample.png" alt="{{t 'report.sampleName'}}" width="36">
+                        </div>
+                    </li>
+                    <li class="breakall">
+                        <strong>{{t 'report.sampleName'}}</strong><br/>
+                        <span id="sampleName">{{name}}</span>
+                    </li>
+                </ul>
+            </div>
+            {{/if}}
+            {{#if gender}}
+            <div class="span3">
+                <ul class="unstyled">
+                    <li>
+                        <div class="qc-info-cell">
+                            <img src="/ir/resources/img/gender.png" alt="{{t 'report.gender'}}" width="36">
+                        </div>
+                    </li>
+                    <li>
+                        <strong>{{t 'report.gender'}}</strong><br/>
+                        {{gender}}
+                    </li>
+                </ul>
+            </div>
+            {{/if}}
+            {{#if relationship}}
+            <div class="span3">
+                <ul class="unstyled">
+                    <li>
+                        <div class="qc-info-cell">
+                            <img src="/ir/resources/img/annotations.png" alt="{{t 'report.relationship'}}" width="36">
+                        </div>
+                    </li>
+                    <li>
+                        <strong>{{t 'report.relationship'}}</strong><br/>
+                        {{relationship}}
+                    </li>
+                </ul>
+            </div>
+            {{/if}}
+            {{#if barcode}}
+            <div class="span3">
+                <ul class="unstyled">
+                    <li>
+                        <div class="qc-info-cell">
+                            <img src="/ir/resources/img/barcode.png" alt="{{t 'report.barcode'}}" width="36">
+                        </div>
+                    </li>
+                    <li>
+                        <strong>{{t 'report.barcode'}}</strong><br/>
+                        {{barcode}}
+                    </li>
+                </ul>
+            </div>
+            {{/if}}
+        </div>
+        <div class="row-fluid">
+            {{#if chiptype}}
+            <div class="span3">
+                <ul class="unstyled">
+                    <li>
+                        <div class="qc-info-cell">
+                            <img src="/ir/resources/img/three_chip_icon.png" alt="{{t 'report.chipType'}}" width="36">
+                        </div>
+                    </li>
+                    <li>
+                        <strong>{{t 'report.chipType'}}</strong><br/>
+                        {{chiptype}}
+                    </li>
+                </ul>
+            </div>
+            {{/if}}
+            {{#if chipid}}
+            <div class="span3">
+                <ul class="unstyled">
+                    <li>
+                        <div class="qc-info-cell">
+                            <img src="/ir/resources/img/three_chip_icon.png" alt="{{t 'report.chipType'}}" width="36">
+                        </div>
+                    </li>
+                    <li>
+                        <strong>{{t 'report.chipType'}}</strong><br/>
+                        {{chipid}}
+                    </li>
+                </ul>
+            </div>
+            {{/if}}
+            {{#if library_preparation}}
+            <div class="span3">
+                <ul class="unstyled">
+                    <li>
+                        <div class="qc-info-cell">
+                            <img src="/ir/resources/img/library.png" alt="{{t 'report.libraryPrepration'}}" width="36">
+                        </div>
+                    </li>
+                    <li>
+                        <strong>{{t 'report.libraryPreparation'}}</strong><br/>
+                        {{library_preparation}}
+                    </li>
+                </ul>
+            </div>
+            {{/if}}
+            {{#if deviceid}}
+            <div class="span3">
+                <ul class="unstyled">
+                    <li>
+                        <div class="qc-info-cell">
+                            <img src="/ir/resources/img/pgm.png" alt="{{t 'report.deviceID'}}" width="36">
+                        </div>
+                    </li>
+                    <li>
+                        <strong>{{t 'report.deviceID'}}</strong><br/>
+                        {{deviceid}}
+                    </li>
+                </ul>
+            </div>
+            {{/if}}
+            {{#each attributes}}
+            <div class="span3">
+                <ul class="unstyled">
+                    <li>
+                        <div style="float:left; width:42px;">
+                            <img src="{{img 'reporter.png'}}" alt="{{attribute.name}}" width="36"/>
+                        </div>
+                    </li>
+                    <li>
+                        <strong>
+                            {{attribute.name}}
+                            {{#if attribute.valueGarbled}}
+                            ({{t 'analysis.label.encrypted'}})
+                            {{/if}}
+                        </strong><br/>
+                        {{value}}
+                    </li>
+                </ul>
+            </div>
+            {{/each}}
+        </div>
+        <br/>
+        {{/each}}
+    </div>
+</div>

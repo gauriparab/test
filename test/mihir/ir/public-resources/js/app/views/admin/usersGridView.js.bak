@@ -1,0 +1,118 @@
+/* global define:false */
+define(['jquery',
+        'underscore',
+        'kendo',
+        'models/admin/userModel',
+        'views/common/grid/kendoGridView',
+        'hb!templates/grid/grid-column-name.html',
+        'hb!templates/grid/grid-action-users.html'
+        ].concat(
+        'utils/templateFunctions',
+        'views/common/grid/plugins/rowSelectionGridPlugin',
+        'views/common/grid/plugins/actionsGridPlugin'),
+
+        function($,
+                 _,
+                 kendo,
+                 UserModel,
+                 KendoGridView,
+                 gridColumnNameTemplate,
+                 userActionsTemplate) {
+    'use strict';
+
+    var UsersGridView = KendoGridView.extend({
+
+        _model: UserModel,
+        
+        _url : '/ir/secure/api/user/getAllUsers',
+        
+        events: {
+            'click tr a[data-action]' : '_onExecutePrimaryAction'
+        },
+
+        _fields: {
+            userName : {
+                type : 'string'
+            },
+            firstName : {
+                type : 'string'
+            },
+            lastName : {
+                type : 'string'
+            },
+            middleName : {
+                type : 'string'
+            },
+            email : {
+                type : 'string'
+            },
+            state : {
+                type : 'string'
+            },
+            lastLoginDate : {
+                type : 'string'
+            }
+        },
+
+        sort: [{
+            field : 'lastName',
+            dir : 'asc'
+        }],
+
+        initialize: function() {
+            KendoGridView.prototype.initialize.apply(this, arguments);
+            this.loadPlugin('actions');
+            this.loadPlugin('rowSelection');
+        },
+
+        _columns: function() {
+            return [{
+                field : "userName",
+                title : "User Name",
+                sortable : true
+            }, {
+                field : "email",
+                title : "Email",
+                sortable : true,
+                template: gridColumnNameTemplate.withFilter(function(ctx) {
+                    var user = new UserModel(ctx.toJSON());
+                    return _.extend(ctx, {
+                        name: user.get('email'),
+                        //primaryAction: user.getPrimaryAction()
+                    });
+                })
+
+            }, {
+                field : "firstName",
+                title : "First Name",
+                sortable : true
+            }, {
+                field : "lastName",
+                title : "Last Name",
+                sortable : true
+            }, {
+                field : "state",
+                title : "Status",
+                width : '185px',
+                sortable : true
+            }, {
+                field : "eSignature",
+                title : "Electronic Signature",
+            }, {
+                field : "lastLoginDate",
+                title : "Last Login",
+                template : "#= (lastLoginDate == null) ? ' ' : kendo.toString(new Date(Date.parse(lastLoginDate)),'MMM dd yyyy hh:mm tt') #",
+                sortable : true
+            }, {
+                field : "action",
+                title : "Actions",
+                template: userActionsTemplate
+            
+            }];
+
+        }
+
+    });
+    
+    return UsersGridView;
+});

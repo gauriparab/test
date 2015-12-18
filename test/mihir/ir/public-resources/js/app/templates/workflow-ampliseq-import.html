@@ -1,0 +1,31 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">x</button>
+    <h3 id="createUserModalLabel">{{t 'ampliseq.label.import'}}</h3>
+</div>
+<div class="modal-body">
+    <div class="form-horizontal">
+        <div class="tabbable">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#ampliseqCustomPanelsTab" data-toggle="tab">{{t 'ampliseq.label.custom.panel'}}</a></li>
+                <li><a href="#ampliseqFixedPanelsTab" data-toggle="tab">{{t 'ampliseq.label.fixed.panels'}}</a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="ampliseqCustomPanelsTab">
+                    <!-- templates/workflow-ampliseq-custom-panels.html -->
+                </div>
+                <div class="tab-pane" id="ampliseqFixedPanelsTab">
+                    <!-- templates/workflow-ampliseq-fixed-panels.html -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <a href="#" data-dismiss="modal" aria-hidden="true" class="btn btn-secondary">{{t 'ampliseq.button.cancel'}}</a>
+    <a id="ampliseqImportBtn" href="#" class="btn btn-primary">{{t 'ampliseq.button.import'}}</a>
+</div>
+
+<div class="alert hide" id="ampliseqImportAlertTemplate">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <span></span>
+</div>

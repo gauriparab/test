@@ -1,0 +1,68 @@
+<div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">x</button>
+            <h4>{{t 'sample.planARun.title'}}</h4>
+</div>
+<div class="modal-body">
+    <div id="errors"></div>
+    <form id="manageUserForm" class="form-horizontal">
+    	<div class="control-group">
+             <label class="control-label">{{t 'sample.planARun.planRunName'}}</label>
+             <div class="controls"><input type="text" maxlength="50" id="planARunName"><span class="text-error requires-asterisk">*</span> </div>
+         </div>
+         <div class="control-group">
+             <label class="control-label">{{t 'sample.planARun.selectAssay'}}</label>
+             <div class="controls">
+                   <select class="input-medium" id="planRunAssay" name="managePlanRunAssay">
+                       {{#each assays}}
+                       <option value="{{id}}">{{name}}</option>
+                       {{/each}}
+                   </select>
+             </div>
+         </div>
+         <div class="control-group">
+             <label class="control-label">{{t 'sample.planARun.addNote'}}</label>
+             <div class="controls"><textarea maxlength="128" id="planARunNote" cols="4" rows="3"></textarea></div>
+         </div>
+   </form>
+   <div><label>{{t 'sample.planARun.selectedSamples'}}: <b>{{model.samples.length}}</b></label></div>
+   <div id="viewPlanRunSamples-grid" data-role="grid" class="k-grid k-widget">
+   <table class="table table-condensed role-table">
+   		 <thead>
+            <tr>
+		        <th valign="top"><strong>{{t 'manage.sample.id'}}</strong></th>
+		        <th valign="top"><strong>{{t 'manage.sample.barcodeId'}}</strong></th>
+		        <th valign="top"><strong>{{t 'manage.sample.groupId'}}</strong></th>
+		        <th valign="top"><strong>{{t 'manage.sample.name'}}</strong></th>
+		        <th valign="top"><strong>{{t 'manage.sample.sampleType'}}</strong></th>
+	    	</tr>
+	    </thead>
+	    <tbody>
+	    {{#each model.samples}}
+		    <tr>
+		        <td valign="top">{{sampleId}}</td>
+		        <td valign="top">{{barcode.idStr}}</td>
+		        <td valign="top">
+			        {{#each sampleAttributes}}
+			              {{#ifCond attributeName '===' 'Sample Group ID'}}
+			                 {{value}}
+			              {{/ifCond}}
+			        {{/each}}
+		        </td>
+		        <td valign="top">{{sampleName}}</td>
+		        <td valign="top">
+                    {{#each sampleAttributes}}
+                          {{#ifCond attributeName '===' 'Sample Type'}}
+                             {{value}}
+                          {{/ifCond}}
+                    {{/each}}
+                </td>
+		    </tr>
+	    {{/each}}
+	    </tbody>
+   </table>
+   </div>
+</div>
+<div class="modal-footer">
+    <button data-dismiss="modal" id="planRunCancelButton" type="button" class="btn btn-secondary">{{t 'manage.sample.cancel'}}</button>
+    <button id="planRunSaveButton" type="button" class="btn btn-primary">{{t 'manage.sample.save'}}</button>
+</div>

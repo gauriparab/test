@@ -1,0 +1,44 @@
+<form class="form-horizontal">
+	<div class="control-group">
+		<label class="control-label" for="libraryTypeRna">{{t 'specimens.library.type'}}: </label>
+		<div class="controls">
+			<label id="libraryTypeRna">{{t 'speciments.type.rna'}}</label>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="libraryNameRna">{{t 'specimens.library.name'}}: <span class="text-error requires-asterisk ">*</span></label>
+		<div class="controls">
+			<input name="libraryNameDna" type="text" id="libraryNameRna" value="{{data.libraryName}}" maxlength="50"/>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="barcodeIdRna">{{t 'specimens.library.barcode.id'}}: <span class="text-error requires-asterisk ">*</span></label>
+		<div class="controls">
+			<select class="input-medium" id="barcodeIdRna" name="barcodeIdRna">
+	        	{{#each barcodes}}
+					<option value="{{id}}">{{idStr}}</option>
+				{{/each}}
+	        </select>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="libraryKitBarcodeRna">{{t 'specimens.library.barcode.libKitBarcode'}}: </label>
+		<div class="controls">
+			<input name="libraryKitBarcodeRna" type="text" id="libraryKitBarcodeRna" value="{{data.libraryKitBarcode}}" maxlength="40"/>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="quantityRna">{{t 'specimens.library.quantity'}}: </label>
+		<div class="controls">
+			<input name="quantityRna" type="text" id="quantityRna" value="{{data.quantity}}" maxlength="10"/>
+		</div>
+	</div>
+	{{#if data.id}}{{else}}
+	<div class="control-group">
+		<label class="control-label" for="notesDna">{{t 'specimens.library.notes'}}: </label>
+		<div class="controls">
+			<textarea name="notesRna" id="notesRna" maxlength="256" rows="3">{{notes}}</textarea>
+		</div>
+	</div>
+	{{/if}}
+</form>		

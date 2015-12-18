@@ -1,0 +1,88 @@
+<div class="modal-scroll row-fluid">
+	<div class="span10" style="margin: 0">
+		<h5 style="margin-top: 0"> {{model.specimenId}} </h5>
+		<table cellpadding="2">
+			{{#if hasViewPermission}}
+			<tr>
+				<td class="info-label" style="vertical-align:top"> {{t 'grid.label.patientId'}}: </td>
+				<td><div style="word-wrap: break-word;width: 140px;">{{model.patientId}}</div></td>
+			</tr>
+			{{/if}}
+			<tr>
+				<td class="info-label"> {{t 'grid.label.collectionDate'}}: </td>
+				<td>{{model.collectionDate}} </td>
+			</tr>
+			<tr>
+				<td class="info-label" style="vertical-align:top"> {{t 'grid.label.specimenCondition'}}: </td>
+				<td><div style="word-wrap: break-word;width: 150px;">{{model.specimenCondition}}</div></td>
+			</tr>
+			<tr>
+				<td class="info-label"> {{t 'grid.label.gender'}}: </td>
+				<td> {{model.gender}} </td>
+			</tr>
+			<tr>
+				<td class="info-label"> {{t 'grid.label.receiveTime'}}: </td>
+				<td> {{model.receiveDate}} </td>
+			</tr>			
+			<tr>
+				<td class="info-label"> {{t 'grid.label.referenceInterval'}}: </td>
+				<td> {{model.referenceInterval}} </td>
+			</tr>
+			{{#each model.specimenAttributes}}
+			{{#isOdd @index}}
+			<tr>
+				<td class="info-label" style="vertical-align:top"> {{attributeName}}: </td>
+				<td><div style="word-wrap: break-word;width: 150px;">{{value}}</div></td>
+			</tr>
+			{{/isOdd}}
+			{{/each}}
+		<!-- </table>
+	</div>
+	<div class="span6" style="margin:0"> 
+		<table cellpadding="4">-->
+			{{#if hasViewPermission}}			
+			<tr>
+				<td class="info-label" style="vertical-align:top"><div style="width:110px">{{t 'grid.label.orderingPhysician'}}:</div></td>
+				<td><div style="word-wrap: break-word;width: 140px;">{{model.orderingPhysician}}</div></td>
+			</tr>
+			<tr>
+				<td class="info-label"> {{t 'grid.label.dateOfBirth'}}: </td>
+				<td> {{model.dateOfBirth}} </td>
+			</tr>
+			{{/if}}
+			<tr>
+				<td class="info-label" style="vertical-align:top"> {{t 'grid.label.specimenSource'}}: </td>
+				<td><div style="word-wrap: break-word;width: 150px;">{{model.specimenSource}}</div></td>
+			</tr>
+			<tr>
+				<td class="info-label"> {{t 'grid.label.sampleType'}}: </td>
+				<td> {{model.sampleType}} </td>
+			</tr>
+			<tr>
+				<td class="info-label"> {{t 'grid.label.percentCellularity'}}: </td>
+				<td> {{model.tumorCellularity}} </td>
+			</tr>
+			<tr>
+				<td class="info-label"> {{t 'grid.label.percentNecrosis'}}: </td>
+				<td> {{model.necrosis}} </td>
+			</tr>
+			{{#each model.specimenAttributes}}
+			{{#isEven @index}}			
+				<td class="info-label" style="vertical-align:top"> {{attributeName}}: </td>
+				<td><div style="word-wrap: break-word;width: 150px;">{{value}}</div></td>
+			</tr>
+			{{/isEven}}
+			{{/each}}
+		<!-- </table>
+	</div>
+	<table cellpadding="4" class="span12" style="margin:0"> -->
+		<tr>
+			<td class="info-label" style="vertical-align: top;"> {{t 'specimen.add.extractionKitBarcode.label'}}: </td>
+			<td id="extractionKit"> {{model.extractionKit}} </td>
+		</tr>
+	</table>
+	</div>
+	<div class="span2" style="margin: 0">
+		<img src="/ir/resources/img/sample.png"/>
+	</div>
+</div>

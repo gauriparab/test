@@ -1,0 +1,29 @@
+<form>
+		<fieldset>
+			<i style=" font-size: 11px;color: #777777;">{{t 'assay.genelist.report.message'}}</i>
+			<label class="checkbox">
+				<input type="checkbox" id="enableSummaryReport">
+				<b>{{t 'assay.summary.summaryreport'}}</b>
+			</label>
+		</fieldset>
+		<div class="row-fluid" id="geneFilesSection" style="display: none">
+		    <table cellpadding="5">
+		        <tr>					
+					<td valign="top" width="130"><strong>{{t labelKey}}: </strong></td>
+					<td>
+						<div class="row-fluid custom-region-container">
+							{{#ifCond collection.length '>=' 1}}
+							<select id="{{idKey}}" class="input-xlarge tgl">
+								{{#each collection}}
+								<option value={{this.id}}>{{this.name}}</option>
+								{{/each}}
+							</select>
+							{{else}}
+							{{t 'assay.no.genelist.label'}}							
+							{{/ifCond}}
+						</div>
+					</td>
+				</tr>
+		    </table>
+		</div>
+	</form>

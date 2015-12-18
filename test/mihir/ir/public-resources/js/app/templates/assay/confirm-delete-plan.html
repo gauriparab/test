@@ -1,0 +1,32 @@
+<div class="row-fluid">
+	{{#if canDelete}}
+	<div class="row-fluid">
+		<div class="span12">
+			<div class="alert alert-info">
+				{{t 'plan.delete.popup.confirm'}}
+			</div>
+		</div>
+	</div>
+	<div class="row-fluid">
+		<div  data-role="grid" class="k-grid k-widget span12">
+			<table class="table table-condensed role-table">
+				<thead>
+					<tr>
+						<th valign="middle">{{t 'planned.grid.plannedRunName'}}</th>
+						<th valign="middle">{{t 'planned.runs.assay'}}</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each canDelete}}
+					<tr>
+						<td valign="middle">{{planName}}</td>
+						<td valign="middle">{{assayName}}</td>
+					</tr>
+					{{/each}}
+				</tbody>
+			</table>
+		</div>
+	</div>
+	{{/if}}
+</div>
+

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:substituteby="layout.html :: headerFragment"></head>
+    <body>
+		<div class="wrapper">
+            <div class="header" th:substituteby="layout.html :: bodyHeaderFragment"></div>
+            <div class="sub-nav">
+				<div class="container-fluid">
+					<ul class="nav pull-left">
+						
+					</ul>						
+				</div>
+			</div>
+			<div class="main" >
+				<div class="main-content clearfix">
+					<div class="container-fluid">
+                        <div class="row-fluid">
+    						<div th:if="${localizedError}" class="alert alert-error">
+    							<strong th:text="${localizedError.code.errorCode}">1234</strong>
+                                <span th:if="${localizedError.errorMessage}" th:utext="${localizedError.errorMessage}">Showing error message.</span>
+                                <span th:unless="${localizedError.errorMessage}" th:utext="#{exception.msg.public.default}">We're sorry, something went wrong.</span>
+                                <div th:if="${localizedError.correctiveActionMessage}" th:utext="${localizedError.correctiveActionMessage}">Showing corrective action message.</div>
+    						</div>
+                            <div th:unless="${localizedError}" class="alert alert-error">
+                                <strong th:if="${errorCode}" th:text="${errorCode}">403</strong>
+                                <span th:if="${servletError}" ><span th:utext="${servletError.message}">Showing error message.</span> (<span id="servlet-error-hash" th:text="${servletError.hash}">abcdef0123456789ab</span>)</span>
+                                <span th:unless="${servletError}" th:utext="#{exception.msg.public.default}">We're sorry, something went wrong.</span>
+                            </div>
+				            <a href="secure/home.html" sec:authorize="${isAuthenticated()}" th:href="@{/secure/home.html}">Back to Home Page</a>
+				            <a href="index.html" sec:authorize="${!isAuthenticated()}" th:href="@{/index.html}">Back to Welcome Page</a>				        
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<footer>
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<img src="../../public-resources/img/ion-logo2.png"  th:src="@{/resources/img/ion-logo2.png}" border="0"/>
+					<div class="pull-right">				
+						<p>FOR RESEARCH USE ONLY. NOT INTENDED FOR ANY ANIMAL OR HUMAN THERAPEUTIC OR DIAGNOSTIC USE.</p>
+						<p><span class="copyright">&copy; 2012 Life Technologies Corporation. All Rights Reserved.</span></p>
+					</div>
+				</div>
+			</div>
+		</footer>
+    </body>
+</html>

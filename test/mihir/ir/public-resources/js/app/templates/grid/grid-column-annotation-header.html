@@ -1,0 +1,11 @@
+{{#if description}}
+    <span data-toggle="tooltip" title="{{description}}" data-container=".main-content">        
+{{/if}}
+{{#if asDisplayableString}}
+    {{asDisplayableString}}
+{{else}}
+    {{keyName}}
+{{/if}}
+{{#if description}}
+    </span>
+{{/if}}

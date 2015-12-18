@@ -1,0 +1,28 @@
+<div class="modal-header">
+    <button id="variantDetailsClose" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 class="title breakall">{{t 'variant.label.details'}}: {{name}}</h3>
+</div>
+<div class="modal-body">
+    <div class="row-fluid">
+            <div class="pull-left">
+                <ul class="nav nav-pills" id="detailsTab">
+                    <li class="active">
+                        <a id="variantDetailsPaneLink" href="#variantDetailsPane" data-toggle="tab">{{t 'variant.label.details'}}</a>
+                    </li>
+                    <li>
+                        <a id="notesPaneLink" href="#notesPane" data-toggle="tab">{{t 'variant.label.notes'}}</a>
+                    </li>
+                </ul>
+            </div>    
+    </div>
+    <div class="tab-content">
+        <div class="tab-pane active" id="variantDetailsPane">
+            
+        </div>
+        <div class="tab-pane" id="notesPane">
+           
+        </div> 
+    </div>
+</div>
+
+

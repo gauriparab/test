@@ -1,0 +1,7 @@
+{{sub sub.header}}
+<div class="report-body" id="report-template-body-{{model._type}}" >
+	<p>{{t 'final.report.template.disclaimer.info'}}</p>
+	<div class="report-template-body-content">
+		<textarea class="span12" id="disclaimerTextarea" data-property="disclaimer" {{#if _readonly}}readonly="readonly" {{/if}}>{{model.disclaimer}}</textarea>
+	</div>
+</div>

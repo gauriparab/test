@@ -1,0 +1,33 @@
+<div class="actions-table">
+	{{#ifCond state '===' 'Locked'}}
+		{{#unless isDefaultAssay}}
+			{{#if canObsolute}}
+	 			<b><a data-action='obsolete' href='javascript:void(0)'>{{t 'grid.column.obsolete'}}</a></b> | 
+	 		{{/if}}
+	 		{{#if canExport}}
+				<b><a data-action='export' href='javascript:void(0)'>{{t 'actions.EXPORT'}}</a></b> |
+			{{/if}}
+	 		{{#if canReanalyse}}
+					<b><a data-action='reanalysis' href='javascript:void(0)'>{{t 'grid.column.reanalysis'}}</a></b> |
+			{{/if}}
+		{{/unless}}
+		{{#if copyAllowed}}
+			{{#if isDefaultAssay}}
+				<b><a data-action='copy' href='javascript:void(0)'>{{t 'actions.COPY'}}</a></b>
+			{{else}}
+				<b><a data-action='copy' href='javascript:void(0)'>{{t 'actions.COPY'}}</a></b>
+			{{/if}}
+		{{/if}}
+		<!--{{#unless isDefaultAssay}}{{/unless}}-->
+	{{/ifCond}}
+
+	{{#ifCond state '===' 'Obsolete'}}
+		{{#if canReanalyse}}
+  			<b><a data-action='reanalysis' href='javascript:void(0)'>{{t 'grid.column.reanalysis'}}</a></b>
+  	{{/if}}
+	{{/ifCond}}
+
+  {{#ifCond state '===' 'Draft'}}
+  		<b><a data-action='lock' href='javascript:void(0)'>{{t 'actions.LOCK'}}</a></b>
+  {{/ifCond}}
+</div>

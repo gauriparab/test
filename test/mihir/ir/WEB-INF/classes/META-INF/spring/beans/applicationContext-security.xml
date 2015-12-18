@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:sec="http://www.springframework.org/schema/security"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/security
+    http://www.springframework.org/schema/security/spring-security-3.1.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/util
+    http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+
+    <!--  <sec:debug /> -->
+
+    <!-- SecurityContextUtil - Utility service to help with getting AuthenticatedUser from Spring Security -->
+    <bean id="securityContextUtil" class="com.lifetech.ionreporter.mgc.ui.web.util.SecurityContextUtil" />
+
+    <!-- Will be used to secure Services, see http://static.springsource.org/spring-security/site/faq.html#faq-method-security-in-web-context-->
+    <sec:global-method-security pre-post-annotations="enabled">
+    	<sec:expression-handler ref="expressionHandler"/>
+    </sec:global-method-security> 
+
+	<bean id="expressionHandler" class="org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler">
+		<property name="permissionEvaluator" ref="permissionEvaluator" />
+	</bean>
+	
+	<bean id="webSecurityExpressionHandler" class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler">
+		<property name="permissionEvaluator" ref="rolebasedpermissionEvaluator" />
+	</bean>
+	
+	<bean id="permissionEvaluator" class="com.lifetech.dx.ionreporter.security.impl.PermissionEvaluatorImpl"/>
+	
+	<bean id="rolebasedpermissionEvaluator" class="com.lifetech.dx.ionreporter.security.impl.RoleBasedPermissionEvaluatorImpl"/>	
+
+    <sec:http auto-config="false" use-expressions="true" jaas-api-provision="true">
+        <sec:session-management session-authentication-strategy-ref="sas" />
+        <!-- Fallback to ensure any secure/** page requires authentication -->
+        <sec:intercept-url pattern="/secure/**" access="isAuthenticated()" />
+        <sec:access-denied-handler error-page="/403.html"/>
+        <sec:form-login login-page="/login.html" authentication-failure-url="/login-error.html" authentication-success-handler-ref="authenticationSuccessHandler" />
+        <sec:http-basic />
+        <sec:custom-filter after="BASIC_AUTH_FILTER" ref="tokenAuthFilter" />
+        <!-- This will replace Spring Security's standard logout filter -->
+        <sec:custom-filter position="LOGOUT_FILTER" ref="logoutFilter" />
+    </sec:http>
+
+    <!--
+    Force the use of SimpleUrlAuthenticationSuccessHandler so that we can redirect to our own endpoint AND keep any SavedRequest.
+    We can't use the default SavedRequestAwareAuthenticationSuccessHandler because that will either redirect directly to the bookmarked URL
+    or trash the SavedRequest and then we can't use it from our LoginController.
+    -->
+    <bean id="authenticationSuccessHandler"
+          class="org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler">
+        <property name="defaultTargetUrl" value="/secure/login-phase-two.html" />
+        <property name="alwaysUseDefaultTargetUrl" value="true" />
+    </bean>
+
+    <!-- Our custom logout filter, we're adding our own handlers to the chain -->
+    <bean id="logoutFilter"
+          class="org.springframework.security.web.authentication.logout.LogoutFilter">
+        <constructor-arg value="/login.html" />
+        <constructor-arg>
+            <list>
+                <!-- Our logout handler to ensure logout() is called on LoginLogoutService -->
+                <bean  class="com.lifetech.ionreporter.mgc.ui.web.security.logout.IRAuthenticationServiceLogoutHandler" />
+                <!-- Spring Security's handler for invalidating user session -->
+                <bean  class="org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler" />
+                <!-- Spring Security's handler for removing specified cookies -->
+                <bean  class="org.springframework.security.web.authentication.logout.CookieClearingLogoutHandler">
+                    <constructor-arg>
+                        <list>
+                            <value>JESSSIONID</value>
+                        </list>
+                    </constructor-arg>
+                </bean>
+                <!-- Our logout handler to shuttle any request parameters we were handed into a FlashMap -->
+                <bean  class="com.lifetech.ionreporter.mgc.ui.web.security.logout.FlashAttributesLogoutHandler" />
+            </list>
+        </constructor-arg>
+        <property name="filterProcessesUrl" value="/logout.html" />
+    </bean>
+    
+    <bean id="tokenAuthFilter" class="com.lifetech.ionreporter.mgc.ui.web.security.filter.TokenBasedAuthenticationFilter">
+        <property name="authenticationManager" ref="authenticationManager" />
+        <property name="authenticationSuccessHandler" ref="authenticationSuccessHandler" />
+        <property name="sessionAuthenticationStrategy" ref="sas" />
+    </bean>
+
+    <bean id="sas"
+          class="org.springframework.security.web.authentication.session.SessionFixationProtectionStrategy" /> 
+		  
+    <bean id="irAuthorityGranter" class="com.lifetech.dx.ionreporter.security.granter.IRServiceBasedAuthorityGranter" />
+	
+    <bean id="authorityGranter"
+          class="com.lifetech.dx.ionreporter.security.granter.ServiceBasedAuthorityGranter"/>
+
+    <sec:authentication-manager alias="authenticationManager">
+        <sec:authentication-provider ref="jaasAuthProvider"/>
+    </sec:authentication-manager>
+
+    <bean id="applicationContextProvider"
+          class="com.lifetech.ionreporter.services.util.ApplicationContextProvider"/>
+
+    <bean id="jaasAuthProvider"
+	      class="org.springframework.security.authentication.jaas.DefaultJaasAuthenticationProvider">
+
+        <property name="configuration">
+            <bean
+				class="org.springframework.security.authentication.jaas.memory.InMemoryConfiguration">
+                <constructor-arg>
+                    <map>
+                        <entry key="SPRINGSECURITY">
+                            <array>
+                                <bean  class="javax.security.auth.login.AppConfigurationEntry">
+                                    <constructor-arg value="com.lifetech.ionreporter.mgc.services.security.IRServiceBasedLoginModule" />
+                                    <constructor-arg>
+                                        <util:constant static-field="javax.security.auth.login.AppConfigurationEntry$LoginModuleControlFlag.SUFFICIENT" />
+                                    </constructor-arg>
+                                    <constructor-arg>
+                                        <map>
+                                        </map>
+                                    </constructor-arg>
+                                </bean>
+                                <bean  class="javax.security.auth.login.AppConfigurationEntry">
+                                    <constructor-arg value="com.lifetech.ionreporter.mgc.services.security.IRServiceTokenBasedLoginModule" />
+                                    <constructor-arg>
+                                        <util:constant static-field="javax.security.auth.login.AppConfigurationEntry$LoginModuleControlFlag.OPTIONAL" />
+                                    </constructor-arg>
+                                    <constructor-arg>
+                                        <map>
+                                        </map>
+                                    </constructor-arg>
+                                </bean>
+                            </array>
+                        </entry>
+                    </map>
+                </constructor-arg>
+            </bean>
+        </property>
+        <property name="authorityGranters">
+            <list>
+                <ref bean="irAuthorityGranter"/> 
+                <ref bean="authorityGranter"/>
+            </list>
+        </property>
+    </bean>
+
+    <!-- use Jackson as the object mapper for JSON content types -->
+    <bean id="jsonMessageConverter"
+          class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+        <!-- define a custom object mapper so we can tweak the JSON output -->
+        <property name="objectMapper">
+            <bean class="com.lifetech.dx.ionreporter.util.IRJacksonObjectMapperFactory" />
+        </property>
+        <!-- IR-8341: In order to support async file uploads in IE an IFrame trasnport must be used.  -->
+        <!-- The content type on the json response must be set to text/html for IE to behave correctly. -->
+        <!-- In order to use our jackson message converter in this scenario we need to add text/html as a supported type. -->
+        <!-- https://github.com/blueimp/jQuery-File-Upload/wiki/Frequently-Asked-Questions#why-does-internet-explorer-prompt-to-download-a-file-after-the-upload-completes -->
+        <property name='supportedMediaTypes'>
+            <list>
+                <value>application/json</value>
+                <value>application/+json</value>
+                <value>text/html</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="restErrorResponder" class="com.lifetech.ionreporter.mgc.ui.web.exceptionresolver.RestErrorResponder" />
+    <bean id="standardHandlerExceptionResolverHelper" class="com.lifetech.ionreporter.mgc.ui.web.exceptionresolver.StandardHandlerExceptionResolverHelper" />
+    <bean id="csrfProtectionFilter" class="com.lifetech.ionreporter.mgc.ui.web.interceptor.CsrfProtectionFilter" />
+
+</beans>

@@ -1,0 +1,6 @@
+<select id="filter-select" class="settingDatumSelector">
+    <option>{{t 'filterChains.edit.choose'}}</option>
+    {{#each filters}}
+    <option value="{{id}}">{{attributes.name}}</option>
+    {{/each}}
+</select>

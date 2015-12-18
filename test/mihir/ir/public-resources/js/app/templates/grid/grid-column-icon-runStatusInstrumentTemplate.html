@@ -1,0 +1,13 @@
+{{#ifCond runStatus.name '===' 'OneTouch'}}
+<i class="icon-OT" title="{{t 'grid.column.runstatus.oneTouch'}}"></i>
+{{/ifCond}}
+{{#ifCond runStatus.name '===' 'IonChef'}}
+<i class="icon-CHEF" title="{{t 'monitor.run.instrument.ionChef'}}"></i>
+{{/ifCond}}
+{{#ifCond runStatus.name '===' 'PGM'}}
+<i class="icon-PGM" title="{{t 'grid.column.runstatus.pgm'}}"></i>
+{{/ifCond}}
+{{#ifCond runStatus.name '===' 'Analysis'}}
+<i class="icon-Analysis" title="{{t 'grid.column.runstatus.analysis'}}"></i>
+{{/ifCond}}
+<span>{{runStatus.value}}</span>

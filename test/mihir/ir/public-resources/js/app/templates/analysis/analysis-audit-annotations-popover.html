@@ -1,0 +1,8 @@
+<h4>{{t 'analysis.auditLog.analysis.annotations.sources.header'}}</h4>
+<ul>
+    {{#each sources}}
+        <li>{{t 'analysis.auditLog.analysis.annotations.sources.name'}}: {{this.name}} | 
+            {{t 'analysis.auditLog.analysis.annotations.sources.type'}}: {{t 'annotation.source.type.' this.type.name}} | 
+            {{t 'analysis.auditLog.analysis.annotations.sources.version'}}: {{this.version}}</li>
+    {{/each}}
+</ul>

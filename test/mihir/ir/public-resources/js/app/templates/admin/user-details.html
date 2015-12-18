@@ -1,0 +1,53 @@
+<div class="details">
+        <table cellpadding="5" width="100%">
+            <tbody>
+            	<tr>
+                    <td valign="top" class="info-label" >{{t 'user.profile.page.userName.label'}}:</td>
+                    <td>{{model.userName}}</td>
+                </tr>
+            	<tr>
+					<td colspan="2" class="greyHeading">{{t 'user.profile.page.accountInfomation.label'}}  </td>
+				</tr>
+                <tr>
+                    <td valign="top" class="info-label" >{{t 'user.profile.page.firstName.label'}}:</td>
+                    <td>{{model.firstName}}</td>
+                </tr>
+                <tr>
+                    <td valign="top" class="info-label" >{{t 'user.profile.page.lastName.label'}}:</td>
+                    <td>{{model.lastName}}</td>
+                </tr>
+                <tr>
+                    <td valign="top" class="info-label" >{{t 'user.profile.page.emailAddress.label'}}:</td>
+                    <td>{{model.email}}</td>
+                </tr>
+                <tr>
+                    <td valign="top" class="info-label" >{{t 'createUser.label.comments'}}:</td>
+                    <td>{{model.comments}}</td>
+                </tr>
+                <tr>
+                    <td valign="top" class="info-label" >{{t 'user.profile.page.status.label'}}:</td>
+                    <td>{{model.rdxState}}</td>
+                </tr>
+                 <tr>
+                    <td valign="top" class="info-label" >{{t 'createUser.label.esign'}}:</td>
+                    <td>{{#ifCond model.eSignature '===' true}}{{t 'confirm.yes'}}{{else}}{{t 'confirm.no'}}{{/ifCond}}</td>
+                </tr>
+                
+                <tr>
+                    <td valign="top" class="info-label" >{{t 'user.profile.page.role.label'}}:</td>
+                    <td>{{model.roleDto.roleName}}</td>
+                </tr>
+                <tr>
+					<td colspan="2" class="greyHeading"> {{t 'user.profile.page.dates.label'}}</td>
+				</tr>
+                <tr>
+                    <td valign="top" class="info-label" >{{t 'createUser.label.lastLogOnDate'}}:</td>
+                    <td>{{#if model.lastLoginDate}} {{formatDate model.lastLoginDate}} {{else}} {{t 'createUser.label.newUser'}} {{/if}}</td>
+                </tr>
+                <tr>
+                    <td valign="top" class="info-label" width="180">{{t 'createUser.label.accountCreationDate'}}:</td>
+                    <td>{{formatDate model.createdOn}}</td>
+                </tr>
+            </tbody>
+        </table>
+</div>

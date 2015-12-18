@@ -1,0 +1,35 @@
+<p class="context-help"><b>{{t 'assay.review.message'}}</b></p>
+<br>
+<form class="form-horizontal">
+
+  <div class="control-group">
+    <label class="control-label inputWorkflow" for="assay-name" style="color:black;" ><b>{{t 'assay.name'}}: </b><span class="text-error requires-asterisk ">*</span> </label>
+    <div class="controls">
+      <input type="text" id="assay-name" name="name" value="{{assayDisplayedName}}" maxlength="50" class="input-xxlarge" {{#if assayDisplayedName}}{{#unless isCopyAssay}} disabled {{/unless}} {{/if}}><!--<span class="help-inline">{{t 'assay.namevalidation'}}</span>-->
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label inputWorkflow" for="assay-desc" style="color:black;"><b>{{t 'assay.description'}}</b></label>
+    <div class="controls">
+      <textarea id="assay-desc" maxlength="256" name="description" rows="2" class="input-xxlarge">{{description}}</textarea>
+    </div>
+  </div>
+  {{#if needsReason}}
+  <div class="control-group">
+    <label class="control-label inputWorkflow" for="assay-name" style="color:black;"><b>{{t 'common.label.reasonForChange'}}: </b><span class="text-error requires-asterisk ">*</span> </label>
+    <div class="controls">
+      <input type="text" id="reason-for-change" name="reason" class="input-xxlarge" maxlength="512">
+    </div>
+  </div>
+  {{/if}}
+
+  {{#if requiresReason}}
+  <div class="control-group">
+    <label class="control-label inputWorkflow" for="assay-name" style="color:black;"><b>{{t 'common.label.reasonForChange'}}: </b><span class="text-error requires-asterisk ">*</span> </label>
+    <div class="controls">
+      <input type="text" id="reason-for-change" name="reason" class="input-xxlarge" maxlength="512">
+    </div>
+  </div>
+  {{/if}}
+</form>

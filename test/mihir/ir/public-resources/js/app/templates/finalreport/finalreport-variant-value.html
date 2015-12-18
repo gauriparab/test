@@ -1,0 +1,35 @@
+{{#ifCond values.length '>' 1}}
+    <a href='javascript:void(0)' data-toggle='popover' data-title='{{title}}' data-content='
+        <ul>
+        {{#each values}}
+            <li>
+                {{#if url}}
+                    <a href="{{url}}" target="_blank">{{asDisplayableString}}</a>
+                {{else}}
+                    {{asDisplayableString}}
+                {{/if}}
+            </li>
+        {{/each}}
+        </ul>
+    '> {{firstValue values 'asDisplayableString'}} ...({{values.length}})</a>
+{{else}}
+    {{#if values.0.first}}
+        {{#if values.0.first.url}}
+            <a href='{{values.0.first.url}}' target='_blank'>{{values.0.first.asDisplayableString}}</a>
+        {{else}}
+            {{values.0.first.asDisplayableString}}
+        {{/if}}
+    -
+        {{#if values.0.second.url}}
+            <a href='{{values.0.second.url}}' target='_blank'>{{values.0.second.asDisplayableString}}</a>
+        {{else}}
+            {{values.0.second.asDisplayableString}}
+        {{/if}}
+    {{else}}
+        {{#if values.0.url}}
+            <a href='{{values.0.url}}' target='_blank'>{{values.0.asDisplayableString}}</a>
+        {{else}}
+            {{values.0.asDisplayableString}}
+        {{/if}}
+    {{/if}}
+{{/ifCond}}

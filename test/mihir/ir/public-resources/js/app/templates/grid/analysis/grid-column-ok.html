@@ -1,0 +1,6 @@
+{{#if checkedOutBy}}
+<i class="icon-ok has-popover" rel="popover" data-content="{{checkedOutBy.firstName}} {{checkedOutBy.lastName}}"
+   data-original-title="{{t 'grid.analysis.editedBy'}}"></i>
+{{else}}
+<i class=""></i>
+{{/if}}

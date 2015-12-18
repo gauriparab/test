@@ -1,0 +1,20 @@
+{{#each attributeRows}}
+    <div class="row-fluid">
+        {{#each attributes}}
+            <div class="span3">
+                <ul class="unstyled">
+                    <li style="list-style: none; display: inline">
+                        <div style="float:left; width:42px;">
+                            {{#if imgUrl}}
+                                <img width="36" height="36" alt="" src="{{img imgUrl}}" />
+                            {{/if}}
+                        </div>
+                    </li>
+
+                    <li style="margin-left: 42px;"><strong>{{name}}:</strong><br>
+                        <span id="attribute_{{id}}">{{value}}</span></li>
+                </ul>
+            </div>
+        {{/each}}
+    </div>
+{{/each}}

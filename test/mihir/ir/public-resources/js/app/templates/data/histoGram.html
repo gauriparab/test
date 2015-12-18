@@ -1,0 +1,31 @@
+<table class="table no-border data-summary" style="margin:0px;border-top:1px solid #d8d8d8;">
+	<tbody>
+		<tr style="">
+			<td style="width: 15%;border:none;border-right:1px solid #d8d8d8;"><b>
+				{{t 'data.tab.histogram'}}
+			</b></td>
+			<td style="padding:0px;">
+				<div>
+					<table class="table" style="margin: 0px;border:none;">
+						<tbody>
+							{{#each histoGram}}
+							<tr>
+								<td style="border:none;width:20%;"><b>{{title}}</b></td>
+								{{#if status}}
+									<td>
+										<div class="report-body" style="text-align: center;">
+											<img src='{{filePath}}'>
+										</div>
+									</td>
+								{{else}}
+									<td>{{t 'Histogram Image not available'}}.</td>
+								{{/if}}
+							</tr>
+							{{/each}}
+						</tbody>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</tbody>
+</table>

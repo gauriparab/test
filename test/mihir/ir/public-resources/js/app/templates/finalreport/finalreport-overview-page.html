@@ -1,0 +1,119 @@
+<div class="container-fluid">
+	<div class="row-fluid">
+		{{#ifCond status '===' 'DRAFT_PREVIEW'}}
+			<div class="alert alert-info">{{t 'final.report.overview.draft'}}</div>
+		{{/ifCond}}
+
+        <div class="pull-left">
+            <h1><img src="{{img 'dash-analysis.png'}}" width="40" />{{t 'final.report.header'}}</h1>
+        </div>
+		<form class="btn-toolbar pull-right">
+			<div class="btn-group">
+				<a class="btn btn-primary" 
+					href="
+						{{#ifCond status '===' 'DRAFT_PREVIEW'}}
+							{{surl 'analyses/' analysis.id '/edit_variants'}}
+						{{else}}
+							{{surl 'analyses.html'}}
+						{{/ifCond}}">{{t 'final.report.back'}}</a>
+			</div>
+			
+			{{#ifCond status '===' 'PUBLISHED_AND_LOCKED'}}
+			<div class="btn-group">
+				<a class="btn" href="{{surl 'api/v40/analysis_reports/' id '/download'}}">{{t 'final.report.export'}}</a>
+			</div>
+			{{/ifCond}}
+			
+			<div class="btn-group">
+                <a class="btn dropdown-toggle {{#if analysis.aborted}}disabled{{/if}}" data-toggle="dropdown" href="#">
+                    {{t 'analysis.switchto.actions.switchTo'}}
+                    <span class="caret"></span>
+                </a>
+				<ul class="dropdown-menu dropdown-menu-scrolling pull-right" id="switchToMenuLinks">
+                    <li><a href="{{surl 'analyses/' analysis.id '/audit_log'}}">{{t 'analysis.switchto.actions.auditReport'}}</a></li>
+                    <li><a href="{{surl 'analyses/' analysis.id '/view_qc_report'}}">{{t 'analysis.switchto.actions.qcReport'}}</a></li>
+				</ul>
+			</div>
+			{{#ifCond status '===' 'DRAFT_PREVIEW'}}
+			<div class="btn-group">
+				<a href="javascript:void(0)" id="confirmPublishModal" class="btn btn-primary" data-toggle="modal">Lock &amp; {{t 'final.report.publish'}}</a>
+			</div>
+			{{/ifCond}}
+		</form>
+	</div>
+	<div class="row-fluid">
+		{{#if headerSection.template.logo.id}}
+		<div class="pull-left final-report-company-logo">
+			<img style="max-width: 100%;" src="/ir/secure/api/v40/analysis/finalReport/{{headerSection.template.logo.id}}/headerLogo.png" alt="{{t 'final.report.custom.logo'}}"
+				 title="{{t 'final.report.custom.logo'}}"/>
+		</div>
+		{{/if}}
+        <div class="pull-left">
+            <table>
+                <tr>
+                    <td colspan="2"><h2>{{analysis.name}}</h2></td>
+                </tr>
+                <tr>
+                    <td valign="top">
+                        <p><strong>{{t 'final.report.analysis.launched'}}:</strong> {{date analysis.createdOn}}</p>
+                        <p><strong>{{t 'final.report.created'}}:</strong> {{date createdOn}}</p>
+                        {{#if headerSection.template.organizationName}}
+                        <p><strong>{{t 'final.report.organization'}}:</strong>
+                        {{headerSection.template.organizationName}}{{#if headerSection.template.organizationAddress}}, <span class="organization-address">{{headerSection.template.organizationAddress}}</span>{{/if}}
+                        </p>
+                        {{/if}}
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+	</div>
+	<div class="row-fluid">
+		{{#if backgroundSection}}
+			{{sub backgroundTemplate}}
+		{{/if}}			
+			
+		{{#if analysisInformationSection}}
+			{{sub analysisInfoTemplate}}
+		{{/if}}			
+
+		{{#if samplesOverviewSection}}
+		<div class="report-header">Sample Information</div>
+		<div class="report-body">
+			<div class="row-fluid" id="sampleInformationPane">
+				{{#each analysis.specimenGroup.members}}
+					{{sub ../sampleInfoTemplate}}
+                    <br/>
+				{{/each}}
+			</div>
+		</div>
+		{{/if}}
+		
+		{{#if reportedVariantsSection}}
+		<div class="report-header">Reported Variants</div>
+		<div class="report-body">
+			<div class="normal-images">
+				<div class="row-fluid">
+					{{sub variantTableTemplate}}
+				</div>
+			</div>
+		</div>	
+		{{/if}}
+
+		{{#if variantDetailsSection}}
+			{{sub variantDetailsTemplate}}
+		{{/if}}
+		
+		{{#if commentsSection}}
+			{{sub commentsTemplate}}
+		{{/if}}			
+
+		{{#if signOffSection}}
+			{{sub signOffTemplate}}
+		{{/if}}
+
+        {{#if disclaimerSection}}
+            {{sub disclaimerTemplate}}
+        {{/if}}
+	</div>
+</div>

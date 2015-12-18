@@ -1,0 +1,12 @@
+<div class="row-fluid">
+	{{#if isNone}}
+	<b>{{t 'assay.views.parameters.selection.not.allowed'}}</b>
+	{{else}}
+	<div class="span3" id="modules">
+		<!-- templates/workflow/modules.html -->
+	</div>
+	<div class="span9 parameters" id="module-parameters">
+		<!-- templates/workflow/module.html -->
+	</div>
+	{{/if}}
+</div>

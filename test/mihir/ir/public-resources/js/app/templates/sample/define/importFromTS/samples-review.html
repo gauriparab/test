@@ -1,0 +1,21 @@
+<div class="row-fluid sample-review">
+    <div class="span8">
+        <h1>{{t 'ts.import.review.header'}}</h1>
+        <p class="context-help">{{t 'ts.import.review.description'}}</p>
+        <br/>
+        {{#each samples}}
+        <div id="sample-{{@index}}" class="sample row-fluid batch-item-result">
+            <div id="{{cid}}" class="control-group">
+                <div class="span4">
+                    <span class="breakword">{{name}}</span>
+                </div>
+                <div class="help-inline span4"></div>
+            </div>
+        </div>
+        {{/each}}
+
+        <br/>
+        <button id="import-sample-btn" type="button" class="btn btn-primary">{{t 'ts.import.button.import'}}</button>
+        <br/><br/>
+    </div>
+</div>

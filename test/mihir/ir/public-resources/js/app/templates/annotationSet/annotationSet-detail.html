@@ -1,0 +1,61 @@
+<div>
+    <table cellpadding="5">
+        <tbody>
+        <tr>
+            <td colspan="2">
+                <span id="lockedDetail" class="details-icons">
+                    {{sub sub.locked}}
+                </span>
+                <span id="defaultDetail" class="details-icons">
+                    {{sub sub.provided}}
+                </span>
+            </td>
+        </tr>        
+        <tr>
+            <td class="nameCol" colspan="2">
+                <span id="nameDetail" class="breakall"><strong>{{name}}</strong></span><br/>
+                <span id="descriptionDetail" class="descriptionCol">{{description}}</span>
+            </td>
+        </tr>
+        <tr>
+            <td><strong>{{t "version.label"}}:</strong></td>
+            <td id="versionDetail" class="descriptionCol">{{applicationVersion.name}}</td>
+        </tr>
+        <tr>
+            <td><strong>{{t 'grid.column.CreatedBy'}}:</strong></td>
+            <td id="createdByDetail" class="descriptionCol">{{creator}}</td>
+        </tr>
+        <tr>
+            <td><strong>{{t 'settings.logs.grid.createdOn'}}:</strong></td>
+            <td id="createdOnDetail" class="descriptionCol">{{createdOn}}</td>
+        </tr>
+        <tr>
+            <td><strong>{{t 'user.profile.page.status.label'}}:</strong></td>
+            <td id="statusDetail" class="descriptionCol">{{sub sub.status}}</td>
+        </tr>
+        <tr>
+            <td><strong>{{t 'workflow.reference.label'}}:</strong></td>
+            <td id="referenceDetail" class="descriptionCol">{{reference.name}}</td>
+        </tr>
+        <tr>
+            <td colspan="2"><strong>{{t 'workflow.summary.annotation'}}:</strong></td>
+        </tr>
+        </tbody>
+    </table>
+    <table id="annotationTableDetail" class="annotations table table-striped table-condensed">
+        <thead>
+        <tr>
+            <th width="45%">{{t 'attribute.create.name.label'}}</th>
+            <th>{{t 'version.label'}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each sources}}
+        <tr class="workflow-setting">
+            <td>{{name}}</td>
+            <td>{{version}}</td>
+        </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>

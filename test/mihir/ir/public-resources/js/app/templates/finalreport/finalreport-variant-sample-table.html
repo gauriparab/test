@@ -1,0 +1,22 @@
+<h2>Samples</h2>
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th scope="col">{{t 'final.report.samples.name'}}</th>
+        <th scope="col">{{t 'final.report.samples.genotype'}}</th>
+        <th scope="col">{{t 'final.report.samples.aminoAcid'}}</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each variantsBySample}}
+    <tr>
+        <td>{{sampleName}}</td>
+        <td>{{sub ../variantValueTemplate genotype}}</td>
+        <td>{{sub ../variantValueTemplate aminoAcid}}</td>
+    </tr>
+    {{/each}}
+    </tbody>
+</table>
+<p class="protein-details-note">
+    * {{t 'final.report.samples.protein'}}
+</p>

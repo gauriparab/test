@@ -1,0 +1,50 @@
+<div class="report-header" style="border: 0; border-bottom: 1px solid #ccc; background-color: #fff;">
+    <!-- div>
+        <span class="planDetails"><a href="#" style="color: #70A2E2;">{{planName}}</a></span> 
+		{{#unless template}} <small> ({{libraryResultDtos.length}} Libraries)</small>{{/unless}}
+	 	<span class="assayDetails"><img src="{{img 'dash-workflows.png'}}" width="30" /><a href="#" style="color: #70A2E2;">{{assayName}}</a></span>
+	 	{{#if libraryResultDtos}}
+	 	<span id="librarySelect" class="pull-right">
+	 		<small>Show Library:</small>
+			<select class="input-medium" id="libraries" name="libraries">
+				{{#libraryResultDtos}}
+						<option value="{{id}}">{{value}}</option>
+				{{/libraryResultDtos}}
+			</select> 	
+	 	</span>
+	 	{{/if}}
+    </div -->
+</div>
+<div class="card-body" id="report-template-body-BackgroundSection">
+    <div class="row-fluid" style="margin-bottom:10px;">
+        <div class="span6" {{#if showPgm}}style="border-right: 1px solid #ccc; padding-right: 35px; min-height: 160px;"{{/if}}> <!-- style="border-bottom: 2px solid #D3D3D3;" -->
+		    <div style="margin:7px;" class="otView">
+			<!-- templates/monitor/run-ot-view.html -->
+		    </div>
+		</div>
+		{{#if showPgm}}
+		<div class="span6" style="padding-right: 35px;">
+		    <div style="margin:7px;" class="pgmView">
+			<!-- templates/monitor/run-pgm-view.html -->
+		    </div>
+		</div>
+		{{/if}}
+	</div>
+	<div id="qcAccordian" class="row-fluid" style="margin-bottom:10px;">
+		<div class="accordion" id="accordion">
+  			<div class="accordion-group">
+				<div class="accordion-heading">
+			      <a id="accordion-heading" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseQC" style="font-weight: bold; color: black;">
+			        <i id="toggle-qc" class="icon-plus-sign"></i>{{t 'monitor.run.viewQC'}}
+			      </a>
+		    	</div>
+				<div id="collapseQC" class="accordion-body collapse">
+				    <div class="qcDataView accordion-inner">
+			    	        <!-- templates/monitor/run-qcdata-view.html -->
+				    </div>
+				</div>
+			</div>
+		</div>
+    </div>
+</div>
+<div class="modal hide fade" id="planARunDetailsModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"></div>

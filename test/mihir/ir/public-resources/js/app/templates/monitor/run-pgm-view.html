@@ -1,0 +1,63 @@
+{{#if pgmDto}}
+<table style="width: 100%">
+    <tr>
+        <td colspan="4">
+            <h5 style="padding-bottom: 5px;"><img src="{{img 'PGM_ic.png'}}" width="30" />{{t 'monitor.run.sequencing.label'}} : {{pgmDto.serialNumber}}</h5>
+        </td>
+    </tr>
+    <tr>
+        <td valign="top" class="summary-item" style="padding-left:0px" width="110">{{t 'monitor.run.instrumentName'}} :</td>
+        <td><strong>{{pgmDto.name}}</strong></td>
+        <td valign="top" class="summary-item" style="padding-left:0px" width="110">{{t 'monitor.run.startTime'}} :</td>
+        <td width="150">{{#if pgmDto.startTime}}<strong>{{pgmDto.startTime}}</strong>{{/if}}</td>
+    </tr>
+    <tr>
+        <td valign="top" class="summary-item" style="padding-left:0px" width="110">{{t 'monitor.run.operator'}} :</td>
+        <td><strong>{{pgmDto.user}}</strong></td>
+        <td valign="top" class="summary-item" style="padding-left:0px" width="110">{{t 'monitor.run.completionTime'}} :</td>
+        <td>{{#if pgmDto.completionTime}}<strong>{{pgmDto.completionTime}}</strong>{{/if}}</td>
+    </tr>
+    <tr>
+    	<td valign="top" class="summary-item" style="padding-left:0px" width="110">{{t 'monitor.run.analysisStatus'}} :</td>
+        <td><strong>{{pgmDto.analysisStatus}}</strong></td>
+        <td valign="top" class="summary-item" style="padding-left:0px" width="110">{{t 'monitor.sequencing.runStatus'}} :</td>
+        <td><strong>{{pgmDto.status}}</strong></td>
+    </tr>
+    <tr>
+        <td colspan="4">
+            {{#ifCond pgmDto.percentCompleted '==' 100}}
+            <div class="progress" style="height: 10px; margin: 10px 0px 0px 0px;">
+              <div class="bar" style="width: {{pgmDto.percentCompleted}}%;"></div>
+            </div>
+            {{else}}
+            <div class="progress progress-striped active" style="height: 10px; margin: 10px 0px 0px 0px;">
+              <div class="bar" style="width: {{pgmDto.percentCompleted}}%;"></div>
+            </div>
+            {{/ifCond}}
+            {{#if pgmDto.showTime}}
+            	<div>{{t 'monitor.run.sequencing.progress.status'}} : <strong>{{pgmDto.completedFlows}}</strong> {{t 'monitor.run.sequencing.progress.of'}} <strong>{{pgmDto.totalFlows}}</strong> {{t 'monitor.run.sequencing.progress.transfered'}}</div>
+        	{{/if}}
+        </td>
+    </tr>
+    <tr>
+        <td colspan="4">
+        {{#if pgmDto.outOfSync}}
+	        	<div class="alarms"><img src="{{img 'alert.png'}}" style="vertical-align: text-top;"/><span class="raised"> {{pgmDto.outOfSyncMesssage}}</span></div>
+	        {{/if}}
+        {{#if pgmDto.instrumentAlarms}}
+            <ul class="alarms" {{#if pgmDto.outOfSync}} style="border-top: 0;" {{/if}}>
+            {{#each pgmDto.instrumentAlarms}}
+                <li><img src="{{#if raisedAlarmFlag}}{{img 'alert.png'}}{{else}}{{img 'info_no_alarms.png'}}{{/if}}" style="vertical-align: text-top; width: 14px;"/><span class="{{#if raisedAlarmFlag}}raised{{else}}cleared{{/if}}"> {{value}}</span></li>
+            {{/each}}
+            </ul>
+        {{/if}}
+        </td>
+    </tr>
+</table>
+{{else}}
+<table style="width: 100%; height: 100%;">
+    <tr>
+        <td valign="top"></td>
+    </tr>
+</table>
+{{/if}}

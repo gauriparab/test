@@ -1,0 +1,13 @@
+<h5>{{name}}</h5>
+<span class="parameter-help">{{description}}</span>
+<br>
+<div class="control-group">
+    {{#each rule.possibleValues}} {{! to handle the 'S' based rule(s) }}
+    <span class="inline">
+        <input type="radio" name="{{../_key}}" data-key="{{../key}}" value="{{this}}" {{#unless ../isEditable}}disabled {{/unless}} {{#ifCond this '===' ../value}}checked{{/ifCond}}/>
+        <span class="radioText">{{this}}</span>
+    </span>
+    {{else}} {{! to handle the 's' based rule(s) }}
+    <input class="input-xlarge" name="{{_key}}" type="text" data-key="{{key}}" value="{{value}}" maxlength="255" {{#unless isEditable}}disabled{{/unless}}/>
+    {{/each}}
+</div>

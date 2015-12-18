@@ -1,0 +1,29 @@
+<div class="form-horizontal">
+    <form id="manageUserForm" class="form-horizontal">
+        <div class="control-group">
+            <label class="control-label" for="attributeName">{{t 'add.attribute.name'}}</label>
+            <div class="controls"><input name="attributeName" type="text" id="attributeName" required="required" 
+                    value="{{model.attributeName}}" maxlength="20"/><span class="text-error requires-asterisk ">*</span> </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="dataTypes">{{t 'add.attribute.datatype'}}</label>
+            <div class="controls">
+	<select id="dataTypes">
+		{{#each dataTypes}}
+		<option value="{{attributeTypeID}}">{{dataType}}</option>
+		{{/each}}
+	</select>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="isMandatory">{{t 'add.attribute.required'}}</label>
+            <div class="controls">
+            	<input name="isMandatory" type="checkbox" id="isMandatory"/></div>
+        </div>
+    </form>
+</div>
+
+<div class="alert hide" id="ampliseqImportAlertTemplate">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <span></span>
+</div>

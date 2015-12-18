@@ -1,0 +1,65 @@
+<!-- software-updates-view.html -->
+{{#data}}
+
+	{{#if updateAvailable}}
+		<h4>Updates Available.</h4>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>{{t 'grid.header.label.componentName'}}</th>
+					<th>{{t 'grid.header.label.version'}}</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{#softwareSuiteUpdateDto}}
+					{{#each componentList}}
+					<tr>
+						<td>{{componentName}}</td>
+						<td>{{componentVersion}}</td>
+					</tr>
+					{{/each}}
+				{{/softwareSuiteUpdateDto}}
+				{{#dataConfigurationSuiteUpdateDto}}
+					{{#each componentList}}
+					<tr>
+						<td>{{componentName}}</td>
+						<td>{{componentVersion}}</td>
+					</tr>
+					{{/each}}
+				{{/dataConfigurationSuiteUpdateDto}}
+			</tbody>
+		</table>
+	{{/if}}
+
+	{{#if instructionList}}
+		{{#each instructionList}}
+		<div style="color:orange;margin: 0px 0px 20px 0px;">
+			{{this}}
+		</div>
+		{{/each}}
+	{{/if}}
+	{{#if runningJobList}}
+		<table class="table">
+			<thead>
+				<tr>
+					<th>{{t 'grid.header.label.plannedRunShortCode'}}</th>
+					<th>{{t 'grid.header.label.otStatus'}}</th>
+					<th>{{t 'grid.header.label.pgmStatus'}}</th>
+					<th>{{t 'grid.header.label.analysisStatus'}}</th>
+					<th>{{t 'grid.header.label.action'}}</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{#each runningJobList}}
+				<tr>
+					<td>{{shortCode}}</td>
+					<td>{{otStatus}}</td>
+					<td>{{pgmStatus}}</td>
+					<td>{{analysisStatus}}</td>
+					<td>
+						<a id="terminate{{id}}" class="terminator" href="javascript:void(0)" data-action="terminate:job" data-id="{{id}}">{{t 'grid.action.label.terminate'}}</a>
+					</td>
+				{{/each}}
+	{{/if}}
+	
+{{/data}}

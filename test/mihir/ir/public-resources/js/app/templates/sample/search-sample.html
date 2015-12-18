@@ -1,0 +1,12 @@
+<div>
+	<select class="input-medium" id="filterCondition">
+		<option selected="selected" value="sampleId">{{t 'search.sampleid'}}</option>
+		<option value="createdBy">{{t 'search.createdBy'}}</option>
+		<option value="createdOn">{{t 'search.createdOn'}}</option>
+	</select>
+    <input type="text" class="input-large" id="searchCondition" placeholder="Search" maxlength="20"/>
+    <input type="text" class="input-medium search-query" placeholder="Start Date" id="startDate"/>
+    <input type="text" class="input-medium search-query" placeholder="End Date" id="endDate"/>
+    <button type="submit" class="btn">{{t 'search.button.label'}}</button>
+    <button id="gridReset" type="reset" class="btn">{{t 'reset.button.label'}}</button>
+</div>
